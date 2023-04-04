@@ -1,0 +1,29 @@
+{
+  "name": "building-alliance-client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "component": "generate-react component"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^3.1.0",
+    "classnames": "^2.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-router-dom": "^6.10.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "generate-react-cli": "^8.3.0",
+    "sass": "^1.60.0",
+    "sass-loader": "^13.2.2",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  }
+}

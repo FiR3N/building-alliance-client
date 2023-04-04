@@ -1,0 +1,40 @@
+.header {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  width: 100%;
+  font-family: $open-sans;
+  &Info {
+    background-color: rgba(black, 0.6);
+    &Content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
+      &Contacts {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        svg {
+          color: $sun_color;
+          width: 16px;
+          height: 16px;
+        }
+        &Item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #ffffff;
+          a {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 48em) {
+    &Info {
+      display: none;
+    }
+  }
+}

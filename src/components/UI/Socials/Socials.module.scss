@@ -1,0 +1,14 @@
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  svg {
+    width: 20px;
+    height: 20px;
+    color: white;
+    transition: all 0.3s ease;
+    &:hover {
+      color: $sun_color;
+    }
+  }
+}
