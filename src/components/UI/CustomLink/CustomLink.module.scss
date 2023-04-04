@@ -1,0 +1,15 @@
+.customLink {
+  font-family: $inter;
+  font-size: 17px;
+  line-height: 25px;
+  font-weight: 600;
+  color: rgba(#ffffff, 1);
+  transition: all 0.3s ease;
+  padding-bottom: 5px;
+}
+.activeCustomLink {
+  color: rgba($sun_color, 1);
+  &:hover {
+    color: rgba($sun_color, 1);
+  }
+}

@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.scss";
 import Layout from "./components/Layout/Layout";
+import AppRouter from "./router/AppRouter";
 
 function App() {
   return (
     <React.Fragment>
       <Layout>
-        <p>Hello from Main</p>
+        <AppRouter />
       </Layout>
     </React.Fragment>
   );

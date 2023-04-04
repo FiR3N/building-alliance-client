@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import cls from "../Header.module.scss";
 import classNames from "classnames";
 import Socials from "../../../UI/Socials/Socials";
@@ -6,7 +6,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 interface HeaderInfoProps {}
 
-const HeaderInfo: FC<HeaderInfoProps> = () => {
+const HeaderInfo: FC<HeaderInfoProps> = memo(() => {
   return (
     <div className={cls.headerInfo}>
       <div className={classNames(cls.headerInfoContent, "container")}>
@@ -31,6 +31,6 @@ const HeaderInfo: FC<HeaderInfoProps> = () => {
       </div>
     </div>
   );
-};
+});
 
 export default HeaderInfo;
