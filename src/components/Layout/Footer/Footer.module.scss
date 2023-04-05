@@ -1,2 +1,157 @@
 .footer {
+  position: relative;
+  width: 100%;
+  .bgImg {
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+  }
+  &Copyright {
+    height: 60px;
+
+    background-color: rgba(#16171b, 1);
+
+    &Content {
+      padding-top: 17.5px;
+      padding-bottom: 17.5px;
+
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &Info {
+      color: white;
+    }
+  }
+  &Links {
+    background-color: rgba(#16171b, 1);
+    border-bottom: 1px solid #3d4755;
+    &Content {
+      padding-top: 65px;
+      padding-bottom: 65px;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+
+      position: relative;
+      z-index: 1;
+
+      h5 {
+        padding-bottom: 18px;
+      }
+
+      span {
+        height: 6px;
+        width: 40px;
+        margin: 0;
+        margin-bottom: 25px;
+
+        display: block;
+
+        background-color: $ui-sun-color;
+      }
+
+      a,
+      svg {
+        transition: all 0.3s ease;
+      }
+    }
+
+    &About {
+      flex: 0 1 30%;
+
+      p {
+        margin-bottom: 20px;
+      }
+      img {
+        height: 40px;
+      }
+    }
+    &Main {
+      flex: 0 1 calc(40% - 20px);
+
+      &List {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      &Item {
+        margin-bottom: 10px;
+
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex: 0 0 calc(50% - 7px);
+
+        svg {
+          color: white;
+        }
+
+        &:hover {
+          a,
+          svg {
+            color: $ui-sun-color;
+          }
+        }
+      }
+    }
+    &Contacts {
+      flex: 0 0 calc(30% - 20px);
+
+      p {
+        margin-bottom: 10px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+
+        &:hover {
+          svg,
+          a {
+            color: $ui-sun-color;
+          }
+        }
+      }
+    }
+    @media #{$ui-tablet-max} {
+      &Content {
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      &About {
+        flex: 0 1 calc(50% - 10px);
+      }
+      &Contacts {
+        flex: 0 0 calc(50% - 10px);
+      }
+      &Main {
+        order: 3;
+        flex: 0 0 100%;
+      }
+    }
+    @media #{$ui-mobile-max} {
+      &Content {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        flex-direction: column;
+      }
+    }
+  }
 }

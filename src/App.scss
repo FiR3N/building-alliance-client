@@ -3,10 +3,27 @@
 
 /*TEXT------------------------------------------------------------------------------------------------------------*/
 
+h5 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+
+  color: #ffffff;
+}
+
 .light-text {
   font-weight: 300;
   font-size: 14px;
   line-height: 25px;
+  color: #ffffff;
+}
+
+.light-link {
+  font-family: $font-inter;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 25px;
+  color: $ui-sun-color;
 }
 
 /*BLOCKS------------------------------------------------------------------------------------------------------------*/
