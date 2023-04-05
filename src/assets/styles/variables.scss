@@ -1,10 +1,29 @@
 /*COLORS-----------------------------------------------------------------------------------------------------------*/
-$sun_color: #f7c24d; //buttons, links, icons
-$wet_asphalt: #4a4a4a; //text, headlines
-$bg-color: #f7f7f7; //bg
-$black: #262626; //text, headlines
+$ui-sun-color: #f7c24d; //buttons, links, icons
+$ui-wet-asphalt-color: #4a4a4a; //text, headlines
+$ui-bg-color: #f7f7f7; //bg
+$ui-black-color: #262626; //text, headlines
 /*CONTAINER--------------------------------------------------------------------------------------------------------*/
 $max-width: 1170px;
 /*FONTS------------------------------------------------------------------------------------------------------------*/
-$inter: "Inter", sans-serif;
-$open-sans: "Open Sans", sans-serif;
+$font-inter: "Inter", sans-serif;
+$font-open-sans: "Open Sans", sans-serif;
+/*ZINDEX-----------------------------------------------------------------------------------------------------------*/
+$ui-index-1: 1; //for crawling in general stream
+$ui-index-2: 2; //for crawling in general stream
+$ui-index-3: 3; //for masks
+$ui-index-4: 4; //for sidebars
+$ui-index-5: 5; //for modals
+$ui-index-6: 6; //for blocking element
+/*BREAKPOINTS------------------------------------------------------------------------------------------------------*/
+$ui-mobile-min: "screen and (min-width: 20em)";
+$ui-mobile-max: "screen and (max-width: 35.9625em)";
+
+$ui-tablet-min: "screen and (min-width: 36em)";
+$ui-tablet-max: "screen and (max-width: 61.9625em)";
+
+$ui-desktop-min: "screen and (min-width: 62em)";
+$ui-desktop-max: "screen and (max-width: 75em)";
+
+$ui-mouse-device: "(hover: none) and (pointer: coarse)";
+$ui-touch-device: "(hover: hover) and (pointer: fine)";

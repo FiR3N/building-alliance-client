@@ -9,18 +9,39 @@
   line-height: 25px;
 }
 
+/*BLOCKS------------------------------------------------------------------------------------------------------------*/
+.bar {
+  width: 30px;
+  height: 3px;
+  margin: 2.5px auto;
+
+  background-color: #ffffff;
+  border-radius: 6px;
+
+  transition: all 0.3s ease;
+}
+
+/*SOMESTYLES------------------------------------------------------------------------------------------------------*/
 body {
-  font-family: $inter;
   overflow-x: hidden;
+
+  font-family: $font-inter;
+
+  &._noscroll {
+    overflow: hidden;
+  }
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
+
   position: relative;
   z-index: 0;
+
+  display: flex;
+  flex-direction: column;
 }
+
 .main {
   flex: 1 1 auto;
 }

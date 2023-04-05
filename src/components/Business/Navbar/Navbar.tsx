@@ -1,13 +1,15 @@
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import cls from "./Navbar.module.scss";
 import CustomLink from "../../UI/CustomLink/CustomLink";
 
-interface NavbarProps {}
+interface NavbarProps {
+  setIsActive?: Dispatch<SetStateAction<boolean>>;
+}
 
-const Navbar: FC<NavbarProps> = () => {
+const Navbar: FC<NavbarProps> = ({ setIsActive }) => {
   return (
     <nav className={cls.navbar}>
-      <ul>
+      <ul onClick={() => setIsActive!((prev) => !prev)}>
         <li>
           <CustomLink to="/">Главная</CustomLink>
         </li>
