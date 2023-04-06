@@ -4,11 +4,7 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import CustomLink from "../CustomLink/CustomLink";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-
-interface ILinkItem {
-  name: string;
-  to: string;
-}
+import ILinkItem from "../../../models/ILinkItem";
 
 interface PopupHeaderMenuProps {
   title: string;
@@ -18,17 +14,11 @@ interface PopupHeaderMenuProps {
 const PopupHeaderMenu: FC<PopupHeaderMenuProps> = ({ title, items }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  const clickHandler = (e: React.MouseEvent) => {
-    setIsActive((prev) => !prev);
-  };
-
-  console.log(isActive);
-
   return (
     <div
       className={cls.popupHeaderMenu}
-      onMouseEnter={clickHandler}
-      onMouseLeave={clickHandler}
+      onMouseEnter={() => setIsActive(true)}
+      onMouseLeave={() => setIsActive(false)}
     >
       <div
         className={classNames(
@@ -44,9 +34,10 @@ const PopupHeaderMenu: FC<PopupHeaderMenuProps> = ({ title, items }) => {
           cls.popupHeaderMenuContent,
           isActive && cls._active
         )}
+        onClick={() => setIsActive(false)}
       >
         {items.map((item) => (
-          <Link to={item.to} key={item.to} onClick={() => setIsActive(false)}>
+          <Link to={item.to} key={item.to}>
             {item.name}
           </Link>
         ))}

@@ -55,7 +55,7 @@ const HeaderNav: FC<HeaderNavProps> = () => {
             <span className="bar" />
             <span className="bar" />
           </div>
-          <Navbar setIsActive={setIsHambActive} />
+          <Navbar setIsActive={setIsHambActive} isMobile={true} />
           <br />
           <Socials />
         </div>

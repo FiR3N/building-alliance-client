@@ -26,6 +26,15 @@ h5 {
   color: $ui-sun-color;
 }
 
+.nav-link {
+  font-family: $font-inter;
+  font-size: 17px;
+  line-height: 25px;
+  font-weight: 600;
+  color: rgba(#ffffff, 1);
+  transition: all 0.3s ease;
+}
+
 /*BLOCKS------------------------------------------------------------------------------------------------------------*/
 .bar {
   width: 30px;

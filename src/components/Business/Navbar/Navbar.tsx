@@ -2,12 +2,23 @@ import { Dispatch, FC, SetStateAction } from "react";
 import cls from "./Navbar.module.scss";
 import CustomLink from "../../UI/CustomLink/CustomLink";
 import PopupHeaderMenu from "../../UI/PopupHeaderMenu/PopupHeaderMenu";
+import ILinkItem from "../../../models/ILinkItem";
+import { Link } from "react-router-dom";
 
 interface NavbarProps {
   setIsActive?: Dispatch<SetStateAction<boolean>>;
+  isMobile?: boolean;
 }
 
-const Navbar: FC<NavbarProps> = ({ setIsActive }) => {
+const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
+  const informationLinks: ILinkItem[] = [
+    { name: "Об компании", to: "/" },
+    { name: "Наша история", to: "/information/history" },
+    { name: "Наши проекты", to: "/information/projects" },
+    { name: "Рабочий процесс", to: "/information/work-process" },
+    { name: "Отзывы", to: "/information/reviews" },
+  ];
+
   return (
     <nav className={cls.navbar}>
       <ul
@@ -20,16 +31,23 @@ const Navbar: FC<NavbarProps> = ({ setIsActive }) => {
         </li>
         <li>
           {/* <CustomLink to="/contact">Информация</CustomLink> */}
-          <PopupHeaderMenu
-            title="Информация"
-            items={[
-              { name: "Об компании", to: "/information/company" },
-              { name: "Наша история", to: "/information/history" },
-              { name: "Наши проекты", to: "/information/projects" },
-              { name: "Рабочий процесс", to: "/information/work-process" },
-              { name: "Отзывы", to: "/information/reviews" },
-            ]}
-          />
+          {isMobile ? (
+            <>
+              <ul className={cls.navbarSecondList}>
+                <p className="nav-link">Информация</p>
+
+                {informationLinks.map((item) => (
+                  <li>
+                    <CustomLink to={item.to} key={item.name}>
+                      {item.name}
+                    </CustomLink>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <PopupHeaderMenu title="Информация" items={informationLinks} />
+          )}
         </li>
         <li>
           <CustomLink to="/services">Услуги</CustomLink>
