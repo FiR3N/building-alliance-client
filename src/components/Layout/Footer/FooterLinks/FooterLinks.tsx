@@ -10,12 +10,12 @@ const FooterLinks: FC = () => {
     <div className={cls.footerLinks}>
       <div className={classNames(cls.footerLinksContent, "container")}>
         <div className={cls.footerLinksAbout}>
-          <h5>О организации</h5>
+          <h5>Об организации</h5>
           <span className="bar" />
           <p className="light-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry’s standard dummy text
-            ever.
+            Building Alliance - профессиональная строительная компания,
+            специализирующаяся на проектировании и строительстве жилых и
+            коммерческих объектов.
           </p>
           <img src={logo} alt="logo" />
         </div>

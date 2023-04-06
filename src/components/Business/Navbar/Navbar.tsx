@@ -1,6 +1,7 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import cls from "./Navbar.module.scss";
 import CustomLink from "../../UI/CustomLink/CustomLink";
+import PopupHeaderMenu from "../../UI/PopupHeaderMenu/PopupHeaderMenu";
 
 interface NavbarProps {
   setIsActive?: Dispatch<SetStateAction<boolean>>;
@@ -9,12 +10,26 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({ setIsActive }) => {
   return (
     <nav className={cls.navbar}>
-      <ul onClick={() => setIsActive!((prev) => !prev)}>
+      <ul
+        onClick={() => {
+          if (setIsActive) setIsActive((prev) => !prev);
+        }}
+      >
         <li>
           <CustomLink to="/">Главная</CustomLink>
         </li>
         <li>
-          <CustomLink to="/contact">Информация</CustomLink>
+          {/* <CustomLink to="/contact">Информация</CustomLink> */}
+          <PopupHeaderMenu
+            title="Информация"
+            items={[
+              { name: "Об компании", to: "/information/company" },
+              { name: "Наша история", to: "/information/history" },
+              { name: "Наши проекты", to: "/information/projects" },
+              { name: "Рабочий процесс", to: "/information/work-process" },
+              { name: "Отзывы", to: "/information/reviews" },
+            ]}
+          />
         </li>
         <li>
           <CustomLink to="/services">Услуги</CustomLink>

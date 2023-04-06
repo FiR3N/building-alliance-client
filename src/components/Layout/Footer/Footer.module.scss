@@ -9,8 +9,6 @@
     z-index: 0;
   }
   &Copyright {
-    height: 60px;
-
     background-color: rgba(#16171b, 1);
 
     &Content {
@@ -26,6 +24,23 @@
     }
     &Info {
       color: white;
+    }
+    @media #{$ui-mobile-max} {
+      &Content {
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+        flex-direction: column;
+        gap: 10px;
+
+        text-align: center;
+
+        p,
+        a {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
     }
   }
   &Links {
@@ -43,7 +58,7 @@
       z-index: 1;
 
       h5 {
-        padding-bottom: 18px;
+        margin-bottom: 18px;
       }
 
       span {
@@ -151,6 +166,35 @@
         padding-top: 15px;
         padding-bottom: 15px;
         flex-direction: column;
+
+        h5 {
+          font-size: 18px;
+        }
+        span,
+        h5 {
+          margin-bottom: 10px;
+        }
+
+        p,
+        a {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+      &About {
+        flex: 0 1 100%;
+      }
+      &Contacts {
+        flex: 0 0 100%;
+      }
+      &Main {
+        &List {
+          justify-content: flex-start;
+        }
+        &Item {
+          gap: 2px;
+          flex: 0 0 calc(50% - 2px);
+        }
       }
     }
   }
