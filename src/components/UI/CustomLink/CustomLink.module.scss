@@ -5,12 +5,20 @@
   font-weight: 400;
   color: rgba(#ffffff, 1);
   transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    @media #{$ui-mouse-device} {
+      border-bottom: 1px solid #ffffff;
+    }
+  }
 }
 .activeCustomLink {
   color: rgba($ui-sun_color, 1);
   &:hover {
     @media #{$ui-mouse-device} {
       color: rgba($ui-sun_color, 1);
+      border-bottom: 1px solid $ui-sun_color;
     }
   }
 }

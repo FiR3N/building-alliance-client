@@ -1,0 +1,21 @@
+@mixin formFields {
+  padding: 10px;
+
+  font-size: 15px;
+  line-height: 20px;
+
+  border: 1px solid $ui-gray-color;
+  color: #989898;
+
+  transition: all 0.3s ease;
+
+  &:focus {
+    border: 1px solid $ui-sun-color;
+    border-left: 5px solid $ui-sun-color;
+  }
+
+  @media #{$ui-mobile-max} {
+    padding: 7px;
+    font-size: 12px;
+  }
+}

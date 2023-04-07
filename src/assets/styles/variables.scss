@@ -3,6 +3,7 @@ $ui-sun-color: #f7c24d; //buttons, links, icons
 $ui-wet-asphalt-color: #4a4a4a; //text, headlines
 $ui-bg-color: #f7f7f7; //bg
 $ui-black-color: #262626; //text, headlines
+$ui-gray-color: #d8d8d8; //borders
 /*CONTAINER--------------------------------------------------------------------------------------------------------*/
 $max-width: 1170px;
 /*FONTS------------------------------------------------------------------------------------------------------------*/
@@ -20,6 +21,7 @@ $ui-mobile-min: "screen and (min-width: 20em)";
 $ui-mobile-max: "screen and (max-width: 35.9625em)";
 
 $ui-tablet-min: "screen and (min-width: 36em)";
+$ui-tablet-avg: "screen and (max-width: 48em)";
 $ui-tablet-max: "screen and (max-width: 61.9625em)";
 
 $ui-desktop-min: "screen and (min-width: 62em)";

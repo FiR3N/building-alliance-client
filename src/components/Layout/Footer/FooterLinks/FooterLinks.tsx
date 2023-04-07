@@ -2,7 +2,7 @@ import { FC } from "react";
 import cls from "../Footer.module.scss";
 import classNames from "classnames";
 import logo from "../../../../assets/img/logo.png";
-import { AiOutlineMail } from "react-icons/ai";
+import { MdEmail } from "react-icons/md";
 import { BsFillTelephoneFill, BsGeoAltFill } from "react-icons/bs";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 const FooterLinks: FC = () => {
@@ -71,7 +71,7 @@ const FooterLinks: FC = () => {
             </a>
           </p>
           <p className="light-text">
-            <AiOutlineMail />
+            <MdEmail />
             <a
               href="mailto:buildingalliance@gmail.com@example.com?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
               className="light-text"

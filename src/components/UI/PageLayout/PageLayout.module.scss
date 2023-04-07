@@ -15,7 +15,7 @@
     height: 250px;
 
     &Content {
-      padding-top: 150px;
+      padding-top: 130px;
 
       position: relative;
       z-index: 1;
@@ -51,6 +51,38 @@
       svg {
         width: 20px;
         height: 20px;
+      }
+    }
+
+    @media #{$ui-tablet-max} {
+      height: 200px;
+
+      &Content {
+        padding-top: 110px;
+      }
+    }
+
+    @media #{$ui-tablet-avg} {
+      height: 150px;
+      &Content {
+        padding-top: 70px;
+      }
+      &Name {
+        font-size: 30px;
+        line-height: 100%;
+      }
+    }
+    @media #{$ui-mobile-max} {
+      height: 130px;
+      &Content {
+        padding-top: 60px;
+      }
+      &Name {
+        font-size: 25px;
+      }
+      &Url {
+        font-size: 14px;
+        line-height: 100%;
       }
     }
   }
