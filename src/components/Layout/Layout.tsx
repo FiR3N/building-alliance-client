@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import cls from "./Layout.module.scss";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 

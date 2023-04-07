@@ -1,10 +1,11 @@
 .popupHeaderMenu {
   position: relative;
   z-index: 2;
+
   &Title {
-    padding-bottom: 15px;
     display: flex;
     align-items: center;
+
     color: white;
 
     cursor: pointer;
@@ -26,15 +27,17 @@
       font-family: $font-inter;
       font-size: 17px;
       line-height: 25px;
-      font-weight: 600;
+      font-weight: 400;
       transition: all 0.3s ease;
     }
   }
+  //fix animation and margin
   &Content {
+    width: 200px;
+    min-height: auto;
+    margin-top: -15px;
     position: absolute;
     top: 80px;
-    width: 200px;
-    height: auto;
 
     display: flex;
     flex-direction: column;
@@ -42,18 +45,20 @@
     background-color: #ffffff;
     border-radius: 6px;
 
+    transition: all 0.5s ease-in-out;
     opacity: 0;
     visibility: hidden;
+    backface-visibility: hidden;
 
     a {
+      padding: 5px;
+
       font-family: $font-inter;
       font-size: 17px;
       line-height: 25px;
       font-weight: 500;
       transition: all 0.3s ease;
       color: black;
-
-      padding: 5px;
 
       &:last-child {
         border-radius: 0px 0px 6px 6px;
@@ -64,7 +69,9 @@
       }
 
       &:hover {
-        background-color: #eae5e5;
+        @media #{$ui-mouse-device} {
+          background-color: #eae5e5;
+        }
       }
     }
     &._active {
@@ -72,8 +79,6 @@
 
       opacity: 1;
       visibility: visible;
-
-      transition: all 0.3s ease;
     }
   }
 }

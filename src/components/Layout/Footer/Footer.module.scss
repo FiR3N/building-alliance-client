@@ -111,9 +111,11 @@
         }
 
         &:hover {
-          a,
-          svg {
-            color: $ui-sun-color;
+          @media #{$ui-mouse-device} {
+            a,
+            svg {
+              color: $ui-sun-color;
+            }
           }
         }
       }
@@ -135,9 +137,11 @@
         }
 
         &:hover {
-          svg,
-          a {
-            color: $ui-sun-color;
+          @media #{$ui-mouse-device} {
+            svg,
+            a {
+              color: $ui-sun-color;
+            }
           }
         }
       }

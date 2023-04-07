@@ -2,13 +2,15 @@
   font-family: $font-inter;
   font-size: 17px;
   line-height: 25px;
-  font-weight: 600;
+  font-weight: 400;
   color: rgba(#ffffff, 1);
   transition: all 0.3s ease;
 }
 .activeCustomLink {
   color: rgba($ui-sun_color, 1);
   &:hover {
-    color: rgba($ui-sun_color, 1);
+    @media #{$ui-mouse-device} {
+      color: rgba($ui-sun_color, 1);
+    }
   }
 }

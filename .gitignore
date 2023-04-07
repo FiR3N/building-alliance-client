@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 
 generate-react-cli.json
+templates
+
 

@@ -37,7 +37,7 @@ const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
                 <p className="nav-link">Информация</p>
 
                 {informationLinks.map((item) => (
-                  <li>
+                  <li key={item.to}>
                     <CustomLink to={item.to} key={item.name}>
                       {item.name}
                     </CustomLink>

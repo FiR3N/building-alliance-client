@@ -29,11 +29,29 @@
       margin-bottom: 5px;
     }
     &Url {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
       font-family: $font-inter;
       line-height: 30px;
-      font-weight: 500;
+      font-weight: 300;
       color: #ffffff;
       font-size: 16px;
+
+      a {
+        color: #ffffff;
+        transition: all 0.3s ease;
+        &:hover {
+          @media #{$ui-mouse-device} {
+            color: $ui-sun-color;
+          }
+        }
+      }
+      svg {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 }

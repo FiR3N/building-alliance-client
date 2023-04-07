@@ -47,6 +47,17 @@ h5 {
   transition: all 0.3s ease;
 }
 
+/*CUSTOMSCROLL----------------------------------------------------------------------------------------------------*/
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: black;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $ui-sun-color;
+}
+
 /*SOMESTYLES------------------------------------------------------------------------------------------------------*/
 body {
   overflow-x: hidden;

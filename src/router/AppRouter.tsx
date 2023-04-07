@@ -1,12 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import Main from "../Pages/Main/Main";
-import Contact from "../Pages/Contact/Contact";
+import Main from "../pages/Main/Main";
+import Contact from "../pages/Contact/Contact";
+import { ROUTES } from "./Routes";
+import Layout from "../components/Layout/Layout";
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route path={ROUTES.HOME.en} element={<Main />} />
+      <Route path={ROUTES.CONTACT.en} element={<Contact />} />
     </Routes>
   );
 };
