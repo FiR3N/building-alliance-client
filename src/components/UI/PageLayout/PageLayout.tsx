@@ -29,9 +29,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, title, pathname }) => {
         </div>
       </div>
 
-      <div className={classNames(cls.pageLayoutContent, "container")}>
-        {children}
-      </div>
+      <div className={cls.pageLayoutMain}>{children}</div>
     </div>
   );
 };

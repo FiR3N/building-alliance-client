@@ -26,7 +26,7 @@ const Contact: FC<ContactProps> = () => {
   return (
     <PageLayout title="Обратная связь" pathname={pathname}>
       <div className={cls.contact}>
-        <div className={cls.contactContent}>
+        <div className={classNames(cls.contactContent, "container")}>
           <div className={cls.contactMain}>
             <h2>Мы рады ответить на любые вопросы</h2>
             <p className="default-text">
@@ -97,7 +97,65 @@ const Contact: FC<ContactProps> = () => {
             </form>
           </div>
           <div className={cls.contactInfo}>
-            <h5>Наши контакты</h5>
+            <h5>Наши офисы</h5>
+            <div className={cls.contactOffices}>
+              <div className={cls.contactOffice}>
+                <p className={cls.contactOfficeTown}>Минский офис</p>
+                <p className="default-text">
+                  <BsGeoAltFill />
+                  <a
+                    href="https://www.google.com/maps"
+                    className="default-text"
+                  >
+                    ул. Великий Гостинец д.46
+                  </a>
+                </p>
+                <p className="default-text">
+                  <MdEmail />
+                  <a
+                    href="mailto:buildingalliance@gmail.com@example.com?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
+                    className="default-text"
+                  >
+                    buildingalliance@gmail.com
+                  </a>
+                </p>
+                <p className="default-text">
+                  <BsFillTelephoneFill />
+                  <a href="tel:+375 33 333-33-33" className="default-text">
+                    +375 33 333-33-33
+                  </a>
+                </p>
+              </div>
+              <div className={cls.contactOffice}>
+                <p className={cls.contactOfficeTown}>Молодечненский оффис</p>
+                <p className="default-text">
+                  <BsGeoAltFill />
+                  <a
+                    href="https://www.google.com/maps"
+                    className="default-text"
+                  >
+                    ул. Великий Гостинец д.46
+                  </a>
+                </p>
+                <p className="default-text">
+                  <MdEmail />
+                  <a
+                    href="mailto:buildingalliance@gmail.com@example.com?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
+                    className="default-text"
+                  >
+                    buildingalliance@gmail.com
+                  </a>
+                </p>
+                <p className="default-text">
+                  <BsFillTelephoneFill />
+                  <a href="tel:+375 33 333-33-33" className="default-text">
+                    +375 33 333-33-33
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            {/* <h5>Наши контакты</h5>
             <p className="default-text">
               <BsGeoAltFill />
               <a href="https://www.google.com/maps" className="default-text">
@@ -118,10 +176,13 @@ const Contact: FC<ContactProps> = () => {
               <a href="tel:+375 33 333-33-33" className="default-text">
                 +375 33 333-33-33
               </a>
-            </p>
-            <h5>Мы на карте</h5>
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aff8f0743d051733309a2ec3167bc348658c9c3e160a94e099262737896d8be60&amp;source=constructor" />
+            </p> */}
+            {/* <h5>Мы на карте</h5>
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aff8f0743d051733309a2ec3167bc348658c9c3e160a94e099262737896d8be60&amp;source=constructor" /> */}
           </div>
+        </div>
+        <div className={cls.contactMap}>
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aff8f0743d051733309a2ec3167bc348658c9c3e160a94e099262737896d8be60&amp;source=constructor" />
         </div>
       </div>
     </PageLayout>

@@ -14,7 +14,7 @@ h2 {
 }
 
 h5 {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 20px;
   line-height: 30px;
 
@@ -37,6 +37,11 @@ h5 {
   font-style: normal;
 
   color: $ui-black-color;
+
+  @media #{$ui-mobile-max} {
+    font-size: 12px;
+    line-height: 200%;
+  }
 }
 
 .light-link {
