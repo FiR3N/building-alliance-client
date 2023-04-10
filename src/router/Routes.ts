@@ -1,7 +1,7 @@
 export const ROUTES = {
   HOME: {
     en: "/",
-    ru: "/главная",
+    ru: "/Главная",
   },
   ABOUT: {
     en: "/about",
@@ -10,5 +10,9 @@ export const ROUTES = {
   CONTACT: {
     en: "/contact",
     ru: "Обратная связь",
+  },
+  EMPLOYEES: {
+    en: "/employees",
+    ru: "Работники",
   },
 };

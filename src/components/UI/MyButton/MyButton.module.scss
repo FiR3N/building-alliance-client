@@ -11,11 +11,14 @@
   border-radius: 30px;
 
   transition: all 0.3s ease;
-  &:hover {
+  &:not([disabled]):hover {
     @media #{$ui-mouse-device} {
       color: white;
       background-color: $ui-black-color;
     }
+  }
+  &:disabled {
+    background-color: $ui-gray-color;
   }
   @media #{$ui-mobile-max} {
     padding: 10px 26px;

@@ -20,7 +20,7 @@ const Contact: FC<ContactProps> = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
     reset,
   } = useForm<IContact>({ mode: "onChange" });
 
@@ -74,6 +74,7 @@ const Contact: FC<ContactProps> = () => {
                 error={errors.name}
                 placeholder="Введите имя:"
                 type="text"
+                disabled={isSubmitting}
               />
               <MyInput
                 register={register("surname", {
@@ -86,6 +87,7 @@ const Contact: FC<ContactProps> = () => {
                 error={errors.surname}
                 placeholder="Введите фамилию:"
                 type="text"
+                disabled={isSubmitting}
               />
               <MyInput
                 register={register("email", {
@@ -100,6 +102,7 @@ const Contact: FC<ContactProps> = () => {
                 placeholder="Введите email:"
                 type="text"
                 inputMode="email"
+                disabled={isSubmitting}
               />
               <MyInput
                 register={register("telephone", {
@@ -113,6 +116,7 @@ const Contact: FC<ContactProps> = () => {
                 placeholder="Введите номер телефона:"
                 type="text"
                 inputMode="tel"
+                disabled={isSubmitting}
               />
               <MyInput
                 register={register("companyName", {
@@ -121,6 +125,8 @@ const Contact: FC<ContactProps> = () => {
                 error={errors.companyName}
                 placeholder="Введите имя организации:"
                 type="text"
+                maxLength={60}
+                disabled={isSubmitting}
               />
 
               <MyInput
@@ -130,6 +136,8 @@ const Contact: FC<ContactProps> = () => {
                 error={errors.subject}
                 placeholder="Введите тему: "
                 type="text"
+                maxLength={100}
+                disabled={isSubmitting}
               />
               <MyTextArea
                 register={register("text", {
@@ -138,8 +146,9 @@ const Contact: FC<ContactProps> = () => {
                 error={errors.text}
                 maxLength={700}
                 placeholder="Введите текст:"
+                disabled={isSubmitting}
               />
-              <MyButton>Отправить</MyButton>
+              <MyButton disabled={isSubmitting}>Отправить</MyButton>
             </form>
           </div>
           <div className={cls.contactInfo}>
