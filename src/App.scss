@@ -44,6 +44,18 @@ h5 {
   }
 }
 
+.error-text {
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 700;
+  color: red;
+
+  @media #{$ui-mobile-max} {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+
 .light-link {
   font-family: $font-inter;
   font-weight: 500;

@@ -10,6 +10,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import IContact from "../../models/IContact";
 import MyTextArea from "../../components/UI/MyTextArea/MyTextArea";
 import MyButton from "../../components/UI/MyButton/MyButton";
+import ContactService from "../../api/ContactService";
+import InfoBlock from "../../components/UI/InfoBlock/InfoBlock";
 
 interface ContactProps {}
 
@@ -19,9 +21,29 @@ const Contact: FC<ContactProps> = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
-  } = useForm<IContact>();
+    reset,
+  } = useForm<IContact>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<IContact> = async (data) => {};
+  const onSubmit: SubmitHandler<IContact> = async (data) => {
+    await ContactService.sendMessageFromUser(
+      data.name,
+      data.surname,
+      data.email,
+      data.text,
+      data.subject,
+      data.companyName,
+      data.telephone
+    );
+    reset({
+      name: "",
+      surname: "",
+      email: "",
+      text: "",
+      subject: "",
+      telephone: "",
+      companyName: "",
+    });
+  };
 
   return (
     <PageLayout title="Обратная связь" pathname={pathname}>
@@ -29,67 +51,91 @@ const Contact: FC<ContactProps> = () => {
         <div className={classNames(cls.contactContent, "container")}>
           <div className={cls.contactMain}>
             <h2>Мы рады ответить на любые вопросы</h2>
-            <p className="default-text">
+            <p className={classNames(cls.contactMainDesc, "default-text")}>
               A wonderful serenity has taken possession of my entire soul, like
               these sweet mornings of spring which I enjoy with my whole heart.
               I am alone, and feel the charm of existence in this spot, which
               was created for the bliss of souls like mine.
             </p>
-
+            {isSubmitSuccessful && (
+              <InfoBlock blockType={1}>
+                Ваше сообщение успешно отправлено
+              </InfoBlock>
+            )}
             <form onSubmit={handleSubmit(onSubmit)}>
               <MyInput
-                register={
-                  (register("name"), { required: "Имя не может быть пустым!" })
-                }
+                register={register("name", {
+                  required: "Имя не может быть пустым!",
+                  pattern: {
+                    value: /[A-Za-zА-Яа-яЁё]{3,32}/,
+                    message: "Введите ваше настоящее имя!",
+                  },
+                })}
                 error={errors.name}
                 placeholder="Введите имя:"
+                type="text"
               />
               <MyInput
-                register={
-                  (register("surname"),
-                  { required: "Фамилия не может быть пустой!" })
-                }
+                register={register("surname", {
+                  required: "Фамилия не может быть пустой!",
+                  pattern: {
+                    value: /[A-Za-zА-Яа-яЁё]{3,32}/,
+                    message: "Введите вашу настоящею фамилию!",
+                  },
+                })}
                 error={errors.surname}
                 placeholder="Введите фамилию:"
+                type="text"
               />
               <MyInput
-                register={
-                  (register("email"),
-                  { required: "Почта не может быть пустой!" })
-                }
+                register={register("email", {
+                  required: "Почта не может быть пустой!",
+                  pattern: {
+                    value:
+                      /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
+                    message: "Неверный формат почты",
+                  },
+                })}
                 error={errors.email}
                 placeholder="Введите email:"
+                type="text"
+                inputMode="email"
               />
               <MyInput
-                register={
-                  (register("phone"),
-                  { required: "Телефон не может быть пустым!" })
-                }
-                error={errors.name}
+                register={register("telephone", {
+                  required: "Телефон не может быть пустым!",
+                  pattern: {
+                    value: /\+375\s\d{2}\s\d{3}\s\d{2}\s\d{2}$/,
+                    message: "Неверый формат телефона(+375 ** *** ** **)",
+                  },
+                })}
+                error={errors.telephone}
                 placeholder="Введите номер телефона:"
+                type="text"
+                inputMode="tel"
               />
               <MyInput
-                register={
-                  (register("name"),
-                  { required: "Имя организации не может быть пустым!" })
-                }
-                error={errors.name}
+                register={register("companyName", {
+                  required: "Имя организации не может быть пустым!",
+                })}
+                error={errors.companyName}
                 placeholder="Введите имя организации:"
+                type="text"
               />
 
               <MyInput
-                register={
-                  (register("subject"),
-                  { required: "Тема не может быть пустой" })
-                }
-                error={errors.name}
-                placeholder="Введите тему:"
+                register={register("subject", {
+                  required: "Тема не может быть пустой",
+                })}
+                error={errors.subject}
+                placeholder="Введите тему: "
+                type="text"
               />
               <MyTextArea
-                register={
-                  (register("text"), { required: "Текст не может быть пустой" })
-                }
-                error={errors.name}
+                register={register("text", {
+                  required: "Текст не может быть пустой",
+                })}
+                error={errors.text}
                 maxLength={700}
                 placeholder="Введите текст:"
               />

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import cls from "./MyInput.module.scss";
 import { FieldError } from "react-hook-form";
+import classNames from "classnames";
 
 interface MyInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   register: any;
@@ -9,10 +10,16 @@ interface MyInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const MyInput: FC<MyInputProps> = ({ error, register, ...props }) => {
   return (
-    <>
-      {error && <p className="error-text">{error?.message}</p>}
-      <input className={cls.myInput} {...register} {...props} />
-    </>
+    <label className={cls.formItem}>
+      {error && (
+        <p className={classNames(cls.error, "error-text")}>{error?.message}</p>
+      )}
+      <input
+        className={classNames(cls.myInput, error && cls.myInputError)}
+        {...register}
+        {...props}
+      />
+    </label>
   );
 };
 

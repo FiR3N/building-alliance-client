@@ -15,21 +15,31 @@
       margin-bottom: 10px;
     }
 
-    p {
-      margin-bottom: 25px;
+    &Desc {
+      margin-bottom: 10px;
     }
 
     form {
+      margin-top: 20px;
+
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
 
-      input {
+      label {
         flex: 1 1 calc(50% - 20px);
       }
 
-      textarea {
+      label:last-of-type {
         flex: 1 1 calc(100% - 20px);
+      }
+
+      input {
+        width: 100%;
+      }
+
+      textarea {
+        width: 100%;
         resize: none;
         min-height: 100px;
       }
@@ -89,6 +99,9 @@
         font-size: 26px;
         line-height: 100%;
       }
+      form {
+        margin-top: 10px;
+      }
     }
     &Info {
       width: 100%;
@@ -113,13 +126,14 @@
         font-size: 20px;
         margin-bottom: 5px;
       }
-      p {
+      .default-text {
         font-size: 12px;
         line-height: 200%;
         margin-bottom: 10px;
       }
       form {
         gap: 10px;
+        flex-direction: column;
         textarea {
           min-height: 70px;
         }

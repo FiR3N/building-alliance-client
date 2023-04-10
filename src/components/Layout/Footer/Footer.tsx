@@ -1,12 +1,11 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import cls from "./Footer.module.scss";
 import FooterCopyright from "./FooterCopyright/FooterCopyright";
 import FooterLinks from "./FooterLinks/FooterLinks";
 import footerBg from "../../../assets/img/footer-bg.webp";
 interface FooterProps {}
 
-//#3d4755 - bb
-const Footer: FC<FooterProps> = () => {
+const Footer: FC<FooterProps> = memo(() => {
   return (
     <footer className={cls.footer}>
       <img className={cls.bgImg} src={footerBg} alt="footer-img" />
@@ -14,6 +13,6 @@ const Footer: FC<FooterProps> = () => {
       <FooterCopyright />
     </footer>
   );
-};
+});
 
 export default Footer;

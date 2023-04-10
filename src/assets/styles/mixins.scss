@@ -17,6 +17,10 @@
     color: #989898;
   }
 
+  &Error {
+    border-color: red;
+  }
+
   @media #{$ui-mobile-max} {
     padding: 7px;
     font-size: 12px;

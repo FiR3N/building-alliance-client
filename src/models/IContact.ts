@@ -1,9 +1,9 @@
 export default interface IContact {
   name: string;
   surname: string;
-  company: string;
+  companyName: string;
   email: string;
-  phone: string;
+  telephone: string;
   text: string;
   subject: string;
 }

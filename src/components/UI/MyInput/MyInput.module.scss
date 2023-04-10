@@ -1,3 +1,14 @@
 .myInput {
   @include formFields;
 }
+
+.formItem {
+  position: relative;
+}
+.error {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  z-index: 2;
+  background-color: white;
+}
