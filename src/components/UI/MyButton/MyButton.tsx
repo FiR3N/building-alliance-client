@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cls from "./MyButton.module.scss";
 
-interface MyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface MyButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 

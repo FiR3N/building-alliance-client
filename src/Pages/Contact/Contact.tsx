@@ -116,6 +116,7 @@ const Contact: FC<ContactProps> = () => {
                 placeholder="Введите номер телефона:"
                 type="text"
                 inputMode="tel"
+                maxLength={17}
                 disabled={isSubmitting}
               />
               <MyInput
