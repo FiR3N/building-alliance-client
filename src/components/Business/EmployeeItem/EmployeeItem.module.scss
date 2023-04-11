@@ -1,4 +1,85 @@
 .employeeItem {
-  padding: 200px;
-  border: 2px solid black;
+  margin-bottom: 20px;
+  padding: 10px;
+
+  display: flex;
+  gap: 20px;
+
+  border: 2px solid $ui-gray-color;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    @media #{$ui-mouse-device} {
+      border: 2px solid $ui-sun-color;
+
+      transform: scale(1.03);
+    }
+  }
+
+  &Img {
+    flex: 1 1 calc(20% - 10px);
+    width: 100%;
+    min-width: 300px;
+    height: 200px;
+
+    border-radius: 8px;
+  }
+
+  &Info {
+    flex: 1 1 calc(80% - 10px);
+  }
+  &Name {
+    margin-bottom: 10px;
+
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+
+  &Post {
+    margin-bottom: 10px;
+
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  &Desc {
+    margin-bottom: 10px;
+  }
+
+  &Contact {
+    margin-bottom: 6px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    svg {
+      color: $ui-sun-color;
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  @media #{$ui-tablet-avg} {
+    flex-direction: column;
+    &Info {
+      flex: 1 1 100%;
+    }
+    &Img {
+      flex: 0 0 100%;
+      min-width: auto;
+      max-height: 150px;
+      min-height: 150px;
+
+      margin: 0 auto;
+      object-fit: contain;
+    }
+  }
+
+  @media #{$ui-mobile-max} {
+    &Name {
+      font-size: 16px;
+    }
+  }
 }

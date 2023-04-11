@@ -11,6 +11,14 @@ h2 {
   letter-spacing: -1px;
 
   color: $ui-black-color;
+
+  @media #{$ui-tablet-max} {
+    font-size: 26px;
+    line-height: 100%;
+  }
+  @media #{$ui-mobile-max} {
+    font-size: 20px;
+  }
 }
 
 h5 {

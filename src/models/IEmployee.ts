@@ -3,6 +3,7 @@ export interface IEmployee {
   name: string;
   surname: string;
   patronymic: string;
+  description: string;
   post: string;
   img: string;
   telephone: string;
