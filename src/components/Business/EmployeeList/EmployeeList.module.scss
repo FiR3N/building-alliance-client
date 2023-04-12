@@ -4,7 +4,13 @@
 
   position: relative;
 
-  h2 {
+  &Error {
     text-align: center;
+  }
+  &Title {
+    margin-bottom: 20px;
+  }
+  &Loader {
+    margin: 0 auto;
   }
 }

@@ -5,19 +5,23 @@ import EmployeeService from "../../../api/EmployeeService";
 import { ClimbingBoxLoader } from "react-spinners";
 import EmployeeItem from "../EmployeeItem/EmployeeItem";
 import classNames from "classnames";
+import useFetch from "../../../hooks/useFetch";
 
 interface EmployeeListProps {}
 
 const EmployeeList: FC<EmployeeListProps> = () => {
-  const [employeeList, setEmployeeList] = useState<IEmployee[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(1);
+  // const [employeeList, setEmployeeList] = useState<IEmployee[]>([]);
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [page, setPage] = useState<number>(1);
+  const { data: employeeList, error } = useFetch<IEmployee[]>(
+    import.meta.env.VITE_API_URL + `/employee`
+  );
 
-  useEffect(() => {
-    EmployeeService.getEmployees(10, page).then((response: any) =>
-      setEmployeeList(response.data.rows)
-    );
-  }, []);
+  // useEffect(() => {
+  // EmployeeService.getEmployees(10, page).then((response: any) =>
+  //   setEmployeeList(response.data.rows)
+  // );
+  // }, []);
 
   // useEffect(() => {
   //   if (isLoading) {
@@ -45,19 +49,35 @@ const EmployeeList: FC<EmployeeListProps> = () => {
   // };
 
   // onScroll={handleScroll}
+  if (error) {
+    <h2 className={cls.employeeListError}>{"Неизвестная ошибка! :< "}</h2>;
+  }
+
   return (
     <div
       className={classNames(cls.employeeList, "container")}
       id="employeeList"
     >
-      {employeeList.length > 0 ? (
-        employeeList.map((employee) => (
-          <EmployeeItem key={employee.id} employee={employee} />
-        ))
+      {employeeList ? (
+        employeeList.length > 0 ? (
+          <>
+            <h2 className={cls.employeeListTitle}>Мы ими гордимся!</h2>
+            {employeeList.map((employee) => (
+              <EmployeeItem key={employee.id} employee={employee} />
+            ))}
+          </>
+        ) : (
+          <h2 className={cls.employeeListError}>
+            {"Работников не найдено :< "}
+          </h2>
+        )
       ) : (
-        <h2>{"Работников не найдено :< "}</h2>
+        <ClimbingBoxLoader
+          size={20}
+          color="#f7c24d"
+          className={cls.employeeListLoader}
+        />
       )}
-      {isLoading && <ClimbingBoxLoader size={30} />}
     </div>
   );
 };

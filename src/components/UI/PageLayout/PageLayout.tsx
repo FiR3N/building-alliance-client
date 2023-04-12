@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import cls from "./PageLayout.module.scss";
 import classNames from "classnames";
 import bg from "../../../assets/img/page-layout-bg.webp";
@@ -12,26 +12,29 @@ interface PageLayoutProps {
   pathname: string;
 }
 
-const PageLayout: FC<PageLayoutProps> = ({ children, title, pathname }) => {
-  const currentRoute = Object.values(ROUTES).find(
-    (route) => route.en === pathname
-  );
+const PageLayout: FC<PageLayoutProps> = memo(
+  ({ children, title, pathname }) => {
+    const currentRoute = Object.values(ROUTES).find(
+      (route) => route.en === pathname
+    );
 
-  return (
-    <div className={cls.pageLayout}>
-      <div className={cls.pageLayoutTitle}>
-        <img className={cls.bg} src={bg} alt="bg" />
-        <div className={classNames(cls.pageLayoutTitleContent, "container")}>
-          <p className={cls.pageLayoutTitleName}>{title}</p>
-          <p className={cls.pageLayoutTitleUrl}>
-            <Link to="/">Главная</Link> <RiArrowRightSFill /> {currentRoute?.ru}
-          </p>
+    return (
+      <div className={cls.pageLayout}>
+        <div className={cls.pageLayoutTitle}>
+          <img className={cls.bg} src={bg} alt="bg" />
+          <div className={classNames(cls.pageLayoutTitleContent, "container")}>
+            <p className={cls.pageLayoutTitleName}>{title}</p>
+            <p className={cls.pageLayoutTitleUrl}>
+              <Link to="/">Главная</Link> <RiArrowRightSFill />{" "}
+              {currentRoute?.ru}
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className={cls.pageLayoutMain}>{children}</div>
-    </div>
-  );
-};
+        <div className={cls.pageLayoutMain}>{children}</div>
+      </div>
+    );
+  }
+);
 
 export default PageLayout;
