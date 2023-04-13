@@ -1,0 +1,7 @@
+.loader {
+  margin: 0 auto;
+  &WithMargins {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+}
