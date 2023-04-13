@@ -1,8 +1,10 @@
-import { FC } from "react";
-import cls from "./Employees.module.scss";
+import { FC, Suspense, lazy } from "react";
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
 import { useLocation } from "react-router-dom";
-import EmployeeList from "../../components/Business/EmployeeList/EmployeeList";
+import Loader from "../../components/UI/Loader/Loader";
+const EmployeeList = lazy(
+  () => import("../../components/Business/EmployeeList/EmployeeList")
+);
 
 interface EmployeesProps {}
 
@@ -11,7 +13,9 @@ const Employees: FC<EmployeesProps> = () => {
 
   return (
     <PageLayout title={"Работники"} pathname={pathname}>
-      <EmployeeList />
+      <Suspense fallback={<Loader withMargins={true} />}>
+        <EmployeeList />
+      </Suspense>
     </PageLayout>
   );
 };

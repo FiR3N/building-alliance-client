@@ -15,4 +15,8 @@ export const ROUTES = {
     en: "/employees",
     ru: "Работники",
   },
+  News: {
+    en: "/news",
+    ru: "Новости",
+  },
 };

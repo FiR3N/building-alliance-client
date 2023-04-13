@@ -6,6 +6,7 @@ import { ClimbingBoxLoader } from "react-spinners";
 import EmployeeItem from "../EmployeeItem/EmployeeItem";
 import classNames from "classnames";
 import useFetch from "../../../hooks/useFetch";
+import Loader from "../../UI/Loader/Loader";
 
 interface EmployeeListProps {}
 
@@ -72,11 +73,12 @@ const EmployeeList: FC<EmployeeListProps> = () => {
           </h2>
         )
       ) : (
-        <ClimbingBoxLoader
-          size={20}
-          color="#f7c24d"
-          className={cls.employeeListLoader}
-        />
+        // <ClimbingBoxLoader
+        //   size={20}
+        //   color="#f7c24d"
+        //   className={cls.employeeListLoader}
+        // />
+        <Loader />
       )}
     </div>
   );
