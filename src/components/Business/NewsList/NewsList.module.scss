@@ -1,0 +1,19 @@
+.newsList {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &Title {
+    margin-bottom: 20px;
+  }
+  &Content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  @media #{$ui-tablet-max} {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

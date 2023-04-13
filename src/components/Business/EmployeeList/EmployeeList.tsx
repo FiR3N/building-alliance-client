@@ -1,8 +1,6 @@
-import { FC, useLayoutEffect, useEffect, useState } from "react";
+import { FC } from "react";
 import cls from "./EmployeeList.module.scss";
 import { IEmployee } from "../../../models/IEmployee";
-import EmployeeService from "../../../api/EmployeeService";
-import { ClimbingBoxLoader } from "react-spinners";
 import EmployeeItem from "../EmployeeItem/EmployeeItem";
 import classNames from "classnames";
 import useFetch from "../../../hooks/useFetch";
@@ -73,11 +71,6 @@ const EmployeeList: FC<EmployeeListProps> = () => {
           </h2>
         )
       ) : (
-        // <ClimbingBoxLoader
-        //   size={20}
-        //   color="#f7c24d"
-        //   className={cls.employeeListLoader}
-        // />
         <Loader />
       )}
     </div>

@@ -1,0 +1,42 @@
+.newsItem {
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  flex: 0 1 calc(33.333% - 20px);
+
+  &Image {
+    width: 100%;
+    height: 200px;
+  }
+
+  &Title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  &Description {
+    overflow: hidden;
+    -webkit-line-clamp: 4; /* Число отображаемых строк */
+    display: -webkit-box; /* Включаем флексбоксы */
+    -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  }
+
+  @media #{$ui-tablet-max} {
+    flex: 0 1 calc(50% - 20px);
+    margin-bottom: 10px;
+  }
+
+  @media #{$ui-mobile-max} {
+    flex: 0 1 100%;
+    gap: 10px;
+    margin-bottom: 0;
+
+    &Title {
+      font-size: 16px;
+    }
+  }
+}
