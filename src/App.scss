@@ -93,6 +93,20 @@ h5 {
   transition: all 0.3s ease;
 }
 
+.smile-image {
+  width: 50px;
+  height: 50px;
+
+  @media #{$ui-tablet-max} {
+    width: 26px;
+    height: 26px;
+  }
+  @media #{$ui-mobile-max} {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 /*CUSTOMSCROLL----------------------------------------------------------------------------------------------------*/
 
 ::-webkit-scrollbar {

@@ -12,6 +12,14 @@
     gap: 20px;
   }
 
+  input {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  &Error {
+    text-align: center;
+  }
   @media #{$ui-tablet-max} {
     padding-top: 20px;
     padding-bottom: 20px;

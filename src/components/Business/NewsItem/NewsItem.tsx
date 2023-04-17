@@ -2,6 +2,7 @@ import { FC } from "react";
 import cls from "./NewsItem.module.scss";
 import { INews } from "../../../models/INews";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 interface NewsItemProps {
   news: INews;
@@ -9,7 +10,7 @@ interface NewsItemProps {
 
 const NewsItem: FC<NewsItemProps> = ({ news }) => {
   return (
-    <div className={cls.newsItem}>
+    <Link to={""} className={cls.newsItem}>
       <img
         src={import.meta.env.VITE_API_URL + "/images/news/" + news.img}
         alt={news.name}
@@ -19,7 +20,7 @@ const NewsItem: FC<NewsItemProps> = ({ news }) => {
       <p className={classNames(cls.newsItemDescription, "default-text")}>
         {news.description}
       </p>
-    </div>
+    </Link>
   );
 };
 

@@ -1,0 +1,27 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  &Item {
+    text-align: center;
+    transition: all 0.3s ease;
+    padding: 5px 0px;
+    border: 1.5px solid #ff9801;
+    min-width: 25.34px;
+    max-width: 25.34px;
+    cursor: pointer;
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+    &:hover {
+      background-color: rgb(243, 177, 79);
+      color: white;
+    }
+  }
+  ._active {
+    background-color: #ff9801;
+    color: white;
+  }
+}

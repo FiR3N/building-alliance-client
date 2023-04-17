@@ -52,10 +52,11 @@ const Contact: FC<ContactProps> = () => {
           <div className={cls.contactMain}>
             <h2>Мы рады ответить на любые вопросы</h2>
             <p className={classNames(cls.contactMainDesc, "default-text")}>
-              A wonderful serenity has taken possession of my entire soul, like
-              these sweet mornings of spring which I enjoy with my whole heart.
-              I am alone, and feel the charm of existence in this spot, which
-              was created for the bliss of souls like mine.
+              Мы ценим ваше мнение и всегда рады ответить на ваши вопросы. Если
+              у вас есть предложения или замечания по работе нашей компании,
+              пожалуйста, оставьте свой отзыв в форме ниже. Мы обязательно
+              рассмотрим все ваши сообщения и постараемся учесть их в работе
+              нашей команды. Спасибо, что выбрали нашу строительную компанию!
             </p>
             {isSubmitSuccessful && (
               <InfoBlock blockType={1}>

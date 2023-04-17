@@ -4,8 +4,8 @@ import { FieldError } from "react-hook-form";
 import classNames from "classnames";
 
 interface MyInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  register: any;
-  error: FieldError | undefined;
+  register?: any;
+  error?: FieldError | undefined;
 }
 
 const MyInput: FC<MyInputProps> = ({ error, register, ...props }) => {

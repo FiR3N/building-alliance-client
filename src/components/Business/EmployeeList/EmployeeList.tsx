@@ -5,7 +5,7 @@ import EmployeeItem from "../EmployeeItem/EmployeeItem";
 import classNames from "classnames";
 import useFetch from "../../../hooks/useFetch";
 import Loader from "../../UI/Loader/Loader";
-
+import sadSmile from "../../../assets/img/sad-smile.svg";
 interface EmployeeListProps {}
 
 const EmployeeList: FC<EmployeeListProps> = () => {
@@ -49,7 +49,10 @@ const EmployeeList: FC<EmployeeListProps> = () => {
 
   // onScroll={handleScroll}
   if (error) {
-    <h2 className={cls.employeeListError}>{"Неизвестная ошибка! :< "}</h2>;
+    <h2 className={cls.employeeListError}>
+      Неизвестная ошибка!{" "}
+      <img className="smile-image" src={sadSmile} alt="sad-smile" />{" "}
+    </h2>;
   }
 
   return (
@@ -57,17 +60,18 @@ const EmployeeList: FC<EmployeeListProps> = () => {
       className={classNames(cls.employeeList, "container")}
       id="employeeList"
     >
+      <h2 className={cls.employeeListTitle}>Мы ими гордимся!</h2>
       {employeeList ? (
         employeeList.length > 0 ? (
           <>
-            <h2 className={cls.employeeListTitle}>Мы ими гордимся!</h2>
             {employeeList.map((employee) => (
               <EmployeeItem key={employee.id} employee={employee} />
             ))}
           </>
         ) : (
           <h2 className={cls.employeeListError}>
-            {"Работников не найдено :< "}
+            Работников не найдено{" "}
+            <img className="smile-image" src={sadSmile} alt="sad-smile" />
           </h2>
         )
       ) : (

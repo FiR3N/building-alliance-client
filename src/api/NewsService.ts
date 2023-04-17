@@ -4,6 +4,7 @@ import { INews } from "../models/INews";
 interface INewsQuery {
   limit: number;
   page: number;
+  name: string;
 }
 
 interface INewsResponse {
@@ -18,12 +19,13 @@ export const newsAPI = createApi({
   }),
   endpoints: (build) => ({
     getNews: build.query<INewsResponse, INewsQuery>({
-      query: ({ page, limit }) => ({
+      query: ({ page, limit, name }) => ({
         url: `/news`,
         method: "GET",
         params: {
           page,
           limit,
+          name,
         },
       }),
     }),

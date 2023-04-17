@@ -13,11 +13,10 @@ const EmployeeItem: FC<EmployeeItemProps> = ({ employee }) => {
   if (!employee.isShowable) {
     return <></>;
   }
-
   return (
     <div className={cls.employeeItem}>
       <img
-        src={import.meta.env.VITE_API_URL + "/images/" + employee.img}
+        src={import.meta.env.VITE_API_URL + "/images/employees/" + employee.img}
         alt={employee.name}
         className={cls.employeeItemImg}
       />
