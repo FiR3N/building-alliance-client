@@ -1,0 +1,52 @@
+.reviews {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  &Title {
+    h2 {
+      margin-bottom: 10px;
+    }
+    margin-bottom: 20px;
+  }
+  &Content {
+    position: relative;
+  }
+  &Items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &Item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &Image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+
+      object-fit: cover;
+    }
+    &Text {
+      blockquote {
+        padding-left: 30px;
+
+        margin-bottom: 10px;
+        border-left: 3px solid $ui-sun-color;
+      }
+      &Name {
+        padding-left: 30px;
+
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: $ui-blue-color;
+      }
+    }
+  }
+  @media #{$ui-tablet-avg} {
+    &Item {
+      flex-direction: column;
+    }
+  }
+}

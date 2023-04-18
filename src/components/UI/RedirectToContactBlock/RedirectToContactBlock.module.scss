@@ -1,0 +1,42 @@
+.redirectToContactBlock {
+  position: relative;
+  height: 250px;
+  &Bg {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  &Content {
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+    z-index: 1;
+
+    h2 {
+      color: white;
+    }
+  }
+
+  @media #{$ui-tablet-max} {
+    height: 200px;
+    &Content {
+      flex-direction: column;
+      justify-content: center;
+    }
+    h2 {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+  }
+  @media #{$ui-mobile-max} {
+    height: 150px;
+  }
+}

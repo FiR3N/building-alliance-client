@@ -12,11 +12,11 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
   const informationLinks: ILinkItem[] = [
-    { name: "Об компании", to: "/" },
-    { name: "Наша история", to: "/information/history" },
+    { name: "О компании", to: "/about-company" },
+    { name: "Наша история", to: "/history" },
     { name: "Наши проекты", to: "/information/projects" },
-    { name: "Рабочий процесс", to: "/information/work-process" },
-    { name: "Отзывы", to: "/information/reviews" },
+    { name: "Рабочий процесс", to: "work-process" },
+    { name: "Отзывы", to: "/reviews" },
   ];
 
   return (

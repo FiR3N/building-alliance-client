@@ -4,8 +4,8 @@ export const ROUTES = {
     ru: "/Главная",
   },
   ABOUT: {
-    en: "/about",
-    ru: "/ну-типо-соси",
+    en: "/about-company",
+    ru: "О компании",
   },
   CONTACT: {
     en: "/contact",
@@ -15,8 +15,21 @@ export const ROUTES = {
     en: "/employees",
     ru: "Работники",
   },
-  News: {
+  NEWS: {
     en: "/news",
     ru: "Новости",
+  },
+  //INFO
+  HISTORY: {
+    en: "/history",
+    ru: "История",
+  },
+  REVIEWS: {
+    en: "/reviews",
+    ru: "Отзывы",
+  },
+  WORPPROCESS: {
+    en: "/work-process",
+    ru: "Рабочий процесс",
   },
 };
