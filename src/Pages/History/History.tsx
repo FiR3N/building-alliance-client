@@ -1,12 +1,11 @@
-import { FC, Suspense } from "react";
+import { FC, Suspense, lazy } from "react";
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
 import { useLocation } from "react-router-dom";
-import HistoryContent from "./HistoryContent/HistoryContent";
 import Loader from "../../components/UI/Loader/Loader";
 
-interface HistoryProps {}
+const HistoryContent = lazy(() => import("./HistoryContent/HistoryContent"));
 
-const History: FC<HistoryProps> = () => {
+const History: FC = () => {
   const { pathname } = useLocation();
   return (
     <PageLayout title="Наша история" pathname={pathname}>

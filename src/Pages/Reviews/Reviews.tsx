@@ -1,12 +1,11 @@
-import { FC, Suspense } from "react";
+import { FC, Suspense, lazy } from "react";
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
 import { useLocation } from "react-router-dom";
 import Loader from "../../components/UI/Loader/Loader";
-import ReviewsContent from "./ReviewsContent/ReviewsContent";
 
-interface ReviewsProps {}
+const ReviewsContent = lazy(() => import("./ReviewsContent/ReviewsContent"));
 
-const Reviews: FC<ReviewsProps> = () => {
+const Reviews: FC = () => {
   const { pathname } = useLocation();
   return (
     <PageLayout title="Отзывы" pathname={pathname}>

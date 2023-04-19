@@ -65,7 +65,7 @@ const NewsList: FC<NewsListProps> = () => {
           </>
         ) : (
           <h2 className={cls.newsListError}>
-            Новостей не найдено{" "}
+            Новостей не найдено
             <img className="smile-image" src={sadSmile} alt="sad-smile" />
           </h2>
         )

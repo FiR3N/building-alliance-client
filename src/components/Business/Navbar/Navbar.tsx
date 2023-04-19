@@ -3,7 +3,6 @@ import cls from "./Navbar.module.scss";
 import CustomLink from "../../UI/CustomLink/CustomLink";
 import PopupHeaderMenu from "../../UI/PopupHeaderMenu/PopupHeaderMenu";
 import ILinkItem from "../../../models/ILinkItem";
-import { Link } from "react-router-dom";
 
 interface NavbarProps {
   setIsActive?: Dispatch<SetStateAction<boolean>>;
