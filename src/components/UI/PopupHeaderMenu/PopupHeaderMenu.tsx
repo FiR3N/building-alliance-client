@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
 import cls from "./PopupHeaderMenu.module.scss";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import CustomLink from "../CustomLink/CustomLink";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import ILinkItem from "../../../models/ILinkItem";

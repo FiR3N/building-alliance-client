@@ -14,16 +14,16 @@ const HeaderInfo: FC<HeaderInfoProps> = memo(() => {
           <div className={cls.headerInfoContentContactsItem}>
             <AiOutlineMail />
             <a
-              href="mailto:buildingalliance@gmail.com@example.com?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
+              href="mailto:oao-ssm@mail.ru?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
               className="light-text"
             >
-              Почта: buildingalliance@gmail.com
+              Почта: oao-ssm@mail.ru
             </a>
           </div>
           <div className={cls.headerInfoContentContactsItem}>
             <BsFillTelephoneFill />
-            <a href="tel:+375 33 333-33-33" className="light-text">
-              Телефон: +375 33 333-33-33
+            <a href="tel:8 0176 50 06 50" className="light-text">
+              Телефон приёмной: 8 0176 50 06 50
             </a>
           </div>
         </div>

@@ -67,22 +67,22 @@ const FooterLinks: FC = () => {
           <p className="light-text">
             <BsGeoAltFill />
             <a href="https://www.google.com/maps" className="light-text">
-              ул. Великий Гостинец д.46
+              ул. Великий Гостинец 1А
             </a>
           </p>
           <p className="light-text">
             <MdEmail />
             <a
-              href="mailto:buildingalliance@gmail.com@example.com?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
+              href="mailto:oao-ssm@mail.ru?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
               className="light-text"
             >
-              buildingalliance@gmail.com
+              Почта: oao-ssm@mail.ru
             </a>
           </p>
           <p className="light-text">
             <BsFillTelephoneFill />
-            <a href="tel:+375 33 333-33-33" className="light-text">
-              +375 33 333-33-33
+            <a href="tel:8 0176 50 06 50" className="light-text">
+              8 0176 50 06 50
             </a>
           </p>
         </div>

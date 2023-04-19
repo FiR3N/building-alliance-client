@@ -1,0 +1,32 @@
+.ToTheTopButton {
+  position: fixed;
+  bottom: 30px;
+  right: -50px;
+  z-index: 10;
+
+  transition: all 0.7s ease;
+
+  &._active {
+    bottom: 30px;
+    right: 30px;
+  }
+
+  button {
+    padding: 15px 15px 10px 15px;
+
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  @media #{$ui-tablet-max} {
+    &._active {
+      bottom: 30px;
+      right: 10px;
+    }
+  }
+  @media #{$ui-mobile-max} {
+    button {
+      padding: 10px 10px 5px 10px;
+    }
+  }
+}
