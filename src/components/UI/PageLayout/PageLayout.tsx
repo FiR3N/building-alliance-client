@@ -14,10 +14,21 @@ interface PageLayoutProps {
 
 const PageLayout: FC<PageLayoutProps> = memo(
   ({ children, title, pathname }) => {
-    const currentRoute = Object.values(ROUTES).find(
-      (route) => route.en === pathname
-    );
+    const separatePathname = pathname.split("/").splice(1);
 
+    let currentRoute: any;
+    if (separatePathname.length === 1) {
+      currentRoute = Object.values(ROUTES).find(
+        (route) => route.en === pathname
+      );
+    } else {
+      currentRoute = [
+        Object.values(ROUTES).find(
+          (route) => route.en === `/${separatePathname[0]}`
+        ),
+        separatePathname[1],
+      ];
+    }
     return (
       <div className={cls.pageLayout}>
         <div className={cls.pageLayoutTitle}>
@@ -25,8 +36,21 @@ const PageLayout: FC<PageLayoutProps> = memo(
           <div className={classNames(cls.pageLayoutTitleContent, "container")}>
             <p className={cls.pageLayoutTitleName}>{title}</p>
             <p className={cls.pageLayoutTitleUrl}>
-              <Link to="/">Главная</Link> <RiArrowRightSFill />{" "}
-              {currentRoute?.ru}
+              <Link to="/">Главная</Link>{" "}
+              <span>
+                <RiArrowRightSFill />
+              </span>{" "}
+              {separatePathname.length === 1 ? (
+                currentRoute.ru
+              ) : (
+                <>
+                  <Link to={currentRoute[0].en}>{currentRoute[0].ru}</Link>
+                  <span>
+                    <RiArrowRightSFill />
+                  </span>
+                  {currentRoute[1]?.split("-").join(" ")}
+                </>
+              )}
             </p>
           </div>
         </div>

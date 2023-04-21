@@ -5,7 +5,8 @@ export interface INews {
   name: string;
   description: string;
   img: string;
-  info: IInfos[];
+  date: string;
+  infos: IInfos[];
   createdAt?: string;
   updatedAt?: string;
 }

@@ -1,0 +1,32 @@
+.newsDescription {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &Content {
+    position: relative;
+  }
+  &Title {
+    margin-bottom: 20px;
+  }
+  &Image {
+    width: 100%;
+    min-height: 200px;
+    max-height: 400px;
+    margin-bottom: 30px;
+  }
+  &Text {
+    p {
+      &:not(:last-of-type) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  &Error {
+    text-align: center;
+  }
+
+  @media #{$ui-tablet-max} {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

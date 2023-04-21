@@ -5,6 +5,7 @@ import Employees from "../pages/Employees/Employees";
 import { Suspense, lazy } from "react";
 import Loader from "../components/UI/Loader/Loader";
 import News from "../pages/News/News";
+import NewsDescription from "../pages/NewsDescription/NewsDescription";
 // import History from "../pages/History/History";
 // import Reviews from "../pages/Reviews/Reviews";
 // import WorkProcess from "../pages/WorkProcess/WorkProcess";
@@ -29,7 +30,9 @@ const AppRouter = () => {
         }
       />
       <Route path={ROUTES.EMPLOYEES.en} element={<Employees />} />
+
       <Route path={ROUTES.NEWS.en} element={<News />} />
+      <Route path={ROUTES.NEWSPAGE.en} element={<NewsDescription />} />
 
       <Route
         path={ROUTES.HISTORY.en}

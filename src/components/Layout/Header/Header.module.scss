@@ -65,7 +65,8 @@
     }
 
     &Logo {
-      height: 40px;
+      height: 60px;
+      width: 80px;
     }
 
     &Buttons {
@@ -242,7 +243,6 @@
   @media #{$ui-mobile-max} {
     &Nav {
       &Logo {
-        height: 30px;
       }
       &Buttons {
         gap: 10px;

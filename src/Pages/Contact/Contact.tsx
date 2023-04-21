@@ -154,8 +154,36 @@ const Contact: FC<ContactProps> = () => {
             </form>
           </div>
           <div className={cls.contactInfo}>
-            <h5>Наши офисы</h5>
-            <div className={cls.contactOffices}>
+            <h5>Наши данные</h5>
+            <p className="default-text">
+              <BsGeoAltFill />
+              <a href="https://www.google.com/maps" className="default-text">
+                ул. Великий Гостинец 1А
+              </a>
+            </p>
+
+            <p className="default-text">
+              <MdEmail />
+              <a
+                href="mailto:oao-ssm@mail.ru?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
+                className="default-text"
+              >
+                Почта: oao-ssm@mail.ru
+              </a>
+            </p>
+            <p className="default-text">
+              <BsFillTelephoneFill />
+              <a href="tel:8 0176 50 06 50" className="default-text">
+                8 0176 50 06 50 (приемная)
+              </a>
+            </p>
+            <p className="default-text">
+              <BsFillTelephoneFill />
+              <a href="tel:8 029 663 02 45" className="default-text">
+                8 029 663 02 45 (директор)
+              </a>
+            </p>
+            {/* <div className={cls.contactOffices}>
               <div className={cls.contactOffice}>
                 <p className={cls.contactOfficeTown}>Минский офис</p>
                 <p className="default-text">
@@ -210,7 +238,7 @@ const Contact: FC<ContactProps> = () => {
                   </a>
                 </p>
               </div>
-            </div>
+            </div> */}
 
             {/* <h5>Наши контакты</h5>
             <p className="default-text">

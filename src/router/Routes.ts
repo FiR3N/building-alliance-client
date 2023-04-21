@@ -19,6 +19,10 @@ export const ROUTES = {
     en: "/news",
     ru: "Новости",
   },
+  NEWSPAGE: {
+    en: "/news/:name/:id",
+    ru: "",
+  },
   //INFO
   HISTORY: {
     en: "/history",

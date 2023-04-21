@@ -108,14 +108,14 @@
 
       flex: 1 1 100%;
     }
-    &Offices {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    &Office {
-      margin-bottom: 5px;
-    }
+    // &Offices {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   justify-content: space-between;
+    // }
+    // &Office {
+    //   margin-bottom: 5px;
+    // }
   }
   @media #{$ui-mobile-max} {
     &Content {

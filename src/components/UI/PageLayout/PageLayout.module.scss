@@ -14,11 +14,11 @@
 
   &Title {
     position: relative;
-    height: 250px;
 
     &Content {
+      height: 100%;
       padding-top: 130px;
-
+      padding-bottom: 30px;
       position: relative;
       z-index: 1;
     }
@@ -31,15 +31,14 @@
       margin-bottom: 5px;
     }
     &Url {
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      margin-bottom: 10px;
 
       font-family: $font-inter;
-      line-height: 30px;
+      line-height: 100%;
       font-weight: 300;
-      color: #ffffff;
       font-size: 16px;
+
+      color: #ffffff;
 
       a {
         color: #ffffff;
@@ -50,9 +49,10 @@
           }
         }
       }
-      svg {
+      span {
         width: 20px;
-        height: 20px;
+        height: 100%;
+        vertical-align: top;
       }
     }
 

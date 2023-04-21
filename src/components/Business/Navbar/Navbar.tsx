@@ -55,11 +55,14 @@ const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
           <CustomLink to="/shop">Магазин</CustomLink>
         </li> */}
         <li>
-          <CustomLink to="/news">Новости</CustomLink>
+          <CustomLink to="/our-objects">Наши объекты</CustomLink>
         </li>
         <li>
-          <CustomLink to="/employees">Работники</CustomLink>
+          <CustomLink to="/news">Новости</CustomLink>
         </li>
+        {/* <li>
+          <CustomLink to="/employees">Работники</CustomLink>
+        </li> */}
         <li>
           <CustomLink to="/contact">Обратная связь</CustomLink>
         </li>

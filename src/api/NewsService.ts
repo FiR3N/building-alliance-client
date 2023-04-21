@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { INews } from "../models/INews";
+import { $api } from ".";
 
 interface INewsQuery {
   limit: number;
@@ -29,5 +30,14 @@ export const newsAPI = createApi({
         },
       }),
     }),
+    // getNewsByName: build.query<INews, string>({
+    //   query: (newsName) => ({
+    //     url: `/news/name`,
+    //     method: "GET",
+    //     params: {
+    //       newsName,
+    //     },
+    //   }),
+    // }),
   }),
 });

@@ -11,7 +11,6 @@ import sadSmile from "../../../assets/img/sad-smile.svg";
 
 interface NewsListProps {}
 
-//fixme
 const NewsList: FC<NewsListProps> = () => {
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(9);
