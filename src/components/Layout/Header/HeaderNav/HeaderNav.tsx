@@ -2,7 +2,6 @@ import { FC, useLayoutEffect, useState } from "react";
 import cls from "../Header.module.scss";
 import classNames from "classnames";
 import logo from "../../../../assets/img/logo.png";
-import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Navbar from "../../../Business/Navbar/Navbar";
 import Socials from "../../../UI/Socials/Socials";
@@ -27,10 +26,6 @@ const HeaderNav: FC<HeaderNavProps> = () => {
         </Link>
         <Navbar />
         <div className={cls.headerNavButtons}>
-          <div className={cls.headerNavCart}>
-            <FaShoppingCart />
-            <span className={cls.cartCount}>0</span>
-          </div>
           <div
             className={cls.headerNavHambContent}
             onClick={() => setIsHambActive((prev) => !prev)}
@@ -43,7 +38,6 @@ const HeaderNav: FC<HeaderNavProps> = () => {
           </div>
         </div>
       </div>
-      {/* //need fixes */}
       <div
         className={classNames(cls.headerNavPopup, isHambActive && cls._active)}
       >

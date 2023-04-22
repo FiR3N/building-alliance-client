@@ -26,6 +26,13 @@ const NewsDescription: FC<NewsDescriptionProps> = () => {
       pathname.split("/").slice(1, 2).toString() +
       `/${newsFromState?.name}`;
   }
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
   return (
     <PageLayout title="Новости" pathname={editedPathname}>
       <Suspense fallback={<Loader withMargins={true} />}>

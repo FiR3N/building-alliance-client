@@ -4,18 +4,17 @@ import { ROUTES } from "./Routes";
 import Employees from "../pages/Employees/Employees";
 import { Suspense, lazy } from "react";
 import Loader from "../components/UI/Loader/Loader";
-import News from "../pages/News/News";
-import NewsDescription from "../pages/NewsDescription/NewsDescription";
-// import History from "../pages/History/History";
-// import Reviews from "../pages/Reviews/Reviews";
-// import WorkProcess from "../pages/WorkProcess/WorkProcess";
-// import AboutCompany from "../pages/AboutCompany/AboutCompany";
 
 const Contact = lazy(() => import("../pages/Contact/Contact"));
 const History = lazy(() => import("../pages/History/History"));
 const Reviews = lazy(() => import("../pages/Reviews/Reviews"));
 const WorkProcess = lazy(() => import("../pages/WorkProcess/WorkProcess"));
 const AboutCompany = lazy(() => import("../pages/AboutCompany/AboutCompany"));
+const News = lazy(() => import("../pages/News/News"));
+const NewsDescription = lazy(
+  () => import("../pages/NewsDescription/NewsDescription")
+);
+const Certificate = lazy(() => import("../pages/Certificate/Certificate"));
 
 const AppRouter = () => {
   return (
@@ -31,8 +30,22 @@ const AppRouter = () => {
       />
       <Route path={ROUTES.EMPLOYEES.en} element={<Employees />} />
 
-      <Route path={ROUTES.NEWS.en} element={<News />} />
-      <Route path={ROUTES.NEWSPAGE.en} element={<NewsDescription />} />
+      <Route
+        path={ROUTES.NEWS.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <News />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.NEWSPAGE.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <NewsDescription />
+          </Suspense>
+        }
+      />
 
       <Route
         path={ROUTES.HISTORY.en}
@@ -63,6 +76,14 @@ const AppRouter = () => {
         element={
           <Suspense fallback={<Loader withMargins={true} />}>
             <AboutCompany />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.CERTIFICATE.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Certificate />
           </Suspense>
         }
       />

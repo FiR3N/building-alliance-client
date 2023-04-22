@@ -79,17 +79,18 @@
     }
 
     &About {
-      flex: 0 1 30%;
+      flex: 0 1 40%;
 
       p {
         margin-bottom: 20px;
       }
       img {
-        height: 40px;
+        height: 60px;
+        width: 80px;
       }
     }
     &Main {
-      flex: 0 1 calc(40% - 20px);
+      flex: 0 1 calc(35% - 20px);
 
       &List {
         display: flex;
@@ -121,7 +122,7 @@
       }
     }
     &Contacts {
-      flex: 0 0 calc(30% - 20px);
+      flex: 0 0 calc(25% - 20px);
 
       p {
         margin-bottom: 10px;
@@ -187,6 +188,11 @@
       }
       &About {
         flex: 0 1 100%;
+
+        img {
+          height: 40px;
+          width: 60px;
+        }
       }
       &Contacts {
         flex: 0 0 100%;

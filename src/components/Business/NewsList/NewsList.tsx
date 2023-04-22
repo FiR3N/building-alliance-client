@@ -39,9 +39,7 @@ const NewsList: FC<NewsListProps> = () => {
 
   return (
     <div className={classNames(cls.newsList, "container")}>
-      <h2 className={cls.newsListTitle}>
-        Будь в курсе наших последних событий!
-      </h2>
+      <h2 className={cls.newsListTitle}>Последние события</h2>
       <MyInput
         placeholder="поиск..."
         value={name}

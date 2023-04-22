@@ -45,19 +45,69 @@ const Contact: FC<ContactProps> = () => {
     });
   };
 
+  //fix styles
   return (
-    <PageLayout title="Обратная связь" pathname={pathname}>
+    <PageLayout title="Контакты" pathname={pathname}>
       <div className={cls.contact}>
         <div className={classNames(cls.contactContent, "container")}>
+          <div className={cls.contactInfo}>
+            <h2>Наши данные</h2>
+            <div className={cls.contactInfoMain}>
+              <div className={cls.contactInfoMainItem}>
+                <p className={cls.boldTitle}>
+                  <BsGeoAltFill />
+                  Беларусь, Молодечно
+                </p>
+                <a href="https://www.google.com/maps" className="default-text">
+                  ул. Великий Гостинец 1А
+                </a>
+              </div>
+              <div className={cls.contactInfoMainItem}>
+                <p className={cls.boldTitle}>
+                  <MdEmail />
+                  Наша почта
+                </p>
+                <a
+                  href="mailto:oao-ssm@mail.ru?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
+                  className="default-text"
+                >
+                  oao-ssm@mail.ru
+                </a>
+              </div>
+            </div>
+            <div className={cls.contactInfoPeoples}>
+              <div className={cls.contactInfoPeoplesItem}>
+                <p className={cls.boldTitle}>Директор</p>
+                <p className="default-text">Манюк Константин Константинович</p>
+                <a href="tel:8 029 663 02 45" className="default-text">
+                  <BsFillTelephoneFill />8 029 663 02 45 (приемная)
+                </a>
+              </div>
+              <div className={cls.contactInfoPeoplesItem}>
+                <p className={cls.boldTitle}>Директор</p>
+                <p className="default-text">Манюк Константин Константинович</p>
+                <a href="tel:8 029 663 02 45" className="default-text">
+                  <BsFillTelephoneFill />8 029 663 02 45 (приемная)
+                </a>
+              </div>
+              <div className={cls.contactInfoPeoplesItem}>
+                <p className={cls.boldTitle}>Директор</p>
+                <p className="default-text">Манюк Константин Константинович</p>
+                <a href="tel:8 029 663 02 45" className="default-text">
+                  <BsFillTelephoneFill />8 029 663 02 45 (приемная)
+                </a>
+              </div>
+              <div className={cls.contactInfoPeoplesItem}>
+                <p className={cls.boldTitle}>Директор</p>
+                <p className="default-text">Манюк Константин Константинович</p>
+                <a href="tel:8 029 663 02 45" className="default-text">
+                  <BsFillTelephoneFill />8 029 663 02 45 (приемная)
+                </a>
+              </div>
+            </div>
+          </div>
           <div className={cls.contactMain}>
-            <h2>Мы рады ответить на любые вопросы</h2>
-            <p className={classNames(cls.contactMainDesc, "default-text")}>
-              Мы ценим ваше мнение и всегда рады ответить на ваши вопросы. Если
-              у вас есть предложения или замечания по работе нашей компании,
-              пожалуйста, оставьте свой отзыв в форме ниже. Мы обязательно
-              рассмотрим все ваши сообщения и постараемся учесть их в работе
-              нашей команды. Спасибо, что выбрали нашу строительную компанию!
-            </p>
+            <h2>Свяжитесь с нами</h2>
             {isSubmitSuccessful && (
               <InfoBlock blockType={1}>
                 Ваше сообщение успешно отправлено
@@ -152,118 +202,6 @@ const Contact: FC<ContactProps> = () => {
               />
               <MyButton disabled={isSubmitting}>Отправить</MyButton>
             </form>
-          </div>
-          <div className={cls.contactInfo}>
-            <h5>Наши данные</h5>
-            <p className="default-text">
-              <BsGeoAltFill />
-              <a href="https://www.google.com/maps" className="default-text">
-                ул. Великий Гостинец 1А
-              </a>
-            </p>
-
-            <p className="default-text">
-              <MdEmail />
-              <a
-                href="mailto:oao-ssm@mail.ru?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
-                className="default-text"
-              >
-                Почта: oao-ssm@mail.ru
-              </a>
-            </p>
-            <p className="default-text">
-              <BsFillTelephoneFill />
-              <a href="tel:8 0176 50 06 50" className="default-text">
-                8 0176 50 06 50 (приемная)
-              </a>
-            </p>
-            <p className="default-text">
-              <BsFillTelephoneFill />
-              <a href="tel:8 029 663 02 45" className="default-text">
-                8 029 663 02 45 (директор)
-              </a>
-            </p>
-            {/* <div className={cls.contactOffices}>
-              <div className={cls.contactOffice}>
-                <p className={cls.contactOfficeTown}>Минский офис</p>
-                <p className="default-text">
-                  <BsGeoAltFill />
-                  <a
-                    href="https://www.google.com/maps"
-                    className="default-text"
-                  >
-                    ул. Великий Гостинец д.46
-                  </a>
-                </p>
-                <p className="default-text">
-                  <MdEmail />
-                  <a
-                    href="mailto:buildingalliance@gmail.com@example.com?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
-                    className="default-text"
-                  >
-                    buildingalliance@gmail.com
-                  </a>
-                </p>
-                <p className="default-text">
-                  <BsFillTelephoneFill />
-                  <a href="tel:+375 33 333-33-33" className="default-text">
-                    +375 33 333-33-33
-                  </a>
-                </p>
-              </div>
-              <div className={cls.contactOffice}>
-                <p className={cls.contactOfficeTown}>Молодечненский оффис</p>
-                <p className="default-text">
-                  <BsGeoAltFill />
-                  <a
-                    href="https://www.google.com/maps"
-                    className="default-text"
-                  >
-                    ул. Великий Гостинец д.46
-                  </a>
-                </p>
-                <p className="default-text">
-                  <MdEmail />
-                  <a
-                    href="mailto:buildingalliance@gmail.com@example.com?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
-                    className="default-text"
-                  >
-                    buildingalliance@gmail.com
-                  </a>
-                </p>
-                <p className="default-text">
-                  <BsFillTelephoneFill />
-                  <a href="tel:+375 33 333-33-33" className="default-text">
-                    +375 33 333-33-33
-                  </a>
-                </p>
-              </div>
-            </div> */}
-
-            {/* <h5>Наши контакты</h5>
-            <p className="default-text">
-              <BsGeoAltFill />
-              <a href="https://www.google.com/maps" className="default-text">
-                ул. Великий Гостинец д.46
-              </a>
-            </p>
-            <p className="default-text">
-              <MdEmail />
-              <a
-                href="mailto:buildingalliance@gmail.com@example.com?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
-                className="default-text"
-              >
-                buildingalliance@gmail.com
-              </a>
-            </p>
-            <p className="default-text">
-              <BsFillTelephoneFill />
-              <a href="tel:+375 33 333-33-33" className="default-text">
-                +375 33 333-33-33
-              </a>
-            </p> */}
-            {/* <h5>Мы на карте</h5>
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aff8f0743d051733309a2ec3167bc348658c9c3e160a94e099262737896d8be60&amp;source=constructor" /> */}
           </div>
         </div>
         <div className={cls.contactMap}>

@@ -3,6 +3,7 @@ import cls from "../Header.module.scss";
 import classNames from "classnames";
 import Socials from "../../../UI/Socials/Socials";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import { BiTime } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
 interface HeaderInfoProps {}
 
@@ -26,8 +27,14 @@ const HeaderInfo: FC<HeaderInfoProps> = memo(() => {
               Телефон приёмной: 8 0176 50 06 50
             </a>
           </div>
+          <div className={cls.headerInfoContentContactsItem}>
+            <BiTime />
+            <a href="tel:8 0176 50 06 50" className="light-text">
+              Время работы: Пн - Пт 8.00 - 17:00
+            </a>
+          </div>
         </div>
-        <Socials />
+        {/* <Socials /> */}
       </div>
     </div>
   );

@@ -36,4 +36,8 @@ export const ROUTES = {
     en: "/work-process",
     ru: "Рабочий процесс",
   },
+  CERTIFICATE: {
+    en: "/certificates",
+    ru: "Сертификаты",
+  },
 };

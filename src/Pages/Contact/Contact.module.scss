@@ -10,9 +10,9 @@
     gap: 20px;
   }
   &Main {
-    flex: 0 1 calc(70% - 20px);
+    flex: 0 1 calc(60% - 20px);
     h2 {
-      margin-bottom: 10px;
+      margin-bottom: 30px;
     }
 
     &Desc {
@@ -20,14 +20,12 @@
     }
 
     form {
-      margin-top: 20px;
-
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
 
       label {
-        flex: 1 1 calc(50% - 20px);
+        flex: 1 1 calc(40% - 20px);
       }
 
       label:last-of-type {
@@ -46,18 +44,56 @@
     }
   }
   &Info {
-    flex: 0 1 calc(30% - 20px);
+    flex: 0 1 calc(50% - 20px);
 
-    p {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    h2 {
+      margin-bottom: 30px;
     }
 
-    h5 {
-      color: $ui-black-color;
-      line-height: 45px;
-      margin-bottom: 10px;
+    &Main {
+      margin-bottom: 20px;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      &Item {
+        flex: 1 1 calc(50% - 10px);
+        p {
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    &Peoples {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      &Item {
+        flex: 1 1 calc(50% - 10px);
+
+        p {
+          &:first-of-type {
+            margin-bottom: 5px;
+          }
+        }
+
+        p {
+          line-height: 100%;
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+      }
+    }
+
+    p,
+    a {
+      font-size: 14px;
     }
 
     svg {
@@ -69,14 +105,13 @@
     }
   }
 
-  &Office {
-    margin-bottom: 20px;
-    &Town {
-      font-size: 15px;
-      line-height: 24px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
+  .boldTitle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 16px;
+    font-weight: 600;
   }
 
   &Map {
@@ -94,6 +129,8 @@
       flex-direction: column;
     }
     &Main {
+      width: 100%;
+
       flex: 1 1 100%;
       h2 {
         font-size: 26px;
@@ -108,23 +145,16 @@
 
       flex: 1 1 100%;
     }
-    // &Offices {
-    //   display: flex;
-    //   flex-wrap: wrap;
-    //   justify-content: space-between;
-    // }
-    // &Office {
-    //   margin-bottom: 5px;
-    // }
   }
   @media #{$ui-mobile-max} {
     &Content {
       gap: 10px;
     }
     &Main {
+      flex: 1 1 100%;
       h2 {
         font-size: 20px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
       .default-text {
         font-size: 12px;
@@ -140,9 +170,20 @@
       }
     }
     &Info {
-      h5 {
-        font-size: 16px;
-        margin-bottom: 0px;
+      h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      &Main {
+        margin-bottom: 16px;
+        &Item {
+          flex: 1 1 100%;
+        }
+      }
+      &Peoples {
+        &Item {
+          flex: 1 1 100%;
+        }
       }
     }
     &Map {

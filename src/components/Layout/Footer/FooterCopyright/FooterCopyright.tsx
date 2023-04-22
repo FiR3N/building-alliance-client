@@ -11,7 +11,7 @@ const FooterCopyright: FC<FooterCopyrightProps> = () => {
       <div className={classNames(cls.footerCopyrightContent, "container")}>
         <div className={cls.footerCopyrightInfo}>
           <p className="light-text">
-            Building Alliance site by{" "}
+            ОАО «Спецстроймеханизация» by{" "}
             <a
               href="https://github.com/FiR3N"
               target="_blank"
