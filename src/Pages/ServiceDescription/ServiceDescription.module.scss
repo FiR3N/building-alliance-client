@@ -1,0 +1,27 @@
+.serviceDescription {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  &Title {
+    margin-bottom: 20px;
+  }
+  &Main {
+    display: flex;
+    gap: 20px;
+  }
+  &Image {
+    max-width: calc(40% - 20px);
+    max-height: 300px;
+
+    flex: 0 1 calc(40% - 20px);
+  }
+  &Text {
+    flex: 0 0 calc(60% - 20px);
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+  &Error {
+    margin: 0 auto;
+  }
+}

@@ -79,29 +79,29 @@ const Contact: FC<ContactProps> = () => {
               <div className={cls.contactInfoPeoplesItem}>
                 <p className={cls.boldTitle}>Директор</p>
                 <p className="default-text">Манюк Константин Константинович</p>
-                <a href="tel:8 029 663 02 45" className="default-text">
-                  <BsFillTelephoneFill />8 029 663 02 45 (приемная)
+                <a href="tel:8 0176 73 02 45" className="default-text">
+                  <BsFillTelephoneFill /> 8 0176 73-02-45
                 </a>
               </div>
               <div className={cls.contactInfoPeoplesItem}>
-                <p className={cls.boldTitle}>Директор</p>
-                <p className="default-text">Манюк Константин Константинович</p>
-                <a href="tel:8 029 663 02 45" className="default-text">
-                  <BsFillTelephoneFill />8 029 663 02 45 (приемная)
+                <p className={cls.boldTitle}>Главный инженер</p>
+                <p className="default-text">Рыбак Андрей Михайлович</p>
+                <a href="tel: 8 0176 77 02 34" className="default-text">
+                  <BsFillTelephoneFill /> 8 0176 77-02-34
                 </a>
               </div>
               <div className={cls.contactInfoPeoplesItem}>
-                <p className={cls.boldTitle}>Директор</p>
-                <p className="default-text">Манюк Константин Константинович</p>
-                <a href="tel:8 029 663 02 45" className="default-text">
-                  <BsFillTelephoneFill />8 029 663 02 45 (приемная)
+                <p className={cls.boldTitle}>Отдел кадров</p>
+                <p className="default-text">Харук Анна Ивановна</p>
+                <a href="tel:8 0176 77 14 44" className="default-text">
+                  <BsFillTelephoneFill />8 0176 77-14-44
                 </a>
               </div>
               <div className={cls.contactInfoPeoplesItem}>
-                <p className={cls.boldTitle}>Директор</p>
-                <p className="default-text">Манюк Константин Константинович</p>
-                <a href="tel:8 029 663 02 45" className="default-text">
-                  <BsFillTelephoneFill />8 029 663 02 45 (приемная)
+                <p className={cls.boldTitle}>Главный бухгалтер</p>
+                <p className="default-text">Бражицкий Владимир Болеславович</p>
+                <a href="tel:8 0176 73-01-13" className="default-text">
+                  <BsFillTelephoneFill />8 0176 73-01-13
                 </a>
               </div>
             </div>

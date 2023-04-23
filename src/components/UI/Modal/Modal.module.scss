@@ -9,9 +9,10 @@
   background: rgba(33, 49, 52, 0.49);
 
   overflow-y: scroll;
+  overflow-x: hidden;
 
   &Content {
-    width: 1000px;
+    width: 80%;
     padding: 40px;
     margin-bottom: 10%;
 

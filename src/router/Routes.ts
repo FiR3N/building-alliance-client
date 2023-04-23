@@ -23,6 +23,14 @@ export const ROUTES = {
     en: "/news/:name/:id",
     ru: "",
   },
+  SERVICES: {
+    en: "/services",
+    ru: "Услуги",
+  },
+  SERVICESPAGE: {
+    en: "/services/:name/:id",
+    ru: "",
+  },
   //INFO
   HISTORY: {
     en: "/history",

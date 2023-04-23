@@ -1,4 +1,5 @@
 export function rusToLatin(text: string): string {
+  const newStr = text.replace(/[ъь]/g, "");
   const map: { [key: string]: string } = {
     а: "a",
     б: "b",
@@ -35,7 +36,7 @@ export function rusToLatin(text: string): string {
     я: "ya",
   };
 
-  return text
+  return newStr
     .toLowerCase()
     .split("")
     .map((char) => (map[char] ? map[char] : char))

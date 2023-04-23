@@ -15,6 +15,10 @@ const NewsDescription = lazy(
   () => import("../pages/NewsDescription/NewsDescription")
 );
 const Certificate = lazy(() => import("../pages/Certificate/Certificate"));
+const Services = lazy(() => import("../pages/Services/Services"));
+const ServiceDescription = lazy(
+  () => import("../pages/ServiceDescription/ServiceDescription")
+);
 
 const AppRouter = () => {
   return (
@@ -43,6 +47,23 @@ const AppRouter = () => {
         element={
           <Suspense fallback={<Loader withMargins={true} />}>
             <NewsDescription />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path={ROUTES.SERVICES.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Services />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.SERVICESPAGE.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <ServiceDescription />
           </Suspense>
         }
       />
