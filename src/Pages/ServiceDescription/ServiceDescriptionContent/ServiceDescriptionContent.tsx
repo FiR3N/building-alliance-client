@@ -11,7 +11,6 @@ interface ServiceDescriptionContentProps {
 const ServiceDescriptionContent: FC<ServiceDescriptionContentProps> = ({
   service,
 }) => {
-  console.log(service);
   return (
     <div className={cls.serviceDescription}>
       <div className={classNames(cls.serviceDescriptionContent, "container")}>

@@ -6,9 +6,7 @@ import NewsDescriptionContent from "./NewsDescriptionContent/NewsDescriptionCont
 import useFetch from "../../hooks/useFetch";
 import { INews } from "../../models/INews";
 
-interface NewsDescriptionProps {}
-
-const NewsDescription: FC<NewsDescriptionProps> = () => {
+const NewsDescription: FC = () => {
   const { pathname, state: newsFromState } = useLocation();
   const { id } = useParams();
 

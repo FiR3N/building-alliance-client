@@ -40,5 +40,6 @@ export function rusToLatin(text: string): string {
     .toLowerCase()
     .split("")
     .map((char) => (map[char] ? map[char] : char))
-    .join("");
+    .join("")
+    .replace(/[^a-zA-Z0-9\-]/g, "");
 }

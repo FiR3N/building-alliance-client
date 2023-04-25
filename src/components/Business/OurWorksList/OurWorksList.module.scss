@@ -1,0 +1,12 @@
+.ourWorksList {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  &Content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  &ErrorText {
+    margin: 0 auto;
+  }
+}

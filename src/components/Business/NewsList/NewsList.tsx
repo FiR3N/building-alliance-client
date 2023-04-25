@@ -34,7 +34,12 @@ const NewsList: FC<NewsListProps> = () => {
   };
 
   if (isError) {
-    <h2 className={cls.employeeListError}>{"Неизвестная ошибка! :< "}</h2>;
+    return (
+      <h2 className={cls.newsListError}>
+        Неизвестная ошибка!{" "}
+        <img className="smile-image" src={sadSmile} alt="sad-smile" />
+      </h2>
+    );
   }
 
   return (

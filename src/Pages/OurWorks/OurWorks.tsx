@@ -1,22 +1,21 @@
 import { FC, Suspense, lazy } from "react";
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
-import { useLocation } from "react-router-dom";
 import Loader from "../../components/UI/Loader/Loader";
+import { useLocation } from "react-router-dom";
 
-const ServiceList = lazy(
-  () => import("../../components/Business/ServiceList/ServiceList")
+const OurWorksList = lazy(
+  () => import("../../components/Business/OurWorksList/OurWorksList")
 );
 
-const Services: FC = () => {
+const OurWorks: FC = () => {
   const { pathname } = useLocation();
-
   return (
-    <PageLayout title="Наши услуги" pathname={pathname}>
+    <PageLayout title="Наши работы" pathname={pathname}>
       <Suspense fallback={<Loader withMargins={true} />}>
-        <ServiceList />
+        <OurWorksList />
       </Suspense>
     </PageLayout>
   );
 };
 
-export default Services;
+export default OurWorks;

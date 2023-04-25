@@ -31,6 +31,14 @@ export const ROUTES = {
     en: "/services/:name/:id",
     ru: "",
   },
+  OURWORKS: {
+    en: "/our-works",
+    ru: "Наши работы",
+  },
+  OURWORKSPAGE: {
+    en: "/our-works/:name/:id",
+    ru: "",
+  },
   //INFO
   HISTORY: {
     en: "/history",

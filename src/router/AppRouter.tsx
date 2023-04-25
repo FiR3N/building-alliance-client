@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Main from "../pages/Main/Main";
 import { ROUTES } from "./Routes";
-import Employees from "../pages/Employees/Employees";
+// import Employees from "../pages/Employees/Employees";
 import { Suspense, lazy } from "react";
 import Loader from "../components/UI/Loader/Loader";
 
@@ -19,6 +19,10 @@ const Services = lazy(() => import("../pages/Services/Services"));
 const ServiceDescription = lazy(
   () => import("../pages/ServiceDescription/ServiceDescription")
 );
+const OurWorks = lazy(() => import("../pages/OurWorks/OurWorks"));
+const OurWorksDescription = lazy(
+  () => import("../pages/OurWorksDescription/OurWorksDescription")
+);
 
 const AppRouter = () => {
   return (
@@ -32,7 +36,7 @@ const AppRouter = () => {
           </Suspense>
         }
       />
-      <Route path={ROUTES.EMPLOYEES.en} element={<Employees />} />
+      {/* <Route path={ROUTES.EMPLOYEES.en} element={<Employees />} /> */}
 
       <Route
         path={ROUTES.NEWS.en}
@@ -68,6 +72,22 @@ const AppRouter = () => {
         }
       />
 
+      <Route
+        path={ROUTES.OURWORKS.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <OurWorks />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.OURWORKSPAGE.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <OurWorksDescription />
+          </Suspense>
+        }
+      />
       <Route
         path={ROUTES.HISTORY.en}
         element={
