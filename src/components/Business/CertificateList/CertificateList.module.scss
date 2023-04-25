@@ -1,4 +1,4 @@
-.certificate {
+.certificateList {
   padding-top: 30px;
   padding-bottom: 30px;
   &Content {
@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     gap: 20px;
   }
-  &ErrorText {
-    margin: 0 auto;
+  &Error {
+    text-align: center;
   }
 }

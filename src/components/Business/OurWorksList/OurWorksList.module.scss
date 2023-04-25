@@ -1,12 +1,25 @@
 .ourWorksList {
   padding-top: 30px;
   padding-bottom: 30px;
+
+  &Title {
+    margin-bottom: 20px;
+  }
+
   &Content {
+    margin-bottom: 20px;
+
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
   }
-  &ErrorText {
-    margin: 0 auto;
+
+  &Error {
+    text-align: center;
+  }
+
+  @media #{$ui-tablet-max} {
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }

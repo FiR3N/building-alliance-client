@@ -12,23 +12,27 @@ const CertificateList: FC = () => {
     `${import.meta.env.VITE_API_URL}/certificates`
   );
 
+  if (error) {
+    return (
+      <div className={classNames(cls.certificateList, "container")}>
+        <h2 className={cls.certificateListError}>
+          Сертификатов не найдено
+          <img className="smile-image" src={sadSmile} alt="sad-smile" />
+        </h2>
+      </div>
+    );
+  }
+
   return (
-    <div className={cls.certificate}>
-      <div className={classNames(cls.certificateContent, "container")}>
-        {!error ? (
-          certificates ? (
-            certificates?.length > 0 &&
-            certificates.map((item) => (
-              <CertificateItem certificate={item} key={item.id} />
-            ))
-          ) : (
-            <Loader />
-          )
+    <div className={classNames(cls.certificateList, "container")}>
+      <div className={cls.certificateListContent}>
+        {certificates ? (
+          certificates?.length > 0 &&
+          certificates.map((item) => (
+            <CertificateItem certificate={item} key={item.id} />
+          ))
         ) : (
-          <h2 className={cls.certificateErrorText}>
-            Новостей не найдено
-            <img className="smile-image" src={sadSmile} alt="sad-smile" />
-          </h2>
+          <Loader />
         )}
       </div>
     </div>

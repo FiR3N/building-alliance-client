@@ -35,10 +35,12 @@ const NewsList: FC<NewsListProps> = () => {
 
   if (isError) {
     return (
-      <h2 className={cls.newsListError}>
-        Неизвестная ошибка!{" "}
-        <img className="smile-image" src={sadSmile} alt="sad-smile" />
-      </h2>
+      <div className={classNames(cls.newsList, "container")}>
+        <h2 className={cls.newsListError}>
+          Неизвестная ошибка!{" "}
+          <img className="smile-image" src={sadSmile} alt="sad-smile" />
+        </h2>
+      </div>
     );
   }
 

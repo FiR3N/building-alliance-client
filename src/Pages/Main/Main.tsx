@@ -1,8 +1,9 @@
 import { FC } from "react";
 import cls from "./Main.module.scss";
-import slider2 from "../../assets/img/slider2.jpg";
 import slider1 from "../../assets/img/slider1.jpg";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
+import "swiper/css/effect-fade";
 import classNames from "classnames";
 interface MainProps {}
 

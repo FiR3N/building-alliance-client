@@ -11,11 +11,10 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
   const informationLinks: ILinkItem[] = [
-    { name: "О компании", to: "/about-company" },
+    // { name: "О компании", to: "/about-company" },
     { name: "Наша история", to: "/history" },
-    { name: "Наши проекты", to: "/information/projects" },
-    { name: "Рабочий процесс", to: "work-process" },
-    { name: "Отзывы", to: "/reviews" },
+    // { name: "Рабочий процесс", to: "work-process" },
+    // { name: "Отзывы", to: "/reviews" },
     { name: "Сертификаты", to: "/certificates" },
   ];
 
@@ -52,7 +51,7 @@ const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
           <CustomLink to="/services">Услуги</CustomLink>
         </li>
         <li>
-          <CustomLink to="/our-works">Наши объекты</CustomLink>
+          <CustomLink to="/our-works">Наши работы</CustomLink>
         </li>
         <li>
           <CustomLink to="/news">Новости</CustomLink>

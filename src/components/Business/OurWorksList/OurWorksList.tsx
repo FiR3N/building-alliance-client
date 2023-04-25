@@ -20,39 +20,43 @@ const OurWorksList: FC<OurWorksListProps> = () => {
 
   if (error) {
     return (
-      <h2 className={cls.ourWorksListError}>
-        Ошибка получения данных{" "}
-        <img className="smile-image" src={sadSmile} alt="sad-smile" />
-      </h2>
+      <div className={classNames(cls.ourWorksList, "container")}>
+        <h2 className={cls.ourWorksListError}>
+          Ошибка получения данных
+          <img className="smile-image" src={sadSmile} alt="sad-smile" />
+        </h2>
+      </div>
     );
   }
 
   return (
-    <div className={cls.ourWorksList}>
-      <div className={classNames(cls.ourWorksListContent, "container")}>
-        {worksList?.rows ? (
-          worksList.rows.length > 0 ? (
-            <>
+    <div className={classNames(cls.ourWorksList, "container")}>
+      <h2 className={cls.ourWorksListTitle}>Выполненые работы</h2>
+      {worksList?.rows ? (
+        worksList.rows.length > 0 ? (
+          <>
+            <div className={cls.ourWorksListContent}>
               {worksList.rows.map((work) => (
                 <OurWorksItem key={work.id} work={work} />
               ))}
-              <Pagination
-                totalCount={worksList.count}
-                page={page}
-                limit={limit}
-                changePage={setPage}
-              />
-            </>
-          ) : (
-            <h2 className={cls.ourWorksError}>
-              Новостей не найдено
-              <img className="smile-image" src={sadSmile} alt="sad-smile" />
-            </h2>
-          )
+            </div>
+
+            <Pagination
+              totalCount={worksList.count}
+              page={page}
+              limit={limit}
+              changePage={setPage}
+            />
+          </>
         ) : (
-          <Loader withMargins={true} />
-        )}
-      </div>
+          <h2 className={cls.ourWorksError}>
+            Работ не найдено
+            <img className="smile-image" src={sadSmile} alt="sad-smile" />
+          </h2>
+        )
+      ) : (
+        <Loader withMargins={true} />
+      )}
     </div>
   );
 };
