@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { IWork } from "../models/IWorks";
+import { IWork } from "../models/Entity/IWorks";
 
 interface IWorkQuery {
   limit: number;

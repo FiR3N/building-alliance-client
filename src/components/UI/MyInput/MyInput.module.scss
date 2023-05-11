@@ -4,6 +4,8 @@
 
 .formItem {
   position: relative;
+
+  font-weight: 600;
 }
 .error {
   position: absolute;
@@ -11,4 +13,9 @@
   left: 10px;
   z-index: 2;
   background-color: white;
+}
+.errorWithLabel {
+  position: absolute;
+  top: 8px;
+  left: 70px;
 }

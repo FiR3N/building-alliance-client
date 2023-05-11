@@ -5,12 +5,19 @@ import classNames from "classnames";
 
 interface MyTextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  register: any;
-  error: FieldError | undefined;
+  register?: any;
+  error?: FieldError | undefined;
+  labelTitle?: string;
 }
-const MyTextArea: FC<MyTextAreaProps> = ({ error, register, ...props }) => {
+const MyTextArea: FC<MyTextAreaProps> = ({
+  error,
+  register,
+  labelTitle,
+  ...props
+}) => {
   return (
     <label className={cls.formItem}>
+      {labelTitle}
       {error && (
         <p className={classNames(cls.error, "error-text")}>{error?.message}</p>
       )}

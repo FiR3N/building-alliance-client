@@ -6,16 +6,14 @@ import separator from "../../../assets/img/separator.png";
 import analytics from "../../../assets/img/analytics.png";
 import courthouse from "../../../assets/img/courthouse.png";
 import infrastructureDesign from "../../../assets/img/infrastructure-design.png";
-import companyEstablishment from "../../../assets/img/company-establishment.png";
+// import companyEstablishment from "../../../assets/img/company-establishment.png";
 import stonks from "../../../assets/img/stonks.png";
-import award from "../../../assets/img/award.png";
+// import award from "../../../assets/img/award.png";
 
 import classNames from "classnames";
-import RedirectToContactBlock from "../../../components/UI/RedirectToContactBlock/RedirectToContactBlock";
+import RedirectToContactBlock from "../../../components/Blocks/RedirectToContactBlock/RedirectToContactBlock";
 
-interface HistoryContentProps {}
-
-const HistoryContent: FC<HistoryContentProps> = () => {
+const HistoryContent: FC = () => {
   return (
     <div className={cls.history}>
       <div className={cls.historyTitle}>
@@ -24,18 +22,24 @@ const HistoryContent: FC<HistoryContentProps> = () => {
           <p className="default-text">
             "Спецстроймеханизация" - это профессиональная строительная
             организациям, специализирующаяся на предоставлении качественных
-            услуг по строительству, ремонту и реконструкции зданий и сооружений.
+            услуг по строительно-монтажных и работам, оказанием услуг
+            строительными машинами и механизмами сторонним организациям,
+            контроль качества строительных материалов аккредитованной
+            строительной лабораторией, понижение уровня грунтовых вод при
+            строительстве объектов, а также производство асфальтобетонных
+            смесей, гравия и щебня, произ-водство бетонных и растворных смесей,
+            разработка карьеров по добыче песка, ПГС и гравия
           </p>
-          <p className="default-text">
+          {/* <p className="default-text">
             Основными видами деятельности предприятия являются выполнение
             строительно-монтажных и отделочных работ, производство
             асфальтобетонных смесей, гравия и щебня, произ-водство бетонных и
             растворных смесей, разработка карьеров по добыче песка, ПГС и
-            гравия, ока-зание услуг строительными машинами и механизмами
+            гравия, оказание услуг строительными машинами и механизмами
             сторонним организациям, контроль качества строительных материалов
             аккредитованной строительной лабораторией, понижение уровня
             грунтовых вод при строительстве объектов.
-          </p>
+          </p> */}
         </div>
         <img
           className={cls.historyTitleImg}
@@ -149,7 +153,7 @@ const HistoryContent: FC<HistoryContentProps> = () => {
               <p className={cls.historyDateTextTitle}>Преобразования</p>
               <p className="default-text">
                 В 1999 году предприятие преобразовано в открытое акционерное
-                общество «Спецстроймеханиза-ция» г. Молодечно.
+                общество «Спецстроймеханизация» г. Молодечно.
               </p>
             </div>
             <div className={cls.separators}>
@@ -159,7 +163,7 @@ const HistoryContent: FC<HistoryContentProps> = () => {
               <img src={separator} />
             </div>
           </div>
-          <div className={cls.historyDate}>
+          {/* <div className={cls.historyDate}>
             <div className={cls.historyDateText}>
               <p className={cls.historyDateTextTitle}>Награждения</p>
               <p className="default-text">
@@ -297,27 +301,22 @@ const HistoryContent: FC<HistoryContentProps> = () => {
               <img src={separator} />
               <img src={separator} />
             </div>
-          </div>
+          </div> */}
           <div className={cls.historyDate}>
-            <div
-              className={classNames(
-                cls.historyDateWhen,
-                cls.historyDateWhenAlt
-              )}
-            >
-              <p className={cls.historyDateWhenNumber}>2023</p>
+            <div className={cls.historyDateText}>
+              <p className={cls.historyDateTextTitle}>Развитие</p>
+              <p className="default-text">
+                С 2000 года продолжаем активно развиваться и качественно
+                выполнять нашу работу на благо развития нашей страны.
+              </p>
             </div>
             <div className={cls.historyDateImg}>
               <span className={cls.cirlce}>
                 <img src={stonks} alt="Наши дни" />
               </span>
             </div>
-            <div className={cls.historyDateText}>
-              <p className={cls.historyDateTextTitle}>Наши дни</p>
-              <p className="default-text">
-                По сей день наша организация активно развивается и вносит
-                существенный вклад в развитие строительной отрасли нашей страны.
-              </p>
+            <div className={cls.historyDateWhen}>
+              <p className={cls.historyDateWhenNumber}>2000-2023</p>
             </div>
           </div>
         </div>

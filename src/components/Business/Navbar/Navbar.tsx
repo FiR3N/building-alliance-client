@@ -11,10 +11,8 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
   const informationLinks: ILinkItem[] = [
-    // { name: "О компании", to: "/about-company" },
+    { name: "О компании", to: "/about-us" },
     { name: "Наша история", to: "/history" },
-    // { name: "Рабочий процесс", to: "work-process" },
-    // { name: "Отзывы", to: "/reviews" },
     { name: "Сертификаты", to: "/certificates" },
   ];
 
@@ -33,7 +31,6 @@ const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
             <>
               <ul className={cls.navbarSecondList}>
                 <p className="nav-link">Информация</p>
-
                 {informationLinks.map((item) => (
                   <li key={item.to}>
                     <CustomLink to={item.to} key={item.name}>
@@ -55,6 +52,9 @@ const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
         </li>
         <li>
           <CustomLink to="/news">Новости</CustomLink>
+        </li>
+        <li>
+          <CustomLink to="/vacancies">Вакансии</CustomLink>
         </li>
         <li>
           <CustomLink to="/contact">Контакты</CustomLink>

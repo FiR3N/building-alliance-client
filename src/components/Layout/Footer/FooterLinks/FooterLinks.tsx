@@ -25,38 +25,32 @@ const FooterLinks: FC = () => {
           <ul className={cls.footerLinksMainList}>
             <li className={cls.footerLinksMainItem}>
               <MdKeyboardDoubleArrowRight />
-              <a href="/" className="light-text">
-                Architectural Design
+              <a href="/about-us" className="light-text">
+                О компании
               </a>
             </li>
             <li className={cls.footerLinksMainItem}>
               <MdKeyboardDoubleArrowRight />
-              <a href="/" className="light-text">
-                Building Construction
+              <a href="/certificates" className="light-text">
+                Сертификаты
               </a>
             </li>
             <li className={cls.footerLinksMainItem}>
               <MdKeyboardDoubleArrowRight />
-              <a href="/" className="light-text">
-                Flooring & Roofing
+              <a href="/services" className="light-text">
+                Услуги
               </a>
             </li>
             <li className={cls.footerLinksMainItem}>
               <MdKeyboardDoubleArrowRight />
-              <a href="/" className="light-text">
-                General Construction
+              <a href="/our-works" className="light-text">
+                Наши работы
               </a>
             </li>
             <li className={cls.footerLinksMainItem}>
               <MdKeyboardDoubleArrowRight />
-              <a href="/" className="light-text">
-                Interior Design
-              </a>
-            </li>
-            <li className={cls.footerLinksMainItem}>
-              <MdKeyboardDoubleArrowRight />
-              <a href="/" className="light-text">
-                INT/EXT Painting
+              <a href="/contact" className="light-text">
+                Контакты
               </a>
             </li>
           </ul>

@@ -1,0 +1,15 @@
+.advantagesBlock {
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+
+  &Item {
+    min-width: 200px;
+    flex: 0 0 calc(25% - 30px);
+
+    text-align: center;
+  }
+}

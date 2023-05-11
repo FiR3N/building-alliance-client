@@ -2,12 +2,10 @@ import { FC } from "react";
 import cls from "./RedirectToContactBlock.module.scss";
 import classNames from "classnames";
 import redirectToContactBg from "../../../assets/img/redirect-to-contact-bg.jpg";
-import MyButton from "../MyButton/MyButton";
 import { Link } from "react-router-dom";
+import MyButton from "../../UI/MyButton/MyButton";
 
-interface RedirectToContactBlockProps {}
-
-const RedirectToContactBlock: FC<RedirectToContactBlockProps> = () => {
+const RedirectToContactBlock: FC = () => {
   return (
     <div className={cls.redirectToContactBlock}>
       <img

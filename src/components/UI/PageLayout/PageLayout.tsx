@@ -15,7 +15,6 @@ interface PageLayoutProps {
 const PageLayout: FC<PageLayoutProps> = memo(
   ({ children, title, pathname }) => {
     const separatePathname = pathname.split("/").splice(1);
-
     let currentRoute: any;
     if (separatePathname.length === 1) {
       currentRoute = Object.values(ROUTES).find(

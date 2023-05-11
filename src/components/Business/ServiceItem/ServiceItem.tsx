@@ -1,10 +1,10 @@
 import { FC } from "react";
 import cls from "./ServiceItem.module.scss";
-import { IService } from "../../../models/IService";
 import { Link } from "react-router-dom";
 import StringToUrl from "../../../utils/StringToUrl";
 import { rusToLatin } from "../../../utils/Transliterate";
 import { ROUTES } from "../../../router/Routes";
+import { IService } from "../../../models/Entity/IService";
 
 interface ServiceItemProps {
   service: IService;

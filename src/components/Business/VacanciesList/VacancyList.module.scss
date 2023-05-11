@@ -1,0 +1,17 @@
+.vacanciesList {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &Title {
+    margin-bottom: 20px;
+  }
+
+  &Error {
+    text-align: center;
+  }
+
+  @media #{$ui-tablet-avg} {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

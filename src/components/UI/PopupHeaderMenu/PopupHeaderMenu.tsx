@@ -2,8 +2,9 @@ import { FC, useState } from "react";
 import cls from "./PopupHeaderMenu.module.scss";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ILinkItem from "../../../models/ILinkItem";
+import { ROUTES } from "../../../router/Routes";
 
 interface PopupHeaderMenuProps {
   title: string;
@@ -12,6 +13,7 @@ interface PopupHeaderMenuProps {
 
 const PopupHeaderMenu: FC<PopupHeaderMenuProps> = ({ title, items }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const { pathname } = useLocation();
 
   return (
     <div
@@ -25,8 +27,24 @@ const PopupHeaderMenu: FC<PopupHeaderMenuProps> = ({ title, items }) => {
           isActive && cls._active
         )}
       >
-        <p>{title}</p>
-        <MdOutlineKeyboardArrowDown />
+        <p
+          className={classNames(
+            (pathname.includes(ROUTES.ABOUT.en) ||
+              pathname.includes(ROUTES.HISTORY.en) ||
+              pathname.includes(ROUTES.CERTIFICATE.en)) &&
+              cls._isOnRoute
+          )}
+        >
+          {title}
+        </p>
+        <MdOutlineKeyboardArrowDown
+          className={classNames(
+            (pathname.includes(ROUTES.ABOUT.en) ||
+              pathname.includes(ROUTES.HISTORY.en) ||
+              pathname.includes(ROUTES.CERTIFICATE.en)) &&
+              cls._isOnRoute
+          )}
+        />
       </div>
       <div
         className={classNames(

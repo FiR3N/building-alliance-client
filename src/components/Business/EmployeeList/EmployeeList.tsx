@@ -1,11 +1,11 @@
 import { FC } from "react";
 import cls from "./EmployeeList.module.scss";
-import { IEmployee } from "../../../models/IEmployee";
 import EmployeeItem from "../EmployeeItem/EmployeeItem";
 import classNames from "classnames";
 import useFetch from "../../../hooks/useFetch";
 import Loader from "../../UI/Loader/Loader";
 import sadSmile from "../../../assets/img/sad-smile.svg";
+import { IEmployee } from "../../../models/Entity/IEmployee";
 interface EmployeeListProps {}
 
 const EmployeeList: FC<EmployeeListProps> = () => {

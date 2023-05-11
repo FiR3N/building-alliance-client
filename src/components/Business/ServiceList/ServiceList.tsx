@@ -1,23 +1,30 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import cls from "./ServiceList.module.scss";
 import classNames from "classnames";
-import useFetch from "../../../hooks/useFetch";
-import { IService } from "../../../models/IService";
 import sadSmile from "../../../assets/img/sad-smile.svg";
 import Loader from "../../UI/Loader/Loader";
 import ServiceItem from "../ServiceItem/ServiceItem";
-import RedirectToContactBlock from "../../UI/RedirectToContactBlock/RedirectToContactBlock";
+import { servicesAPI } from "../../../api/ServicesAPI";
 
-const ServiceList: FC = () => {
-  const { data: services, error } = useFetch<IService[]>(
-    `${import.meta.env.VITE_API_URL}/services`
-  );
+interface ServiceListProps {
+  limitProp?: number;
+  isFull?: boolean;
+}
+
+const ServiceList: FC<ServiceListProps> = ({ limitProp, isFull }) => {
+  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(limitProp || 9);
+
+  let { error, data: serviceList } = servicesAPI.useGetServicesQuery({
+    page,
+    limit,
+  });
 
   if (error) {
     return (
       <div className={classNames(cls.servicesList, "container")}>
         <h2 className={cls.servicesListError}>
-          Услуг не найдено ({error.message})
+          Услуг не найдено
           <img className="smile-image" src={sadSmile} alt="sad-smile" />
         </h2>
       </div>
@@ -26,13 +33,17 @@ const ServiceList: FC = () => {
 
   return (
     <div className={classNames(cls.servicesList, "container")}>
-      <h2 className={cls.servicesListTitle}>
-        Качественные строительные услуги
-      </h2>
+      {isFull && (
+        <h2 className={cls.servicesListTitle}>
+          Качественные строительные услуги
+        </h2>
+      )}
       <div className={cls.servicesListContent}>
-        {services ? (
-          services?.length > 0 &&
-          services.map((item) => <ServiceItem service={item} key={item.id} />)
+        {serviceList?.rows ? (
+          serviceList?.rows.length > 0 &&
+          serviceList.rows.map((item) => (
+            <ServiceItem service={item} key={item.id} />
+          ))
         ) : (
           <Loader />
         )}

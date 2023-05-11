@@ -1,10 +1,10 @@
 import { FC } from "react";
 import cls from "./OurWorksItem.module.scss";
-import { IWork } from "../../../models/IWorks";
 import StringToUrl from "../../../utils/StringToUrl";
 import { rusToLatin } from "../../../utils/Transliterate";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../router/Routes";
+import { IWork } from "../../../models/Entity/IWorks";
 
 interface OurWorksItemProps {
   work: IWork;

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import cls from "./CustomLink.module.scss";
 import { Link, useMatch } from "react-router-dom";
 import classNames from "classnames";
@@ -13,6 +13,7 @@ const CustomLink: FC<CustomLinkProps> = ({ to, children, ...props }) => {
     path: to,
     end: to.length === 1,
   });
+
   return (
     <Link
       to={to}

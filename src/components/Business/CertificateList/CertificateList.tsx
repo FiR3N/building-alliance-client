@@ -2,7 +2,7 @@ import { FC } from "react";
 import cls from "./CertificateList.module.scss";
 import classNames from "classnames";
 import useFetch from "../../../hooks/useFetch";
-import { ICertificate } from "../../../models/ICertificate";
+import { ICertificate } from "../../../models/Entity/ICertificate";
 import sadSmile from "../../../assets/img/sad-smile.svg";
 import Loader from "../../UI/Loader/Loader";
 import CertificateItem from "../CertificateItem/CertificateItem";

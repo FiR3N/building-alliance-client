@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import cls from "./Contact.module.scss";
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
 import { useLocation } from "react-router-dom";
@@ -7,15 +7,13 @@ import { MdEmail } from "react-icons/md";
 import { BsFillTelephoneFill, BsGeoAltFill } from "react-icons/bs";
 import MyInput from "../../components/UI/MyInput/MyInput";
 import { useForm, SubmitHandler } from "react-hook-form";
-import IContact from "../../models/IContact";
 import MyTextArea from "../../components/UI/MyTextArea/MyTextArea";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import ContactService from "../../api/ContactService";
-import InfoBlock from "../../components/UI/InfoBlock/InfoBlock";
+import InfoBlock from "../../components/Blocks/InfoBlock/InfoBlock";
+import IContact from "../../models/Forms/IContact";
 
-interface ContactProps {}
-
-const Contact: FC<ContactProps> = () => {
+const Contact: FC = () => {
   const { pathname } = useLocation();
   const {
     register,
@@ -45,7 +43,10 @@ const Contact: FC<ContactProps> = () => {
     });
   };
 
-  //fix styles
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   return (
     <PageLayout title="Контакты" pathname={pathname}>
       <div className={cls.contact}>
@@ -58,9 +59,7 @@ const Contact: FC<ContactProps> = () => {
                   <BsGeoAltFill />
                   Беларусь, Молодечно
                 </p>
-                <a href="https://www.google.com/maps" className="default-text">
-                  ул. Великий Гостинец 1А
-                </a>
+                <p className="default-text">ул. Великий Гостинец 1А</p>
               </div>
               <div className={cls.contactInfoMainItem}>
                 <p className={cls.boldTitle}>
@@ -77,31 +76,24 @@ const Contact: FC<ContactProps> = () => {
             </div>
             <div className={cls.contactInfoPeoples}>
               <div className={cls.contactInfoPeoplesItem}>
-                <p className={cls.boldTitle}>Директор</p>
+                <p className={cls.boldTitle}>Приемная директора</p>
                 <p className="default-text">Манюк Константин Константинович</p>
-                <a href="tel:8 0176 73 02 45" className="default-text">
-                  <BsFillTelephoneFill /> 8 0176 73-02-45
-                </a>
-              </div>
-              <div className={cls.contactInfoPeoplesItem}>
-                <p className={cls.boldTitle}>Главный инженер</p>
-                <p className="default-text">Рыбак Андрей Михайлович</p>
-                <a href="tel: 8 0176 77 02 34" className="default-text">
-                  <BsFillTelephoneFill /> 8 0176 77-02-34
+                <a href="tel:8 0176 50 06 50 " className="default-text">
+                  <BsFillTelephoneFill />8 0176 50-06-50
                 </a>
               </div>
               <div className={cls.contactInfoPeoplesItem}>
                 <p className={cls.boldTitle}>Отдел кадров</p>
                 <p className="default-text">Харук Анна Ивановна</p>
-                <a href="tel:8 0176 77 14 44" className="default-text">
-                  <BsFillTelephoneFill />8 0176 77-14-44
+                <a href="tel:8 0176 75 29 32" className="default-text">
+                  <BsFillTelephoneFill />8 0176 75-29-32
                 </a>
               </div>
               <div className={cls.contactInfoPeoplesItem}>
                 <p className={cls.boldTitle}>Главный бухгалтер</p>
-                <p className="default-text">Бражицкий Владимир Болеславович</p>
-                <a href="tel:8 0176 73-01-13" className="default-text">
-                  <BsFillTelephoneFill />8 0176 73-01-13
+                <p className="default-text">Горошкевич Татьяна Степановна</p>
+                <a href="tel:8 0176 75 29 42" className="default-text">
+                  <BsFillTelephoneFill />8 0176 75-29-42
                 </a>
               </div>
             </div>

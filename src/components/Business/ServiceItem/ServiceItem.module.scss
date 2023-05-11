@@ -20,6 +20,8 @@
     max-height: 250px;
     min-height: 250px;
 
+    border-radius: 8px 8px 0px 0px;
+
     object-fit: cover;
   }
   &Name {
@@ -30,8 +32,8 @@
     font-size: 18px;
     font-weight: 700;
     line-height: 110%;
-    letter-spacing: -1.2px;
 
+    border-radius: 0px 0px 8px 8px;
     background-color: $ui-sun-color;
 
     text-transform: uppercase;

@@ -22,17 +22,20 @@
     img {
       width: 100%;
       height: 300px;
+
+      border-radius: 8px;
     }
   }
 
   &Info {
     padding: 10px 5px;
+    width: 100%;
 
     position: absolute;
     left: 0;
     bottom: 0;
 
-    width: 100%;
+    border-radius: 0px 0px 8px 8px;
 
     &Text {
       font-weight: 600;

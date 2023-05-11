@@ -3,7 +3,7 @@ import cls from "../ServiceDescription.module.scss";
 import { IService } from "../../../models/IService";
 import classNames from "classnames";
 import sadSmile from "../../../assets/img/sad-smile.svg";
-import RedirectToContactBlock from "../../../components/UI/RedirectToContactBlock/RedirectToContactBlock";
+import RedirectToContactBlock from "../../../components/Blocks/RedirectToContactBlock/RedirectToContactBlock";
 
 interface ServiceDescriptionContentProps {
   service: IService;

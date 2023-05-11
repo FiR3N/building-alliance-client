@@ -1,9 +1,9 @@
 import { FC } from "react";
 import cls from "./EmployeeItem.module.scss";
-import { IEmployee } from "../../../models/IEmployee";
 import classNames from "classnames";
 import { MdEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import { IEmployee } from "../../../models/Entity/IEmployee";
 
 interface EmployeeItemProps {
   employee: IEmployee;

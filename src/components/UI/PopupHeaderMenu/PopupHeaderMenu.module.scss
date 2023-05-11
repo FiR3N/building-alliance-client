@@ -2,6 +2,8 @@
   position: relative;
   z-index: 2;
 
+  will-change: transform, opacity;
+
   &Title {
     display: flex;
     align-items: center;
@@ -15,6 +17,10 @@
       height: 20px;
 
       transition: all 0.3s ease;
+
+      &._isOnRoute {
+        color: $ui-sun-color;
+      }
     }
 
     &._active {
@@ -30,6 +36,10 @@
       font-weight: 600;
 
       transition: all 0.3s ease;
+
+      &._isOnRoute {
+        color: $ui-sun-color;
+      }
     }
   }
 
@@ -61,7 +71,6 @@
       color: black;
 
       transition: all 0.3s ease;
-      will-change: transform;
 
       &:last-child {
         border-radius: 0px 0px 6px 6px;

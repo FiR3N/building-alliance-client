@@ -1,11 +1,16 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { newsAPI } from "../api/NewsService";
+import { newsAPI } from "../api/NewsAPI";
 import { worksAPI } from "../api/WorksService";
+import { servicesAPI } from "../api/ServicesAPI";
+import userReducer from "./slices/userReducer";
+import { vacancyAPI } from "../api/VacancyAPI";
 
 const rootReducer = combineReducers({
-  // userReducer,
+  userReducer,
   [newsAPI.reducerPath]: newsAPI.reducer,
   [worksAPI.reducerPath]: worksAPI.reducer,
+  [servicesAPI.reducerPath]: servicesAPI.reducer,
+  [vacancyAPI.reducerPath]: vacancyAPI.reducer,
 });
 
 export const setupStore = () => {
@@ -14,7 +19,9 @@ export const setupStore = () => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware()
         .concat(newsAPI.middleware)
-        .concat(worksAPI.middleware),
+        .concat(worksAPI.middleware)
+        .concat(servicesAPI.middleware)
+        .concat(vacancyAPI.middleware),
   });
 };
 

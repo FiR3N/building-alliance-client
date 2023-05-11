@@ -4,6 +4,7 @@ import { ROUTES } from "./Routes";
 // import Employees from "../pages/Employees/Employees";
 import { Suspense, lazy } from "react";
 import Loader from "../components/UI/Loader/Loader";
+import { useTypeSelector } from "../hooks/useTypeSelector";
 
 const Contact = lazy(() => import("../pages/Contact/Contact"));
 const History = lazy(() => import("../pages/History/History"));
@@ -23,8 +24,17 @@ const OurWorks = lazy(() => import("../pages/OurWorks/OurWorks"));
 const OurWorksDescription = lazy(
   () => import("../pages/OurWorksDescription/OurWorksDescription")
 );
+const About = lazy(() => import("../pages/About/About"));
+const Vacancies = lazy(() => import("../pages/Vacancies/Vacancies"));
+const AdminLogin = lazy(() => import("../pages/AdminLogin/AdminLogin"));
+const Admin = lazy(() => import("../pages/Admin/Admin"));
+const AdminSettings = lazy(
+  () => import("../pages/AdminSettings/AdminSettings")
+);
 
 const AppRouter = () => {
+  const { isAuth } = useTypeSelector((state) => state.userReducer);
+
   return (
     <Routes>
       <Route path={ROUTES.HOME.en} element={<Main />} />
@@ -89,6 +99,43 @@ const AppRouter = () => {
         }
       />
       <Route
+        path={ROUTES.VACANCIES.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Vacancies />
+          </Suspense>
+        }
+      />
+      {isAuth && (
+        <>
+          <Route
+            path={ROUTES.ADMIN.en}
+            element={
+              <Suspense fallback={<Loader withMargins={true} />}>
+                <Admin />
+              </Suspense>
+            }
+          />
+          <Route
+            path={ROUTES.ADMINSETTINGS.en}
+            element={
+              <Suspense fallback={<Loader withMargins={true} />}>
+                <AdminSettings />
+              </Suspense>
+            }
+          />
+        </>
+      )}
+      <Route
+        path={ROUTES.ADMIN.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <AdminLogin />
+          </Suspense>
+        }
+      />
+
+      <Route
         path={ROUTES.HISTORY.en}
         element={
           <Suspense fallback={<Loader withMargins={true} />}>
@@ -116,7 +163,7 @@ const AppRouter = () => {
         path={ROUTES.ABOUT.en}
         element={
           <Suspense fallback={<Loader withMargins={true} />}>
-            <AboutCompany />
+            <About />
           </Suspense>
         }
       />
@@ -125,6 +172,14 @@ const AppRouter = () => {
         element={
           <Suspense fallback={<Loader withMargins={true} />}>
             <Certificate />
+          </Suspense>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Main />
           </Suspense>
         }
       />

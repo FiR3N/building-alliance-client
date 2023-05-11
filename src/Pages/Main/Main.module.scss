@@ -1,7 +1,138 @@
 .main {
-  width: 100%;
-  img {
-    width: 100%;
-    filter: brightness(0.8) contrast(1.1);
+  .swiperContainer {
+    .swiperItem {
+      height: 100vh;
+      img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+      }
+    }
   }
+  &Title {
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+    display: flex;
+    align-items: center;
+    h2 {
+      border-right: 5px solid $ui-sun-color;
+    }
+    p {
+      padding: 20px;
+    }
+  }
+  &News,
+  &Works,
+  &Services {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      text-align: center;
+    }
+    a {
+      margin: 0 auto;
+    }
+  }
+  &InfoAbout {
+    position: relative;
+
+    height: 500px;
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    &Content {
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+      z-index: 1;
+
+      text-align: center;
+
+      h2,
+      p {
+        color: white;
+      }
+      p {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  @media #{$ui-tablet-max} {
+    .swiperContainer {
+      .swiperItem {
+        height: 500px;
+      }
+    }
+    &Title {
+      flex-direction: column;
+
+      h2 {
+        padding-bottom: 10px;
+
+        border-right: none;
+        border-bottom: 5px solid $ui-sun-color;
+      }
+      p {
+        padding: 5px;
+      }
+    }
+    &InfoAbout {
+      height: 400px;
+      p {
+        font-size: 26px;
+      }
+    }
+  }
+  @media #{$ui-tablet-avg} {
+    .swiperContainer {
+      .swiperItem {
+        height: 400px;
+      }
+    }
+
+    &Title {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    &InfoAbout {
+      height: 300px;
+    }
+  }
+  @media #{$ui-mobile-max} {
+    .swiperContainer {
+      .swiperItem {
+        height: 250px;
+      }
+    }
+    &InfoAbout {
+      height: 250px;
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+  // @media #{$ui-mobile-min} {
+  //   &InfoAbout {
+  //     height: 250px;
+  //   }
+  // }
 }

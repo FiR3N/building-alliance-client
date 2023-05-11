@@ -29,9 +29,7 @@ const HeaderInfo: FC<HeaderInfoProps> = memo(() => {
           </div>
           <div className={cls.headerInfoContentContactsItem}>
             <BiTime />
-            <a href="tel:8 0176 50 06 50" className="light-text">
-              Время работы: Пн - Пт 8.00 - 17:00
-            </a>
+            <p className="light-text">Время работы: Пн - Пт 8.00 - 17:00</p>
           </div>
         </div>
         {/* <Socials /> */}

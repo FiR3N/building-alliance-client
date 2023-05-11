@@ -4,7 +4,7 @@ import classNames from "classnames";
 import logo from "../../../../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import Navbar from "../../../Business/Navbar/Navbar";
-import Socials from "../../../UI/Socials/Socials";
+import Socials from "../../../Blocks/Socials/Socials";
 interface HeaderNavProps {}
 
 const HeaderNav: FC<HeaderNavProps> = () => {

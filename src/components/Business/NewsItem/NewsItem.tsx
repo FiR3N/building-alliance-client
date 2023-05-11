@@ -1,36 +1,83 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import cls from "./NewsItem.module.scss";
-import { INews } from "../../../models/INews";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import StringToUrl from "../../../utils/StringToUrl";
 import { rusToLatin } from "../../../utils/Transliterate";
 import { MdDateRange } from "react-icons/md";
+import { INews } from "../../../models/Entity/INews";
+
+import editImage from "../../../assets/img/edit.svg";
+import deleteImage from "../../../assets/img/delete.svg";
+import NewsModal from "../Modals/NewsModal/NewsModal";
+import NewsDeleteModal from "../Modals/NewsDeleteModal/NewsDeleteModal";
 
 interface NewsItemProps {
   news: INews;
+  isAdmin?: boolean;
 }
 
-const NewsItem: FC<NewsItemProps> = ({ news }) => {
+const NewsItem: FC<NewsItemProps> = ({ news, isAdmin }) => {
+  const [isNewsChangeModalOpen, setIsNewsChangeModalOpen] =
+    useState<boolean>(false);
+  const [isNewsDeleteModalOpen, setIsNewsDeleteModalOpen] =
+    useState<boolean>(false);
+
   return (
-    <Link
-      state={news}
-      to={`${StringToUrl(rusToLatin(news.name))}/${news.id}`}
-      className={cls.newsItem}
-    >
-      <img
-        src={import.meta.env.VITE_API_URL + "/images/news/" + news.img}
-        alt={news.name}
-        className={cls.newsItemImage}
-      />
-      <p className={classNames(cls.newsItemDate, "default-text")}>
-        <MdDateRange /> {news.date}
-      </p>
-      <p className={cls.newsItemTitle}>{news.name}</p>
-      <p className={classNames(cls.newsItemDescription, "default-text")}>
-        {news.description}
-      </p>
-    </Link>
+    <>
+      {isNewsChangeModalOpen && (
+        <NewsModal
+          state={isNewsChangeModalOpen}
+          closeMethod={setIsNewsChangeModalOpen}
+          news={news}
+        />
+      )}
+      {isNewsDeleteModalOpen && (
+        <NewsDeleteModal
+          state={isNewsDeleteModalOpen}
+          closeMethod={setIsNewsDeleteModalOpen}
+          news={news}
+        />
+      )}
+      <div className={cls.newsItem}>
+        {isAdmin && (
+          <div className={cls.newsItemAdminPanel}>
+            <img
+              src={editImage}
+              alt="изменить"
+              onClick={() => setIsNewsChangeModalOpen(true)}
+            />
+            <img
+              src={deleteImage}
+              alt="удалить"
+              onClick={() => setIsNewsDeleteModalOpen(true)}
+            />
+          </div>
+        )}
+
+        <Link
+          state={news}
+          to={`/news/${StringToUrl(rusToLatin(news.name))}/${news.id}`}
+          className={classNames(
+            cls.newsItemContent,
+            isAdmin && cls._notAnimated
+          )}
+        >
+          <img
+            src={import.meta.env.VITE_API_URL + "/images/news/" + news.img}
+            alt={news.name}
+            className={cls.newsItemImage}
+          />
+          <p className={classNames(cls.newsItemDate, "default-text")}>
+            <MdDateRange /> {news.date}
+          </p>
+          <p className={cls.newsItemTitle}>{news.name}</p>
+          <p className={classNames(cls.newsItemDescription, "default-text")}>
+            {news.description}
+          </p>
+        </Link>
+      </div>
+    </>
   );
 };
 

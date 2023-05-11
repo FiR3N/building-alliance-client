@@ -6,13 +6,28 @@ import classNames from "classnames";
 interface MyInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   register?: any;
   error?: FieldError | undefined;
+  labelTitle?: string;
 }
 
-const MyInput: FC<MyInputProps> = ({ error, register, ...props }) => {
+const MyInput: FC<MyInputProps> = ({
+  error,
+  register,
+  labelTitle,
+  ...props
+}) => {
   return (
     <label className={cls.formItem}>
+      {labelTitle && labelTitle}
       {error && (
-        <p className={classNames(cls.error, "error-text")}>{error?.message}</p>
+        <p
+          className={classNames(
+            labelTitle && cls.errorWithLabel,
+            cls.error,
+            "error-text"
+          )}
+        >
+          {error?.message}
+        </p>
       )}
       <input
         className={classNames(cls.myInput, error && cls.myInputError)}

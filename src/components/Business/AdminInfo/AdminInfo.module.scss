@@ -1,0 +1,43 @@
+.adminInfo {
+  margin-bottom: 20px;
+  &Content {
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+
+    border: 3px solid $ui-sun-color;
+    border-radius: 8px;
+  }
+  &User {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &Image {
+      height: 100px;
+      width: 100px;
+
+      border-radius: 8px;
+    }
+  }
+  &Buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  @media #{$ui-mobile-max} {
+    &Content {
+      padding: 10px;
+
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}

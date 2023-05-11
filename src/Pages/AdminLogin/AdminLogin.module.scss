@@ -1,0 +1,25 @@
+.adminLogin {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  &Content {
+    margin-top: 25vh;
+    margin-bottom: 25vh;
+  }
+  &Title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  &Error {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  &Form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input {
+      width: 100%;
+    }
+  }
+}

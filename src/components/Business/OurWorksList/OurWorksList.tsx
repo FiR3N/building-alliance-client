@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import cls from "./OurWorksList.module.scss";
 import classNames from "classnames";
 import { worksAPI } from "../../../api/WorksService";
@@ -7,11 +7,14 @@ import sadSmile from "../../../assets/img/sad-smile.svg";
 import Pagination from "../../UI/Pagination/Pagination";
 import OurWorksItem from "../OurWorksItem/OurWorksItem";
 
-interface OurWorksListProps {}
+interface OurWorksListProps {
+  limitProp?: number;
+  isFull?: boolean;
+}
 
-const OurWorksList: FC<OurWorksListProps> = () => {
+const OurWorksList: FC<OurWorksListProps> = ({ limitProp, isFull }) => {
   const [page, setPage] = useState<number>(1);
-  const [limit, setLimit] = useState<number>(12);
+  const [limit, setLimit] = useState<number>(limitProp || 12);
 
   let { error, data: worksList } = worksAPI.useGetWorksQuery({
     page,
@@ -31,7 +34,7 @@ const OurWorksList: FC<OurWorksListProps> = () => {
 
   return (
     <div className={classNames(cls.ourWorksList, "container")}>
-      <h2 className={cls.ourWorksListTitle}>Выполненые работы</h2>
+      {isFull && <h2 className={cls.ourWorksListTitle}>Выполненные работы</h2>}
       {worksList?.rows ? (
         worksList.rows.length > 0 ? (
           <>
@@ -40,13 +43,14 @@ const OurWorksList: FC<OurWorksListProps> = () => {
                 <OurWorksItem key={work.id} work={work} />
               ))}
             </div>
-
-            <Pagination
-              totalCount={worksList.count}
-              page={page}
-              limit={limit}
-              changePage={setPage}
-            />
+            {isFull && (
+              <Pagination
+                totalCount={worksList.count}
+                page={page}
+                limit={limit}
+                changePage={setPage}
+              />
+            )}
           </>
         ) : (
           <h2 className={cls.ourWorksError}>

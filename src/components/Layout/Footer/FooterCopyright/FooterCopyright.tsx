@@ -22,7 +22,7 @@ const FooterCopyright: FC<FooterCopyrightProps> = () => {
             . Все права защищены © 2023
           </p>
         </div>
-        <Socials />
+        {/* <Socials /> */}
       </div>
     </div>
   );

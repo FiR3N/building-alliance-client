@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import cls from "./CertificateItem.module.scss";
-import { ICertificate } from "../../../models/ICertificate";
+import { ICertificate } from "../../../models/Entity/ICertificate";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Modal from "../../UI/Modal/Modal";
 

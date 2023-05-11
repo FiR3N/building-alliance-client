@@ -5,13 +5,22 @@
     position: relative;
   }
   &Title {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   &Image {
     width: 100%;
     min-height: 200px;
     max-height: 400px;
     margin-bottom: 30px;
+  }
+  &Date {
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: $ui-sun-color;
   }
   &Text {
     p {
