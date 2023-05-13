@@ -13,9 +13,7 @@ interface ServiceItemProps {
 const ServiceItem: FC<ServiceItemProps> = ({ service }) => {
   return (
     <Link
-      to={`${ROUTES.SERVICES.en}/${StringToUrl(rusToLatin(service.name))}/${
-        service.id
-      }`}
+      to={`${ROUTES.SERVICES.en}/${rusToLatin(service.name)}/${service.id}`}
       state={service}
       className={cls.serviceItem}
     >

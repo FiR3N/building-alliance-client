@@ -7,14 +7,15 @@ import React, {
 } from "react";
 import ReactDOM from "react-dom";
 import cls from "./Modal.module.scss";
+import classNames from "classnames";
 
 interface ModalProps {
   children: ReactNode;
-  state: boolean;
   closeMethod: Dispatch<SetStateAction<boolean>>;
+  isSmall?: boolean;
 }
 
-const Modal: FC<ModalProps> = ({ children, state, closeMethod }) => {
+const Modal: FC<ModalProps> = ({ children, closeMethod, isSmall }) => {
   const modalRoot = document.getElementById("modal-root") as Element;
 
   useLayoutEffect(() => {
@@ -33,7 +34,7 @@ const Modal: FC<ModalProps> = ({ children, state, closeMethod }) => {
 
   return ReactDOM.createPortal(
     <div className={cls.myModal} onClick={closeOnBgHandler}>
-      <div className={cls.myModalContent}>
+      <div className={classNames(cls.myModalContent, isSmall && cls._isSmall)}>
         <div className={cls.myModalCloseBut} onClick={closeOnButHandler}>
           <span className={cls.bar}></span>
           <span className={cls.bar}></span>

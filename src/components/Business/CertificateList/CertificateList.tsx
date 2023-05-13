@@ -6,11 +6,15 @@ import { ICertificate } from "../../../models/Entity/ICertificate";
 import sadSmile from "../../../assets/img/sad-smile.svg";
 import Loader from "../../UI/Loader/Loader";
 import CertificateItem from "../CertificateItem/CertificateItem";
+import { certificateAPI } from "../../../api/CertificateAPI";
 
-const CertificateList: FC = () => {
-  const { data: certificates, error } = useFetch<ICertificate[]>(
-    `${import.meta.env.VITE_API_URL}/certificates`
-  );
+interface CertificateListrops {
+  isAdmin?: boolean;
+}
+
+const CertificateList: FC<CertificateListrops> = ({ isAdmin }) => {
+  const { data: certificatesList, error } =
+    certificateAPI.useGetCertificatesQuery({});
 
   if (error) {
     return (
@@ -26,11 +30,21 @@ const CertificateList: FC = () => {
   return (
     <div className={classNames(cls.certificateList, "container")}>
       <div className={cls.certificateListContent}>
-        {certificates ? (
-          certificates?.length > 0 &&
-          certificates.map((item) => (
-            <CertificateItem certificate={item} key={item.id} />
-          ))
+        {certificatesList ? (
+          certificatesList?.length > 0 ? (
+            certificatesList.map((item) => (
+              <CertificateItem
+                certificate={item}
+                isAdmin={isAdmin}
+                key={item.id}
+              />
+            ))
+          ) : (
+            <h2 className={cls.certificateListError}>
+              Новостей не найдено
+              <img className="smile-image" src={sadSmile} alt="sad-smile" />
+            </h2>
+          )
         ) : (
           <Loader />
         )}

@@ -13,9 +13,7 @@ interface OurWorksItemProps {
 const OurWorksItem: FC<OurWorksItemProps> = ({ work }) => {
   return (
     <Link
-      to={`${ROUTES.OURWORKS.en}/${StringToUrl(rusToLatin(work.name))}/${
-        work.id
-      }`}
+      to={`${ROUTES.OURWORKS.en}/${rusToLatin(work.name)}/${work.id}`}
       state={work}
       className={cls.ourWorksItem}
     >

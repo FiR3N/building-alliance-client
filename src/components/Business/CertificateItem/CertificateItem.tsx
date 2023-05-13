@@ -3,18 +3,32 @@ import cls from "./CertificateItem.module.scss";
 import { ICertificate } from "../../../models/Entity/ICertificate";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Modal from "../../UI/Modal/Modal";
+import editImage from "../../../assets/img/edit.svg";
+import deleteImage from "../../../assets/img/delete.svg";
+import classNames from "classnames";
+import CertificateDeleteModal from "../Modals/CertificateDeleteModal/CertificateDeleteModal";
+import CertificateModal from "../Modals/CertificateModal/CertificateModal";
 
 interface CertificateItemProps {
   certificate: ICertificate;
+  isAdmin?: boolean;
 }
 
-const CertificateItem: FC<CertificateItemProps> = ({ certificate }) => {
+const CertificateItem: FC<CertificateItemProps> = ({
+  certificate,
+  isAdmin,
+}) => {
+  const [isCertificateChangeModalOpen, setIsCertificateChangeModalOpen] =
+    useState<boolean>(false);
+  const [isCertificateDeleteModalOpen, setIsCertificateDeleteModalOpen] =
+    useState<boolean>(false);
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
     <>
       {isModalOpen && (
-        <Modal closeMethod={setIsModalOpen} state={isModalOpen}>
+        <Modal closeMethod={setIsModalOpen} isSmall>
           <div className={cls.certificateItemInModal}>
             <h2>{certificate.description}</h2>
             <LazyLoadImage
@@ -29,21 +43,54 @@ const CertificateItem: FC<CertificateItemProps> = ({ certificate }) => {
           </div>
         </Modal>
       )}
-
-      <div className={cls.certificateItem} onClick={() => setIsModalOpen(true)}>
-        <LazyLoadImage
-          src={
-            import.meta.env.VITE_API_URL +
-            "/images/certificates/" +
-            certificate.image
-          }
-          alt={certificate.description}
-          effect="blur"
+      {isCertificateDeleteModalOpen && (
+        <CertificateDeleteModal
+          closeMethod={setIsCertificateDeleteModalOpen}
+          certificate={certificate}
         />
-        <div className={cls.certificateItemInfo}>
-          <p className={cls.certificateItemInfoText}>
-            {certificate.description}
-          </p>
+      )}
+      {isCertificateChangeModalOpen && (
+        <CertificateModal
+          closeMethod={setIsCertificateChangeModalOpen}
+          certificate={certificate}
+        />
+      )}
+      <div className={cls.certificateItem}>
+        {isAdmin && (
+          <div className={cls.certificateItemAdminPanel}>
+            <img
+              src={editImage}
+              alt="изменить"
+              onClick={() => setIsCertificateChangeModalOpen(true)}
+            />
+            <img
+              src={deleteImage}
+              alt="удалить"
+              onClick={() => setIsCertificateDeleteModalOpen(true)}
+            />
+          </div>
+        )}
+        <div
+          className={classNames(
+            cls.certificateItemContent,
+            isAdmin && cls._notAnimated
+          )}
+          onClick={() => setIsModalOpen(true)}
+        >
+          <LazyLoadImage
+            src={
+              import.meta.env.VITE_API_URL +
+              "/images/certificates/" +
+              certificate.image
+            }
+            alt={certificate.description}
+            effect="blur"
+          />
+          <div className={cls.certificateItemInfo}>
+            <p className={cls.certificateItemInfoText}>
+              {certificate.description}
+            </p>
+          </div>
         </div>
       </div>
     </>

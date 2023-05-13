@@ -8,9 +8,7 @@ const AdminNewsPage: FC = () => {
   const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
   return (
     <>
-      {isNewsModalOpen && (
-        <NewsModal closeMethod={setIsNewsModalOpen} state={isNewsModalOpen} />
-      )}
+      {isNewsModalOpen && <NewsModal closeMethod={setIsNewsModalOpen} />}
       <div className={cls.adminNewsPage}>
         <MyButton onClick={() => setIsNewsModalOpen(true)}>
           Добавить новость

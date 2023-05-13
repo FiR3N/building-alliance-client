@@ -1,6 +1,5 @@
 .pageLayout {
   min-height: 100%;
-
   position: relative;
 
   .bg {
@@ -57,7 +56,7 @@
     }
 
     @media #{$ui-tablet-max} {
-      height: 200px;
+      // height: 200px;
 
       &Content {
         padding-top: 110px;
@@ -65,9 +64,10 @@
     }
 
     @media #{$ui-tablet-avg} {
-      height: 150px;
+      // height: 150px;
       &Content {
         padding-top: 70px;
+        padding-bottom: 15px;
       }
       &Name {
         font-size: 30px;
@@ -75,9 +75,9 @@
       }
     }
     @media #{$ui-mobile-max} {
-      height: 130px;
       &Content {
         padding-top: 60px;
+        padding-bottom: 8px;
       }
       &Name {
         font-size: 25px;

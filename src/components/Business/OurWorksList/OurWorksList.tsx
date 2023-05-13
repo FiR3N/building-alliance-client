@@ -53,7 +53,7 @@ const OurWorksList: FC<OurWorksListProps> = ({ limitProp, isFull }) => {
             )}
           </>
         ) : (
-          <h2 className={cls.ourWorksError}>
+          <h2 className={cls.ourWorksListError}>
             Работ не найдено
             <img className="smile-image" src={sadSmile} alt="sad-smile" />
           </h2>

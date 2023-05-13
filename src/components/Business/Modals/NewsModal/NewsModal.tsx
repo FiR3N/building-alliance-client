@@ -13,12 +13,11 @@ import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
 import classNames from "classnames";
 
 interface NewsModalProps {
-  state: boolean;
   closeMethod: Dispatch<SetStateAction<boolean>>;
   news?: INews;
 }
 
-const NewsModal: FC<NewsModalProps> = ({ state, closeMethod, news }) => {
+const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
   const [name, setName] = useState<string>(news ? news.name : "");
   const [date, setDate] = useState<string>(news ? news.date : "");
   const [description, setDescription] = useState<string>(
@@ -87,7 +86,7 @@ const NewsModal: FC<NewsModalProps> = ({ state, closeMethod, news }) => {
   }, [isSubmitSuccessful]);
 
   return (
-    <Modal closeMethod={closeMethod} state={state}>
+    <Modal closeMethod={closeMethod}>
       <div className={cls.newsModal}>
         {news ? (
           <h2 className={cls.newsModalTitle}>Редактирование</h2>

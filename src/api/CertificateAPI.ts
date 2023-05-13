@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { getAccessToken } from "../utils/GetAccessToken";
-import { IVacancy } from "../models/Entity/IVacancy";
+import { ICertificate } from "../models/Entity/ICertificate";
 
-export const vacancyAPI = createApi({
-  reducerPath: "vacancyAPI",
+export const certificateAPI = createApi({
+  reducerPath: "certificateAPI",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
     // Add preprocess function to modify request headers
@@ -16,37 +16,40 @@ export const vacancyAPI = createApi({
     },
   }),
 
-  tagTypes: ["Vacancy"],
+  tagTypes: ["Certificates"],
   endpoints: (build) => ({
-    getNews: build.query<IVacancy[], {}>({
+    getCertificates: build.query<ICertificate[], {}>({
       query: () => ({
-        url: `/vacancies`,
+        url: `/certificates`,
         method: "GET",
       }),
-      providesTags: (result) => ["Vacancy"],
+      providesTags: (result) => ["Certificates"],
     }),
-    postVacancy: build.mutation<IVacancy, { formData: FormData }>({
+    postCertificate: build.mutation<ICertificate, { formData: FormData }>({
       query: ({ formData }) => ({
-        url: `/vacancies`,
+        url: `/certificates`,
         method: "post",
         body: formData,
       }),
-      invalidatesTags: ["Vacancy"],
+      invalidatesTags: ["Certificates"],
     }),
-    putNews: build.mutation<IVacancy, { id: Number; formData: FormData }>({
+    putCertificate: build.mutation<
+      ICertificate,
+      { id: Number; formData: FormData }
+    >({
       query: ({ id, formData }) => ({
-        url: `/vacancies/${id}`,
+        url: `/certificates/${id}`,
         method: "put",
         body: formData,
       }),
-      invalidatesTags: ["Vacancy"],
+      invalidatesTags: ["Certificates"],
     }),
-    deleteNews: build.mutation<IVacancy, { id: Number }>({
+    deleteCertificate: build.mutation<ICertificate, { id: Number }>({
       query: ({ id }) => ({
-        url: `/vacancies/${id}`,
+        url: `/certificates/${id}`,
         method: "delete",
       }),
-      invalidatesTags: ["Vacancy"],
+      invalidatesTags: ["Certificates"],
     }),
   }),
 });

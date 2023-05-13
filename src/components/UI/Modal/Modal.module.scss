@@ -26,6 +26,16 @@
     border-radius: 12px;
 
     transform: translateX(-50%);
+
+    &._isSmall {
+      // top: 90px;
+      width: 50%;
+      img {
+        height: 50vh;
+
+        object-fit: contain;
+      }
+    }
   }
   &CloseBut {
     position: absolute;

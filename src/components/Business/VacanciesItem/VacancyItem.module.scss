@@ -4,6 +4,29 @@
   display: flex;
   align-items: flex-start;
   gap: 20px;
+
+  &AdminPanel {
+    padding: 5px;
+    text-align: right;
+
+    background-color: $ui-sun-color;
+    border-radius: 8px;
+    img {
+      width: 20px;
+      height: 20px;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+      @media #{$ui-mouse-device} {
+        &:hover {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+  }
+
   &Image {
     width: 100%;
     max-width: 40%;

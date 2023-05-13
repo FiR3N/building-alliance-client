@@ -4,20 +4,14 @@ import Modal from "../../../UI/Modal/Modal";
 import MyButton from "../../../UI/MyButton/MyButton";
 import { INews } from "../../../../models/Entity/INews";
 import { newsAPI } from "../../../../api/NewsAPI";
-import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
 import classNames from "classnames";
 
 interface NewsDeleteModalProps {
-  state: boolean;
   closeMethod: Dispatch<SetStateAction<boolean>>;
   news: INews;
 }
 
-const NewsDeleteModal: FC<NewsDeleteModalProps> = ({
-  state,
-  closeMethod,
-  news,
-}) => {
+const NewsDeleteModal: FC<NewsDeleteModalProps> = ({ closeMethod, news }) => {
   const [deleteNews, { isSuccess, isError }] = newsAPI.useDeleteNewsMutation();
 
   const deleteNewsHandler = async () => {
@@ -31,7 +25,7 @@ const NewsDeleteModal: FC<NewsDeleteModalProps> = ({
   }, [isSuccess]);
 
   return (
-    <Modal closeMethod={closeMethod} state={state}>
+    <Modal closeMethod={closeMethod}>
       <div className={cls.newsDeleteModal}>
         <h2 className={cls.newsDeleteModalTitle}>
           Вы точно уверенны, что хотите удалить данную новость?

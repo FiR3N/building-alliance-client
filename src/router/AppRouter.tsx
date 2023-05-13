@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Main from "../pages/Main/Main";
+
 import { ROUTES } from "./Routes";
 // import Employees from "../pages/Employees/Employees";
 import { Suspense, lazy } from "react";
@@ -31,6 +31,7 @@ const Admin = lazy(() => import("../pages/Admin/Admin"));
 const AdminSettings = lazy(
   () => import("../pages/AdminSettings/AdminSettings")
 );
+const Main = lazy(() => import("../pages/Main/Main"));
 
 const AppRouter = () => {
   const { isAuth } = useTypeSelector((state) => state.userReducer);

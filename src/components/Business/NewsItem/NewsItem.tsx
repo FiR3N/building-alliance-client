@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import cls from "./NewsItem.module.scss";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import StringToUrl from "../../../utils/StringToUrl";
 import { rusToLatin } from "../../../utils/Transliterate";
 import { MdDateRange } from "react-icons/md";
 import { INews } from "../../../models/Entity/INews";
@@ -26,18 +25,10 @@ const NewsItem: FC<NewsItemProps> = ({ news, isAdmin }) => {
   return (
     <>
       {isNewsChangeModalOpen && (
-        <NewsModal
-          state={isNewsChangeModalOpen}
-          closeMethod={setIsNewsChangeModalOpen}
-          news={news}
-        />
+        <NewsModal closeMethod={setIsNewsChangeModalOpen} news={news} />
       )}
       {isNewsDeleteModalOpen && (
-        <NewsDeleteModal
-          state={isNewsDeleteModalOpen}
-          closeMethod={setIsNewsDeleteModalOpen}
-          news={news}
-        />
+        <NewsDeleteModal closeMethod={setIsNewsDeleteModalOpen} news={news} />
       )}
       <div className={cls.newsItem}>
         {isAdmin && (
@@ -57,7 +48,7 @@ const NewsItem: FC<NewsItemProps> = ({ news, isAdmin }) => {
 
         <Link
           state={news}
-          to={`/news/${StringToUrl(rusToLatin(news.name))}/${news.id}`}
+          to={`/news/${rusToLatin(news.name)}/${news.id}`}
           className={classNames(
             cls.newsItemContent,
             isAdmin && cls._notAnimated

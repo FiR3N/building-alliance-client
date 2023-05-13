@@ -38,8 +38,9 @@ export function rusToLatin(text: string): string {
 
   return newStr
     .toLowerCase()
+    .replace(/[^a-zA-Zа-яА-Я0-9]/g, " ")
+    .replace(/ +/g, "-")
     .split("")
     .map((char) => (map[char] ? map[char] : char))
-    .join("")
-    .replace(/[^a-zA-Z0-9\-]/g, "");
+    .join("");
 }

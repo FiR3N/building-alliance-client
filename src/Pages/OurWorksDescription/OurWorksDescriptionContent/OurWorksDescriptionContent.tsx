@@ -1,10 +1,10 @@
 import { FC, useState } from "react";
 import cls from "../OurWorksDescription.module.scss";
-import { IWork } from "../../../models/IWorks";
 import classNames from "classnames";
 import sadSmile from "../../../assets/img/sad-smile.svg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Modal from "../../../components/UI/Modal/Modal";
+import { IWork } from "../../../models/Entity/IWorks";
 
 interface OurWorksDescriptionContentProps {
   work: IWork | null;
@@ -24,7 +24,7 @@ const OurWorksDescriptionContent: FC<OurWorksDescriptionContentProps> = ({
   return (
     <>
       {isModalOpen && (
-        <Modal closeMethod={setIsModalOpen} state={isModalOpen}>
+        <Modal isSmall closeMethod={setIsModalOpen}>
           <div className={cls.ourWorksDescriptionInModal}>
             {/* <h2>{work?.name}</h2> */}
             <LazyLoadImage src={image} alt={work?.name} effect="blur" />
@@ -40,7 +40,7 @@ const OurWorksDescriptionContent: FC<OurWorksDescriptionContentProps> = ({
               <h2 className={cls.ourWorksDescriptionTitle}>{work.name}</h2>
               <div className={cls.ourWorksDescriptionMain}>
                 <div className={cls.ourWorksDescriptionText}>
-                  {work?.infos?.map((item) => (
+                  {work.infos?.map((item) => (
                     <p key={item.id} className="default-text">
                       {item.description}
                     </p>

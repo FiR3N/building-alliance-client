@@ -3,19 +3,17 @@ import cls from "./Admin.module.scss";
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
 import Loader from "../../components/UI/Loader/Loader";
 import { useLocation } from "react-router-dom";
-import { useTypeSelector } from "../../hooks/useTypeSelector";
 import classNames from "classnames";
-import AdminSwitcher from "../../components/Business/AdminSwitcher/AdminSwitcher";
 
 const AdminInfo = lazy(
   () => import("../../components/Business/AdminInfo/AdminInfo")
 );
+const AdminSwitcher = lazy(
+  () => import("../../components/Business/AdminSwitcher/AdminSwitcher")
+);
 
-interface AdminProps {}
-
-const Admin: FC<AdminProps> = () => {
+const Admin: FC = () => {
   const { pathname } = useLocation();
-  const { user } = useTypeSelector((state) => state.userReducer);
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);

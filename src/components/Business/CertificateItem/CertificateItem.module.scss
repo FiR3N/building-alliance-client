@@ -1,17 +1,45 @@
 .certificateItem {
   min-width: 200px;
+  flex: 0 0 calc(25% - 20px);
 
   position: relative;
 
-  flex: 0 0 calc(25% - 20px);
+  &Content {
+    cursor: pointer;
 
-  cursor: pointer;
+    transition: all 0.5s ease;
 
-  transition: all 0.5s ease;
+    @media #{$ui-mouse-device} {
+      &:hover {
+        transform: scale(1.1);
+      }
+      &._notAnimated {
+        &:hover {
+          transform: none;
+        }
+      }
+    }
+  }
 
-  @media #{$ui-mouse-device} {
-    &:hover {
-      transform: scale(1.1);
+  &AdminPanel {
+    padding: 5px;
+    text-align: right;
+
+    background-color: $ui-sun-color;
+    border-radius: 8px;
+    img {
+      width: 20px;
+      height: 20px;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+      @media #{$ui-mouse-device} {
+        &:hover {
+          filter: brightness(0) invert(1);
+        }
+      }
     }
   }
 
@@ -30,6 +58,7 @@
   &Info {
     padding: 10px 5px;
     width: 100%;
+    min-height: 50px;
 
     position: absolute;
     left: 0;
@@ -37,13 +66,13 @@
 
     border-radius: 0px 0px 8px 8px;
 
+    background-color: $ui-sun-color;
+
     &Text {
       font-weight: 600;
 
       color: white;
     }
-
-    background-color: $ui-sun-color;
   }
 
   @media screen and (max-width: 890px) {
