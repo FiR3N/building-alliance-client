@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import cls from "./AdminVacancyPage.module.scss";
 import MyButton from "../../UI/MyButton/MyButton";
 import VacancyList from "../VacanciesList/VacancyList";
 import VacancyModal from "../Modals/VacancyModal/VacancyModal";
@@ -11,7 +10,7 @@ const AdminVacancyPage: FC = () => {
       {isVacancyModalOpen && (
         <VacancyModal closeMethod={setIsVacancyModalOpen} />
       )}
-      <div className={cls.adminVacancyPage}>
+      <div>
         <MyButton onClick={() => setIsVacancyModalOpen(true)}>
           Добавить вакансию
         </MyButton>

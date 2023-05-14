@@ -15,6 +15,8 @@ import users from "../../../assets/img/users.png";
 import vacancy from "../../../assets/img/vacancy.png";
 import AdminVacancyPage from "../AdminVacancyPage/AdminVacancyPage";
 import Loader from "../../UI/Loader/Loader";
+import UserList from "../UserList/UserList";
+import AdminUserPage from "../AdminUserPage/AdminUserPage";
 
 const AdminSwitcher: FC = () => {
   const { user } = useTypeSelector((state) => state.userReducer);
@@ -153,7 +155,7 @@ const AdminSwitcher: FC = () => {
         {isVacanciesOpen && <AdminVacancyPage />}
 
         {isWorksOpen && <OurWorksList isFull />}
-        {user.roleId === 1 && isUsersOpen && <p>Пользователи</p>}
+        {user.roleId === 1 && isUsersOpen && <AdminUserPage />}
       </Suspense>
     </>
   );

@@ -1,0 +1,48 @@
+.userItem {
+  width: 100%;
+
+  &AdminPanel {
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: right;
+
+    background-color: $ui-sun-color;
+    border-radius: 8px;
+    img {
+      width: 20px;
+      height: 20px;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+      @media #{$ui-mouse-device} {
+        &:hover {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+  }
+  &Content {
+    display: flex;
+    gap: 20px;
+  }
+  &Image {
+    max-height: 250px;
+    width: 100%;
+    flex: 0 0 40%;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+  }
+  &Text {
+    flex: 0 0 60%;
+  }
+
+  @media #{$ui-mobile-max} {
+    &Content {
+      flex-direction: column;
+    }
+  }
+}

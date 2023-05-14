@@ -77,15 +77,9 @@ const CertificateModal: FC<CertificateModalProps> = ({
           </InfoBlock>
         )}
         {putError && (
-          <p className={classNames(cls.certificateModalError, "error-text")}>
-            Ошибка редактирования!
-          </p>
+          <InfoBlock blockType={-1}>Ошибка редактирования!</InfoBlock>
         )}
-        {createError && (
-          <p className={classNames(cls.certificateModalError, "error-text")}>
-            Ошибка создания!
-          </p>
-        )}
+        {createError && <InfoBlock blockType={-1}>Ошибка создания!</InfoBlock>}
         <form
           className={cls.certificateModalForm}
           onSubmit={handleSubmit(onSubmit)}

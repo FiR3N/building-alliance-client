@@ -5,6 +5,7 @@ import { servicesAPI } from "../api/ServicesAPI";
 import userReducer from "./slices/userReducer";
 import { vacancyAPI } from "../api/VacancyAPI";
 import { certificateAPI } from "../api/CertificateAPI";
+import { userAPI } from "../api/UserService";
 
 const rootReducer = combineReducers({
   userReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   [servicesAPI.reducerPath]: servicesAPI.reducer,
   [vacancyAPI.reducerPath]: vacancyAPI.reducer,
   [certificateAPI.reducerPath]: certificateAPI.reducer,
+  [userAPI.reducerPath]: userAPI.reducer,
 });
 
 export const setupStore = () => {
@@ -24,7 +26,8 @@ export const setupStore = () => {
         .concat(worksAPI.middleware)
         .concat(servicesAPI.middleware)
         .concat(vacancyAPI.middleware)
-        .concat(certificateAPI.middleware),
+        .concat(certificateAPI.middleware)
+        .concat(userAPI.middleware),
   });
 };
 

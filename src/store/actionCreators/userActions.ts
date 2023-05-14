@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import UserService from "../../api/UserService";
 import { $api } from "../../api";
 import { IUser } from "../../models/Entity/IUser";
+import { UserService } from "../../api/UserService";
 
 export const login = createAsyncThunk(
   "user/login",

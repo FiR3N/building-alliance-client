@@ -19,7 +19,7 @@ const VacanacyDeleteModal: FC<VacanacyDeleteModalProps> = ({
   const [deleteVacancy, { isSuccess, isError }] =
     vacancyAPI.useDeleteNewsMutation();
 
-  const deleteNewsHandler = async () => {
+  const deleteVacancyHandler = async () => {
     await deleteVacancy({ id: vacancy.id });
   };
 
@@ -50,7 +50,7 @@ const VacanacyDeleteModal: FC<VacanacyDeleteModalProps> = ({
           <span className="bold-text">Описание вакансии:</span>{" "}
           {vacancy.description}
         </p>
-        <MyButton onClick={deleteNewsHandler}>Да</MyButton>
+        <MyButton onClick={deleteVacancyHandler}>Да</MyButton>
       </div>
     </Modal>
   );

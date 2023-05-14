@@ -2,12 +2,12 @@ import { FC, useEffect, useState } from "react";
 import cls from "./AdminInfo.module.scss";
 import { useTypeSelector } from "../../../hooks/useTypeSelector";
 import MyButton from "../../UI/MyButton/MyButton";
-import UserService from "../../../api/UserService";
 import { IRole } from "../../../models/Entity/IRole";
 import { logout } from "../../../store/actionCreators/userActions";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store/store";
 import { Link } from "react-router-dom";
+import { UserService } from "../../../api/UserService";
 
 const AdminInfo: FC = () => {
   const { user } = useTypeSelector((state) => state.userReducer);

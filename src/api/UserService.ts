@@ -3,14 +3,65 @@ import { AuthResponse } from "../models/AuthResponse";
 import { $api } from ".";
 import { IUser } from "../models/Entity/IUser";
 import { IRole } from "../models/Entity/IRole";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import { getAccessToken } from "../utils/GetAccessToken";
 
-export default class UserService {
+export const userAPI = createApi({
+  reducerPath: "userAPI",
+  baseQuery: fetchBaseQuery({
+    baseUrl: import.meta.env.VITE_API_URL,
+    prepareHeaders: (headers) => {
+      const token = getAccessToken();
+      if (token) {
+        headers.set("authorization", token);
+      }
+      return headers;
+    },
+  }),
+
+  tagTypes: ["User"],
+  endpoints: (build) => ({
+    getUsers: build.query<IUser[], {}>({
+      query: () => ({
+        url: `/users`,
+        method: "GET",
+      }),
+      providesTags: (result) => ["User"],
+    }),
+    postUser: build.mutation<IUser, { formData: FormData }>({
+      query: ({ formData }) => ({
+        url: `/users`,
+        method: "post",
+        body: formData,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    putUser: build.mutation<IUser, { id: Number; formData: FormData }>({
+      query: ({ id, formData }) => ({
+        url: `/users/${id}`,
+        method: "put",
+        body: formData,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    deleteUser: build.mutation<IUser, { id: Number }>({
+      query: ({ id }) => ({
+        url: `/users/${id}`,
+        method: "delete",
+      }),
+      invalidatesTags: ["User"],
+    }),
+  }),
+});
+
+export class UserService {
   static async login(
     login: string,
     password: string
   ): Promise<AxiosResponse<AuthResponse>> {
     return $api.post<AuthResponse>("/users/login", { login, password });
   }
+
   static async getUserById(userId: number) {
     return $api.get<IUser>(`/users/${userId}`);
   }

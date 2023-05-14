@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import cls from "./AdminNewsPage.module.scss";
 import NewsList from "../NewsList/NewsList";
 import MyButton from "../../UI/MyButton/MyButton";
 import NewsModal from "../Modals/NewsModal/NewsModal";
@@ -9,7 +8,7 @@ const AdminNewsPage: FC = () => {
   return (
     <>
       {isNewsModalOpen && <NewsModal closeMethod={setIsNewsModalOpen} />}
-      <div className={cls.adminNewsPage}>
+      <div>
         <MyButton onClick={() => setIsNewsModalOpen(true)}>
           Добавить новость
         </MyButton>
