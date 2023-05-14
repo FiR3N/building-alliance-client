@@ -1,6 +1,5 @@
 import { FC } from "react";
 import cls from "../WorkProcess.module.scss";
-import RedirectToContactBlock from "../../../components/UI/RedirectToContactBlock/RedirectToContactBlock";
 import ourApproch from "../../../assets/img/our-approach.webp";
 import research from "../../../assets/img/research.webp";
 import environment from "../../../assets/img/environment.webp";
@@ -8,6 +7,7 @@ import modeling from "../../../assets/img/modelling.webp";
 import collaboration from "../../../assets/img/collaboration.webp";
 import technology from "../../../assets/img/technology.webp";
 import classNames from "classnames";
+import RedirectToContactBlock from "../../../components/Blocks/RedirectToContactBlock/RedirectToContactBlock";
 
 interface WorkProcessContentProps {}
 

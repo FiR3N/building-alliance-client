@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import UserService from "../../api/UserService";
+import { $api } from "../../api";
+import { IUser } from "../../models/Entity/IUser";
 
 export const login = createAsyncThunk(
   "user/login",
@@ -46,7 +48,6 @@ export const updateUser = createAsyncThunk(
       surname: string;
       patronymic: string;
       image: File;
-      login: string;
     },
     thunkAPI
   ) => {
@@ -55,13 +56,13 @@ export const updateUser = createAsyncThunk(
       formData.append("name", userData.name);
       formData.append("surname", userData.surname);
       formData.append("patronymic", userData.patronymic);
-      formData.append("login", userData.login);
       formData.append("image", userData.image);
 
       const { data } = await UserService.updateUserByUser(
         userData.id,
         formData
       );
+
       return data;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.response?.data?.message);

@@ -1,7 +1,6 @@
 import { FC, memo } from "react";
 import cls from "../Header.module.scss";
 import classNames from "classnames";
-import Socials from "../../../UI/Socials/Socials";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";

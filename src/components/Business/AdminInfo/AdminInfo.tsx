@@ -35,10 +35,17 @@ const AdminInfo: FC = () => {
           />
           <div className={cls.adminInfoUserText}>
             <p className="bold-title-text">
-              {user.surname} {user.name} {user.patronymic}
+              ФИО:{" "}
+              <span className="default-text">
+                {user.surname} {user.name} {user.patronymic}
+              </span>
             </p>
-            <p className="bold-title-text">{user.login}</p>
-            <p className="bold-title-text">{role.name}</p>
+            <p className="bold-title-text">
+              Логин: <span className="default-text">{user.login}</span>
+            </p>
+            <p className="bold-title-text">
+              Роль: <span className="default-text">{role.name}</span>
+            </p>
           </div>
         </div>
         <div className={cls.adminInfoButtons}>

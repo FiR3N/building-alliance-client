@@ -21,59 +21,6 @@ const initialState: UserState = {
   error: false,
 };
 
-//   "user/reg",
-//   async (userData: {
-//     email: string;
-//     password: string;
-//     repeatePassword: string;
-//     name: string;
-//     surname: string;
-//     phone: string;
-//   }) => {
-//     const response = await UserService.reg(
-//       userData.email,
-//       userData.password,
-//       userData.repeatePassword,
-//       userData.name,
-//       userData.surname,
-//       userData.phone
-//     );
-//     const user = await UserService.getUserById(response.data.user.id);
-//     localStorage.setItem("token", response.data.accessToken);
-//     return user.data;
-//   }
-// );
-
-// export const checkIsAuth = createAsyncThunk("user/checkIsAuth", async () => {
-//   const response = await UserService.refresh();
-//   const user = await UserService.getUserById(response.data.user.id);
-//   localStorage.setItem("token", response.data.accessToken);
-//   return user.data;
-// });
-
-// export const userUpdate = createAsyncThunk(
-//   "user/userUpdate",
-//   async (userData: {
-//     id: number;
-//     name: string;
-//     surname: string;
-//     phone: string;
-//   }) => {
-//     await UserService.updateUserById(
-//       userData.id,
-//       userData.name,
-//       userData.surname,
-//       userData.phone
-//     );
-//     const user = await UserService.getUserById(userData.id);
-//     return user.data;
-//   }
-// );
-
-// export const logout = createAsyncThunk("user/logout", async () => {
-//   await UserService.logout();
-// });
-
 export const userSlice = createSlice({
   name: "user",
   initialState: initialState,
@@ -127,6 +74,7 @@ export const userSlice = createSlice({
         state.loading = true;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
+        console.log("from state >>>");
         state.user = action.payload;
         state.isAuth = true;
         state.loading = false;

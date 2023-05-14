@@ -13,12 +13,12 @@ import InfoBlock from "../../../components/Blocks/InfoBlock/InfoBlock";
 
 const AdminSettingsContent: FC = () => {
   const { user, error } = useTypeSelector((state) => state.userReducer);
+
   const dispatch = useDispatch<AppDispatch>();
 
   const [name, setName] = useState<string>(user?.name);
   const [surname, setSurname] = useState<string>(user?.surname);
   const [patronymic, setPatronymic] = useState<string>(user?.patronymic);
-  const [login, setLogin] = useState<string>(user?.login);
   const [image, setImage] = useState<File>();
 
   const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +42,6 @@ const AdminSettingsContent: FC = () => {
         surname: data.surname,
         patronymic: data.patronymic,
         image: image as File,
-        login: data.login,
       })
     );
   };
@@ -108,17 +107,6 @@ const AdminSettingsContent: FC = () => {
             type="file"
           />
 
-          <MyInput
-            labelTitle="Логин"
-            value={login}
-            onChange={(e) => setLogin(e.currentTarget.value)}
-            register={register("login", {
-              required: "Логин не может быть пустым!",
-            })}
-            error={errors.login}
-            placeholder="Введите логин..."
-            type="text"
-          />
           <MyButton>Сохранить</MyButton>
         </form>
       </div>
