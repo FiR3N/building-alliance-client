@@ -1,10 +1,10 @@
 import { FC, Suspense, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { IService } from "../../models/IService";
 import useFetch from "../../hooks/useFetch";
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
 import Loader from "../../components/UI/Loader/Loader";
 import ServiceDescriptionContent from "./ServiceDescriptionContent/ServiceDescriptionContent";
+import { IService } from "../../models/Entity/IService";
 
 const ServiceDescription: FC = () => {
   const { pathname, state: serviceFromState } = useLocation();

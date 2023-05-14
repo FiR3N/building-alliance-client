@@ -4,7 +4,7 @@ import { useLocation, useParams } from "react-router-dom";
 import Loader from "../../components/UI/Loader/Loader";
 import NewsDescriptionContent from "./NewsDescriptionContent/NewsDescriptionContent";
 import useFetch from "../../hooks/useFetch";
-import { INews } from "../../models/INews";
+import { INews } from "../../models/Entity/INews";
 
 const NewsDescription: FC = () => {
   const { pathname, state: newsFromState } = useLocation();

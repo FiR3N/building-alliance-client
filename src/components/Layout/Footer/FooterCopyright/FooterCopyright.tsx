@@ -1,7 +1,6 @@
 import { FC } from "react";
 import cls from "../Footer.module.scss";
 import classNames from "classnames";
-import Socials from "../../../UI/Socials/Socials";
 
 interface FooterCopyrightProps {}
 
@@ -22,7 +21,6 @@ const FooterCopyright: FC<FooterCopyrightProps> = () => {
             . Все права защищены © 2023
           </p>
         </div>
-        {/* <Socials /> */}
       </div>
     </div>
   );

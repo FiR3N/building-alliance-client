@@ -4,8 +4,8 @@ import PageLayout from "../../components/UI/PageLayout/PageLayout";
 import Loader from "../../components/UI/Loader/Loader";
 import { useLocation, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import { IWork } from "../../models/IWorks";
 import OurWorksDescriptionContent from "./OurWorksDescriptionContent/OurWorksDescriptionContent";
+import { IWork } from "../../models/Entity/IWorks";
 
 const OurWorksDescription: FC = () => {
   const { pathname, state: workFromState } = useLocation();

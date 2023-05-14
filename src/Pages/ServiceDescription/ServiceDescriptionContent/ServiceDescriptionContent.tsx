@@ -1,9 +1,9 @@
 import { FC } from "react";
 import cls from "../ServiceDescription.module.scss";
-import { IService } from "../../../models/IService";
 import classNames from "classnames";
 import sadSmile from "../../../assets/img/sad-smile.svg";
 import RedirectToContactBlock from "../../../components/Blocks/RedirectToContactBlock/RedirectToContactBlock";
+import { IService } from "../../../models/Entity/IService";
 
 interface ServiceDescriptionContentProps {
   service: IService;
@@ -21,7 +21,7 @@ const ServiceDescriptionContent: FC<ServiceDescriptionContentProps> = ({
               <h2 className={cls.serviceDescriptionTitle}>{service.name}</h2>
               <div className={cls.serviceDescriptionMain}>
                 <div className={cls.serviceDescriptionText}>
-                  {service?.infos?.map((item) => (
+                  {service.infos?.map((item) => (
                     <p key={item.id} className="default-text">
                       {item.description}
                     </p>
