@@ -1,17 +1,50 @@
 .serviceItem {
   min-width: 280px;
-
   flex: 0 1 calc(33.333% - 20px);
-  display: flex;
-  flex-direction: column;
 
-  color: white;
+  &.withMargins {
+    margin-bottom: 20px;
+  }
 
-  transition: all 0.3s ease;
+  &Content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 
-  @media #{$ui-mouse-device} {
-    &:hover {
-      transform: scale(1.05);
+    color: white;
+
+    transition: all 0.3s ease;
+
+    @media #{$ui-mouse-device} {
+      &:hover {
+        transform: scale(1.05);
+      }
+      &._notAnimated {
+        &:hover {
+          transform: none;
+        }
+      }
+    }
+  }
+  &AdminPanel {
+    padding: 5px;
+    text-align: right;
+
+    background-color: $ui-sun-color;
+    border-radius: 8px;
+    img {
+      width: 20px;
+      height: 20px;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+      @media #{$ui-mouse-device} {
+        &:hover {
+          filter: brightness(0) invert(1);
+        }
+      }
     }
   }
 

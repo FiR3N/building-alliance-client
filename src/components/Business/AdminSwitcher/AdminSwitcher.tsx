@@ -17,6 +17,7 @@ import AdminVacancyPage from "../AdminVacancyPage/AdminVacancyPage";
 import Loader from "../../UI/Loader/Loader";
 import UserList from "../UserList/UserList";
 import AdminUserPage from "../AdminUserPage/AdminUserPage";
+import AdminServicePage from "../AdminServicePage/AdminServicePage";
 
 const AdminSwitcher: FC = () => {
   const { user } = useTypeSelector((state) => state.userReducer);
@@ -150,7 +151,7 @@ const AdminSwitcher: FC = () => {
 
       <Suspense fallback={<Loader withMargins={true} />}>
         {isNewsOpen && <AdminNewsPage />}
-        {isServicesOpen && <ServiceList />}
+        {isServicesOpen && <AdminServicePage />}
         {isCertificatesOpen && <AdminCertificatePage />}
         {isVacanciesOpen && <AdminVacancyPage />}
 

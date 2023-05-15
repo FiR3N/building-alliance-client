@@ -10,8 +10,10 @@
   &Image {
     width: 100%;
     min-height: 200px;
-    max-height: 400px;
+    max-height: 500px;
     margin-bottom: 30px;
+
+    object-fit: contain;
   }
   &Date {
     margin-bottom: 10px;

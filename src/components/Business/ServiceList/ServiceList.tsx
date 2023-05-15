@@ -9,9 +9,10 @@ import { servicesAPI } from "../../../api/ServicesAPI";
 interface ServiceListProps {
   limitProp?: number;
   isFull?: boolean;
+  isAdmin?: boolean;
 }
 
-const ServiceList: FC<ServiceListProps> = ({ limitProp, isFull }) => {
+const ServiceList: FC<ServiceListProps> = ({ limitProp, isFull, isAdmin }) => {
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(limitProp || 9);
 
@@ -42,7 +43,7 @@ const ServiceList: FC<ServiceListProps> = ({ limitProp, isFull }) => {
         {serviceList?.rows ? (
           serviceList?.rows.length > 0 &&
           serviceList.rows.map((item) => (
-            <ServiceItem service={item} key={item.id} />
+            <ServiceItem service={item} isAdmin={isAdmin} key={item.id} />
           ))
         ) : (
           <Loader />

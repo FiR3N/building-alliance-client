@@ -8,7 +8,7 @@ export interface IService {
   id: number;
   name: string;
   image: string;
-  infos: IInfos[];
+  infos: IServiceInfos[];
   createdAt?: string;
   updatedAt?: string;
 }
