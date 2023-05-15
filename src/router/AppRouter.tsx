@@ -5,32 +5,32 @@ import { Suspense, lazy } from "react";
 import Loader from "../components/UI/Loader/Loader";
 import { useTypeSelector } from "../hooks/useTypeSelector";
 
-const Contact = lazy(() => import("../pages/Contact/Contact"));
-const History = lazy(() => import("../pages/History/History"));
-const Reviews = lazy(() => import("../pages/Reviews/Reviews"));
-const WorkProcess = lazy(() => import("../pages/WorkProcess/WorkProcess"));
-const AboutCompany = lazy(() => import("../pages/AboutCompany/AboutCompany"));
-const News = lazy(() => import("../pages/News/News"));
+const Contact = lazy(() => import("../Pages/Contact/Contact"));
+const History = lazy(() => import("../Pages/History/History"));
+const Reviews = lazy(() => import("../Pages/Reviews/Reviews"));
+const WorkProcess = lazy(() => import("../Pages/WorkProcess/WorkProcess"));
+const AboutCompany = lazy(() => import("../Pages/AboutCompany/AboutCompany"));
+const News = lazy(() => import("../Pages/News/News"));
 const NewsDescription = lazy(
-  () => import("../pages/NewsDescription/NewsDescription")
+  () => import("../Pages/NewsDescription/NewsDescription")
 );
-const Certificate = lazy(() => import("../pages/Certificate/Certificate"));
-const Services = lazy(() => import("../pages/Services/Services"));
+const Certificate = lazy(() => import("../Pages/Certificate/Certificate"));
+const Services = lazy(() => import("../Pages/Services/Services"));
 const ServiceDescription = lazy(
-  () => import("../pages/ServiceDescription/ServiceDescription")
+  () => import("../Pages/ServiceDescription/ServiceDescription")
 );
-const OurWorks = lazy(() => import("../pages/OurWorks/OurWorks"));
+const OurWorks = lazy(() => import("../Pages/OurWorks/OurWorks"));
 const OurWorksDescription = lazy(
-  () => import("../pages/OurWorksDescription/OurWorksDescription")
+  () => import("../Pages/OurWorksDescription/OurWorksDescription")
 );
-const About = lazy(() => import("../pages/About/About"));
-const Vacancies = lazy(() => import("../pages/Vacancies/Vacancies"));
-const AdminLogin = lazy(() => import("../pages/AdminLogin/AdminLogin"));
-const Admin = lazy(() => import("../pages/Admin/Admin"));
+const About = lazy(() => import("../Pages/About/About"));
+const Vacancies = lazy(() => import("../Pages/Vacancies/Vacancies"));
+const AdminLogin = lazy(() => import("../Pages/AdminLogin/AdminLogin"));
+const Admin = lazy(() => import("../Pages/Admin/Admin"));
 const AdminSettings = lazy(
-  () => import("../pages/AdminSettings/AdminSettings")
+  () => import("../Pages/AdminSettings/AdminSettings")
 );
-const Main = lazy(() => import("../pages/Main/Main"));
+const Main = lazy(() => import("../Pages/Main/Main"));
 
 const AppRouter = () => {
   const { isAuth } = useTypeSelector((state) => state.userReducer);
