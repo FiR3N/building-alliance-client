@@ -36,186 +36,153 @@ const AppRouter = () => {
   const { isAuth } = useTypeSelector((state) => state.userReducer);
 
   return (
-    // <Routes>
-    //   <Route path={ROUTES.HOME.en} element={<Main />} />
-    //   <Route
-    //     path={ROUTES.CONTACT.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <Contact />
-    //       </Suspense>
-    //     }
-    //   />
-    //   {/* <Route path={ROUTES.EMPLOYEES.en} element={<Employees />} /> */}
-
-    //   <Route
-    //     path={ROUTES.NEWS.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <News />
-    //       </Suspense>
-    //     }
-    //   />
-    //   <Route
-    //     path={ROUTES.NEWSPAGE.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <NewsDescription />
-    //       </Suspense>
-    //     }
-    //   />
-
-    //   <Route
-    //     path={ROUTES.SERVICES.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <Services />
-    //       </Suspense>
-    //     }
-    //   />
-    //   <Route
-    //     path={ROUTES.SERVICESPAGE.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <ServiceDescription />
-    //       </Suspense>
-    //     }
-    //   />
-
-    //   <Route
-    //     path={ROUTES.OURWORKS.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <OurWorks />
-    //       </Suspense>
-    //     }
-    //   />
-    //   <Route
-    //     path={ROUTES.OURWORKSPAGE.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <OurWorksDescription />
-    //       </Suspense>
-    //     }
-    //   />
-    //   <Route
-    //     path={ROUTES.VACANCIES.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <Vacancies />
-    //       </Suspense>
-    //     }
-    //   />
-    //   {isAuth && (
-    //     <>
-    //       <Route
-    //         path={ROUTES.ADMIN.en}
-    //         element={
-    //           <Suspense fallback={<Loader withMargins={true} />}>
-    //             <Admin />
-    //           </Suspense>
-    //         }
-    //       />
-    //       <Route
-    //         path={ROUTES.ADMINSETTINGS.en}
-    //         element={
-    //           <Suspense fallback={<Loader withMargins={true} />}>
-    //             <AdminSettings />
-    //           </Suspense>
-    //         }
-    //       />
-    //     </>
-    //   )}
-    //   <Route
-    //     path={ROUTES.ADMIN.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <AdminLogin />
-    //       </Suspense>
-    //     }
-    //   />
-
-    //   <Route
-    //     path={ROUTES.HISTORY.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <History />
-    //       </Suspense>
-    //     }
-    //   />
-    //   <Route
-    //     path={ROUTES.REVIEWS.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <Reviews />
-    //       </Suspense>
-    //     }
-    //   />
-    //   <Route
-    //     path={ROUTES.WORPPROCESS.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <WorkProcess />
-    //       </Suspense>
-    //     }
-    //   />
-    //   <Route
-    //     path={ROUTES.ABOUT.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <About />
-    //       </Suspense>
-    //     }
-    //   />
-    //   <Route
-    //     path={ROUTES.CERTIFICATE.en}
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <Certificate />
-    //       </Suspense>
-    //     }
-    //   />
-    //   <Route
-    //     path="*"
-    //     element={
-    //       <Suspense fallback={<Loader withMargins={true} />}>
-    //         <Main />
-    //       </Suspense>
-    //     }
-    //   />
-    // </Routes>
     <Routes>
-      <Suspense fallback={<Loader withMargins={true} />}>
-        <Route path={ROUTES.HOME.en} element={<Main />} />
-        <Route path={ROUTES.CONTACT.en} element={<Contact />} />
+      <Route path={ROUTES.HOME.en} element={<Main />} />
+      <Route
+        path={ROUTES.CONTACT.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Contact />
+          </Suspense>
+        }
+      />
+      {/* <Route path={ROUTES.EMPLOYEES.en} element={<Employees />} /> */}
 
-        <Route path={ROUTES.NEWS.en} element={<News />} />
-        <Route path={ROUTES.NEWSPAGE.en} element={<NewsDescription />} />
+      <Route
+        path={ROUTES.NEWS.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <News />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.NEWSPAGE.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <NewsDescription />
+          </Suspense>
+        }
+      />
 
-        <Route path={ROUTES.SERVICES.en} element={<Services />} />
-        <Route path={ROUTES.SERVICESPAGE.en} element={<ServiceDescription />} />
+      <Route
+        path={ROUTES.SERVICES.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Services />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.SERVICESPAGE.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <ServiceDescription />
+          </Suspense>
+        }
+      />
 
-        <Route path={ROUTES.OURWORKS.en} element={<OurWorks />} />
-        <Route
-          path={ROUTES.OURWORKSPAGE.en}
-          element={<OurWorksDescription />}
-        />
-        <Route path={ROUTES.VACANCIES.en} element={<Vacancies />} />
-        {isAuth && (
-          <>
-            <Route path={ROUTES.ADMIN.en} element={<Admin />} />
-            <Route path={ROUTES.ADMINSETTINGS.en} element={<AdminSettings />} />
-          </>
-        )}
-        <Route path={ROUTES.ADMIN.en} element={<AdminLogin />} />
+      <Route
+        path={ROUTES.OURWORKS.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <OurWorks />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.OURWORKSPAGE.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <OurWorksDescription />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.VACANCIES.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Vacancies />
+          </Suspense>
+        }
+      />
+      {isAuth && (
+        <>
+          <Route
+            path={ROUTES.ADMIN.en}
+            element={
+              <Suspense fallback={<Loader withMargins={true} />}>
+                <Admin />
+              </Suspense>
+            }
+          />
+          <Route
+            path={ROUTES.ADMINSETTINGS.en}
+            element={
+              <Suspense fallback={<Loader withMargins={true} />}>
+                <AdminSettings />
+              </Suspense>
+            }
+          />
+        </>
+      )}
+      <Route
+        path={ROUTES.ADMIN.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <AdminLogin />
+          </Suspense>
+        }
+      />
 
-        <Route path={ROUTES.HISTORY.en} element={<History />} />
-        <Route path={ROUTES.REVIEWS.en} element={<Reviews />} />
-        <Route path={ROUTES.WORPPROCESS.en} element={<WorkProcess />} />
-        <Route path={ROUTES.ABOUT.en} element={<About />} />
-        <Route path={ROUTES.CERTIFICATE.en} element={<Certificate />} />
-        <Route path="*" element={<Main />} />
-      </Suspense>
+      <Route
+        path={ROUTES.HISTORY.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <History />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.REVIEWS.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Reviews />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.WORPPROCESS.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <WorkProcess />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.ABOUT.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <About />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.CERTIFICATE.en}
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Certificate />
+          </Suspense>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <Suspense fallback={<Loader withMargins={true} />}>
+            <Main />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 };
