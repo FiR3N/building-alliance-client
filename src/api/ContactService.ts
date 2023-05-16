@@ -21,6 +21,25 @@ class ContactService {
       telephone,
     });
   }
+  static async sendVacancyFromUser(
+    name: string,
+    surname: string,
+    patronymic: string,
+    email: string,
+    telephone: string,
+    text: string,
+    vacancyName: string
+  ): Promise<AxiosResponse> {
+    return await $api.post("/contact/vacancy", {
+      name,
+      surname,
+      patronymic,
+      email,
+      telephone,
+      text,
+      vacancyName,
+    });
+  }
 }
 
 export default ContactService;

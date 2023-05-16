@@ -10,6 +10,7 @@ import editImage from "../../../assets/img/edit.svg";
 import deleteImage from "../../../assets/img/delete.svg";
 import VacanacyDeleteModal from "../Modals/VacancyDeleteModal/VacancyDeleteModal";
 import VacancyModal from "../Modals/VacancyModal/VacancyModal";
+import VacancyContactModal from "../Modals/VacancyContactModal/VacancyContactModal";
 
 interface VacancyItemProps {
   vacancy: IVacancy;
@@ -21,7 +22,8 @@ const VacancyItem: FC<VacancyItemProps> = ({ vacancy, isAdmin }) => {
     useState<boolean>(false);
   const [isVacancyDeleteModalOpen, setIsVacancyDeleteModalOpen] =
     useState<boolean>(false);
-
+  const [isVacancyContactModalOpen, setIsVacancyContactModalOpen] =
+    useState<boolean>(false);
   return (
     <>
       {isVacancyChangeModalOpen && (
@@ -36,7 +38,12 @@ const VacancyItem: FC<VacancyItemProps> = ({ vacancy, isAdmin }) => {
           vacancy={vacancy}
         />
       )}
-
+      {isVacancyContactModalOpen && (
+        <VacancyContactModal
+          closeMethod={setIsVacancyContactModalOpen}
+          vacancyName={vacancy.name}
+        />
+      )}
       {isAdmin && (
         <div className={cls.vacancyItemAdminPanel}>
           <img
@@ -79,9 +86,9 @@ const VacancyItem: FC<VacancyItemProps> = ({ vacancy, isAdmin }) => {
             Описание:{" "}
             <span className="default-text">{vacancy.description}</span>
           </p>
-          <Link to="/contact">
-            <MyButton>Контакты</MyButton>
-          </Link>
+          <MyButton onClick={() => setIsVacancyContactModalOpen(true)}>
+            Подать заявку
+          </MyButton>
         </div>
       </div>
     </>
