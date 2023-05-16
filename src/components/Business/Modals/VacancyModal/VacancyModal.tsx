@@ -30,7 +30,7 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
     vacancy ? vacancy.occupation : ""
   );
 
-  const [putVacancy, { error: putError }] = vacancyAPI.usePutNewsMutation();
+  const [putVacancy, { error: putError }] = vacancyAPI.usePutWorkMutation();
   const [createVacancy, { error: createError }] =
     vacancyAPI.usePostVacancyMutation();
 

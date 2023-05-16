@@ -4,6 +4,9 @@
 
   img {
     cursor: pointer;
+
+    object-fit: cover;
+    object-position: 50% 50%;
   }
 
   &Title {
@@ -37,6 +40,9 @@
 
     filter: grayscale(1);
 
+    object-fit: cover;
+    object-position: 50% 50%;
+
     transition: all 0.3s ease;
 
     @media #{$ui-mouse-device} {
@@ -52,6 +58,8 @@
       height: 100%;
       img {
         width: 100%;
+
+        border-radius: 8px;
       }
     }
   }

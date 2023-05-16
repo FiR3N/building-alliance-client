@@ -33,7 +33,7 @@ export const vacancyAPI = createApi({
       }),
       invalidatesTags: ["Vacancy"],
     }),
-    putNews: build.mutation<IVacancy, { id: Number; formData: FormData }>({
+    putWork: build.mutation<IVacancy, { id: Number; formData: FormData }>({
       query: ({ id, formData }) => ({
         url: `/vacancies/${id}`,
         method: "put",
@@ -41,7 +41,7 @@ export const vacancyAPI = createApi({
       }),
       invalidatesTags: ["Vacancy"],
     }),
-    deleteNews: build.mutation<IVacancy, { id: Number }>({
+    deleteWork: build.mutation<IVacancy, { id: Number }>({
       query: ({ id }) => ({
         url: `/vacancies/${id}`,
         method: "delete",

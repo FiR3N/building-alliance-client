@@ -10,12 +10,12 @@ const AdminServicePage: FC = () => {
       {isServiceModalOpen && (
         <ServiceModal closeMethod={setIsServiceModalOpen} />
       )}
-      <div>
+      <div className="container">
         <MyButton onClick={() => setIsServiceModalOpen(true)}>
           Добавить услугу
         </MyButton>
-        <ServiceList isAdmin />
       </div>
+      <ServiceList isAdmin />
     </>
   );
 };

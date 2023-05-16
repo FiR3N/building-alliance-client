@@ -8,12 +8,13 @@ const AdminNewsPage: FC = () => {
   return (
     <>
       {isNewsModalOpen && <NewsModal closeMethod={setIsNewsModalOpen} />}
-      <div>
+      <div className="container">
         <MyButton onClick={() => setIsNewsModalOpen(true)}>
           Добавить новость
         </MyButton>
-        <NewsList isFull isAdmin />
       </div>
+
+      <NewsList isFull isAdmin />
     </>
   );
 };

@@ -83,7 +83,7 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
     const modalRoot = document.querySelector("#modal-root");
     const firstDiv = modalRoot?.querySelector("div");
     firstDiv?.scrollTo({ top: 0 });
-  }, [isSubmitSuccessful]);
+  }, [isSubmitSuccessful, createError, putError]);
 
   return (
     <Modal closeMethod={closeMethod}>

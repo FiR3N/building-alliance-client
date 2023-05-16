@@ -57,7 +57,9 @@ const UserItem: FC<UserItemProps> = ({ user }) => {
             <p className="bold-title-text">
               Роль:{" "}
               <span className="default-text">
-                {user.roleId === 1 ? "Админ" : "Редактор"}
+                {(user.roleId === 1 && "Админ") ||
+                  (user.roleId === 2 && "Информационный редактор") ||
+                  (user.roleId === 3 && "Экономист")}
               </span>
             </p>
             <p className="bold-title-text">

@@ -11,12 +11,12 @@ const AdminCertificatePage: FC = () => {
       {isCertificateModalOpen && (
         <CertificateModal closeMethod={setIsCertificateModalOpen} />
       )}
-      <div>
+      <div className="container">
         <MyButton onClick={() => setIsCertificateModalOpen(true)}>
           Добавить сертификат
         </MyButton>
-        <CertificateList isAdmin />
       </div>
+      <CertificateList isAdmin />
     </>
   );
 };

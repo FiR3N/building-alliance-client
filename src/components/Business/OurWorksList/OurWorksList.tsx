@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import cls from "./OurWorksList.module.scss";
 import classNames from "classnames";
-import { worksAPI } from "../../../api/WorksService";
+import { worksAPI } from "../../../api/WorksAPI";
 import Loader from "../../UI/Loader/Loader";
 import sadSmile from "../../../assets/img/sad-smile.svg";
 import Pagination from "../../UI/Pagination/Pagination";
@@ -10,9 +10,14 @@ import OurWorksItem from "../OurWorksItem/OurWorksItem";
 interface OurWorksListProps {
   limitProp?: number;
   isFull?: boolean;
+  isAdmin?: boolean;
 }
 
-const OurWorksList: FC<OurWorksListProps> = ({ limitProp, isFull }) => {
+const OurWorksList: FC<OurWorksListProps> = ({
+  limitProp,
+  isFull,
+  isAdmin,
+}) => {
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(limitProp || 12);
 
@@ -34,16 +39,18 @@ const OurWorksList: FC<OurWorksListProps> = ({ limitProp, isFull }) => {
 
   return (
     <div className={classNames(cls.ourWorksList, "container")}>
-      {isFull && <h2 className={cls.ourWorksListTitle}>Выполненные работы</h2>}
+      {isFull && !isAdmin && (
+        <h2 className={cls.ourWorksListTitle}>Выполненные работы</h2>
+      )}
       {worksList?.rows ? (
         worksList.rows.length > 0 ? (
           <>
             <div className={cls.ourWorksListContent}>
               {worksList.rows.map((work) => (
-                <OurWorksItem key={work.id} work={work} />
+                <OurWorksItem key={work.id} work={work} isAdmin={isAdmin} />
               ))}
             </div>
-            {isFull && (
+            {(isFull || isAdmin) && (
               <Pagination
                 totalCount={worksList.count}
                 page={page}

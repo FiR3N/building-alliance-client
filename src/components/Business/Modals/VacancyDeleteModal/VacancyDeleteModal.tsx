@@ -17,7 +17,7 @@ const VacanacyDeleteModal: FC<VacanacyDeleteModalProps> = ({
 }) => {
   vacancy;
   const [deleteVacancy, { isSuccess, isError }] =
-    vacancyAPI.useDeleteNewsMutation();
+    vacancyAPI.useDeleteWorkMutation();
 
   const deleteVacancyHandler = async () => {
     await deleteVacancy({ id: vacancy.id });

@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store/store";
 import { Link } from "react-router-dom";
 import { UserService } from "../../../api/UserService";
+import classNames from "classnames";
 
 const AdminInfo: FC = () => {
   const { user } = useTypeSelector((state) => state.userReducer);
@@ -20,12 +21,8 @@ const AdminInfo: FC = () => {
     );
   }, [user]);
 
-  // const logoutHandler = () => {
-  //   dispatch(logout());
-  // }
-
   return (
-    <div className={cls.adminInfo}>
+    <div className={classNames(cls.adminInfo, "container")}>
       <div className={cls.adminInfoContent}>
         <div className={cls.adminInfoUser}>
           <img

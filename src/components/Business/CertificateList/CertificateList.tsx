@@ -20,7 +20,7 @@ const CertificateList: FC<CertificateListrops> = ({ isAdmin }) => {
     return (
       <div className={classNames(cls.certificateList, "container")}>
         <h2 className={cls.certificateListError}>
-          Сертификатов не найдено
+          Ошибка загрузки сертификатов
           <img className="smile-image" src={sadSmile} alt="sad-smile" />
         </h2>
       </div>
@@ -41,7 +41,7 @@ const CertificateList: FC<CertificateListrops> = ({ isAdmin }) => {
             ))
           ) : (
             <h2 className={cls.certificateListError}>
-              Новостей не найдено
+              Сертификатов не найдено
               <img className="smile-image" src={sadSmile} alt="sad-smile" />
             </h2>
           )

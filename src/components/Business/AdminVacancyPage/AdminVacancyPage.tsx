@@ -10,12 +10,12 @@ const AdminVacancyPage: FC = () => {
       {isVacancyModalOpen && (
         <VacancyModal closeMethod={setIsVacancyModalOpen} />
       )}
-      <div>
+      <div className="container">
         <MyButton onClick={() => setIsVacancyModalOpen(true)}>
           Добавить вакансию
         </MyButton>
-        <VacancyList isAdmin />
       </div>
+      <VacancyList isAdmin />
     </>
   );
 };

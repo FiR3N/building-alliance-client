@@ -15,15 +15,19 @@ import users from "../../../assets/img/users.png";
 import vacancy from "../../../assets/img/vacancy.png";
 import AdminVacancyPage from "../AdminVacancyPage/AdminVacancyPage";
 import Loader from "../../UI/Loader/Loader";
-import UserList from "../UserList/UserList";
 import AdminUserPage from "../AdminUserPage/AdminUserPage";
 import AdminServicePage from "../AdminServicePage/AdminServicePage";
+import AdminOurWorksPage from "../AdminOurWorksPage/AdminOurWorksPage";
 
 const AdminSwitcher: FC = () => {
   const { user } = useTypeSelector((state) => state.userReducer);
 
-  const [isNewsOpen, setIsNewsOpen] = useState<boolean>(true);
-  const [isServicesOpen, setIsServiceOpen] = useState<boolean>(false);
+  const [isNewsOpen, setIsNewsOpen] = useState<boolean>(
+    user.roleId === 1 || user.roleId === 2 ? true : false
+  );
+  const [isServicesOpen, setIsServiceOpen] = useState<boolean>(
+    user.roleId === 3 || user.roleId === 2 ? true : false
+  );
   const [isCertificatesOpen, setIsCertificatesOpen] = useState<boolean>(false);
   const [isUsersOpen, setIsUsersOpen] = useState<boolean>(false);
   const [isWorksOpen, setIsWorksOpen] = useState<boolean>(false);
@@ -84,79 +88,98 @@ const AdminSwitcher: FC = () => {
 
   return (
     <>
-      <div className={cls.adminSwitcher}>
-        <div
-          className={classNames(
-            cls.adminSwitcherItem,
-            isNewsOpen && cls._active
+      <div className={classNames(cls.adminSwitcher, "container")}>
+        <div className={cls.adminSwitcherContent}>
+          {(user.roleId === 2 || user.roleId === 1) && (
+            <div
+              className={classNames(
+                cls.adminSwitcherItem,
+                isNewsOpen && cls._active
+              )}
+              onClick={handleNewsClick}
+            >
+              <p className="bold-title-text">Новости</p>
+              <img src={news} alt="news" />
+            </div>
           )}
-          onClick={handleNewsClick}
-        >
-          <p className="bold-title-text">Новости</p>
-          <img src={news} alt="news" />
-        </div>
-        <div
-          className={classNames(
-            cls.adminSwitcherItem,
-            isServicesOpen && cls._active
+          {(user.roleId === 3 || user.roleId === 1) && (
+            <div
+              className={classNames(
+                cls.adminSwitcherItem,
+                isServicesOpen && cls._active
+              )}
+              onClick={handleServiceClick}
+            >
+              <p className="bold-title-text">Услуги</p>
+              <img src={services} alt="services" />
+            </div>
           )}
-          onClick={handleServiceClick}
-        >
-          <p className="bold-title-text">Услуги</p>
-          <img src={services} alt="services" />
-        </div>
-        <div
-          className={classNames(
-            cls.adminSwitcherItem,
-            isWorksOpen && cls._active
+
+          {(user.roleId === 2 || user.roleId === 1) && (
+            <div
+              className={classNames(
+                cls.adminSwitcherItem,
+                isWorksOpen && cls._active
+              )}
+              onClick={handleWorksClick}
+            >
+              <p className="bold-title-text">Работы</p>
+              <img src={works} alt="works" />
+            </div>
           )}
-          onClick={handleWorksClick}
-        >
-          <p className="bold-title-text">Работы</p>
-          <img src={works} alt="works" />
-        </div>
-        <div
-          className={classNames(
-            cls.adminSwitcherItem,
-            isCertificatesOpen && cls._active
+
+          {(user.roleId === 2 || user.roleId === 1) && (
+            <div
+              className={classNames(
+                cls.adminSwitcherItem,
+                isCertificatesOpen && cls._active
+              )}
+              onClick={handleCertificatesClick}
+            >
+              <p className="bold-title-text">Сертификаты</p>
+              <img src={certificate} alt="certificate" />
+            </div>
           )}
-          onClick={handleCertificatesClick}
-        >
-          <p className="bold-title-text">Сертификаты</p>
-          <img src={certificate} alt="certificate" />
-        </div>
-        <div
-          className={classNames(
-            cls.adminSwitcherItem,
-            isVacanciesOpen && cls._active
+          {(user.roleId === 3 || user.roleId === 1) && (
+            <div
+              className={classNames(
+                cls.adminSwitcherItem,
+                isVacanciesOpen && cls._active
+              )}
+              onClick={handleVacanciesClick}
+            >
+              <p className="bold-title-text">Вакансии</p>
+              <img src={vacancy} alt="vacancy" />
+            </div>
           )}
-          onClick={handleVacanciesClick}
-        >
-          <p className="bold-title-text">Вакансии</p>
-          <img src={vacancy} alt="vacancy" />
+
+          {user.roleId === 1 && (
+            <div
+              className={classNames(
+                cls.adminSwitcherItem,
+                isUsersOpen && cls._active
+              )}
+              onClick={handleUsersClick}
+            >
+              <p className="bold-title-text">Пользователи</p>
+              <img src={users} alt="users" />
+            </div>
+          )}
         </div>
-        {user.roleId === 1 && (
-          <div
-            className={classNames(
-              cls.adminSwitcherItem,
-              isUsersOpen && cls._active
-            )}
-            onClick={handleUsersClick}
-          >
-            <p className="bold-title-text">Пользователи</p>
-            <img src={users} alt="users" />
-          </div>
-        )}
       </div>
-
       <Suspense fallback={<Loader withMargins={true} />}>
-        {isNewsOpen && <AdminNewsPage />}
         {isServicesOpen && <AdminServicePage />}
-        {isCertificatesOpen && <AdminCertificatePage />}
         {isVacanciesOpen && <AdminVacancyPage />}
-
-        {isWorksOpen && <OurWorksList isFull />}
+        {isNewsOpen && <AdminNewsPage />}
+        {isCertificatesOpen && <AdminCertificatePage />}
+        {isWorksOpen && <AdminOurWorksPage />}
         {user.roleId === 1 && isUsersOpen && <AdminUserPage />}
+
+        {/* {isServicesOpen && <AdminServicePage />}
+        {isVacanciesOpen && <AdminVacancyPage />} */}
+        {/* {isNewsOpen && <AdminNewsPage />}
+        {isCertificatesOpen && <AdminCertificatePage />} */}
+        {/* {isWorksOpen && <AdminOurWorksPage />} */}
       </Suspense>
     </>
   );

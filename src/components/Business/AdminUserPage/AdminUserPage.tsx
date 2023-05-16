@@ -9,12 +9,12 @@ const AdminUserPage: FC = () => {
   return (
     <>
       {isUserModalOpen && <UserModal closeMethod={setIsUserModalOpen} />}
-      <div>
+      <div className="container">
         <MyButton onClick={() => setIsUserModalOpen(true)}>
           Добавить пользователя
         </MyButton>
-        <UserList />
       </div>
+      <UserList />
     </>
   );
 };

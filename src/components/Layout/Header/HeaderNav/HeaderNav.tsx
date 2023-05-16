@@ -5,11 +5,13 @@ import logo from "../../../../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import Navbar from "../../../Business/Navbar/Navbar";
 import Socials from "../../../Blocks/Socials/Socials";
+import { useTypeSelector } from "../../../../hooks/useTypeSelector";
+import MyButton from "../../../UI/MyButton/MyButton";
 interface HeaderNavProps {}
 
 const HeaderNav: FC<HeaderNavProps> = () => {
   const [isHambActive, setIsHambActive] = useState<boolean>(false);
-
+  const { isAuth } = useTypeSelector((state) => state.userReducer);
   useLayoutEffect(() => {
     if (isHambActive) {
       document.querySelector("body")?.classList.add("_noscroll");
@@ -25,6 +27,7 @@ const HeaderNav: FC<HeaderNavProps> = () => {
           <img className={cls.headerNavLogo} src={logo} alt="logo" />
         </Link>
         <Navbar />
+
         <div className={cls.headerNavButtons}>
           <div
             className={cls.headerNavHambContent}
@@ -36,6 +39,11 @@ const HeaderNav: FC<HeaderNavProps> = () => {
               <span className="bar"></span>
             </div>
           </div>
+          {isAuth && (
+            <Link to="/admin">
+              <MyButton>Админ</MyButton>
+            </Link>
+          )}
         </div>
       </div>
       <div

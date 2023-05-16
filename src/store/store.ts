@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { newsAPI } from "../api/NewsAPI";
-import { worksAPI } from "../api/WorksService";
+import { worksAPI } from "../api/WorksAPI";
 import { servicesAPI } from "../api/ServicesAPI";
 import userReducer from "./slices/userReducer";
 import { vacancyAPI } from "../api/VacancyAPI";

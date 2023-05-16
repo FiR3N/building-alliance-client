@@ -28,7 +28,7 @@ const CertificateItem: FC<CertificateItemProps> = ({
   return (
     <>
       {isModalOpen && (
-        <Modal closeMethod={setIsModalOpen} isSmall>
+        <Modal closeMethod={setIsModalOpen}>
           <div className={cls.certificateItemInModal}>
             <h2>{certificate.description}</h2>
             <LazyLoadImage

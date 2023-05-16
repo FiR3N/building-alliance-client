@@ -1,0 +1,74 @@
+.ourWorksModal {
+  label {
+    font-weight: 600;
+  }
+  &Title {
+    margin-bottom: 20px;
+  }
+  &Form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input {
+      width: 100%;
+    }
+
+    &Image {
+      height: 200px;
+      width: 200px;
+    }
+    &Error {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    &Infos {
+      position: relative;
+    }
+    &Info {
+      margin-bottom: 10px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      label {
+        flex: 0 0 calc(80% - 20px);
+        textarea {
+          width: 100%;
+          resize: none;
+        }
+      }
+      button {
+        flex: 0 0 calc(20% - 20px);
+      }
+    }
+    &Images {
+      position: relative;
+    }
+    &ImageItem {
+      margin-bottom: 20px;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+  @media #{$ui-tablet-max} {
+    &Form {
+      &Info {
+        flex-wrap: wrap;
+
+        label {
+          flex: 0 0 100%;
+        }
+      }
+    }
+  }
+}

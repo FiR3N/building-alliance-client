@@ -51,6 +51,9 @@
     margin-bottom: 10px;
 
     border-radius: 8px;
+
+    object-fit: cover;
+    object-position: 50% 50%;
   }
 
   &Date {
