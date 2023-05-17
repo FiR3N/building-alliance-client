@@ -49,16 +49,15 @@ const NewsItem: FC<NewsItemProps> = ({ news, isAdmin }) => {
         <Link
           state={news}
           to={`/news/${rusToLatin(news.name)}/${news.id}`}
-          className={classNames(
-            cls.newsItemContent,
-            isAdmin && cls._notAnimated
-          )}
+          className={cls.newsItemContent}
         >
-          <img
-            src={import.meta.env.VITE_API_URL + "/images/news/" + news.img}
-            alt={news.name}
-            className={cls.newsItemImage}
-          />
+          <div className={cls.newsItemImage}>
+            <img
+              src={import.meta.env.VITE_API_URL + "/images/news/" + news.img}
+              alt={news.name}
+            />
+          </div>
+
           <p className={classNames(cls.newsItemDate, "default-text")}>
             <MdDateRange /> {news.date}
           </p>

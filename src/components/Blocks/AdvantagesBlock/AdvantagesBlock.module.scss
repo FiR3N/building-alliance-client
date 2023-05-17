@@ -1,5 +1,5 @@
 .advantagesBlock {
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 
   display: flex;
   justify-content: center;
@@ -11,5 +11,9 @@
     flex: 0 0 calc(25% - 30px);
 
     text-align: center;
+  }
+
+  @media #{$ui-tablet-avg} {
+    margin-bottom: 20px;
   }
 }

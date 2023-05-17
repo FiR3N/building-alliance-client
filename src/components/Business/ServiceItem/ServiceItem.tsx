@@ -53,17 +53,18 @@ const ServiceItem: FC<ServiceItemProps> = ({ service, isAdmin }) => {
         <Link
           to={`${ROUTES.SERVICES.en}/${rusToLatin(service.name)}/${service.id}`}
           state={service}
-          className={classNames(
-            cls.serviceItemContent,
-            isAdmin && cls._notAnimated
-          )}
+          className={cls.serviceItemContent}
         >
-          <img
-            className={cls.serviceItemImage}
-            src={
-              import.meta.env.VITE_API_URL + "/images/services/" + service.image
-            }
-          />
+          <div className={cls.serviceItemImage}>
+            <img
+              src={
+                import.meta.env.VITE_API_URL +
+                "/images/services/" +
+                service.image
+              }
+            />
+          </div>
+
           <p className={cls.serviceItemName}>{service.name}</p>
         </Link>
       </div>

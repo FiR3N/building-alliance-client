@@ -25,16 +25,17 @@
       top: 0px;
       left: 5px;
 
-      background-color: $ui-black-color;
+      background-color: #171c30;
     }
     p {
-      color: $ui-black-color;
+      color: #171c30;
     }
     h5 {
       font-size: 28px;
-      line-height: 100%;
+      text-transform: uppercase;
+      line-height: 28px;
 
-      color: $ui-black-color;
+      color: #171c30;
     }
   }
   @media #{$ui-tablet-max} {

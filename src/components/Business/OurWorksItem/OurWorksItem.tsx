@@ -51,15 +51,15 @@ const OurWorksItem: FC<OurWorksItemProps> = ({ work, isAdmin }) => {
         <Link
           to={`${ROUTES.OURWORKS.en}/${rusToLatin(work.name)}/${work.id}`}
           state={work}
-          className={classNames(
-            cls.ourWorksItemContent,
-            isAdmin && cls._notAnimated
-          )}
+          className={cls.ourWorksItemContent}
         >
-          <img
-            className={cls.ourWorksItemImage}
-            src={import.meta.env.VITE_API_URL + "/images/works/" + work.image}
-          />
+          <div className={cls.ourWorksItemImage}>
+            <img
+              src={import.meta.env.VITE_API_URL + "/images/works/" + work.image}
+              alt={work.name}
+            />
+          </div>
+
           <p className={cls.ourWorksItemName}>{work.name}</p>
         </Link>
       </div>
