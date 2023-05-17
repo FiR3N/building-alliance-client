@@ -91,10 +91,6 @@ const VacancyContactModal: FC<VacancyContactModalProps> = ({
             placeholder="Введите ваш номер телефона..."
             register={register("telephone", {
               required: "Телефон не может быть пустым!",
-              pattern: {
-                value: /\+375\s\d{2}\s\d{3}\s\d{2}\s\d{2}$/,
-                message: "Неверый формат телефона(+375 ** *** ** **)",
-              },
             })}
             type="tel"
             error={errors.telephone}

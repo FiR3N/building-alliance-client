@@ -2,10 +2,12 @@
   padding-top: 30px;
   padding-bottom: 30px;
   &Content {
-    p,
     img,
     button {
       margin-bottom: 20px;
+    }
+    p {
+      text-indent: 40px;
     }
     img {
       width: 100%;
@@ -15,8 +17,11 @@
       object-fit: cover;
     }
     iframe {
+      margin-top: 20px;
       width: 100%;
       height: 500px;
+
+      border-radius: 8px;
     }
   }
   &Block {
@@ -32,9 +37,8 @@
     }
   }
   &List {
-    margin-top: -20px;
     margin-bottom: 20px;
-    padding-left: 30px;
+    padding-left: 40px;
     li {
       list-style: disc;
     }

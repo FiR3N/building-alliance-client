@@ -1,18 +1,18 @@
 import { FC, memo } from "react";
 import cls from "../Header.module.scss";
 import classNames from "classnames";
-import { BsFillTelephoneFill } from "react-icons/bs";
-import { BiTime } from "react-icons/bi";
-import { AiOutlineMail } from "react-icons/ai";
-interface HeaderInfoProps {}
 
-const HeaderInfo: FC<HeaderInfoProps> = memo(() => {
+import clock from "../../../../assets/img/clock.png";
+import telephone from "../../../../assets/img/telephone.png";
+import message from "../../../../assets/img/message.png";
+
+const HeaderInfo: FC = memo(() => {
   return (
     <div className={cls.headerInfo}>
       <div className={classNames(cls.headerInfoContent, "container")}>
         <div className={cls.headerInfoContentContacts}>
           <div className={cls.headerInfoContentContactsItem}>
-            <AiOutlineMail />
+            <img src={message} alt="сообщение" />
             <a
               href="mailto:oao-ssm@mail.ru?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
               className="light-text"
@@ -21,13 +21,13 @@ const HeaderInfo: FC<HeaderInfoProps> = memo(() => {
             </a>
           </div>
           <div className={cls.headerInfoContentContactsItem}>
-            <BsFillTelephoneFill />
+            <img src={telephone} alt="Телефон" />
             <a href="tel:8 0176 50 06 50" className="light-text">
               Телефон приёмной: 8 0176 50 06 50
             </a>
           </div>
           <div className={cls.headerInfoContentContactsItem}>
-            <BiTime />
+            <img src={clock} alt="Часы" />
             <p className="light-text">Время работы: Пн - Пт 8.00 - 17:00</p>
           </div>
         </div>

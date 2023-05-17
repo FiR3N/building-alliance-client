@@ -1,6 +1,7 @@
 .certificateItem {
   min-width: 200px;
   flex: 0 0 calc(25% - 20px);
+  height: 350px;
 
   position: relative;
 
@@ -45,10 +46,10 @@
 
   span {
     width: 100%;
-    max-height: 350px;
+    height: 350px;
     img {
       width: 100%;
-      max-height: 350px;
+      height: 350px;
 
       border-radius: 8px;
 
