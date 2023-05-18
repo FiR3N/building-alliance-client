@@ -11,8 +11,9 @@
   &Image {
     max-width: calc(40% - 20px);
     max-height: 300px;
-
     flex: 0 0 calc(40% - 20px);
+
+    border-radius: 8px;
   }
   &Text {
     flex: 0 0 calc(60% - 20px);

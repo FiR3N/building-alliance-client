@@ -18,6 +18,9 @@
   }
 
   &Error {
+    margin-top: 25vh;
+    margin-bottom: 25vh;
+
     text-align: center;
   }
   @media #{$ui-tablet-max} {

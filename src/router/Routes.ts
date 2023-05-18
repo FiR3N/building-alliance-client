@@ -43,6 +43,30 @@ export const ROUTES = {
     en: "/admin",
     ru: "Админ панель",
   },
+  ADMINNEWS: {
+    en: "news",
+    ru: "Управление новостями",
+  },
+  ADMINSERVICES: {
+    en: "services",
+    ru: "Управление услугами",
+  },
+  ADMINWORKS: {
+    en: "works",
+    ru: "Управление работами",
+  },
+  ADMINCERTIFICATES: {
+    en: "certificates",
+    ru: "Управление сертификатами",
+  },
+  ADMINUSERS: {
+    en: "users",
+    ru: "Управление админами",
+  },
+  ADMINVACANCIES: {
+    en: "vacancies",
+    ru: "Управление вакансиями",
+  },
   ADMINSETTINGS: {
     en: "/admin/settings",
     ru: "Настройки",

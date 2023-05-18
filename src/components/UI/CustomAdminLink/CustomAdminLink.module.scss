@@ -1,0 +1,43 @@
+.customAdminLink {
+  padding: 5px;
+  flex: 1 1 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  color: black;
+
+  &._active {
+    background-color: $ui-sun-color;
+    color: white;
+  }
+
+  img {
+    display: none;
+  }
+
+  @media #{$ui-mouse-device} {
+    &:hover {
+      background-color: $ui-sun-color;
+      color: white;
+    }
+  }
+
+  @media #{$ui-mobile-max} {
+    p {
+      display: none;
+    }
+
+    img {
+      height: 30px;
+      width: 30px;
+
+      display: block;
+    }
+  }
+}

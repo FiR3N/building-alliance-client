@@ -35,7 +35,7 @@ const UserList: FC = () => {
           </>
         ) : (
           <h2 className={cls.userListError}>
-            Новостей не найдено
+            Пользователей не найдено
             <img className="smile-image" src={sadSmile} alt="sad-smile" />
           </h2>
         )

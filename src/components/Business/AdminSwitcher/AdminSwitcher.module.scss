@@ -9,46 +9,4 @@
     border: 3px solid $ui-sun-color;
     border-radius: 8px;
   }
-
-  &Item {
-    padding: 5px;
-    flex: 1 1 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    transition: all 0.3s ease;
-
-    &._active {
-      background-color: $ui-sun-color;
-      color: white;
-    }
-
-    img {
-      display: none;
-    }
-
-    @media #{$ui-mouse-device} {
-      &:hover {
-        background-color: $ui-sun-color;
-        color: white;
-      }
-    }
-
-    @media #{$ui-mobile-max} {
-      p {
-        display: none;
-      }
-
-      img {
-        height: 30px;
-        width: 30px;
-
-        display: block;
-      }
-    }
-  }
 }
