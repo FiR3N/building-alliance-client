@@ -31,8 +31,11 @@
     transform: translateX(-50%);
 
     &._isSmall {
+      top: 50%;
       padding: 0;
-      top: 30px;
+      margin-bottom: 0;
+
+      transform: translate(-50%, -50%);
 
       img {
         max-width: 760px;
@@ -76,7 +79,6 @@
   }
   @media screen and (max-width: 48em) {
     &Content {
-      // max-width: 80%;
       padding: 20px;
     }
     &CloseBut {
