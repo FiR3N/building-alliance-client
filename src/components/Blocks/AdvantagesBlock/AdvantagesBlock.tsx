@@ -13,13 +13,13 @@ const AdvantagesBlock: FC = () => {
         <img src={adv1} alt="adv1" />
         <p className="bold-title-text">Работы</p>
         <p className="default-text">
-          Качественно выполняем работы по строительству объектов
-          первого-четвертого классов сложности
+          Выполняем работы по строительству объектов первого-четвертого классов
+          сложности
         </p>
       </div>
       <div className={cls.advantagesBlockItem}>
         <img src={adv2} alt="adv2" />
-        <p className="bold-title-text">Конструкции</p>
+        <p className="bold-title-text">Качество</p>
         <p className="default-text">
           Качество выполняемых работ не вызывает претензий со стороны заказчиков
           и инспекций

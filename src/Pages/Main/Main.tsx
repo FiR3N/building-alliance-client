@@ -134,7 +134,7 @@ const Main: FC = () => {
           />
           <div className={cls.mainAboveServicesItemText}>
             <p className="default-big-text">Спецстроймеханизация лидер по</p>
-            <h2>Постройками</h2>
+            <h2>Постройкам</h2>
             <p className="default-text">
               Сегодня ОАО «Спецстроймеханизация» - одно из ведущих строительных
               предприятий города Молодечно, чей вклад в развитие строительной

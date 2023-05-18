@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import { rusToLatin } from "../../../utils/Transliterate";
 import { ROUTES } from "../../../router/Routes";
 import { IService } from "../../../models/Entity/IService";
-
-import editImage from "../../../assets/img/edit.svg";
-import deleteImage from "../../../assets/img/delete.svg";
 import classNames from "classnames";
 import ServiceModal from "../Modals/ServiceModal/ServiceModal";
 import ServiceDeleteModal from "../Modals/ServiceDeleteModal/ServiceDeleteModal";
+import MyButton from "../../UI/MyButton/MyButton";
+
+import editImage from "../../../assets/img/edit.svg";
+import deleteImage from "../../../assets/img/delete.svg";
+import arrow from "../../../assets/img/arrow-right.png";
 
 interface ServiceItemProps {
   service: IService;
@@ -65,7 +67,12 @@ const ServiceItem: FC<ServiceItemProps> = ({ service, isAdmin }) => {
             />
           </div>
 
-          <p className={cls.serviceItemName}>{service.name}</p>
+          <div className={cls.serviceItemName}>
+            <p>{service.name}</p>
+            <MyButton>
+              <img src={arrow} alt="arrow" />
+            </MyButton>
+          </div>
         </Link>
       </div>
     </>

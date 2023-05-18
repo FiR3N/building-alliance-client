@@ -4,12 +4,14 @@ import { rusToLatin } from "../../../utils/Transliterate";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../router/Routes";
 import { IWork } from "../../../models/Entity/IWorks";
-
-import editImage from "../../../assets/img/edit.svg";
-import deleteImage from "../../../assets/img/delete.svg";
 import OurWorksDeleteModal from "../Modals/OurWorksDeleteModal/OurWorksDeleteModal";
 import OurWorkModal from "../Modals/OurWorksModal/OurWorksModal";
 import classNames from "classnames";
+import MyButton from "../../UI/MyButton/MyButton";
+
+import editImage from "../../../assets/img/edit.svg";
+import deleteImage from "../../../assets/img/delete.svg";
+import arrow from "../../../assets/img/arrow-right.png";
 
 interface OurWorksItemProps {
   work: IWork;
@@ -60,7 +62,12 @@ const OurWorksItem: FC<OurWorksItemProps> = ({ work, isAdmin }) => {
             />
           </div>
 
-          <p className={cls.ourWorksItemName}>{work.name}</p>
+          <div className={cls.ourWorksItemName}>
+            <p>{work.name}</p>
+            <MyButton>
+              <img src={arrow} alt="arrow" />
+            </MyButton>
+          </div>
         </Link>
       </div>
     </>
