@@ -4,7 +4,6 @@ import { IVacancy } from "../../../models/Entity/IVacancy";
 import vacancyImage from "../../../assets/img/vakancy-plug-img.jpg";
 import classNames from "classnames";
 import MyButton from "../../UI/MyButton/MyButton";
-import { Link } from "react-router-dom";
 
 import editImage from "../../../assets/img/edit.svg";
 import deleteImage from "../../../assets/img/delete.svg";

@@ -74,8 +74,6 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
       ...images,
       {
         image: e.target.files[0] as File,
-        // workId: work ? work.id : Math.random(),
-        // id: info.length + 1,
       },
     ]);
   };
@@ -160,13 +158,26 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
             error={errors.date}
           />
           {work && (
-            <img
-              src={
-                import.meta.env.VITE_API_URL + "/images/works/" + work?.image
-              }
-              alt="work-img"
-              className={cls.ourWorksModalFormImage}
-            />
+            <div className={cls.ourWorksModalFormImageBlock}>
+              <label>Текущее изображение</label>
+              <img
+                src={
+                  import.meta.env.VITE_API_URL + "/images/works/" + work?.image
+                }
+                alt="work-img"
+                className={cls.ourWorksModalFormImage}
+              />
+            </div>
+          )}
+          {image && (
+            <div className={cls.ourWorksModalFormImageBlock}>
+              <label>Новое изображение</label>
+              <img
+                src={URL.createObjectURL(image)}
+                alt="work_new_img"
+                className={cls.ourWorksModalFormImage}
+              />
+            </div>
           )}
           <MyInput labelTitle="Изображение" onChange={selectFile} type="file" />
           <div className={cls.ourWorksModalFormInfos}>

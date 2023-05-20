@@ -53,6 +53,14 @@
     padding-top: 15px;
     padding-bottom: 15px;
 
+    &Content {
+      p {
+        text-indent: 20px;
+      }
+      ul {
+        padding-left: 20px;
+      }
+    }
     iframe {
       height: 300px;
     }

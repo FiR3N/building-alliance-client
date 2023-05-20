@@ -4,7 +4,6 @@ import { ICertificate } from "../../../../models/Entity/ICertificate";
 import { certificateAPI } from "../../../../api/CertificateAPI";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ICertificateForm from "../../../../models/Forms/ICertificateForm";
-import classNames from "classnames";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
 import Modal from "../../../UI/Modal/Modal";
 import MyInput from "../../../UI/MyInput/MyInput";
@@ -96,15 +95,28 @@ const CertificateModal: FC<CertificateModalProps> = ({
           />
 
           {certificate && (
-            <img
-              src={
-                import.meta.env.VITE_API_URL +
-                "/images/certificates/" +
-                certificate?.image
-              }
-              alt="certificate_img"
-              className={cls.certificateModalFormImage}
-            />
+            <div className={cls.certificateModalFormImageBlock}>
+              <label>Текущее изображение</label>
+              <img
+                src={
+                  import.meta.env.VITE_API_URL +
+                  "/images/certificates/" +
+                  certificate?.image
+                }
+                alt="certificate_img"
+                className={cls.certificateModalFormImage}
+              />
+            </div>
+          )}
+          {image && (
+            <div className={cls.certificateModalFormImageBlock}>
+              <label>Новое изображение</label>
+              <img
+                src={URL.createObjectURL(image)}
+                alt="certificate_new_img"
+                className={cls.certificateModalFormImage}
+              />
+            </div>
           )}
           <MyInput labelTitle="Изображение" onChange={selectFile} type="file" />
 

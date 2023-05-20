@@ -181,14 +181,29 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
           )}
 
           {user && (
-            <img
-              src={
-                import.meta.env.VITE_API_URL + "/images/users/" + user?.image
-              }
-              alt="user-img"
-              className={cls.userModalFormImage}
-            />
+            <div className={cls.userModalFormImageBlock}>
+              <label>Текущее изображение</label>
+              <img
+                src={
+                  import.meta.env.VITE_API_URL + "/images/users/" + user?.image
+                }
+                alt="user-img"
+                className={cls.userModalFormImage}
+              />
+            </div>
           )}
+
+          {image && (
+            <div className={cls.userModalFormImageBlock}>
+              <label>Новое изображение</label>
+              <img
+                src={URL.createObjectURL(image)}
+                alt="user_new_img"
+                className={cls.userModalFormImage}
+              />
+            </div>
+          )}
+
           <MyInput labelTitle="Изображение" onChange={selectFile} type="file" />
 
           <MyButton type="submit">Сохранить</MyButton>

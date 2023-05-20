@@ -23,7 +23,7 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
   const [description, setDescription] = useState<string>(
     news ? news.description : ""
   );
-  const [image, setImage] = useState<File>();
+  const [image, setImage] = useState<File | null>();
   const [info, setInfo] = useState<IInfos[]>(news ? news.infos : []);
   const [putNews, { error: putError }] = newsAPI.usePutNewsMutation();
   const [createNews, { error: createError }] = newsAPI.usePostNewsMutation();
@@ -77,6 +77,8 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
     } else {
       await createNews({ formData: formData }).unwrap();
     }
+
+    setImage(null);
   };
 
   useEffect(() => {
@@ -144,13 +146,27 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
             error={errors.date}
           />
           {news && (
-            <img
-              src={import.meta.env.VITE_API_URL + "/images/news/" + news?.img}
-              alt="news_img"
-              className={cls.newsModalFormImage}
-            />
+            <div className={cls.newsModalFormImageBlock}>
+              <label>Текущее изображение</label>
+              <img
+                src={import.meta.env.VITE_API_URL + "/images/news/" + news?.img}
+                alt="news_img"
+                className={cls.newsModalFormImage}
+              />
+            </div>
+          )}
+          {image && (
+            <div className={cls.newsModalFormImageBlock}>
+              <label>Новое изображение</label>
+              <img
+                src={URL.createObjectURL(image)}
+                alt="news_new_img"
+                className={cls.newsModalFormImage}
+              />
+            </div>
           )}
           <MyInput labelTitle="Изображение" onChange={selectFile} type="file" />
+
           <div className={cls.newsModalFormInfos}>
             {info.map((item, index) => (
               <div className={cls.newsModalFormInfo} key={item.id}>

@@ -11,6 +11,11 @@
       width: 100%;
     }
 
+    &ImageBlock {
+      display: flex;
+      flex-direction: column;
+    }
+
     &Image {
       height: 200px;
       width: 200px;

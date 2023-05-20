@@ -13,10 +13,16 @@
     input {
       width: 100%;
     }
-
+    &ImageBlock {
+      display: flex;
+      flex-direction: column;
+    }
     &Image {
       height: 200px;
       width: 200px;
+
+      object-fit: cover;
+      object-position: 50% 50%;
     }
     &Error {
       font-size: 16px;

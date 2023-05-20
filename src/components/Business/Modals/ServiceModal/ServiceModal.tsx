@@ -6,7 +6,6 @@ import MyButton from "../../../UI/MyButton/MyButton";
 import MyTextArea from "../../../UI/MyTextArea/MyTextArea";
 import { SubmitHandler, useForm } from "react-hook-form";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
-import classNames from "classnames";
 import { IService, IServiceInfos } from "../../../../models/Entity/IService";
 import { servicesAPI } from "../../../../api/ServicesAPI";
 import IServiceForm from "../../../../models/Forms/IServiceForm";
@@ -117,15 +116,28 @@ const ServiceModal: FC<ServiceModalProps> = ({ closeMethod, service }) => {
           />
 
           {service && (
-            <img
-              src={
-                import.meta.env.VITE_API_URL +
-                "/images/services/" +
-                service?.image
-              }
-              alt="news_img"
-              className={cls.serviceModalFormImage}
-            />
+            <div className={cls.serviceModalFormImageBlock}>
+              <label>Текущее изображение</label>
+              <img
+                src={
+                  import.meta.env.VITE_API_URL +
+                  "/images/services/" +
+                  service?.image
+                }
+                alt="news_img"
+                className={cls.serviceModalFormImage}
+              />
+            </div>
+          )}
+          {image && (
+            <div className={cls.serviceModalFormImageBlock}>
+              <label>Новое изображение</label>
+              <img
+                src={URL.createObjectURL(image)}
+                alt="service_new_img"
+                className={cls.serviceModalFormImage}
+              />
+            </div>
           )}
           <MyInput labelTitle="Изображение" onChange={selectFile} type="file" />
           <div className={cls.serviceModalFormInfos}>

@@ -64,13 +64,7 @@ const AdminSwitcher: FC = () => {
           )}
 
           {user.roleId === 1 && (
-            <CustomAdminLink
-              to="users"
-              // className={classNames(
-              //   cls.adminSwitcherItem,
-              //   isUsersOpen && cls._active
-              // )}
-            >
+            <CustomAdminLink to="users">
               <p className="bold-title-text">Пользователи</p>
               <img src={users} alt="users" />
             </CustomAdminLink>
