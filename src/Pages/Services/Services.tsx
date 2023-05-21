@@ -17,7 +17,7 @@ const Services: FC = () => {
   return (
     <PageLayout title="Наши услуги" pathname={pathname}>
       <Suspense fallback={<Loader withMargins={true} />}>
-        <ServiceList />
+        <ServiceList isFull />
       </Suspense>
     </PageLayout>
   );

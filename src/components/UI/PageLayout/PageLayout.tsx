@@ -16,6 +16,7 @@ const PageLayout: FC<PageLayoutProps> = memo(
   ({ children, title, pathname }) => {
     const separatePathname = pathname.split("/").splice(1);
     let currentRoute: any;
+
     if (separatePathname.length === 1) {
       currentRoute = Object.values(ROUTES).find(
         (route) => route.en === pathname
@@ -28,6 +29,7 @@ const PageLayout: FC<PageLayoutProps> = memo(
         separatePathname[1],
       ];
     }
+
     return (
       <div className={cls.pageLayout}>
         <div className={cls.pageLayoutTitle}>

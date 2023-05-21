@@ -7,28 +7,36 @@ const WorksCountBlock: FC = () => {
     <div className={cls.worksCountBlock}>
       <div className={classNames(cls.worksCountBlockContent, "container")}>
         <div className={cls.worksCountBlockItem}>
-          <span />
-          <p className="date">50</p>
+          <p className="date">
+            <span />
+            50
+          </p>
           <h5>
             Летний <br /> опыт
           </h5>
         </div>
         <div className={cls.worksCountBlockItem}>
-          <span />
-          <p className="date">122</p>
-          <h5>Специалистов</h5>
+          <p className="date">
+            <span />
+            122
+          </p>
+          <h5>Специалиста</h5>
         </div>
         <div className={cls.worksCountBlockItem}>
-          <span />
-          <p className="date">500+</p>
+          <p className="date">
+            <span />
+            500+
+          </p>
           <h5>
             Успешых <br /> проектов
           </h5>
         </div>
 
         <div className={cls.worksCountBlockItem}>
-          <span />
-          <p className="date">100</p>
+          <p className="date">
+            <span />
+            100
+          </p>
           <h5>
             Довольных <br />
             заказчиков

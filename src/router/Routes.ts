@@ -39,6 +39,27 @@ export const ROUTES = {
     en: "/vacancies",
     ru: "Вакансии",
   },
+  //INFO
+  ABOUT: {
+    en: "/about-us",
+    ru: "О компании",
+  },
+  HISTORY: {
+    en: "/history",
+    ru: "История",
+  },
+  REVIEWS: {
+    en: "/reviews",
+    ru: "Отзывы",
+  },
+  WORPPROCESS: {
+    en: "/work-process",
+    ru: "Рабочий процесс",
+  },
+  CERTIFICATE: {
+    en: "/certificates",
+    ru: "Сертификаты",
+  },
   ADMIN: {
     en: "/admin",
     ru: "Админ панель",
@@ -68,28 +89,7 @@ export const ROUTES = {
     ru: "Управление вакансиями",
   },
   ADMINSETTINGS: {
-    en: "/admin/settings",
+    en: "settings",
     ru: "Настройки",
-  },
-  //INFO
-  ABOUT: {
-    en: "/about-us",
-    ru: "О компании",
-  },
-  HISTORY: {
-    en: "/history",
-    ru: "История",
-  },
-  REVIEWS: {
-    en: "/reviews",
-    ru: "Отзывы",
-  },
-  WORPPROCESS: {
-    en: "/work-process",
-    ru: "Рабочий процесс",
-  },
-  CERTIFICATE: {
-    en: "/certificates",
-    ru: "Сертификаты",
   },
 };

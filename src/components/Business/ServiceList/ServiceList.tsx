@@ -13,8 +13,8 @@ interface ServiceListProps {
 }
 
 const ServiceList: FC<ServiceListProps> = ({ limitProp, isFull, isAdmin }) => {
-  const [page, setPage] = useState<number>(1);
-  const [limit, setLimit] = useState<number>(limitProp || 9);
+  const [page] = useState<number>(1);
+  const [limit] = useState<number>(limitProp || 9);
 
   let { error, data: serviceList } = servicesAPI.useGetServicesQuery({
     page,

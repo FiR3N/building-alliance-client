@@ -16,11 +16,14 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
 import slider1 from "../../assets/img/slider1.jpg";
-import slider2 from "../../assets/img/slider2.jpg";
-import recon from "../../assets/img/recon.jpg";
+import slider2 from "../../assets/img/p-106-img2.jpg";
+import slider3 from "../../assets/img/duw4-img4.jpg";
 import office from "../../assets/img/office.jpg";
 import aboveServiceImage_1 from "../../assets/img/aboveServiceImage-1.jpg";
 import aboveServiceImage_2 from "../../assets/img/aboveService-2.webp";
+import experts from "../../assets/img/experts.png";
+import emergency from "../../assets/img/emergency.png";
+import analytics from "../../assets/img/analytics.png";
 
 import mainInfoAboutBg from "../../assets/img/main-about-bg.webp";
 import WorksCountBlock from "../../components/Blocks/WorksCountBlock/WorksCountBlock";
@@ -61,7 +64,7 @@ const Main: FC = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide className={cls.swiperItem}>
-          <img src={recon} />
+          <img src={slider3} />
           <div className={classNames(cls.mainTitle)}>
             <h2>Точность и скорость</h2>
             <h1>Строим с умом</h1>
@@ -156,6 +159,50 @@ const Main: FC = () => {
         <Link to={"/our-works"}>
           <MyButton>Больше работ</MyButton>
         </Link>
+      </div>
+      <div className={classNames(cls.mainAboveInfoAbout, "container")}>
+        <div className={cls.mainAboveInfoAboutItem}>
+          <img
+            src={experts}
+            alt="эксперты"
+            className={cls.mainAboveInfoAboutItemImage}
+          />
+          <div className={cls.mainAboveInfoAboutItemText}>
+            <h5>Профессионализм</h5>
+            <p className="default-text">
+              Мы команда специалистов, готовых реализовать любые строительные
+              задачи.
+            </p>
+          </div>
+        </div>
+        <div className={classNames(cls.mainAboveInfoAboutItem, cls.orange)}>
+          <img
+            src={analytics}
+            alt="качество"
+            className={cls.mainAboveInfoAboutItemImage}
+          />
+          <div className={cls.mainAboveInfoAboutItemText}>
+            <h5>Качество работы</h5>
+            <p className="default-text">
+              Мы стремимся к безупречности в каждой детали и всегда гарантируем
+              высокое качество наших работ
+            </p>
+          </div>
+        </div>
+        <div className={classNames(cls.mainAboveInfoAboutItem, cls.black)}>
+          <img
+            src={emergency}
+            alt="стройка"
+            className={cls.mainAboveInfoAboutItemImage}
+          />
+          <div className={cls.mainAboveInfoAboutItemText}>
+            <h5>Сотрудничество</h5>
+            <p className="default-text">
+              Благодаря тесном сотрудничестве с клиентами мы легко воплащаем
+              постовленные идеи в реальность.
+            </p>
+          </div>
+        </div>
       </div>
       <div className={cls.mainInfoAbout}>
         <img src={mainInfoAboutBg} alt="maininfobg" />

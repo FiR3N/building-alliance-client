@@ -170,15 +170,15 @@ const AppRouter = () => {
                 </Suspense>
               }
             />
+            <Route
+              path={ROUTES.ADMINSETTINGS.en}
+              element={
+                <Suspense fallback={<Loader withMargins={true} />}>
+                  <AdminSettings />
+                </Suspense>
+              }
+            />
           </Route>
-          <Route
-            path={ROUTES.ADMINSETTINGS.en}
-            element={
-              <Suspense fallback={<Loader withMargins={true} />}>
-                <AdminSettings />
-              </Suspense>
-            }
-          />
         </>
       )}
       <Route

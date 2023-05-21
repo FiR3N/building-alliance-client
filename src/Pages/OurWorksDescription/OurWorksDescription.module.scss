@@ -32,7 +32,7 @@
     gap: 10px;
   }
   &AdditionalImage {
-    flex: 1 1 calc(33.333% - 10px);
+    flex: 1 1 calc(20% - 10px);
     max-width: calc(20% - 10px);
     height: 60px;
 
@@ -97,5 +97,9 @@
   @media #{$ui-mobile-max} {
     padding-top: 15px;
     padding-bottom: 15px;
+
+    &AdditionalImage {
+      height: 46px;
+    }
   }
 }

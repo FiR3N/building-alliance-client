@@ -1,15 +1,17 @@
 .worksCountBlock {
-  background-color: $ui-sun-color;
+  margin-bottom: 80px;
   padding-top: 36px;
   padding-bottom: 36px;
+
+  background-color: $ui-sun-color;
+
   &Content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
   }
   &Item {
-    flex: 1 1 calc(25% - 10px);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -24,23 +26,27 @@
       top: 0px;
       left: 5px;
 
-      background-color: #171c30;
+      background-color: $ui-black-blue-color;
     }
     p {
+      position: relative;
+
       font-size: 46px;
       font-weight: 900;
-      color: #171c30;
+      color: $ui-black-blue-color;
     }
     h5 {
       font-size: 18px;
       text-transform: uppercase;
       line-height: 26px;
-      color: #171c30;
+      color: $ui-black-blue-color;
       letter-spacing: -1px;
     }
   }
   @media #{$ui-tablet-max} {
+    margin-bottom: 60px;
     &Item {
+      flex: 1 0 calc(50% - 20px);
       h5 {
         font-size: 24px;
         line-height: 100%;
@@ -53,10 +59,21 @@
       }
     }
   }
+  @media #{$ui-tablet-avg} {
+    margin-bottom: 20px;
+  }
   @media #{$ui-mobile-max} {
     padding-top: 26px;
     padding-bottom: 26px;
+
+    &Content {
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
     &Item {
+      flex: 1 0 100%;
       h5 {
         font-size: 20px;
       }

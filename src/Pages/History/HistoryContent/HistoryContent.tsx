@@ -1,14 +1,12 @@
 import { FC } from "react";
 import cls from "../History.module.scss";
-import ourHistoryBg from "../../../assets/img/our-history.webp";
+import ourHistoryBg from "../../../assets/img/our-history.jpg";
 import lightBulb from "../../../assets/img/light-bulb.png";
 import separator from "../../../assets/img/separator.png";
 import analytics from "../../../assets/img/analytics.png";
 import courthouse from "../../../assets/img/courthouse.png";
 import infrastructureDesign from "../../../assets/img/infrastructure-design.png";
-// import companyEstablishment from "../../../assets/img/company-establishment.png";
 import stonks from "../../../assets/img/stonks.png";
-// import award from "../../../assets/img/award.png";
 
 import classNames from "classnames";
 import RedirectToContactBlock from "../../../components/Blocks/RedirectToContactBlock/RedirectToContactBlock";

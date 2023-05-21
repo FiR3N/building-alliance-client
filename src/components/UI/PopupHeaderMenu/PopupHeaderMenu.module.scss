@@ -1,8 +1,6 @@
 .popupHeaderMenu {
   position: relative;
-  z-index: 2;
-
-  will-change: transform, opacity;
+  z-index: $ui-index-2;
 
   &Title {
     display: flex;

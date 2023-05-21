@@ -26,7 +26,6 @@ const OurWorksDescriptionContent: FC<OurWorksDescriptionContentProps> = ({
       {isModalOpen && (
         <Modal isSmall closeMethod={setIsModalOpen}>
           <div className={cls.ourWorksDescriptionInModal}>
-            {/* <h2>{work?.name}</h2> */}
             <LazyLoadImage src={image} alt={work?.name} effect="blur" />
           </div>
         </Modal>
