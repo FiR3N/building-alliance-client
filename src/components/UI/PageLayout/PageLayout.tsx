@@ -6,6 +6,9 @@ import { RiArrowRightSFill } from "react-icons/ri";
 import { ROUTES } from "../../../router/Routes";
 import { Link } from "react-router-dom";
 
+import doubleArrows from "../../../assets/img/double-right-arrows.png";
+<img src={doubleArrows} alt="две стрелки" />;
+
 interface PageLayoutProps {
   children: React.ReactNode;
   title: string;

@@ -12,7 +12,7 @@ const About: FC = () => {
   }, []);
 
   return (
-    <PageLayout pathname={pathname} title="О компании">
+    <PageLayout pathname={pathname} title="Об организации">
       <Suspense fallback={<Loader withMargins={true} />}>
         <AboutContent />
       </Suspense>

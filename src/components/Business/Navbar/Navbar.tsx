@@ -4,6 +4,8 @@ import CustomLink from "../../UI/CustomLink/CustomLink";
 import PopupHeaderMenu from "../../UI/PopupHeaderMenu/PopupHeaderMenu";
 import ILinkItem from "../../../models/ILinkItem";
 
+import doubleArrows from "../../../assets/img/double-right-arrows.png";
+
 interface NavbarProps {
   setIsActive?: Dispatch<SetStateAction<boolean>>;
   isMobile?: boolean;
@@ -11,7 +13,7 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
   const informationLinks: ILinkItem[] = [
-    { name: "О компании", to: "/about-us" },
+    { name: "Об организации", to: "/about-us" },
     { name: "Наша история", to: "/history" },
     { name: "Сертификаты", to: "/certificates" },
   ];
@@ -33,6 +35,7 @@ const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
                 <p className="nav-link">Информация</p>
                 {informationLinks.map((item) => (
                   <li key={item.to}>
+                    <img src={doubleArrows} alt="две стрелки" />;
                     <CustomLink to={item.to} key={item.name}>
                       {item.name}
                     </CustomLink>

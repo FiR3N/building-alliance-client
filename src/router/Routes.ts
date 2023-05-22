@@ -42,7 +42,7 @@ export const ROUTES = {
   //INFO
   ABOUT: {
     en: "/about-us",
-    ru: "О компании",
+    ru: "Об организации",
   },
   HISTORY: {
     en: "/history",

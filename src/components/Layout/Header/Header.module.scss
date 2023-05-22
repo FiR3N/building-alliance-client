@@ -79,6 +79,31 @@
       }
     }
 
+    &ContactsItem {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: #ffffff;
+
+      a {
+        color: #ffffff;
+        transition: all 0.3s ease;
+      }
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        @media #{$ui-mouse-device} {
+          a {
+            color: $ui-sun-color;
+          }
+        }
+      }
+    }
     &Cart {
       position: relative;
 
@@ -163,7 +188,6 @@
       }
     }
   }
-  // :)
   @media screen and (max-width: 48em) {
     &Info {
       display: none;
@@ -195,7 +219,6 @@
         position: fixed;
         top: 0;
         right: -100%;
-        z-index: $ui-index-5;
 
         display: block;
 
