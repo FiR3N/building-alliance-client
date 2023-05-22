@@ -3,11 +3,14 @@ import cls from "./CertificateItem.module.scss";
 import { ICertificate } from "../../../models/Entity/ICertificate";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Modal from "../../UI/Modal/Modal";
-import editImage from "../../../assets/img/edit.svg";
-import deleteImage from "../../../assets/img/delete.svg";
 import classNames from "classnames";
 import CertificateDeleteModal from "../Modals/CertificateDeleteModal/CertificateDeleteModal";
 import CertificateModal from "../Modals/CertificateModal/CertificateModal";
+import MyButton from "../../UI/MyButton/MyButton";
+
+import editImage from "../../../assets/img/edit.svg";
+import deleteImage from "../../../assets/img/delete.svg";
+import arrow from "../../../assets/img/arrow-right.png";
 
 interface CertificateItemProps {
   certificate: ICertificate;
@@ -90,6 +93,9 @@ const CertificateItem: FC<CertificateItemProps> = ({
             <p className={cls.certificateItemInfoText}>
               {certificate.description}
             </p>
+            <MyButton>
+              <img src={arrow} alt="arrow" />
+            </MyButton>
           </div>
         </div>
       </div>

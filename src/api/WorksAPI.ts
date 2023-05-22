@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { IWork } from "../models/Entity/IWorks";
+import { getAccessToken } from "../utils/GetAccessToken";
 
 interface IWorkQuery {
   limit: number;
@@ -15,6 +16,13 @@ export const worksAPI = createApi({
   reducerPath: "worksApi",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
+    prepareHeaders: (headers) => {
+      const token = getAccessToken();
+      if (token) {
+        headers.set("authorization", token);
+      }
+      return headers;
+    },
   }),
   tagTypes: ["Work"],
   endpoints: (build) => ({

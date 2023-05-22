@@ -188,6 +188,7 @@ const Contact: FC = () => {
                   required: "Текст не может быть пустой",
                 })}
                 error={errors.text}
+                rows={6}
                 maxLength={700}
                 placeholder="Введите текст:"
                 disabled={isSubmitting}

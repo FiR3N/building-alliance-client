@@ -189,7 +189,7 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
                   value={item.description}
                   onChange={(e) => changeInfo(e.target.value, item.id)}
                 />
-                <MyButton onClick={(e) => removeInfo(item.id)}>
+                <MyButton type="button" onClick={(e) => removeInfo(item.id)}>
                   Удалить
                 </MyButton>
               </div>

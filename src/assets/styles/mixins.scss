@@ -1,7 +1,7 @@
 @mixin formFields {
   padding: 10px;
 
-  font-size: 15px;
+  font-size: 16px;
   line-height: 20px;
 
   border: 1px solid $ui-gray-color;
@@ -22,7 +22,6 @@
   }
 
   @media #{$ui-mobile-max} {
-    padding: 7px;
-    font-size: 12px;
+    font-size: 14px;
   }
 }
