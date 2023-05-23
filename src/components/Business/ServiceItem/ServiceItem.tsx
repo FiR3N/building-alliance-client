@@ -23,6 +23,7 @@ const ServiceItem: FC<ServiceItemProps> = ({ service, isAdmin }) => {
     useState<boolean>(false);
   const [isServiceDeleteModalOpen, setIsServiceDeleteModalOpen] =
     useState<boolean>(false);
+
   return (
     <>
       {isServiceChangeModalOpen && (

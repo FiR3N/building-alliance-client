@@ -4,6 +4,9 @@ import classNames from "classnames";
 import sadSmile from "../../../assets/img/sad-smile.svg";
 import RedirectToContactBlock from "../../../components/Blocks/RedirectToContactBlock/RedirectToContactBlock";
 import { IService } from "../../../models/Entity/IService";
+import useFetch from "../../../hooks/useFetch";
+import { IMixture } from "../../../models/Entity/IMixture";
+import MixturesTypesList from "../../../components/Business/MixturesTypesList/MixturesTypesList";
 
 interface ServiceDescriptionContentProps {
   service: IService;
@@ -12,6 +15,11 @@ interface ServiceDescriptionContentProps {
 const ServiceDescriptionContent: FC<ServiceDescriptionContentProps> = ({
   service,
 }) => {
+  const { data } =
+    service.id === 2
+      ? useFetch<IMixture[]>(import.meta.env.VITE_API_URL + "/mixtures")
+      : { data: null };
+
   return (
     <>
       <div className={cls.serviceDescription}>
@@ -46,6 +54,29 @@ const ServiceDescriptionContent: FC<ServiceDescriptionContentProps> = ({
           )}
         </div>
       </div>
+      {service.id === 2 && (
+        // <div className={cls.serviceDescriptionTable}>
+        //   <div className={cls.serviceDescriptionTableHeaders}>
+        //     <h5>Название</h5>
+        //     <h5>Единицы измерения</h5>
+        //     <h5>Цена без НДС</h5>
+        //     <h5>Цена с ндс</h5>
+        //   </div>
+        //   {data?.map((item) => {
+        //     return (
+        //       <>
+        //         <div className={cls.serviceDescriptionContent}>
+        //           <p>{item.name}</p>
+        //           <p>{item.unitOfMeasurement}</p>
+        //           <p>{item.priceWithVAT}</p>
+        //           <p>{item.priceWithoutVAT}</p>
+        //         </div>
+        //       </>
+        //     );
+        //   })}
+        // </div>
+        <MixturesTypesList />
+      )}
       <RedirectToContactBlock />
     </>
   );

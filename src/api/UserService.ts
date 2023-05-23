@@ -68,34 +68,9 @@ export class UserService {
   static async getRoleById(roleId: number) {
     return $api.get<IRole>(`/roles/${roleId}`);
   }
-  // // static async reg(
-  // //   email: string,
-  // //   password: string,
-  // //   repeatePassword: string,
-  // //   name: string,
-  // //   surname: string,
-  // //   phone: string
-  // // ): Promise<AxiosResponse<AuthResponse>> {
-  // //   return $api.post<AuthResponse>("/users/reg", {
-  // //     email,
-  // //     password,
-  // //     repeatePassword,
-  // //     name,
-  // //     surname,
-  // //     phone,
-  // //   });
-  // // }
   static async refresh(): Promise<AxiosResponse<AuthResponse>> {
     return $api.get<AuthResponse>(`/users/refresh`, { withCredentials: true });
   }
-  // // static async updateUserById(
-  // //   id: number,
-  // //   name: string,
-  // //   surname: string,
-  // //   phone: string
-  // // ) {
-  // //   await $api.post(`/users/${id}`, { name, surname, phone });
-  // // }
   static async updateUserByUser(id: number, formData: FormData) {
     return $api.put<IUser>(`/users/by-user/${id}`, formData);
   }

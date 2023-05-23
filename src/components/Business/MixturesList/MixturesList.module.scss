@@ -1,0 +1,46 @@
+.mixturesList {
+  margin-bottom: 40px;
+
+  &Title {
+    margin-bottom: 10px;
+  }
+  &Table {
+    &Headers {
+      display: flex;
+      justify-content: space-between;
+
+      border: 2px solid $ui-black-blue-color;
+
+      &Item {
+        padding: 5px;
+        text-align: center;
+        flex: 1 1 25%;
+        min-width: 285px;
+
+        &:not(:last-of-type) {
+          border-right: 2px solid $ui-black-blue-color;
+        }
+
+        color: $ui-black-blue-color;
+      }
+    }
+    &Content {
+      display: flex;
+      justify-content: space-between;
+      &Item {
+        padding: 10px;
+        text-align: center;
+        flex: 1 1 25%;
+        min-width: 285px;
+
+        border: 2px solid $ui-black-blue-color;
+        &:not(:last-of-type) {
+          border-right: none;
+        }
+        border-top: none;
+
+        color: $ui-black-blue-color;
+      }
+    }
+  }
+}

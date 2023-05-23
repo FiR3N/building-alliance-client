@@ -17,7 +17,6 @@ export const newsAPI = createApi({
   reducerPath: "newsAPI",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
-    // Add preprocess function to modify request headers
     prepareHeaders: (headers) => {
       const token = getAccessToken();
       if (token) {
