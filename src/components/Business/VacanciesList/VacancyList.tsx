@@ -2,7 +2,7 @@ import { FC } from "react";
 import cls from "./VacancyList.module.scss";
 import classNames from "classnames";
 import { vacancyAPI } from "../../../api/VacancyAPI";
-import sadSmile from "../../../assets/img/sad-smile.svg";
+import sadSmile from "../../../assets/img/sad-smile.png";
 import Loader from "../../UI/Loader/Loader";
 import VacancyItem from "../VacanciesItem/VacancyItem";
 

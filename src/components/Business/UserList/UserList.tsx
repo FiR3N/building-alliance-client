@@ -1,10 +1,8 @@
 import { FC, useState } from "react";
 import cls from "./UserList.module.scss";
 import classNames from "classnames";
-import MyInput from "../../UI/MyInput/MyInput";
-import useDebounce from "../../../hooks/useDebounce";
 import { userAPI } from "../../../api/UserService";
-import sadSmile from "../../../assets/img/sad-smile.svg";
+import sadSmile from "../../../assets/img/sad-smile.png";
 import Loader from "../../UI/Loader/Loader";
 import UserItem from "../UserItem/UserItem";
 
