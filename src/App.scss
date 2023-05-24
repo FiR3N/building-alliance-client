@@ -231,3 +231,35 @@ body {
     }
   }
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  padding: 5px 20px;
+
+  position: absolute !important;
+  top: 50% !important;
+  z-index: 999999 !important;
+
+  background-color: $ui-sun-color;
+  border-radius: 8px;
+
+  &.swiper-button-disabled {
+    display: none;
+  }
+  &::before,
+  &::after {
+    font-size: 16px !important;
+    line-height: 100%;
+    color: white;
+  }
+
+  @media #{$ui-tablet-avg} {
+    height: 30px !important;
+    padding: 0px 15px;
+
+    &::before,
+    &::after {
+      font-size: 10px !important;
+    }
+  }
+}

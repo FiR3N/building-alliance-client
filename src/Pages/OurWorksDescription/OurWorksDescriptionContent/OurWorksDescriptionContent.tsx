@@ -5,6 +5,7 @@ import sadSmile from "../../../assets/img/sad-smile.svg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Modal from "../../../components/UI/Modal/Modal";
 import { IWork } from "../../../models/Entity/IWorks";
+import OurWorkImagesModal from "../../../components/Business/Modals/OurWorksImagesModal/OurWorksImagesModal";
 
 interface OurWorksDescriptionContentProps {
   work: IWork | null;
@@ -15,20 +16,28 @@ const OurWorksDescriptionContent: FC<OurWorksDescriptionContentProps> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [image, setImage] = useState<string>("");
+  const [imageId, setImageId] = useState<number>(0);
 
-  const setImageAndModalState = (image: string) => {
+  const setImageAndModalState = (image: string, id: number) => {
     setImage(image);
+    setImageId(id);
     setIsModalOpen(true);
   };
 
   return (
     <>
       {isModalOpen && (
-        <Modal isSmall closeMethod={setIsModalOpen}>
-          <div className={cls.ourWorksDescriptionInModal}>
-            <LazyLoadImage src={image} alt={work?.name} effect="blur" />
-          </div>
-        </Modal>
+        // <Modal isSmall closeMethod={setIsModalOpen}>
+        //   <div className={cls.ourWorksDescriptionInModal}>
+        //     <LazyLoadImage src={image} alt={work?.name} effect="blur" />
+        //   </div>
+        // </Modal>
+        <OurWorkImagesModal
+          closeMethod={setIsModalOpen}
+          imageList={work ? work?.images : []}
+          soloImage={work ? work?.image : ""}
+          id={imageId}
+        />
       )}
       <div className={cls.ourWorksDescription}>
         <div
@@ -57,13 +66,14 @@ const OurWorksDescriptionContent: FC<OurWorksDescriptionContentProps> = ({
                       setImageAndModalState(
                         import.meta.env.VITE_API_URL +
                           `/images/works/` +
-                          work.image
+                          work.image,
+                        0
                       )
                     }
                     className={cls.ourWorksDescriptionMainImage}
                   />
                   <div className={cls.ourWorksDescriptionAdditionalImages}>
-                    {work.images.map((item) => (
+                    {work.images.map((item, index) => (
                       <img
                         key={item.id}
                         src={
@@ -76,7 +86,8 @@ const OurWorksDescriptionContent: FC<OurWorksDescriptionContentProps> = ({
                           setImageAndModalState(
                             import.meta.env.VITE_API_URL +
                               `/images/works/` +
-                              item.image
+                              item.image,
+                            index + 1
                           )
                         }
                         className={cls.ourWorksDescriptionAdditionalImage}

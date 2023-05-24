@@ -35,15 +35,16 @@
 
           color: #ffffff;
 
-          a {
-            color: #ffffff;
+          p {
             transition: all 0.3s ease;
           }
 
-          &:hover {
-            @media #{$ui-mouse-device} {
-              a {
-                color: $ui-sun-color;
+          &.isLink {
+            &:hover {
+              @media #{$ui-mouse-device} {
+                p {
+                  color: $ui-sun-color;
+                }
               }
             }
           }

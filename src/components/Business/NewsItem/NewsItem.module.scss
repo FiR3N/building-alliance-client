@@ -43,8 +43,11 @@
   }
 
   &Image {
-    overflow: hidden;
+    margin-bottom: 10px;
+
     border-radius: 8px;
+
+    overflow: hidden;
 
     img {
       width: 100%;
@@ -64,7 +67,13 @@
     align-items: center;
     gap: 10px;
 
+    font-weight: 800;
     color: $ui-sun-color;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
   &Title {
     margin-bottom: 5px;

@@ -3,8 +3,7 @@ import cls from "../NewsDescription.module.scss";
 import classNames from "classnames";
 import sadSmile from "../../../assets/img/sad-smile.svg";
 import { INews } from "../../../models/Entity/INews";
-import { MdDateRange } from "react-icons/md";
-
+import date from "../../../assets/img/date.png";
 interface NewsDescriptionContentProps {
   news: INews | null;
 }
@@ -17,7 +16,7 @@ const NewsDescriptionContent: FC<NewsDescriptionContentProps> = ({ news }) => {
           <>
             <h2 className={cls.newsDescriptionTitle}>{news.name}</h2>
             <p className={classNames(cls.newsDescriptionDate, "default-text")}>
-              <MdDateRange /> {news.date}
+              <img src={date} alt="Дата" /> {news.date}
             </p>
             <img
               className={cls.newsDescriptionImage}

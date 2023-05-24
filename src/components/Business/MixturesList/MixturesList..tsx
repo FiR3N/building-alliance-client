@@ -22,7 +22,7 @@ const MixturesList: FC<MixturesListProps> = ({ type }) => {
             Единицы измерения
           </h5>
           <h5 className={cls.mixturesListTableHeadersItem}>Цена без НДС</h5>
-          <h5 className={cls.mixturesListTableHeadersItem}>Цена с ндс</h5>
+          <h5 className={cls.mixturesListTableHeadersItem}>Цена с НДС</h5>
         </div>
         {mixtures?.map((mixture) => {
           return (
@@ -32,10 +32,10 @@ const MixturesList: FC<MixturesListProps> = ({ type }) => {
                 {mixture.unitOfMeasurement}
               </p>
               <p className={cls.mixturesListTableContentItem}>
-                {mixture.priceWithVAT}
+                {mixture.priceWithoutVAT}
               </p>
               <p className={cls.mixturesListTableContentItem}>
-                {mixture.priceWithoutVAT}
+                {mixture.priceWithVAT}
               </p>
             </div>
           );

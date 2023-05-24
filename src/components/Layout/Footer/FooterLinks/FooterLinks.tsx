@@ -58,27 +58,24 @@ const FooterLinks: FC = () => {
         <div className={cls.footerLinksContacts}>
           <h5>Контакты</h5>
           <span className="bar" />
-          <p className="light-text">
+          <a
+            href="https://yandex.by/maps/26001/molodcheno/?ll=26.798111%2C54.312940&mode=whatshere&whatshere%5Bpoint%5D=26.797035%2C54.312968&whatshere%5Bzoom%5D=17&z=18"
+            className="light-text"
+          >
             <BsGeoAltFill />
-            <a href="https://www.google.com/maps" className="light-text">
-              ул. Великий Гостинец 1А
-            </a>
-          </p>
-          <p className="light-text">
+            <p className="light-text">ул. Великий Гостинец 1А</p>
+          </a>
+          <a
+            href="mailto:oao-ssm@mail.ru?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
+            className="light-text"
+          >
             <MdEmail />
-            <a
-              href="mailto:oao-ssm@mail.ru?subject=Вопрос по теме: (...)&body=Здравствуйте, я хотел бы хотел задать вопрос по теме: (...)"
-              className="light-text"
-            >
-              Почта: oao-ssm@mail.ru
-            </a>
-          </p>
-          <p className="light-text">
+            <p className="light-text">Почта: oao-ssm@mail.ru</p>
+          </a>
+          <a href="tel:8 0176 50 06 50" className="light-text">
             <BsFillTelephoneFill />
-            <a href="tel:8 0176 50 06 50" className="light-text">
-              8 0176 50 06 50
-            </a>
-          </p>
+            <p className="light-text">8 0176 50 06 50</p>
+          </a>
         </div>
       </div>
     </div>

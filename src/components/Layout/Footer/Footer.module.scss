@@ -124,13 +124,15 @@
     &Contacts {
       flex: 0 0 calc(25% - 20px);
 
-      p {
+      a {
         margin-bottom: 10px;
 
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 10px;
+
+        cursor: pointer;
 
         svg {
           width: 15px;
@@ -140,7 +142,7 @@
         &:hover {
           @media #{$ui-mouse-device} {
             svg,
-            a {
+            p {
               color: $ui-sun-color;
             }
           }

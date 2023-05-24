@@ -89,7 +89,7 @@ export const ROUTES = {
     ru: "Управление вакансиями",
   },
   ADMINSETTINGS: {
-    en: "settings",
+    en: "/admin/settings",
     ru: "Настройки",
   },
 };

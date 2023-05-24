@@ -35,7 +35,7 @@ const Main: FC = () => {
         modules={[Pagination, Autoplay, EffectFade]}
         autoplay={{ delay: 3000 }}
         slidesPerView={1}
-        navigation
+        allowTouchMove={false}
         pagination={{ el: cls.swiperPagination, clickable: true }}
         effect="fade"
         speed={1500}

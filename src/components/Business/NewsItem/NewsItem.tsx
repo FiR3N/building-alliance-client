@@ -10,6 +10,7 @@ import editImage from "../../../assets/img/edit.svg";
 import deleteImage from "../../../assets/img/delete.svg";
 import NewsModal from "../Modals/NewsModal/NewsModal";
 import NewsDeleteModal from "../Modals/NewsDeleteModal/NewsDeleteModal";
+import date from "../../../assets/img/date.png";
 
 interface NewsItemProps {
   news: INews;
@@ -59,7 +60,7 @@ const NewsItem: FC<NewsItemProps> = ({ news, isAdmin }) => {
           </div>
 
           <p className={classNames(cls.newsItemDate, "default-text")}>
-            <MdDateRange /> {news.date}
+            <img src={date} alt="Дата" /> {news.date}
           </p>
           <p className={cls.newsItemTitle}>{news.name}</p>
           <p className={classNames(cls.newsItemDescription, "default-text")}>
