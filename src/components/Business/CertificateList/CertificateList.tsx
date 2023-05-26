@@ -1,9 +1,7 @@
 import { FC } from "react";
 import cls from "./CertificateList.module.scss";
 import classNames from "classnames";
-import useFetch from "../../../hooks/useFetch";
-import { ICertificate } from "../../../models/Entity/ICertificate";
-import sadSmile from "../../../assets/img/sad-smile.svg";
+import sadSmile from "../../../assets/img/sad-smile.png";
 import Loader from "../../UI/Loader/Loader";
 import CertificateItem from "../CertificateItem/CertificateItem";
 import { certificateAPI } from "../../../api/CertificateAPI";
@@ -19,7 +17,7 @@ const CertificateList: FC<CertificateListrops> = ({ isAdmin }) => {
   if (error) {
     return (
       <div className={classNames(cls.certificateList, "container")}>
-        <h2 className={cls.certificateListError}>
+        <h2 className="error-block">
           Ошибка загрузки сертификатов
           <img className="smile-image" src={sadSmile} alt="sad-smile" />
         </h2>

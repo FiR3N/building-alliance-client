@@ -3,7 +3,7 @@ import cls from "./OurWorksList.module.scss";
 import classNames from "classnames";
 import { worksAPI } from "../../../api/WorksAPI";
 import Loader from "../../UI/Loader/Loader";
-import sadSmile from "../../../assets/img/sad-smile.svg";
+import sadSmile from "../../../assets/img/sad-smile.png";
 import Pagination from "../../UI/Pagination/Pagination";
 import OurWorksItem from "../OurWorksItem/OurWorksItem";
 
@@ -29,8 +29,8 @@ const OurWorksList: FC<OurWorksListProps> = ({
   if (error) {
     return (
       <div className={classNames(cls.ourWorksList, "container")}>
-        <h2 className={cls.ourWorksListError}>
-          Ошибка получения данных
+        <h2 className="error-block">
+          Ошибка получения работ
           <img className="smile-image" src={sadSmile} alt="sad-smile" />
         </h2>
       </div>

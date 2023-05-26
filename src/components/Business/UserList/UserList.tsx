@@ -11,8 +11,8 @@ const UserList: FC = () => {
 
   if (error) {
     return (
-      <div className={classNames(cls.newsList, "container")}>
-        <h2 className={cls.newsListError}>
+      <div className={classNames(cls.userList, "container")}>
+        <h2 className="error-block">
           Ошибка получения пользователей
           <img className="smile-image" src={sadSmile} alt="sad-smile" />
         </h2>

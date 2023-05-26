@@ -115,15 +115,13 @@
   &Works,
   &Services {
     margin-bottom: 80px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     h2 {
       text-align: center;
     }
     a {
-      margin: 0 auto;
+      display: block;
+      display: flex;
+      justify-content: center;
     }
   }
   &AboveInfoAbout {

@@ -12,13 +12,6 @@
     gap: 20px;
   }
 
-  &Error {
-    margin-top: 25vh;
-    margin-bottom: 25vh;
-
-    text-align: center;
-  }
-
   @media #{$ui-tablet-max} {
     padding-top: 20px;
     padding-bottom: 20px;

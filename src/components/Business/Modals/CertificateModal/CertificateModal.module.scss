@@ -45,6 +45,22 @@
         flex: 0 0 calc(20% - 20px);
       }
     }
+    &Images {
+      position: relative;
+    }
+    &ImageItem {
+      margin-bottom: 20px;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
   }
   @media #{$ui-tablet-max} {
     &Form {

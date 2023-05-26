@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import cls from "./ServiceList.module.scss";
 import classNames from "classnames";
-import sadSmile from "../../../assets/img/sad-smile.svg";
+import sadSmile from "../../../assets/img/sad-smile.png";
 import Loader from "../../UI/Loader/Loader";
 import ServiceItem from "../ServiceItem/ServiceItem";
 import { servicesAPI } from "../../../api/ServicesAPI";
@@ -24,8 +24,8 @@ const ServiceList: FC<ServiceListProps> = ({ limitProp, isFull, isAdmin }) => {
   if (error) {
     return (
       <div className={classNames(cls.servicesList, "container")}>
-        <h2 className={cls.servicesListError}>
-          Услуг не найдено
+        <h2 className="error-block">
+          Ошибка получения услуг
           <img className="smile-image" src={sadSmile} alt="sad-smile" />
         </h2>
       </div>

@@ -7,7 +7,7 @@ import classNames from "classnames";
 import useDebounce from "../../../hooks/useDebounce";
 import MyInput from "../../UI/MyInput/MyInput";
 import Pagination from "../../UI/Pagination/Pagination";
-import sadSmile from "../../../assets/img/sad-smile.svg";
+import sadSmile from "../../../assets/img/sad-smile.png";
 
 interface NewsListProps {
   limitProp?: number;
@@ -40,7 +40,7 @@ const NewsList: FC<NewsListProps> = ({ limitProp, isFull, isAdmin }) => {
   if (isError) {
     return (
       <div className={classNames(cls.newsList, "container")}>
-        <h2 className={cls.newsListError}>
+        <h2 className="error-block">
           Ошибка получения новостей
           <img className="smile-image" src={sadSmile} alt="sad-smile" />
         </h2>

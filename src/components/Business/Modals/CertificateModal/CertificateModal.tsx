@@ -1,6 +1,9 @@
 import { FC, SetStateAction, Dispatch, useState, useEffect } from "react";
 import cls from "./CertificateModal.module.scss";
-import { ICertificate } from "../../../../models/Entity/ICertificate";
+import {
+  ICertificate,
+  ICertificateImages,
+} from "../../../../models/Entity/ICertificate";
 import { certificateAPI } from "../../../../api/CertificateAPI";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ICertificateForm from "../../../../models/Forms/ICertificateForm";
@@ -22,7 +25,11 @@ const CertificateModal: FC<CertificateModalProps> = ({
     certificate ? certificate.description : ""
   );
   const [image, setImage] = useState<File>();
+  const [imageInfo, setImageInfo] = useState<ICertificateImages[]>(
+    certificate ? certificate.images : []
+  );
 
+  const [images, setImages] = useState<any[]>([]);
   const [putCertificate, { error: putError }] =
     certificateAPI.usePutCertificateMutation();
   const [createCertificate, { error: createError }] =
@@ -41,10 +48,36 @@ const CertificateModal: FC<CertificateModalProps> = ({
     setImage(e.target.files[0]);
   };
 
+  const addImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) {
+      return;
+    }
+    setImages([
+      ...images,
+      {
+        image: e.target.files[0] as File,
+      },
+    ]);
+  };
+
+  const removeImage = (image: File) => {
+    setImages(images.filter((item) => item.image !== image));
+  };
+
+  const removeImageInfo = (id: number) => {
+    setImageInfo(imageInfo.filter((item) => item.id !== id));
+  };
+
   const onSubmit: SubmitHandler<ICertificateForm> = async (data) => {
     const formData = new FormData();
     formData.append("description", description);
     image && formData.append("image", image as File);
+    if (certificate) {
+      formData.append("imageInfo", JSON.stringify(imageInfo));
+    }
+    images.forEach((image, index) => {
+      formData.append(`imageList[${index}]`, image.image);
+    });
 
     if (certificate) {
       await putCertificate({ id: certificate.id, formData: formData }).unwrap();
@@ -71,8 +104,8 @@ const CertificateModal: FC<CertificateModalProps> = ({
         {isSubmitSuccessful && (
           <InfoBlock blockType={1}>
             {certificate
-              ? `Сертификат ${certificate?.id} успешно отредактирована`
-              : `Сертификат успешно создана`}
+              ? `Сертификат ${certificate?.id} успешно отредактирован`
+              : `Сертификат успешно создан`}
           </InfoBlock>
         )}
         {putError && (
@@ -119,6 +152,49 @@ const CertificateModal: FC<CertificateModalProps> = ({
             </div>
           )}
           <MyInput labelTitle="Изображение" onChange={selectFile} type="file" />
+
+          {certificate && (
+            <div className={cls.certificateModalFormImages}>
+              {imageInfo.map((item, index) => (
+                <div
+                  className={cls.certificateModalFormImageItem}
+                  key={item.id}
+                >
+                  <label>Изображение {index + 1}</label>
+                  <img
+                    src={
+                      import.meta.env.VITE_API_URL +
+                      "/images/certificates/" +
+                      item.image
+                    }
+                  />
+                  <MyButton
+                    type="button"
+                    onClick={(e) => removeImageInfo(item.id)}
+                  >
+                    Удалить
+                  </MyButton>
+                </div>
+              ))}
+            </div>
+          )}
+          {images.length > 0 && <label>Добавленные изображения</label>}
+          <div className={cls.certificateModalFormImages}>
+            {images.map((item, index) => (
+              <div className={cls.certificateModalFormImageItem} key={item.id}>
+                <label>Иизображение {index + 1}</label>
+                <img src={URL.createObjectURL(item.image)} />
+                <MyButton type="button" onClick={(e) => removeImage(item)}>
+                  Удалить
+                </MyButton>
+              </div>
+            ))}
+          </div>
+          <MyInput
+            labelTitle="Добавить дополнительное изображение"
+            onChange={addImage}
+            type="file"
+          />
 
           <MyButton type="submit">Сохранить</MyButton>
         </form>

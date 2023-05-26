@@ -221,17 +221,23 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
               ))}
             </div>
           )}
-          {images && <label>Добавленные изображения</label>}
+          {images.length > 0 && <label>Добавленные изображения</label>}
           <div className={cls.ourWorksModalFormImages}>
             {images.map((item, index) => (
               <div className={cls.ourWorksModalFormImageItem} key={item.id}>
                 <label>Иизображение {index + 1}</label>
                 <img src={URL.createObjectURL(item.image)} />
-                <MyButton onClick={(e) => removeImage(item)}>Удалить</MyButton>
+                <MyButton type="button" onClick={(e) => removeImage(item)}>
+                  Удалить
+                </MyButton>
               </div>
             ))}
           </div>
-          <MyInput labelTitle="Изображение" onChange={addImage} type="file" />
+          <MyInput
+            labelTitle="Добавить дополнительное изображение"
+            onChange={addImage}
+            type="file"
+          />
 
           <MyButton type="submit">Сохранить</MyButton>
         </form>

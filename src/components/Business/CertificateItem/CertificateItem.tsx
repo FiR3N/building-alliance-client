@@ -11,6 +11,7 @@ import MyButton from "../../UI/MyButton/MyButton";
 import editImage from "../../../assets/img/edit.svg";
 import deleteImage from "../../../assets/img/delete.svg";
 import arrow from "../../../assets/img/arrow-right.png";
+import CertificatesImagesModal from "../Modals/CertificatesImagesModal/CertificatesImagesModal";
 
 interface CertificateItemProps {
   certificate: ICertificate;
@@ -31,20 +32,12 @@ const CertificateItem: FC<CertificateItemProps> = ({
   return (
     <>
       {isModalOpen && (
-        <Modal closeMethod={setIsModalOpen}>
-          <div className={cls.certificateItemInModal}>
-            <h2>{certificate.description}</h2>
-            <LazyLoadImage
-              src={
-                import.meta.env.VITE_API_URL +
-                "/images/certificates/" +
-                certificate.image
-              }
-              alt={certificate.description}
-              effect="blur"
-            />
-          </div>
-        </Modal>
+        <CertificatesImagesModal
+          closeMethod={setIsModalOpen}
+          name={certificate.description}
+          imageList={certificate.images}
+          soloImage={certificate.image}
+        />
       )}
       {isCertificateDeleteModalOpen && (
         <CertificateDeleteModal

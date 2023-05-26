@@ -16,7 +16,7 @@ const VacancyList: FC<VacancyListProps> = ({ isAdmin }) => {
   if (isError) {
     return (
       <div className={classNames(cls.vacanciesList, "container")}>
-        <h2 className={cls.vacanciesListError}>
+        <h2 className="error-block">
           Ошибка получения вакансий
           <img className="smile-image" src={sadSmile} alt="sad-smile" />
         </h2>
