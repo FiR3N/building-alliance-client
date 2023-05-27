@@ -32,15 +32,15 @@ const Contact: FC = () => {
       data.companyName,
       data.telephone
     );
-    reset({
-      name: "",
-      surname: "",
-      email: "",
-      text: "",
-      subject: "",
-      telephone: "",
-      companyName: "",
-    });
+    // reset({
+    //   name: "",
+    //   surname: "",
+    //   email: "",
+    //   text: "",
+    //   subject: "",
+    //   telephone: "",
+    //   companyName: "",
+    // });
   };
 
   useEffect(() => {

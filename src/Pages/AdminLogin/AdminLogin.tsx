@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import cls from "./AdminLogin.module.scss";
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
 import { useLocation } from "react-router-dom";
@@ -17,6 +17,8 @@ const AdminLogin: FC = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch<AppDispatch>();
   const { error } = useTypeSelector((state) => state.userReducer);
+
+  const [isPasswordShowable, setIsPasswordShowable] = useState<boolean>(false);
 
   const {
     register,
@@ -57,11 +59,17 @@ const AdminLogin: FC = () => {
             />
             <MyInput
               placeholder="Введите пароль"
-              type="password"
+              type={isPasswordShowable ? "text" : "password"}
               register={register("password", {
                 required: "Пароль не может быть пустым!",
               })}
               error={errors.password}
+            />
+            <MyInput
+              labelTitle="Показывать пароль"
+              type="checkbox"
+              onChange={(e) => setIsPasswordShowable((prev) => !prev)}
+              className={cls.passwordShowable}
             />
             <MyButton disabled={isSubmitting}>Войти</MyButton>
           </form>

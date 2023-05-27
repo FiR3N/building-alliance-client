@@ -36,7 +36,7 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
 
   const {
     register,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
     handleSubmit,
   } = useForm<IVacancyForm>({ mode: "onChange" });
 
@@ -136,7 +136,9 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
             })}
             error={errors.description}
           />
-          <MyButton type="submit">Сохранить</MyButton>
+          <MyButton disabled={isSubmitting} type="submit">
+            Сохранить
+          </MyButton>
         </form>
       </div>
     </Modal>

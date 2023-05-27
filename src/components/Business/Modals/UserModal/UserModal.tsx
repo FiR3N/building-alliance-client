@@ -31,7 +31,7 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
 
   const {
     register,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
     handleSubmit,
   } = useForm<IUserForm>({ mode: "onChange" });
 
@@ -206,7 +206,9 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
 
           <MyInput labelTitle="Изображение" onChange={selectFile} type="file" />
 
-          <MyButton type="submit">Сохранить</MyButton>
+          <MyButton disabled={isSubmitting} type="submit">
+            Сохранить
+          </MyButton>
         </form>
       </div>
     </Modal>

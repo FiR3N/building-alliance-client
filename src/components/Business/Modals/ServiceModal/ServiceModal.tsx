@@ -27,7 +27,7 @@ const ServiceModal: FC<ServiceModalProps> = ({ closeMethod, service }) => {
 
   const {
     register,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
     handleSubmit,
   } = useForm<IServiceForm>({ mode: "onChange" });
 
@@ -158,7 +158,9 @@ const ServiceModal: FC<ServiceModalProps> = ({ closeMethod, service }) => {
               Добавить информацию
             </MyButton>
           </div>
-          <MyButton type="submit">Сохранить</MyButton>
+          <MyButton disabled={isSubmitting} type="submit">
+            Сохранить
+          </MyButton>
         </form>
       </div>
     </Modal>

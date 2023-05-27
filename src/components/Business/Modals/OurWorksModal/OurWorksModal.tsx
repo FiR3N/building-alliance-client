@@ -32,7 +32,7 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
 
   const {
     register,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
     handleSubmit,
   } = useForm<IWorkForm>({ mode: "onChange" });
 
@@ -239,7 +239,9 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
             type="file"
           />
 
-          <MyButton type="submit">Сохранить</MyButton>
+          <MyButton disabled={isSubmitting} type="submit">
+            Сохранить
+          </MyButton>
         </form>
       </div>
     </Modal>

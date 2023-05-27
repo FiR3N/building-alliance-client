@@ -30,7 +30,7 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
 
   const {
     register,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
     handleSubmit,
   } = useForm<INewsForm>({ mode: "onChange" });
 
@@ -185,7 +185,9 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
               Добавить информацию
             </MyButton>
           </div>
-          <MyButton type="submit">Сохранить</MyButton>
+          <MyButton disabled={isSubmitting} type="submit">
+            Сохранить
+          </MyButton>
         </form>
       </div>
     </Modal>
