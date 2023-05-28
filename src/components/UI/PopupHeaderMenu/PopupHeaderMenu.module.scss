@@ -80,7 +80,7 @@
 
       &:hover {
         @media #{$ui-mouse-device} {
-          background-color: #eae5e5;
+          background-color: $ui-hover-gray-color;
         }
       }
     }

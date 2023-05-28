@@ -1,19 +1,28 @@
 import { FC } from "react";
 import cls from "./MixturesTypesList.module.scss";
-import { IMixtureTypes } from "../../../models/Entity/IMixtureTypes";
-import useFetch from "../../../hooks/useFetch";
 import MixturesList from "../MixturesList/MixturesList.";
 import classNames from "classnames";
+import { mixturesTypesAPI } from "../../../api/MixturesTypesAPI";
+import sadSmile from "../../../assets/img/sad-smile.png";
 
 const MixturesTypesList: FC = () => {
-  const { data: types } = useFetch<IMixtureTypes[]>(
-    import.meta.env.VITE_API_URL + "/mixture-types"
-  );
+  let { error, data: types } = mixturesTypesAPI.useGetMixturesTypesQuery({});
+
+  if (error) {
+    return (
+      <div className={classNames(cls.ourWorksList, "container")}>
+        <h2 className="error-block">
+          Ошибка получения информации об растворах
+          <img className="smile-image" src={sadSmile} alt="sad-smile" />
+        </h2>
+      </div>
+    );
+  }
 
   return (
     <div className={classNames(cls.mixtures, "container")}>
       {types?.map((type) => (
-        <MixturesList type={type} />
+        <MixturesList type={type} key={type.id} />
       ))}
     </div>
   );
