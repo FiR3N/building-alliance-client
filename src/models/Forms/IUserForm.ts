@@ -6,6 +6,6 @@ export default interface IUserForm {
   role: string;
   password: string;
   login: string;
-  roleId: number;
+  selectedRole: number;
   image: Blob;
 }

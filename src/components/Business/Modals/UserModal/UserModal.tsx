@@ -8,6 +8,9 @@ import Modal from "../../../UI/Modal/Modal";
 import MyButton from "../../../UI/MyButton/MyButton";
 import MyInput from "../../../UI/MyInput/MyInput";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
+import MySelect from "../../../UI/MySelect/MySelect";
+import useFetch from "../../../../hooks/useFetch";
+import { IRole } from "../../../../models/Entity/IRole";
 
 interface UserModalProps {
   closeMethod: Dispatch<SetStateAction<boolean>>;
@@ -15,6 +18,15 @@ interface UserModalProps {
 }
 
 const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
+  const { data: roles, error } = useFetch<IRole[]>(
+    import.meta.env.VITE_API_URL + `/roles`
+  );
+
+  const newRoles =
+    roles?.map(({ id, name }) => ({ id: id, content: name })) || [];
+  const [putUser, { error: putError }] = userAPI.usePutUserMutation();
+  const [createUser, { error: createError }] = userAPI.usePostUserMutation();
+
   const [name, setName] = useState<string>(user ? user.name : "");
   const [surname, setSurname] = useState<string>(user ? user.surname : "");
   const [patronymic, setPatronymic] = useState<string>(
@@ -23,16 +35,17 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
   const [login, setLogin] = useState<string>(user ? user.login : "");
   const [password, setPassword] = useState<string>("");
   const [isPassword, setIsPassword] = useState<boolean>(false);
-  const [roleId, setRoleId] = useState<number>(user ? user.roleId : 2);
   const [image, setImage] = useState<File>();
-
-  const [putUser, { error: putError }] = userAPI.usePutUserMutation();
-  const [createUser, { error: createError }] = userAPI.usePostUserMutation();
-
+  const [selectedRole, setSelectedRole] = useState<{
+    id: number;
+    content: string;
+  } | null>(null);
   const {
     register,
     formState: { errors, isSubmitSuccessful, isSubmitting },
     handleSubmit,
+    control,
+    setValue,
   } = useForm<IUserForm>({ mode: "onChange" });
 
   const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +62,7 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
     formData.append("patronymic", patronymic);
     formData.append("login", login);
     formData.append("password", password);
-    formData.append("roleId", String(roleId));
+    formData.append("roleId", String(selectedRole?.id));
     image && formData.append("image", image as File);
 
     if (user) {
@@ -64,6 +77,18 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
     const firstDiv = modalRoot?.querySelector("div");
     firstDiv?.scrollTo({ top: 0 });
   }, [isSubmitSuccessful, putError, createError]);
+
+  useEffect(() => {
+    setSelectedRole(
+      user?.roleId
+        ? newRoles?.find((item) => item.id === user?.roleId) || null
+        : null
+    );
+  }, [roles]);
+
+  useEffect(() => {
+    if (selectedRole?.id) setValue("selectedRole", selectedRole?.id);
+  }, [selectedRole]);
 
   return (
     <Modal closeMethod={closeMethod}>
@@ -132,16 +157,16 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
             })}
             error={errors.login}
           />
-          <MyInput
-            labelTitle="Роль (1 - Админ, 2 - Редактор)"
-            value={roleId}
-            onChange={(e) => setRoleId(Number(e.currentTarget.value))}
-            placeholder="Введите роль (1 - Админ, 2 - Редактор)..."
-            register={register("role", {
-              required: "Роль не может быть пустой!",
-            })}
-            type="number"
-            error={errors.role}
+          <MySelect
+            labelTitle="Роли"
+            name={"Выберете роль"}
+            array={newRoles}
+            selectedItem={selectedRole}
+            setSelectedItem={setSelectedRole}
+            formName="selectedRole"
+            control={control}
+            rules={{ required: "Роль должна быть выбрана!" }}
+            error={errors.selectedRole}
           />
           {!user ? (
             <MyInput

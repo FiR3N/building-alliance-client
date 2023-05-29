@@ -1,7 +1,10 @@
-import { FC, Dispatch, SetStateAction, useState } from "react";
+import { FC, Dispatch, SetStateAction, useState, useEffect } from "react";
 import cls from "./MySelect.module.scss";
 import dropDownImage from "../../../assets/img/drop-down.png";
 import classNames from "classnames";
+import { Control, FieldError, FormState } from "react-hook-form";
+import IUserForm from "../../../models/Forms/IUserForm";
+
 interface ArrayForSelect {
   id: number;
   content: string;
@@ -12,8 +15,11 @@ interface MySelectProps {
   array: ArrayForSelect[];
   selectedItem: ArrayForSelect | null;
   setSelectedItem: Dispatch<SetStateAction<ArrayForSelect | null>>;
-  selectedId?: number;
   labelTitle?: string;
+  control?: Control<IUserForm>;
+  rules?: Record<string, unknown>;
+  error?: FieldError;
+  formName?: string;
 }
 
 const MySelect: FC<MySelectProps> = ({
@@ -21,28 +27,40 @@ const MySelect: FC<MySelectProps> = ({
   array,
   selectedItem,
   setSelectedItem,
-  selectedId,
   labelTitle,
+  control,
+  rules,
+  error,
+  formName,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  // const [selectedItem, setSelectedItem] = useState<ArrayForSelect | null>(
-  //   selectedId ? array.find((item) => item.id === selectedId) || null : null
-  // );
+
+  useEffect(() => {
+    control?.register(formName as keyof IUserForm, rules);
+  }, [control, formName, rules]);
+
   return (
-    // <select className={cls.mySelect}>
-    //   <option defaultChecked>{name}</option>
-    //   {array.map((item) => (
-    //     <option value={item.id}>{item.content}</option>
-    //   ))}
-    // </select>
     <label>
       {labelTitle}
+      {error && (
+        <p
+          className={classNames(
+            labelTitle && cls.errorWithLabel,
+            cls.error,
+            "error-text"
+          )}
+        >
+          {error.message as React.ReactNode}
+        </p>
+      )}
+
       <div className={cls.mySelect} onClick={() => setIsOpen((prev) => !prev)}>
         <p
           className={classNames(
             cls.mySelectName,
             isOpen && cls._active,
             "default-text"
+            // error && cls.mySelectNameError
           )}
         >
           {selectedItem ? selectedItem.content : name}
@@ -60,6 +78,30 @@ const MySelect: FC<MySelectProps> = ({
           ))}
         </div>
       </div>
+      {/* <div className={cls.mySelect} onClick={() => setIsOpen((prev) => !prev)}>
+        <p
+          className={classNames(
+            cls.mySelectName,
+            isOpen && cls._active,
+            "default-text"
+            // error && cls.mySelectNameError
+          )}
+        >
+          {selectedItem ? selectedItem.content : name}
+          <img src={dropDownImage} alt="drop-down" />
+        </p>
+        <div className={classNames(cls.mySelectContent, isOpen && cls._active)}>
+          {array.map((item) => (
+            <p
+              className={classNames(cls.mySelectItem, "default-text")}
+              onClick={() => setSelectedItem(item)}
+              key={item.id}
+            >
+              {item.content}
+            </p>
+          ))}
+        </div>
+      </div> */}
     </label>
   );
 };

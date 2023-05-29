@@ -70,7 +70,6 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
               selectedItem={selectedTypeItem}
               setSelectedItem={setSelectedTypeItem}
               labelTitle="Список типов растворов"
-              selectedId={typeId}
             />
             {selectedTypeItem && (
               <>

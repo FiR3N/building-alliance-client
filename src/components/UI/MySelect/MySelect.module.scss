@@ -13,6 +13,9 @@
     border: 1px solid $ui-black-blue-color;
     border-radius: 8px;
 
+    &Error {
+      border: 1px solid $ui-red-light-color;
+    }
     img {
       width: 30px;
       height: 30px;
@@ -33,7 +36,7 @@
     position: absolute;
     top: 40px;
     left: 0;
-    z-index: $ui-index-2;
+    z-index: $ui-index-3;
 
     background-color: white;
     border: 1px solid $ui-black-blue-color;
@@ -84,4 +87,19 @@
       }
     }
   }
+}
+label {
+  position: relative;
+}
+.error {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  z-index: 2;
+  background-color: white;
+}
+.errorWithLabel {
+  position: absolute;
+  top: 8px;
+  left: 70px;
 }
