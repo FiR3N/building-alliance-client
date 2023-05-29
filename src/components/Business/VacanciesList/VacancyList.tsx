@@ -1,17 +1,24 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import cls from "./VacancyList.module.scss";
 import classNames from "classnames";
 import { vacancyAPI } from "../../../api/VacancyAPI";
 import sadSmile from "../../../assets/img/sad-smile.png";
 import Loader from "../../UI/Loader/Loader";
 import VacancyItem from "../VacanciesItem/VacancyItem";
+import Pagination from "../../UI/Pagination/Pagination";
 
 interface VacancyListProps {
   isAdmin?: boolean;
 }
 
 const VacancyList: FC<VacancyListProps> = ({ isAdmin }) => {
-  const { data: vacanciesList, isError } = vacancyAPI.useGetNewsQuery({});
+  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(9);
+
+  const { data: vacanciesList, isError } = vacancyAPI.useGetNewsQuery({
+    page,
+    limit,
+  });
 
   if (isError) {
     return (
@@ -29,11 +36,11 @@ const VacancyList: FC<VacancyListProps> = ({ isAdmin }) => {
       <div className={classNames(cls.vacanciesListContent, "container")}>
         {!isAdmin && <h2 className={cls.vacanciesListTitle}>Наши вакансии</h2>}
 
-        {vacanciesList ? (
-          vacanciesList.length > 0 ? (
+        {vacanciesList?.rows ? (
+          vacanciesList.rows.length > 0 ? (
             <>
               <div className={cls.newsListContent}>
-                {vacanciesList.map((vacancy) => (
+                {vacanciesList.rows.map((vacancy) => (
                   <VacancyItem
                     key={vacancy.id}
                     isAdmin={isAdmin}
@@ -41,6 +48,12 @@ const VacancyList: FC<VacancyListProps> = ({ isAdmin }) => {
                   />
                 ))}
               </div>
+              <Pagination
+                totalCount={vacanciesList.count}
+                page={page}
+                limit={limit}
+                changePage={setPage}
+              />
             </>
           ) : (
             <h2 className={cls.vacanciesListError}>

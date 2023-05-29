@@ -23,7 +23,7 @@ const NewsDescriptionContent: FC<NewsDescriptionContentProps> = ({ news }) => {
               src={import.meta.env.VITE_API_URL + `/images/news/` + news.img}
             />
             <div className={cls.newsDescriptionText}>
-              {news.infos.map((item) => (
+              {news?.infos?.map((item) => (
                 <p key={item.id} className="default-text">
                   {item.description}
                 </p>

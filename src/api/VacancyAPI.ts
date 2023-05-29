@@ -2,6 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { getAccessToken } from "../utils/GetAccessToken";
 import { IVacancy } from "../models/Entity/IVacancy";
 
+interface IVacancyResponse {
+  count: number;
+  rows: IVacancy[];
+}
+
 export const vacancyAPI = createApi({
   reducerPath: "vacancyAPI",
   baseQuery: fetchBaseQuery({
@@ -17,10 +22,14 @@ export const vacancyAPI = createApi({
 
   tagTypes: ["Vacancy"],
   endpoints: (build) => ({
-    getNews: build.query<IVacancy[], {}>({
-      query: () => ({
+    getNews: build.query<IVacancyResponse, { limit: number; page: number }>({
+      query: ({ page, limit }) => ({
         url: `/vacancies`,
         method: "GET",
+        params: {
+          page,
+          limit,
+        },
       }),
       providesTags: (result) => ["Vacancy"],
     }),
