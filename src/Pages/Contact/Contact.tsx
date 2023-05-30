@@ -9,7 +9,7 @@ import MyInput from "../../components/UI/MyInput/MyInput";
 import { useForm, SubmitHandler } from "react-hook-form";
 import MyTextArea from "../../components/UI/MyTextArea/MyTextArea";
 import MyButton from "../../components/UI/MyButton/MyButton";
-import ContactService from "../../api/ContactService";
+import EmailService from "../../api/EmailService";
 import InfoBlock from "../../components/Blocks/InfoBlock/InfoBlock";
 import IContact from "../../models/Forms/IContact";
 
@@ -23,7 +23,7 @@ const Contact: FC = () => {
   } = useForm<IContact>({ mode: "onChange" });
 
   const onSubmit: SubmitHandler<IContact> = async (data) => {
-    await ContactService.sendMessageFromUser(
+    await EmailService.sendMessageFromUser(
       data.name,
       data.surname,
       data.email,
@@ -32,15 +32,15 @@ const Contact: FC = () => {
       data.companyName,
       data.telephone
     );
-    // reset({
-    //   name: "",
-    //   surname: "",
-    //   email: "",
-    //   text: "",
-    //   subject: "",
-    //   telephone: "",
-    //   companyName: "",
-    // });
+    reset({
+      name: "",
+      surname: "",
+      email: "",
+      text: "",
+      subject: "",
+      telephone: "",
+      companyName: "",
+    });
   };
 
   useEffect(() => {

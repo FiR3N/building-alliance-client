@@ -3,6 +3,9 @@
 }
 
 .formItem {
+  display: flex;
+  flex-direction: column;
+
   position: relative;
 
   font-weight: 600;

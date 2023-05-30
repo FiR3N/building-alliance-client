@@ -14,11 +14,11 @@
   }
 
   ::placeholder {
-    color: #989898;
+    color: $ui-gray-text-color;
   }
 
   &Error {
-    border-color: red;
+    border-color: $ui-red-light-color;
   }
 
   @media #{$ui-mobile-max} {

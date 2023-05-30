@@ -1,7 +1,7 @@
 import { $api } from ".";
 import { AxiosResponse } from "axios";
 
-class ContactService {
+class EmailService {
   static async sendMessageFromUser(
     name: string,
     surname: string,
@@ -11,7 +11,7 @@ class ContactService {
     companyName: string,
     telephone: string
   ): Promise<AxiosResponse> {
-    return await $api.post("/contact", {
+    return await $api.post("/email/contact", {
       name,
       surname,
       email,
@@ -30,7 +30,7 @@ class ContactService {
     text: string,
     vacancyName: string
   ): Promise<AxiosResponse> {
-    return await $api.post("/contact/vacancy", {
+    return await $api.post("/email/vacancy", {
       name,
       surname,
       patronymic,
@@ -40,6 +40,29 @@ class ContactService {
       vacancyName,
     });
   }
+  static async sendOrder(
+    name: string,
+    phone: string,
+    address: string,
+    email: string,
+    count: string,
+    price: number,
+    mixtureType: string,
+    mixture: string,
+    text: string
+  ): Promise<AxiosResponse> {
+    return await $api.post("/email/order", {
+      name,
+      phone,
+      address,
+      email,
+      count,
+      price,
+      mixtureType,
+      mixture,
+      text,
+    });
+  }
 }
 
-export default ContactService;
+export default EmailService;

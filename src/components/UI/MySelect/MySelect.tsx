@@ -3,7 +3,6 @@ import cls from "./MySelect.module.scss";
 import dropDownImage from "../../../assets/img/drop-down.png";
 import classNames from "classnames";
 import { Control, FieldError, FormState } from "react-hook-form";
-import IUserForm from "../../../models/Forms/IUserForm";
 
 interface ArrayForSelect {
   id: number;
@@ -16,7 +15,7 @@ interface MySelectProps {
   selectedItem: ArrayForSelect | null;
   setSelectedItem: Dispatch<SetStateAction<ArrayForSelect | null>>;
   labelTitle?: string;
-  control?: Control<IUserForm>;
+  control?: Control<any>;
   rules?: Record<string, unknown>;
   error?: FieldError;
   formName?: string;
@@ -36,20 +35,14 @@ const MySelect: FC<MySelectProps> = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    control?.register(formName as keyof IUserForm, rules);
+    control?.register(formName as any, rules);
   }, [control, formName, rules]);
 
   return (
     <label>
-      {labelTitle}
+      <p>{labelTitle}</p>
       {error && (
-        <p
-          className={classNames(
-            labelTitle && cls.errorWithLabel,
-            cls.error,
-            "error-text"
-          )}
-        >
+        <p className={classNames(cls.error, "error-text")}>
           {error.message as React.ReactNode}
         </p>
       )}
@@ -59,8 +52,9 @@ const MySelect: FC<MySelectProps> = ({
           className={classNames(
             cls.mySelectName,
             isOpen && cls._active,
+            selectedItem && cls._selected,
+            error && cls.mySelectNameError,
             "default-text"
-            // error && cls.mySelectNameError
           )}
         >
           {selectedItem ? selectedItem.content : name}
@@ -78,30 +72,6 @@ const MySelect: FC<MySelectProps> = ({
           ))}
         </div>
       </div>
-      {/* <div className={cls.mySelect} onClick={() => setIsOpen((prev) => !prev)}>
-        <p
-          className={classNames(
-            cls.mySelectName,
-            isOpen && cls._active,
-            "default-text"
-            // error && cls.mySelectNameError
-          )}
-        >
-          {selectedItem ? selectedItem.content : name}
-          <img src={dropDownImage} alt="drop-down" />
-        </p>
-        <div className={classNames(cls.mySelectContent, isOpen && cls._active)}>
-          {array.map((item) => (
-            <p
-              className={classNames(cls.mySelectItem, "default-text")}
-              onClick={() => setSelectedItem(item)}
-              key={item.id}
-            >
-              {item.content}
-            </p>
-          ))}
-        </div>
-      </div> */}
     </label>
   );
 };

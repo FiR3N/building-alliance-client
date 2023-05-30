@@ -7,7 +7,7 @@ import IVacancyContactForm from "../../../../models/Forms/IVacancyContactForm";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
 import MyInput from "../../../UI/MyInput/MyInput";
 import MyTextArea from "../../../UI/MyTextArea/MyTextArea";
-import ContactService from "../../../../api/ContactService";
+import EmailService from "../../../../api/EmailService";
 
 interface VacancyContactModalProps {
   closeMethod: Dispatch<SetStateAction<boolean>>;
@@ -27,7 +27,7 @@ const VacancyContactModal: FC<VacancyContactModalProps> = ({
   const [error, setError] = useState<string>("");
 
   const onSubmit: SubmitHandler<IVacancyContactForm> = async (data) => {
-    await ContactService.sendVacancyFromUser(
+    await EmailService.sendVacancyFromUser(
       data.name,
       data.surname,
       data.patronymic,

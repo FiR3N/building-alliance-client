@@ -4,7 +4,11 @@
   &Title {
     margin-bottom: 20px;
   }
-
+  &Cart {
+    button {
+      padding: 5px 10px;
+    }
+  }
   &Form {
     display: flex;
     flex-direction: column;
@@ -14,6 +18,9 @@
       input {
         width: 100%;
       }
+    }
+    textarea {
+      resize: none;
     }
     &Price {
       display: flex;

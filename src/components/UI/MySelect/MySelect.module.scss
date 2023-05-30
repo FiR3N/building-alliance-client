@@ -8,7 +8,7 @@
     justify-content: space-between;
     gap: 5px;
 
-    color: $ui-black-blue-color;
+    color: $ui-gray-text-color;
 
     border: 1px solid $ui-black-blue-color;
     border-radius: 8px;
@@ -22,7 +22,9 @@
 
       transition: all 0.3s ease;
     }
-
+    &._selected {
+      color: $ui-black-blue-color;
+    }
     &._active {
       img {
         transform: rotate(180deg);
@@ -92,14 +94,5 @@ label {
   position: relative;
 }
 .error {
-  position: absolute;
-  top: -6px;
-  left: 10px;
-  z-index: 2;
-  background-color: white;
-}
-.errorWithLabel {
-  position: absolute;
-  top: 8px;
-  left: 70px;
+  margin: 5px 0;
 }
