@@ -141,6 +141,8 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
             value={name}
             onChange={(e) => setName(e.currentTarget.value)}
             placeholder="Введите название..."
+            required
+            maxLength={255}
             register={register("name", {
               required: "Имя не может быть пустым!",
             })}
@@ -151,6 +153,7 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
             value={date}
             onChange={(e) => setDate(e.currentTarget.value)}
             type="date"
+            required
             placeholder="Введите дату..."
             register={register("date", {
               required: "Дата не может быть пустым!",
@@ -187,6 +190,7 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
                   labelTitle={`Контент - ${index + 1}`}
                   rows={10}
                   value={item.description}
+                  required
                   onChange={(e) => changeInfo(e.target.value, item.id)}
                 />
                 <MyButton type="button" onClick={(e) => removeInfo(item.id)}>

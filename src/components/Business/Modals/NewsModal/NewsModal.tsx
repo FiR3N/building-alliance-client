@@ -119,6 +119,8 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
             value={name}
             onChange={(e) => setName(e.currentTarget.value)}
             placeholder="Введите название..."
+            required
+            maxLength={255}
             register={register("name", {
               required: "Имя не может быть пустым!",
             })}
@@ -128,6 +130,8 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
             labelTitle="Описание"
             value={description}
             onChange={(e) => setDescription(e.currentTarget.value)}
+            required
+            maxLength={255}
             placeholder="Введите описание..."
             register={register("description", {
               required: "Описание не может быть пустым!",
@@ -140,6 +144,7 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
             onChange={(e) => setDate(e.currentTarget.value)}
             type="date"
             placeholder="Введите дату..."
+            required
             register={register("date", {
               required: "Дата не может быть пустым!",
             })}
@@ -174,6 +179,7 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
                   labelTitle={`Контент - ${index + 1}`}
                   rows={10}
                   value={item.description}
+                  required
                   onChange={(e) => changeInfo(e.target.value, item.id)}
                 />
                 <MyButton onClick={(e) => removeInfo(item.id)}>

@@ -119,6 +119,8 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
             value={name}
             onChange={(e) => setName(e.currentTarget.value)}
             placeholder="Введите имя..."
+            required
+            maxLength={50}
             register={register("name", {
               required: "Имя не может быть пустым!",
             })}
@@ -130,6 +132,8 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
             value={surname}
             onChange={(e) => setSurname(e.currentTarget.value)}
             placeholder="Введите фамилию..."
+            required
+            maxLength={50}
             register={register("surname", {
               required: "Фамилия не может быть пустым!",
             })}
@@ -141,6 +145,8 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
             value={patronymic}
             onChange={(e) => setPatronymic(e.currentTarget.value)}
             placeholder="Введите отчество..."
+            required
+            maxLength={50}
             register={register("patronymic", {
               required: "Отчество не может быть пустым!",
             })}
@@ -152,6 +158,8 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
             value={login}
             onChange={(e) => setLogin(e.currentTarget.value)}
             placeholder="Введите логин..."
+            required
+            maxLength={30}
             register={register("login", {
               required: "Логин не может быть пустым!",
             })}
@@ -176,6 +184,7 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
               placeholder={
                 user ? "Введите новый пароль..." : "Введите пароль..."
               }
+              required
               register={register("password", {
                 required: "Пароль не может быть пустым!",
               })}
@@ -198,6 +207,8 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
               value={password}
               onChange={(e) => setPassword(e.currentTarget.value)}
               placeholder="Введите пароль..."
+              required
+              maxLength={100}
               register={register("password", {
                 required: "Пароль не может быть пустым!",
               })}

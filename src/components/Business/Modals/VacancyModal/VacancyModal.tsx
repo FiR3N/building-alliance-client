@@ -90,6 +90,8 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
             value={name}
             onChange={(e) => setName(e.currentTarget.value)}
             placeholder="Введите название..."
+            required
+            maxLength={255}
             register={register("name", {
               required: "Название не может быть пустым!",
             })}
@@ -110,6 +112,7 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
             value={experience}
             onChange={(e) => setExperience(e.currentTarget.value)}
             placeholder="Введите опыт работы..."
+            required
             register={register("experience", {
               required: "Опыт работы не может быть пустым!",
             })}
@@ -120,6 +123,7 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
             value={occupation}
             onChange={(e) => setOccupation(e.currentTarget.value)}
             placeholder="Введите рабочий график..."
+            required
             register={register("occupation", {
               required: "Рабочий график не может быть пустым!",
             })}
@@ -131,6 +135,8 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
             value={description}
             onChange={(e) => setDescription(e.currentTarget.value)}
             placeholder="Введите описание..."
+            required
+            maxLength={255}
             register={register("description", {
               required: "Описание не может быть пустым!",
             })}

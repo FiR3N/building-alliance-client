@@ -121,6 +121,8 @@ const CertificateModal: FC<CertificateModalProps> = ({
             value={description}
             onChange={(e) => setDescription(e.currentTarget.value)}
             placeholder="Введите описание..."
+            required
+            maxLength={255}
             register={register("description", {
               required: "Описание не может быть пустым!",
             })}
