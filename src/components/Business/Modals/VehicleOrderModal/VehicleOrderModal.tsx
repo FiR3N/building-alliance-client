@@ -1,49 +1,33 @@
-import { Dispatch, FC, SetStateAction, useState, useEffect } from "react";
-import cls from "./MixtureOrderModal.module.scss";
+import { FC, Dispatch, SetStateAction, useState, useEffect } from "react";
+import cls from "./VehicleOrderModal.module.scss";
 import Modal from "../../../UI/Modal/Modal";
-import MySelect from "../../../UI/MySelect/MySelect";
-import { mixturesAPI } from "../../../../api/MixturesAPI";
-import { mixturesTypesAPI } from "../../../../api/MixturesTypesAPI";
-import MyInput from "../../../UI/MyInput/MyInput";
-import MyButton from "../../../UI/MyButton/MyButton";
-import classNames from "classnames";
-import MyTextArea from "../../../UI/MyTextArea/MyTextArea";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IMixtureForm } from "../../../../models/Forms/IMixtureForm";
-import EmailService from "../../../../api/EmailService";
+import { IVehicleForm } from "../../../../models/Forms/IVehicleForm";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
+import MyInput from "../../../UI/MyInput/MyInput";
+import MyTextArea from "../../../UI/MyTextArea/MyTextArea";
+import MyButton from "../../../UI/MyButton/MyButton";
+import { vehicleAPI } from "../../../../api/VehicleAPI";
+import MySelect from "../../../UI/MySelect/MySelect";
+import classNames from "classnames";
+import EmailService from "../../../../api/EmailService";
 
-interface MixtureOrderModalProps {
+interface VehicleOrderModalProps {
   closeMethod: Dispatch<SetStateAction<boolean>>;
-  typeId?: number;
 }
 
-const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
-  closeMethod,
-  typeId,
-}) => {
-  const [count, setCount] = useState<number>(1);
-  const [price, setPrice] = useState<number>(0);
-  const [isPriceWithVAT, setIsPriceWithVAT] = useState<boolean>(true);
-
-  const { data: types } = mixturesTypesAPI.useGetMixturesTypesQuery({});
-  const newTypes =
-    types?.map(({ id, name }) => ({ id: id, content: name })) || [];
-  const [selectedTypeItem, setSelectedTypeItem] = useState<{
-    id: number;
-    content: string;
-  } | null>(
-    typeId ? newTypes.find((item) => item.id === typeId) || null : null
-  );
-  const { data: mixtures } = mixturesAPI.useGetMixturesByTypeIdQuery({
-    typeId: selectedTypeItem?.id ? selectedTypeItem.id : 0,
-  });
-  const newMixtures =
-    mixtures?.map(({ id, name }) => ({ id: id, content: name })) || [];
-  const [selectedMixtureItem, setSelectedMixtureItem] = useState<{
+const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
+  const { data: vehicles } = vehicleAPI.useGetVehiclesQuery({});
+  const newVehicles =
+    vehicles?.map(({ id, name }) => ({ id: id, content: name })) || [];
+  const [selectedVehicle, setSelectedVehicle] = useState<{
     id: number;
     content: string;
   } | null>(null);
+
+  const [count, setCount] = useState<number>(1);
+  const [price, setPrice] = useState<number>(0);
+  const [isPriceWithVAT, setIsPriceWithVAT] = useState<boolean>(true);
 
   const {
     register,
@@ -52,35 +36,7 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
     control,
     setValue,
     formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = useForm<IMixtureForm>({ mode: "onChange" });
-
-  const onSubmit: SubmitHandler<IMixtureForm> = async (data) => {
-    EmailService.sendMixtureOrder(
-      data.name,
-      data.phone,
-      data.address,
-      data.email,
-      count +
-        (mixtures?.find((item) => item.id === selectedMixtureItem?.id)
-          ?.unitOfMeasurement as string),
-      price + (isPriceWithVAT ? "c НДС" : "без НДС"),
-      selectedTypeItem?.content as string,
-      selectedMixtureItem?.content as string,
-      data.text ? data.text : "пусто"
-    );
-
-    reset({
-      address: "",
-      count: 0,
-      email: "",
-      name: "",
-      phone: "",
-      price: 0,
-      text: "",
-    });
-
-    setSelectedMixtureItem(null);
-  };
+  } = useForm<IVehicleForm>({ mode: "onChange" });
 
   const countChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = Number(e.target.value);
@@ -92,24 +48,51 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
     }
   };
 
+  const onSubmit: SubmitHandler<IVehicleForm> = async (data) => {
+    EmailService.sendVehicleOrder(
+      data.name,
+      data.phone,
+      data.address,
+      data.email,
+      data.hoursCount,
+      price + (isPriceWithVAT ? "c НДС" : "без НДС"),
+      selectedVehicle?.content as string,
+      data.date,
+      data.text ? data.text : "пусто"
+    );
+
+    reset({
+      address: "",
+      email: "",
+      name: "",
+      phone: "",
+      price: 0,
+      text: "",
+      date: "",
+      hoursCount: 0,
+    });
+
+    setSelectedVehicle(null);
+  };
+
   useEffect(() => {
-    if (selectedMixtureItem) {
+    if (selectedVehicle) {
       setPrice(
         Number(
           (
             count *
             Number(
               isPriceWithVAT
-                ? mixtures?.find((item) => item.id === selectedMixtureItem?.id)
+                ? vehicles?.find((item) => item.id === selectedVehicle?.id)
                     ?.priceWithVAT
-                : mixtures?.find((item) => item.id === selectedMixtureItem?.id)
+                : vehicles?.find((item) => item.id === selectedVehicle?.id)
                     ?.priceWithoutVAT
             )
           ).toFixed(2)
         )
       );
     }
-  }, [count, mixtures, selectedMixtureItem, isPriceWithVAT]);
+  }, [count, vehicles, selectedVehicle, isPriceWithVAT]);
 
   useEffect(() => {
     const modalRoot = document.querySelector("#modal-root");
@@ -118,85 +101,60 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
   }, [isSubmitSuccessful]);
 
   useEffect(() => {
-    if (selectedTypeItem?.content)
-      setValue("mixtureType", selectedTypeItem?.content);
-  }, [selectedTypeItem]);
-
-  useEffect(() => {
-    if (selectedMixtureItem?.content)
-      setValue("mixture", selectedMixtureItem?.content);
-  }, [selectedMixtureItem]);
+    if (selectedVehicle?.content) setValue("vehicle", selectedVehicle?.content);
+  }, [selectedVehicle]);
 
   return (
     <Modal closeMethod={closeMethod}>
-      <div className={cls.mixtureOrderModal}>
-        <h2 className={cls.mixtureOrderModalTitle}>Оформление заказа</h2>
+      <div className={cls.vehicleOrderModal}>
+        <h2 className={cls.vehicleOrderModalTitle}>Оформление заказа</h2>
         {isSubmitSuccessful && (
           <InfoBlock blockType={1}>
             <p>Ваш заказ успешно отправлен!</p>
           </InfoBlock>
         )}
-        <div className={cls.mixtureOrderModalContent}>
+        <div className={cls.vehicleOrderModalContent}>
           <form
-            className={cls.mixtureOrderModalForm}
+            className={cls.vehicleOrderModalForm}
             onSubmit={handleSubmit(onSubmit)}
           >
             <MySelect
-              name="Типы растворов"
-              array={newTypes}
-              selectedItem={selectedTypeItem}
-              setSelectedItem={setSelectedTypeItem}
-              labelTitle="Список типов растворов"
-              formName="mixtureType"
+              name="Техника"
+              array={newVehicles}
+              selectedItem={selectedVehicle}
+              setSelectedItem={setSelectedVehicle}
+              labelTitle="Список техники"
+              formName="vehicle"
               control={control}
-              rules={{ required: "Тип раствора должен быть выбран!" }}
-              error={errors.mixtureType}
+              rules={{ required: "Техника должна быть выбрана!" }}
+              error={errors.vehicle}
             />
-            {selectedTypeItem && (
-              <>
-                <MySelect
-                  name="Растворы"
-                  array={newMixtures}
-                  selectedItem={selectedMixtureItem}
-                  setSelectedItem={setSelectedMixtureItem}
-                  labelTitle="Список растворов"
-                  formName="mixture"
-                  control={control}
-                  rules={{ required: "Раствор должен быть выбран!" }}
-                  error={errors.mixture}
-                />
-              </>
-            )}
-            {selectedMixtureItem && (
+            {selectedVehicle && (
               <>
                 <MyInput
-                  labelTitle={`Единицы измерения(${
-                    mixtures?.find(
-                      (item) => item.id === selectedMixtureItem?.id
-                    )?.unitOfMeasurement
-                  })`}
+                  labelTitle={`Количество часов`}
                   value={count}
                   onChange={countChangeHandler}
                   type="number"
-                  placeholder="Введите количество товара..."
+                  placeholder="Введите время аренды..."
                   required
                   min={0}
-                  step={0.5}
+                  step={1}
                   max={999}
-                  register={register("count", {
-                    required: "Количетсво не может быть пустой!",
+                  register={register("hoursCount", {
+                    required: "Время не может быть пустым!",
                   })}
-                  error={errors.count}
+                  error={errors.hoursCount}
                 />
                 <label
                   className={classNames(
-                    cls.mixtureOrderModalFormPrice,
+                    cls.vehicleOrderModalFormPrice,
                     "bold-title-text"
                   )}
                 >
                   Предварительная цена: <span>{price} BYN</span>
                 </label>
-                <div className={cls.mixtureOrderModalFormCheckBox}>
+                <div className={cls.vehicleOrderModalFormCheckBox}>
                   <MyInput
                     labelTitle="Цена без НДС"
                     type="checkbox"
@@ -246,6 +204,15 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
               error={errors.email}
             />
             <MyInput
+              labelTitle="Название"
+              type="date"
+              required
+              register={register("date", {
+                required: "Дата не может быть пустой!",
+              })}
+              error={errors.date}
+            />
+            <MyInput
               labelTitle="Адрес"
               placeholder="Введите адрес..."
               required
@@ -271,4 +238,4 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
   );
 };
 
-export default MixtureOrderModal;
+export default VehicleOrderModal;

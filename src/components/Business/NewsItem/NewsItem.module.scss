@@ -35,8 +35,10 @@
 
     @media #{$ui-mouse-device} {
       &:hover {
-        img {
-          transform: scale(1.1);
+        .newsItemImage {
+          img {
+            transform: scale(1.1);
+          }
         }
       }
     }

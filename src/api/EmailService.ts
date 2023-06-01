@@ -40,18 +40,18 @@ class EmailService {
       vacancyName,
     });
   }
-  static async sendOrder(
+  static async sendMixtureOrder(
     name: string,
     phone: string,
     address: string,
     email: string,
     count: string,
-    price: number,
+    price: string,
     mixtureType: string,
     mixture: string,
     text: string
   ): Promise<AxiosResponse> {
-    return await $api.post("/email/order", {
+    return await $api.post("/email/mixture-order", {
       name,
       phone,
       address,
@@ -60,6 +60,30 @@ class EmailService {
       price,
       mixtureType,
       mixture,
+      text,
+    });
+  }
+
+  static async sendVehicleOrder(
+    name: string,
+    phone: string,
+    address: string,
+    email: string,
+    hoursCount: number,
+    price: string,
+    vehicle: string,
+    date: string,
+    text: string
+  ): Promise<AxiosResponse> {
+    return await $api.post("/email/vehicle-order", {
+      name,
+      phone,
+      address,
+      email,
+      hoursCount,
+      price,
+      vehicle,
+      date,
       text,
     });
   }

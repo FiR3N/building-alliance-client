@@ -1,0 +1,67 @@
+.vehicleList {
+  margin-bottom: 20px;
+
+  &Title {
+    margin-bottom: 10px;
+  }
+  &Table {
+    margin-bottom: 20px;
+    &Headers {
+      display: flex;
+      justify-content: space-between;
+
+      border: 1px solid $ui-black-blue-color;
+
+      &Item {
+        padding: 5px;
+        flex: 1 1 33.333%;
+
+        text-align: center;
+        color: $ui-black-blue-color;
+
+        &:not(:last-of-type) {
+          border-right: 1px solid $ui-black-blue-color;
+        }
+      }
+    }
+    &Content {
+      display: flex;
+      justify-content: space-between;
+
+      border: 1px solid $ui-black-blue-color;
+      border-top: none;
+
+      &Item {
+        padding: 10px;
+        flex: 1 1 33.333%;
+
+        text-align: center;
+        line-height: 100%;
+        color: $ui-black-blue-color;
+
+        &:not(:last-of-type) {
+          border-right: 1px solid $ui-black-blue-color;
+        }
+      }
+    }
+  }
+
+  @media #{$ui-tablet-avg} {
+    &Table {
+      &Headers {
+        &Item {
+          font-size: 16px;
+          word-break: break-all;
+        }
+      }
+      &Content {
+        &Item {
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+.gray {
+  background-color: rgb(168, 167, 167);
+}

@@ -7,6 +7,7 @@ import { IService } from "../../../models/Entity/IService";
 import useFetch from "../../../hooks/useFetch";
 import { IMixture } from "../../../models/Entity/IMixture";
 import MixturesTypesList from "../../../components/Business/MixturesTypesList/MixturesTypesList";
+import VehicleList from "../../../components/Business/VehicleList/VehicleList";
 
 interface ServiceDescriptionContentProps {
   service: IService;
@@ -54,29 +55,8 @@ const ServiceDescriptionContent: FC<ServiceDescriptionContentProps> = ({
           )}
         </div>
       </div>
-      {service.id === 2 && (
-        // <div className={cls.serviceDescriptionTable}>
-        //   <div className={cls.serviceDescriptionTableHeaders}>
-        //     <h5>Название</h5>
-        //     <h5>Единицы измерения</h5>
-        //     <h5>Цена без НДС</h5>
-        //     <h5>Цена с ндс</h5>
-        //   </div>
-        //   {data?.map((item) => {
-        //     return (
-        //       <>
-        //         <div className={cls.serviceDescriptionContent}>
-        //           <p>{item.name}</p>
-        //           <p>{item.unitOfMeasurement}</p>
-        //           <p>{item.priceWithVAT}</p>
-        //           <p>{item.priceWithoutVAT}</p>
-        //         </div>
-        //       </>
-        //     );
-        //   })}
-        // </div>
-        <MixturesTypesList />
-      )}
+      {service.id === 2 && <MixturesTypesList />}
+      {service.id === 9 && <VehicleList />}
       <RedirectToContactBlock />
     </>
   );

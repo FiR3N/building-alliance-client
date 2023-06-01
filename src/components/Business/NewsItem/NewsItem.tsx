@@ -3,7 +3,6 @@ import cls from "./NewsItem.module.scss";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { rusToLatin } from "../../../utils/Transliterate";
-import { MdDateRange } from "react-icons/md";
 import { INews } from "../../../models/Entity/INews";
 
 import editImage from "../../../assets/img/edit.svg";
