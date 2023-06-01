@@ -2,15 +2,28 @@ import { FC, useState } from "react";
 import cls from "./VehicleList.module.scss";
 import { vehicleAPI } from "../../../api/VehicleAPI";
 import classNames from "classnames";
-
-import sadSmile from "../../../assets/img/sad-smile.png";
 import MyButton from "../../UI/MyButton/MyButton";
 import VehicleOrderModal from "../Modals/VehicleOrderModal/VehicleOrderModal";
+import VehicleModal from "../Modals/VehicleModal/VehicleModal";
+import { IVehicle } from "../../../models/Entity/IVehicle";
+import VehicleDeleteModal from "../Modals/VehicleDeleteModal/VehicleDeleteModal";
 
-interface VehicleListProps {}
+import sadSmile from "../../../assets/img/sad-smile.png";
+import editImage from "../../../assets/img/edit.svg";
+import deleteImage from "../../../assets/img/delete.svg";
 
-const VehicleList: FC<VehicleListProps> = () => {
-  const [isVehicleModalOpen, setIsVehicleModalOpen] = useState<boolean>(false);
+interface VehicleListProps {
+  isAdmin?: boolean;
+}
+
+const VehicleList: FC<VehicleListProps> = ({ isAdmin }) => {
+  const [isVehicleOrderModalOpen, setIsVehicleOrderModalOpen] =
+    useState<boolean>(false);
+  const [isVehicleEditModalOpen, setIsVehicleEditModalOpen] =
+    useState<boolean>(false);
+  const [isVehicleDeleteModalOpen, setIsVehicleDeleteModalOpen] =
+    useState<boolean>(false);
+  const [vehicle, setVehicle] = useState<IVehicle>({} as IVehicle);
   let { error, data: vehicles } = vehicleAPI.useGetVehiclesQuery({});
 
   if (error) {
@@ -24,16 +37,49 @@ const VehicleList: FC<VehicleListProps> = () => {
     );
   }
 
-  const vehicleButtonClickHandler = (
+  if (vehicles?.length === 0) {
+    return (
+      <div className={classNames(cls.vehicleList, "container")}>
+        <h2 className="error-block">
+          Техники не найадено
+          <img className="smile-image" src={sadSmile} alt="sad-smile" />
+        </h2>
+      </div>
+    );
+  }
+
+  const vehicleOrderButtonClickHandler = (
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
-    setIsVehicleModalOpen(true);
+    setIsVehicleOrderModalOpen(true);
+  };
+
+  const vehicleEditButtonClickHandler = (vehicle: IVehicle) => {
+    setIsVehicleEditModalOpen(true);
+    setVehicle(vehicle);
+  };
+
+  const vehicleDeleteButtonClickHandler = (vehicle: IVehicle) => {
+    setIsVehicleDeleteModalOpen(true);
+    setVehicle(vehicle);
   };
 
   return (
     <>
-      {isVehicleModalOpen && (
-        <VehicleOrderModal closeMethod={setIsVehicleModalOpen} />
+      {isVehicleOrderModalOpen && (
+        <VehicleOrderModal closeMethod={setIsVehicleOrderModalOpen} />
+      )}
+      {isVehicleDeleteModalOpen && (
+        <VehicleDeleteModal
+          closeMethod={setIsVehicleDeleteModalOpen}
+          vehicle={vehicle}
+        />
+      )}
+      {isVehicleEditModalOpen && (
+        <VehicleModal
+          closeMethod={setIsVehicleEditModalOpen}
+          vehicle={vehicle}
+        />
       )}
       <div className={classNames(cls.vehicleList, "container")}>
         <h2 className={cls.vehicleListTitle}>Наша техника</h2>
@@ -56,6 +102,20 @@ const VehicleList: FC<VehicleListProps> = () => {
                 )}
                 key={vehicle.id}
               >
+                {isAdmin && (
+                  <div className={cls.vehicleListAdminPanel}>
+                    <img
+                      src={editImage}
+                      alt="изменить"
+                      onClick={(e) => vehicleEditButtonClickHandler(vehicle)}
+                    />
+                    <img
+                      src={deleteImage}
+                      alt="удалить"
+                      onClick={(e) => vehicleDeleteButtonClickHandler(vehicle)}
+                    />
+                  </div>
+                )}
                 <p
                   className={classNames(
                     cls.vehicleListTableContentItem,
@@ -85,7 +145,11 @@ const VehicleList: FC<VehicleListProps> = () => {
             );
           })}
         </div>
-        <MyButton onClick={vehicleButtonClickHandler}>Оформить заказ</MyButton>
+        {!isAdmin && (
+          <MyButton onClick={vehicleOrderButtonClickHandler}>
+            Оформить заказ
+          </MyButton>
+        )}
       </div>
     </>
   );

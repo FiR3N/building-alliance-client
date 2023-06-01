@@ -3,19 +3,13 @@
 }
 
 .formItem {
+  display: flex;
+  flex-direction: column;
+
   position: relative;
 
   font-weight: 600;
 }
 .error {
-  position: absolute;
-  top: -6px;
-  left: 10px;
-  z-index: 2;
-  background-color: white;
-}
-.errorWithLabel {
-  position: absolute;
-  top: 8px;
-  left: 70px;
+  margin: 5px 0;
 }

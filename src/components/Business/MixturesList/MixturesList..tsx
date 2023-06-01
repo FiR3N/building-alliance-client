@@ -3,16 +3,28 @@ import cls from "./MixturesList.module.scss";
 import { IMixtureTypes } from "../../../models/Entity/IMixtureTypes";
 import classNames from "classnames";
 import { mixturesAPI } from "../../../api/MixturesAPI";
-import sadSmile from "../../../assets/img/sad-smile.png";
 import MyButton from "../../UI/MyButton/MyButton";
 import MixtureOrderModal from "../Modals/MixtureOrderModal/MixtureOrderModal";
 
+import sadSmile from "../../../assets/img/sad-smile.png";
+import editImage from "../../../assets/img/edit.svg";
+import deleteImage from "../../../assets/img/delete.svg";
+import { IMixture } from "../../../models/Entity/IMixture";
+
 interface MixturesListProps {
   type: IMixtureTypes;
+  isAdmin?: boolean;
 }
 
-const MixturesList: FC<MixturesListProps> = ({ type }) => {
-  const [isMixtureModalOpen, setIsMixtureModalOpen] = useState<boolean>(false);
+const MixturesList: FC<MixturesListProps> = ({ type, isAdmin }) => {
+  const [isMixtureOrderModalOpen, setIsMixtureOrderModalOpen] =
+    useState<boolean>(false);
+  const [isMixtureEditModalOpen, setIsMixtureEditModalOpen] =
+    useState<boolean>(false);
+  const [isMixtureDeleteModalOpen, setIsMixtureDeleteModalOpen] =
+    useState<boolean>(false);
+  const [mixture, setMixture] = useState<IMixture>({} as IMixture);
+
   let { error, data: mixtures } = mixturesAPI.useGetMixturesByTypeIdQuery({
     typeId: type.id,
   });
@@ -28,17 +40,38 @@ const MixturesList: FC<MixturesListProps> = ({ type }) => {
     );
   }
 
-  const mixtureButtonClickHandler = (
+  if (mixtures?.length === 0) {
+    return (
+      <div className={classNames(cls.ourWorksList, "container")}>
+        <h2 className="error-block">
+          Растворов данного типа не найдено
+          <img className="smile-image" src={sadSmile} alt="sad-smile" />
+        </h2>
+      </div>
+    );
+  }
+
+  const mixtureOrderButtonClickHandler = (
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
-    setIsMixtureModalOpen(true);
+    setIsMixtureOrderModalOpen(true);
+  };
+
+  const mixtureEditButtonClickHandler = (mixture: IMixture) => {
+    setIsMixtureEditModalOpen(true);
+    setMixture(mixture);
+  };
+
+  const mixtureDeleteButtonClickHandler = (mixture: IMixture) => {
+    setIsMixtureDeleteModalOpen(true);
+    setMixture(mixture);
   };
 
   return (
     <>
-      {isMixtureModalOpen && (
+      {isMixtureOrderModalOpen && (
         <MixtureOrderModal
-          closeMethod={setIsMixtureModalOpen}
+          closeMethod={setIsMixtureOrderModalOpen}
           typeId={type.id}
         />
       )}
@@ -62,6 +95,20 @@ const MixturesList: FC<MixturesListProps> = ({ type }) => {
                 )}
                 key={mixture.id}
               >
+                {isAdmin && (
+                  <div className={cls.mixturesListAdminPanel}>
+                    <img
+                      src={editImage}
+                      alt="изменить"
+                      onClick={(e) => mixtureEditButtonClickHandler(mixture)}
+                    />
+                    <img
+                      src={deleteImage}
+                      alt="удалить"
+                      onClick={(e) => mixtureDeleteButtonClickHandler(mixture)}
+                    />
+                  </div>
+                )}
                 <p
                   className={classNames(
                     cls.mixturesListTableContentItem,
@@ -98,7 +145,11 @@ const MixturesList: FC<MixturesListProps> = ({ type }) => {
             );
           })}
         </div>
-        <MyButton onClick={mixtureButtonClickHandler}>Оформить заказ</MyButton>
+        {!isAdmin && (
+          <MyButton onClick={mixtureOrderButtonClickHandler}>
+            Оформить заказ
+          </MyButton>
+        )}
       </div>
     </>
   );

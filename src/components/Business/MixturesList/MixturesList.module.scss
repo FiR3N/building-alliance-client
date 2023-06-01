@@ -4,6 +4,29 @@
   &Title {
     margin-bottom: 10px;
   }
+  &AdminPanel {
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    transform: translateY(-50%);
+
+    img {
+      width: 20px;
+      height: 20px;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+      @media #{$ui-mouse-device} {
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
   &Table {
     margin-bottom: 20px;
     &Headers {
@@ -27,6 +50,8 @@
     &Content {
       display: flex;
       justify-content: space-between;
+
+      position: relative;
 
       border: 1px solid $ui-black-blue-color;
       border-top: none;

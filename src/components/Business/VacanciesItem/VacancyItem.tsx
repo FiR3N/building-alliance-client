@@ -4,12 +4,12 @@ import { IVacancy } from "../../../models/Entity/IVacancy";
 import vacancyImage from "../../../assets/img/vakancy-plug-img.jpg";
 import classNames from "classnames";
 import MyButton from "../../UI/MyButton/MyButton";
-
-import editImage from "../../../assets/img/edit.svg";
-import deleteImage from "../../../assets/img/delete.svg";
 import VacanacyDeleteModal from "../Modals/VacancyDeleteModal/VacancyDeleteModal";
 import VacancyModal from "../Modals/VacancyModal/VacancyModal";
 import VacancyContactModal from "../Modals/VacancyContactModal/VacancyContactModal";
+
+import editImage from "../../../assets/img/edit.svg";
+import deleteImage from "../../../assets/img/delete.svg";
 
 interface VacancyItemProps {
   vacancy: IVacancy;

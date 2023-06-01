@@ -9,7 +9,7 @@ import MyButton from "../../../UI/MyButton/MyButton";
 import classNames from "classnames";
 import MyTextArea from "../../../UI/MyTextArea/MyTextArea";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IMixtureForm } from "../../../../models/Forms/IMixtureForm";
+import { IMixtureOrderForm } from "../../../../models/Forms/IMixtureOrderForm";
 import EmailService from "../../../../api/EmailService";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
 
@@ -52,9 +52,9 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
     control,
     setValue,
     formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = useForm<IMixtureForm>({ mode: "onChange" });
+  } = useForm<IMixtureOrderForm>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<IMixtureForm> = async (data) => {
+  const onSubmit: SubmitHandler<IMixtureOrderForm> = async (data) => {
     EmailService.sendMixtureOrder(
       data.name,
       data.phone,

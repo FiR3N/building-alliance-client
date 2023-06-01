@@ -2,7 +2,7 @@ import { FC, Dispatch, SetStateAction, useState, useEffect } from "react";
 import cls from "./VehicleOrderModal.module.scss";
 import Modal from "../../../UI/Modal/Modal";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IVehicleForm } from "../../../../models/Forms/IVehicleForm";
+import { IVehicleOrderForm } from "../../../../models/Forms/IVehicleOrderForm";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
 import MyInput from "../../../UI/MyInput/MyInput";
 import MyTextArea from "../../../UI/MyTextArea/MyTextArea";
@@ -36,7 +36,7 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
     control,
     setValue,
     formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = useForm<IVehicleForm>({ mode: "onChange" });
+  } = useForm<IVehicleOrderForm>({ mode: "onChange" });
 
   const countChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = Number(e.target.value);
@@ -48,7 +48,7 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
     }
   };
 
-  const onSubmit: SubmitHandler<IVehicleForm> = async (data) => {
+  const onSubmit: SubmitHandler<IVehicleOrderForm> = async (data) => {
     EmailService.sendVehicleOrder(
       data.name,
       data.phone,

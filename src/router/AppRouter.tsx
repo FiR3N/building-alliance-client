@@ -4,12 +4,32 @@ import { ROUTES } from "./Routes";
 import { Suspense, lazy } from "react";
 import Loader from "../components/UI/Loader/Loader";
 import { useTypeSelector } from "../hooks/useTypeSelector";
-import AdminServicePage from "../components/Business/AdminServicePage/AdminServicePage";
-import AdminNewsPage from "../components/Business/AdminNewsPage/AdminNewsPage";
-import AdminUserPage from "../components/Business/AdminUserPage/AdminUserPage";
-import AdminVacancyPage from "../components/Business/AdminVacancyPage/AdminVacancyPage";
-import AdminCertificatePage from "../components/Business/AdminCertificatePage/AdminCertificatePage";
-import AdminOurWorksPage from "../components/Business/AdminOurWorksPage/AdminOurWorksPage";
+
+const AdminMixturePage = lazy(
+  () => import("../components/Business/AdminMixturePage/AdminMixturePage")
+);
+const AdminServicePage = lazy(
+  () => import("../components/Business/AdminServicePage/AdminServicePage")
+);
+const AdminNewsPage = lazy(
+  () => import("../components/Business/AdminNewsPage/AdminNewsPage")
+);
+const AdminUserPage = lazy(
+  () => import("../components/Business/AdminUserPage/AdminUserPage")
+);
+const AdminVacancyPage = lazy(
+  () => import("../components/Business/AdminVacancyPage/AdminVacancyPage")
+);
+const AdminCertificatePage = lazy(
+  () =>
+    import("../components/Business/AdminCertificatePage/AdminCertificatePage")
+);
+const AdminOurWorksPage = lazy(
+  () => import("../components/Business/AdminOurWorksPage/AdminOurWorksPage")
+);
+const AdminVehiclePage = lazy(
+  () => import("../components/Business/AdminVehiclePage/AdminVehiclePage")
+);
 
 const Contact = lazy(() => import("../Pages/Contact/Contact"));
 const History = lazy(() => import("../Pages/History/History"));
@@ -135,6 +155,22 @@ const AppRouter = () => {
               element={
                 <Suspense fallback={<Loader withMargins={true} />}>
                   <AdminServicePage />
+                </Suspense>
+              }
+            />
+            <Route
+              path={ROUTES.ADMINVEHICLE.en}
+              element={
+                <Suspense fallback={<Loader withMargins={true} />}>
+                  <AdminVehiclePage />
+                </Suspense>
+              }
+            />
+            <Route
+              path={ROUTES.ADMINMIXTURES.en}
+              element={
+                <Suspense fallback={<Loader withMargins={true} />}>
+                  <AdminMixturePage />
                 </Suspense>
               }
             />

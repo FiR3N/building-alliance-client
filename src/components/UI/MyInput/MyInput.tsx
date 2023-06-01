@@ -19,15 +19,7 @@ const MyInput: FC<MyInputProps> = ({
     <label className={cls.formItem}>
       {labelTitle && labelTitle}
       {error && (
-        <p
-          className={classNames(
-            labelTitle && cls.errorWithLabel,
-            cls.error,
-            "error-text"
-          )}
-        >
-          {error?.message}
-        </p>
+        <p className={classNames(cls.error, "error-text")}>{error?.message}</p>
       )}
       <input
         className={classNames(cls.myInput, error && cls.myInputError)}

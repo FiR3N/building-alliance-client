@@ -88,6 +88,14 @@ export const ROUTES = {
     en: "vacancies",
     ru: "Управление вакансиями",
   },
+  ADMINVEHICLE: {
+    en: "vehicles",
+    ru: "Управление техникой",
+  },
+  ADMINMIXTURES: {
+    en: "mixtures",
+    ru: "Управление растворами",
+  },
   ADMINSETTINGS: {
     en: "/admin/settings",
     ru: "Настройки",
