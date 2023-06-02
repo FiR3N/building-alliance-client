@@ -10,6 +10,8 @@ import sadSmile from "../../../assets/img/sad-smile.png";
 import editImage from "../../../assets/img/edit.svg";
 import deleteImage from "../../../assets/img/delete.svg";
 import { IMixture } from "../../../models/Entity/IMixture";
+import MixtureModal from "../Modals/MixtureModal/MixtureModal";
+import MixtureDeleteModal from "../Modals/MixtureDeleteModal/MixtureDeleteModal";
 
 interface MixturesListProps {
   type: IMixtureTypes;
@@ -73,6 +75,18 @@ const MixturesList: FC<MixturesListProps> = ({ type, isAdmin }) => {
         <MixtureOrderModal
           closeMethod={setIsMixtureOrderModalOpen}
           typeId={type.id}
+        />
+      )}
+      {isMixtureDeleteModalOpen && (
+        <MixtureDeleteModal
+          closeMethod={setIsMixtureDeleteModalOpen}
+          mixture={mixture}
+        />
+      )}
+      {isMixtureEditModalOpen && (
+        <MixtureModal
+          closeMethod={setIsMixtureEditModalOpen}
+          mixture={mixture}
         />
       )}
       <div className={cls.mixturesList}>

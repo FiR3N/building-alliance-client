@@ -1,7 +1,7 @@
 export interface IMixture {
   id: number;
   name: string;
-  typeid: number;
+  typeId: number;
   unitOfMeasurement: string;
   priceWithVAT: number;
   priceWithoutVAT: number;

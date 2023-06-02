@@ -1,6 +1,7 @@
 export interface IMixtureForm {
   name: string;
-  typeId: number;
-  priceWithoutVAT: number;
-  priceWithVAT: number;
+  type: string;
+  priceWithoutVAT: string;
+  priceWithVAT: string;
+  unitOfMeasurement: string;
 }

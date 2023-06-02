@@ -1,5 +1,5 @@
 export interface IVehicleForm {
   name: string;
-  priceWithoutVAT: number;
-  priceWithVAT: number;
+  priceWithoutVAT: string;
+  priceWithVAT: string;
 }

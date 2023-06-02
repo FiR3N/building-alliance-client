@@ -1,2 +1,42 @@
 .mixtureModal {
+  &Title {
+    margin-bottom: 20px;
+  }
+  &Form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input {
+      width: 100%;
+    }
+
+    label {
+      width: 100%;
+      textarea {
+        width: 100%;
+        resize: none;
+      }
+    }
+
+    &Image {
+      height: 200px;
+      width: 200px;
+    }
+    &Error {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+  }
+  @media #{$ui-tablet-max} {
+    &Form {
+      &Info {
+        flex-wrap: wrap;
+
+        label {
+          flex: 0 0 100%;
+        }
+      }
+    }
+  }
 }

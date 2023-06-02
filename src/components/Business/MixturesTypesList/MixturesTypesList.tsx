@@ -26,7 +26,7 @@ const MixturesTypesList: FC<MixturesTypesListProps> = ({ isAdmin }) => {
   return (
     <div className={classNames(cls.mixtures, "container")}>
       {types?.map((type) => (
-        <MixturesList type={type} isAdmin key={type.id} />
+        <MixturesList type={type} isAdmin={isAdmin} key={type.id} />
       ))}
     </div>
   );

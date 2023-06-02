@@ -8,6 +8,7 @@ import Modal from "../../../UI/Modal/Modal";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
 import MyInput from "../../../UI/MyInput/MyInput";
 import MyButton from "../../../UI/MyButton/MyButton";
+import parseNumberWithComma from "../../../../utils/ParseNumberWithComma";
 
 interface VehicleModalProps {
   closeMethod: Dispatch<SetStateAction<boolean>>;
@@ -16,11 +17,11 @@ interface VehicleModalProps {
 
 const VehicleModal: FC<VehicleModalProps> = ({ closeMethod, vehicle }) => {
   const [name, setName] = useState<string>(vehicle ? vehicle.name : "");
-  const [priceWithoutVAT, setPriceWithoutVAT] = useState<number>(
-    vehicle ? vehicle.priceWithoutVAT : 0
+  const [priceWithoutVAT, setPriceWithoutVAT] = useState<string>(
+    vehicle ? String(vehicle.priceWithoutVAT) : "0"
   );
-  const [priceWithVAT, setPriceWithVAT] = useState<number>(
-    vehicle ? vehicle.priceWithVAT : 0
+  const [priceWithVAT, setPriceWithVAT] = useState<string>(
+    vehicle ? String(vehicle.priceWithVAT) : "0"
   );
 
   const [putVehicle, { error: putError }] = vehicleAPI.usePutMixtureMutation();
@@ -52,7 +53,7 @@ const VehicleModal: FC<VehicleModalProps> = ({ closeMethod, vehicle }) => {
     const inputValue = e.target.value;
     const regex = /^-?\d*([.,]\d+)?$/;
     if (regex.test(inputValue)) {
-      setPriceWithoutVAT(Number(inputValue));
+      setPriceWithoutVAT(inputValue);
     }
   };
 
@@ -60,11 +61,12 @@ const VehicleModal: FC<VehicleModalProps> = ({ closeMethod, vehicle }) => {
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const inputValue = e.target.value;
-    const regex = /^-?\d*([.,]\d+)?$/;
+    const regex = /^\d*([.]\d{0,2})?$/;
     if (regex.test(inputValue)) {
-      setPriceWithVAT(Number(inputValue));
+      setPriceWithVAT(inputValue);
     }
   };
+
   useEffect(() => {
     const modalRoot = document.querySelector("#modal-root");
     const firstDiv = modalRoot?.querySelector("div");
@@ -117,7 +119,7 @@ const VehicleModal: FC<VehicleModalProps> = ({ closeMethod, vehicle }) => {
             register={register("priceWithoutVAT", {
               required: "Цена не может быть пустой!",
               pattern: {
-                value: /^(?!0+$)\d*$/,
+                value: /^(?!0$)/,
                 message: "Цена не может быть нулевой!",
               },
             })}
@@ -133,7 +135,7 @@ const VehicleModal: FC<VehicleModalProps> = ({ closeMethod, vehicle }) => {
             register={register("priceWithVAT", {
               required: "Цена не может быть пустой!",
               pattern: {
-                value: /^(?!0+$)\d*$/,
+                value: /^(?!0$)/,
                 message: "Цена не может быть нулевой!",
               },
             })}

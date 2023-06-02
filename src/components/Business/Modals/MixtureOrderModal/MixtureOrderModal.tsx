@@ -87,7 +87,7 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
 
     if (inputValue <= 0) {
       setCount(1);
-    } else {
+    } else if (inputValue <= 10000000) {
       setCount(inputValue);
     }
   };
@@ -182,9 +182,9 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
                   required
                   min={0}
                   step={0.5}
-                  max={999}
+                  max="10000000"
                   register={register("count", {
-                    required: "Количетсво не может быть пустой!",
+                    required: "Количество не может быть пустым!",
                   })}
                   error={errors.count}
                 />
