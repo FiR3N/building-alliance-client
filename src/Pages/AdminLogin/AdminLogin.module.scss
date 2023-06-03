@@ -25,8 +25,18 @@
       display: flex;
       align-items: center;
     }
-    input[type="checkbox"] {
-      width: 30px;
+
+    &CheckBox {
+      label {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 5px;
+        input {
+          width: min-content;
+          flex-grow: 0;
+        }
+      }
     }
   }
 }

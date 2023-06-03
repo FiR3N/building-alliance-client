@@ -62,7 +62,7 @@ export const ROUTES = {
   },
   ADMIN: {
     en: "/admin",
-    ru: "Админ панель",
+    ru: "Администрирование",
   },
   ADMINNEWS: {
     en: "news",

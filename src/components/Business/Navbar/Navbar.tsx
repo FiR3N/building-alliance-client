@@ -16,6 +16,7 @@ const Navbar: FC<NavbarProps> = ({ setIsActive, isMobile }) => {
     { name: "Об организации", to: "/about-us" },
     { name: "Наша история", to: "/history" },
     { name: "Сертификаты", to: "/certificates" },
+    { name: "Отзывы", to: "/reviews" },
   ];
 
   return (

@@ -1,6 +1,6 @@
 .reviews {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   &Title {
     h2 {
       margin-bottom: 10px;
@@ -25,7 +25,8 @@
       height: 150px;
       border-radius: 50%;
 
-      object-fit: cover;
+      object-fit: contain;
+      object-position: 50% 50%;
     }
     &Text {
       blockquote {

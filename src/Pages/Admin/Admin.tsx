@@ -19,7 +19,7 @@ const Admin: FC = () => {
   }, []);
 
   return (
-    <PageLayout title="Админ панель" pathname={pathname}>
+    <PageLayout title="Администрирование" pathname={pathname}>
       <Suspense fallback={<Loader withMargins={true} />}>
         <div className={classNames(cls.admin)}>
           <AdminInfo />

@@ -1,0 +1,31 @@
+.mixturesTypesDeleteModal {
+  &Title {
+    margin-bottom: 20px;
+  }
+
+  &Description {
+    margin-bottom: 20px;
+  }
+  &Form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input {
+      width: 100%;
+    }
+
+    label {
+      width: 100%;
+      textarea {
+        width: 100%;
+        resize: none;
+      }
+    }
+
+    &Error {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+  }
+}

@@ -65,12 +65,15 @@ const AdminLogin: FC = () => {
               })}
               error={errors.password}
             />
-            <MyInput
-              labelTitle="Показывать пароль"
-              type="checkbox"
-              onChange={(e) => setIsPasswordShowable((prev) => !prev)}
-              className={cls.passwordShowable}
-            />
+            <div className={cls.adminLoginFormCheckBox}>
+              <MyInput
+                labelTitle="Показывать пароль"
+                type="checkbox"
+                onChange={(e) => setIsPasswordShowable((prev) => !prev)}
+                className={cls.passwordShowable}
+              />
+            </div>
+
             <MyButton disabled={isSubmitting}>Войти</MyButton>
           </form>
         </div>

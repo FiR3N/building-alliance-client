@@ -31,7 +31,7 @@ const MixtureDeleteModal: FC<MixtureDeleteModalProps> = ({
   return (
     <Modal closeMethod={closeMethod}>
       <div className={cls.mixtureDeleteModal}>
-        <h2 className={cls.mxitureDeleteModalTitle}>
+        <h2 className={cls.mixtureDeleteModalTitle}>
           Вы точно уверенны, что хотите удалить данный раствор?
         </h2>
         {isError && (
