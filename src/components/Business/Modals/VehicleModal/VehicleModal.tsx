@@ -8,7 +8,6 @@ import Modal from "../../../UI/Modal/Modal";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
 import MyInput from "../../../UI/MyInput/MyInput";
 import MyButton from "../../../UI/MyButton/MyButton";
-import parseNumberWithComma from "../../../../utils/ParseNumberWithComma";
 
 interface VehicleModalProps {
   closeMethod: Dispatch<SetStateAction<boolean>>;
