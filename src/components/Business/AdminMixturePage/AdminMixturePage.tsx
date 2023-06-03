@@ -25,7 +25,15 @@ const AdminMixturePage: FC = () => {
           closeMethod={setIsMixtureTypeDeleteModalOpen}
         />
       )}
-      <div className="container" style={{ display: "flex", gap: "20px" }}>
+      <div
+        className="container"
+        style={{
+          display: "flex",
+          gap: "10px",
+          flexWrap: "wrap",
+          marginBottom: "10px",
+        }}
+      >
         <MyButton onClick={() => setIsMixtureTypeModalOpen(true)}>
           Добавить тип раствора
         </MyButton>

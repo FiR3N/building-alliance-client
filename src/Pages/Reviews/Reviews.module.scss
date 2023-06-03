@@ -25,7 +25,7 @@
       height: 150px;
       border-radius: 50%;
 
-      object-fit: contain;
+      object-fit: cover;
       object-position: 50% 50%;
     }
     &Text {
@@ -46,6 +46,8 @@
     }
   }
   @media #{$ui-tablet-avg} {
+    padding-top: 20px;
+    padding-bottom: 20px;
     &Item {
       flex-direction: column;
     }

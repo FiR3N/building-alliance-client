@@ -85,9 +85,11 @@ const VacancyItem: FC<VacancyItemProps> = ({ vacancy, isAdmin }) => {
             Описание:{" "}
             <span className="default-text">{vacancy.description}</span>
           </p>
-          <MyButton onClick={() => setIsVacancyContactModalOpen(true)}>
-            Подать заявку
-          </MyButton>
+          {!isAdmin && (
+            <MyButton onClick={() => setIsVacancyContactModalOpen(true)}>
+              Подать заявку
+            </MyButton>
+          )}
         </div>
       </div>
     </>
