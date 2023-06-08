@@ -79,7 +79,7 @@ const NewsList: FC<NewsListProps> = ({ limitProp, isFull, isAdmin }) => {
             )}
           </>
         ) : (
-          <h2 className={cls.newsListError}>
+          <h2 className="error-block">
             Новостей не найдено
             <img className="smile-image" src={sadSmile} alt="sad-smile" />
           </h2>

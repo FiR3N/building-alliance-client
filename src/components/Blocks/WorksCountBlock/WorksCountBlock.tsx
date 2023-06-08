@@ -11,9 +11,7 @@ const WorksCountBlock: FC = () => {
             <span />
             50
           </p>
-          <h5>
-            Летний <br /> опыт
-          </h5>
+          <h5>Летний опыт</h5>
         </div>
         <div className={cls.worksCountBlockItem}>
           <p className="date">

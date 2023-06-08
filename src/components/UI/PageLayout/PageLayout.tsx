@@ -2,12 +2,8 @@ import { FC, memo } from "react";
 import cls from "./PageLayout.module.scss";
 import classNames from "classnames";
 import bg from "../../../assets/img/page-layout-bg.webp";
-import { RiArrowRightSFill } from "react-icons/ri";
 import { ROUTES } from "../../../router/Routes";
 import { Link } from "react-router-dom";
-
-import doubleArrows from "../../../assets/img/double-right-arrows.png";
-<img src={doubleArrows} alt="две стрелки" />;
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -42,7 +38,20 @@ const PageLayout: FC<PageLayoutProps> = memo(
             <p className={cls.pageLayoutTitleUrl}>
               <Link to="/">Главная</Link>{" "}
               <span>
-                <RiArrowRightSFill />
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path d="M16 12l-6 6V6z"></path>
+                  </g>
+                </svg>
               </span>{" "}
               {separatePathname.length === 1 ? (
                 currentRoute.ru
@@ -50,7 +59,20 @@ const PageLayout: FC<PageLayoutProps> = memo(
                 <>
                   <Link to={currentRoute[0].en}>{currentRoute[0].ru}</Link>
                   <span>
-                    <RiArrowRightSFill />
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 24 24"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g>
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path d="M16 12l-6 6V6z"></path>
+                      </g>
+                    </svg>
                   </span>
                   {currentRoute[1]?.split("-").join(" ")}
                 </>
@@ -58,7 +80,6 @@ const PageLayout: FC<PageLayoutProps> = memo(
             </p>
           </div>
         </div>
-
         <div className={cls.pageLayoutMain}>{children}</div>
       </div>
     );

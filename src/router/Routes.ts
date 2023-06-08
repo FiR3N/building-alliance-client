@@ -5,7 +5,7 @@ export const ROUTES = {
   },
   CONTACT: {
     en: "/contact",
-    ru: "Обратная связь",
+    ru: "Контакты",
   },
   EMPLOYEES: {
     en: "/employees",

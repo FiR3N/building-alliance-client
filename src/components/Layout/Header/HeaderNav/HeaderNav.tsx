@@ -3,7 +3,6 @@ import cls from "../Header.module.scss";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import Navbar from "../../../Business/Navbar/Navbar";
-import Socials from "../../../Blocks/Socials/Socials";
 import { useTypeSelector } from "../../../../hooks/useTypeSelector";
 import MyButton from "../../../UI/MyButton/MyButton";
 
@@ -12,9 +11,7 @@ import clock from "../../../../assets/img/clock.png";
 import telephone from "../../../../assets/img/telephone.png";
 import message from "../../../../assets/img/message.png";
 
-interface HeaderNavProps {}
-
-const HeaderNav: FC<HeaderNavProps> = () => {
+const HeaderNav: FC = () => {
   const [isHambActive, setIsHambActive] = useState<boolean>(false);
   const { isAuth } = useTypeSelector((state) => state.userReducer);
   useLayoutEffect(() => {

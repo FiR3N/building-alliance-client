@@ -27,6 +27,7 @@ import analytics from "../../assets/img/analytics.png";
 
 import mainInfoAboutBg from "../../assets/img/main-about-bg.webp";
 import WorksCountBlock from "../../components/Blocks/WorksCountBlock/WorksCountBlock";
+import PartnersBlock from "../../components/Blocks/PartnersBlock/PartnersBlock";
 
 const Main: FC = () => {
   return (
@@ -109,6 +110,13 @@ const Main: FC = () => {
           className={cls.mainLeadersImage}
         />
       </div>
+      <div className={cls.mainServices}>
+        <h2>Усгуги организации</h2>
+        <ServiceList limitProp={3} />
+        <Link to={"/services"}>
+          <MyButton>Больше услуг</MyButton>
+        </Link>
+      </div>
       <div className={cls.mainAboveServices}>
         <div className={cls.mainAboveServicesItem}>
           <img
@@ -146,13 +154,7 @@ const Main: FC = () => {
           </div>
         </div>
       </div>
-      {/* <div className={cls.mainServices}>
-        <h2>Усгуги организации</h2>
-        <ServiceList limitProp={3} />
-        <Link to={"/services"}>
-          <MyButton>Больше услуг</MyButton>
-        </Link>
-      </div> */}
+
       <div className={cls.mainWorks}>
         <h2>Последние работы</h2>
         <OurWorksList limitProp={3} />
@@ -223,6 +225,7 @@ const Main: FC = () => {
           <MyButton>Больше новостей</MyButton>
         </Link>
       </div>
+      <PartnersBlock />
       <AboutOurWork />
     </div>
   );
