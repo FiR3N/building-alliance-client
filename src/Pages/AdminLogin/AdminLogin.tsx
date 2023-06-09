@@ -23,7 +23,7 @@ const AdminLogin: FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
   } = useForm<IAdminLoginForm>({ mode: "onChange" });
 
@@ -74,7 +74,9 @@ const AdminLogin: FC = () => {
               />
             </div>
 
-            <MyButton disabled={isSubmitting}>Войти</MyButton>
+            <MyButton disabled={isSubmitting || isSubmitSuccessful}>
+              Войти
+            </MyButton>
           </form>
         </div>
       </div>
