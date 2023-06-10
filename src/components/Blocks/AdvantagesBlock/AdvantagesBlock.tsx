@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import cls from "./AdvantagesBlock.module.scss";
 import adv1 from "../../../assets/img/adv1.png";
 import adv2 from "../../../assets/img/adv2.png";

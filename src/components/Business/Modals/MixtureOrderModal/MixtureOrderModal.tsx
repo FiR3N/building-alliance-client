@@ -118,8 +118,10 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
   }, [isSubmitSuccessful]);
 
   useEffect(() => {
-    if (selectedTypeItem?.content)
+    if (selectedTypeItem?.content) {
       setValue("mixtureType", selectedTypeItem?.content);
+      setSelectedMixtureItem(null);
+    }
   }, [selectedTypeItem]);
 
   useEffect(() => {

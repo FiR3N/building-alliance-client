@@ -8,6 +8,7 @@ import React, {
 import ReactDOM from "react-dom";
 import cls from "./Modal.module.scss";
 import classNames from "classnames";
+import { useSpring, animated } from "@react-spring/web";
 
 interface ModalProps {
   children: ReactNode;
@@ -32,15 +33,28 @@ const Modal: FC<ModalProps> = ({ children, closeMethod, isSmall }) => {
     closeMethod(false);
   };
 
+  const modalAnimation = useSpring({
+    from: { opacity: 0, transform: "translateY(100%) translateX(-50%)" },
+    to: {
+      opacity: 1,
+      transform: isSmall
+        ? "translateY(-50%) translateX(-50%)"
+        : "translateY(0%) translateX(-50%)",
+    },
+  });
+
   return ReactDOM.createPortal(
     <div className={cls.myModal} onClick={closeOnBgHandler}>
-      <div className={classNames(cls.myModalContent, isSmall && cls._isSmall)}>
+      <animated.div
+        style={modalAnimation}
+        className={classNames(cls.myModalContent, isSmall && cls._isSmall)}
+      >
         <div className={cls.myModalCloseBut} onClick={closeOnButHandler}>
           <span className={cls.bar}></span>
           <span className={cls.bar}></span>
         </div>
         {children}
-      </div>
+      </animated.div>
     </div>,
     modalRoot
   );

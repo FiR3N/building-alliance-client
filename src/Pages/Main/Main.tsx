@@ -9,6 +9,9 @@ import OurWorksList from "../../components/Business/OurWorksList/OurWorksList";
 import ServiceList from "../../components/Business/ServiceList/ServiceList";
 import AboutOurWork from "../../components/Blocks/AboutOurWork/AboutOurWork";
 import AdvantagesBlock from "../../components/Blocks/AdvantagesBlock/AdvantagesBlock";
+import WorksCountBlock from "../../components/Blocks/WorksCountBlock/WorksCountBlock";
+import PartnersBlock from "../../components/Blocks/PartnersBlock/PartnersBlock";
+import AnimatedBlock from "../../components/UI/AnimatedBlock/AnimatedBlock";
 
 import cls from "./Main.module.scss";
 import "swiper/css";
@@ -24,10 +27,7 @@ import aboveServiceImage_2 from "../../assets/img/aboveService-2.webp";
 import experts from "../../assets/img/experts.png";
 import emergency from "../../assets/img/emergency.png";
 import analytics from "../../assets/img/analytics.png";
-
 import mainInfoAboutBg from "../../assets/img/main-about-bg.webp";
-import WorksCountBlock from "../../components/Blocks/WorksCountBlock/WorksCountBlock";
-import PartnersBlock from "../../components/Blocks/PartnersBlock/PartnersBlock";
 
 const Main: FC = () => {
   return (
@@ -77,156 +77,178 @@ const Main: FC = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-
-      <AdvantagesBlock />
-      <div className={classNames(cls.mainLeaders, "container")}>
-        <div className={cls.mainLeadersText}>
-          <h2>Лидерство и качество в строительстве</h2>
-          <p className="default-text">
-            Наша организация неоднократно признавалась победителем в конкурсе на
-            лучшее достижение в строительной отрасли Республики Беларусь в
-            номинации «Предприятие года» в категории Субподрядные организации, а
-            руководитель организации неоднократно признавался победителем в
-            номинации «Руководитель года» в категории Субподрядные организации
-            численностью более 300 человек.
-          </p>
-          <p className="default-text">
-            {" "}
-            Производство работ на всех объектах отмечено хорошей организацией и
-            четким взаимодействием всех участников строительства. Все
-            выполняемые работы соответствуют требованиям проектно-сметной
-            документации и требованиям технических нормативно-правовых актов в
-            строительстве.{" "}
-          </p>
-          <p className="default-text">
-            Качество выполняемых работ не вызывает претензий со стороны
-            Заказчиков и инспекции Департамента контроля и надзора за
-            строительством.
-          </p>
-        </div>
-        <img
-          src={office}
-          alt="ОАО Спецстроймеханизация"
-          className={cls.mainLeadersImage}
-        />
-      </div>
-      <div className={cls.mainServices}>
-        <h2>Усгуги организации</h2>
-        <ServiceList limitProp={3} />
-        <Link to={"/services"}>
-          <MyButton>Больше услуг</MyButton>
-        </Link>
-      </div>
-      <div className={cls.mainAboveServices}>
-        <div className={cls.mainAboveServicesItem}>
-          <img
-            src={aboveServiceImage_1}
-            alt="building-1"
-            className={cls.mainAboveServicesItemImage}
-          />
-          <div className={cls.mainAboveServicesItemText}>
-            <p className="default-big-text">
-              Спецстроймеханизация готова реализовать
-            </p>
-            <h2>Ваш проект</h2>
+      <AnimatedBlock>
+        <AdvantagesBlock />
+      </AnimatedBlock>
+      <AnimatedBlock>
+        <div className={classNames(cls.mainLeaders, "container")}>
+          <div className={cls.mainLeadersText}>
+            <h2>Лидерство и качество в строительстве</h2>
             <p className="default-text">
-              Благодаря организаторским способностям руководителя реализованы
-              многие масштабные проекты, а правильно выстроенные
-              производственные доверительные отношения позволяют эффективно
-              выполнять новые задачи.
+              Наша организация неоднократно признавалась победителем в конкурсе
+              на лучшее достижение в строительной отрасли Республики Беларусь в
+              номинации «Предприятие года» в категории Субподрядные организации,
+              а руководитель организации неоднократно признавался победителем в
+              номинации «Руководитель года» в категории Субподрядные организации
+              численностью более 300 человек.
+            </p>
+            <p className="default-text">
+              {" "}
+              Производство работ на всех объектах отмечено хорошей организацией
+              и четким взаимодействием всех участников строительства. Все
+              выполняемые работы соответствуют требованиям проектно-сметной
+              документации и требованиям технических нормативно-правовых актов в
+              строительстве.{" "}
+            </p>
+            <p className="default-text">
+              Качество выполняемых работ не вызывает претензий со стороны
+              Заказчиков и инспекции Департамента контроля и надзора за
+              строительством.
             </p>
           </div>
-        </div>
-        <div className={cls.mainAboveServicesItem}>
           <img
-            src={aboveServiceImage_2}
-            alt="building-2"
-            className={cls.mainAboveServicesItemImage}
+            src={office}
+            alt="ОАО Спецстроймеханизация"
+            className={cls.mainLeadersImage}
           />
-          <div className={cls.mainAboveServicesItemText}>
-            <p className="default-big-text">Спецстроймеханизация лидер по</p>
-            <h2>Постройкам</h2>
-            <p className="default-text">
-              Сегодня ОАО «Спецстроймеханизация» - одно из ведущих строительных
-              предприятий города Молодечно, чей вклад в развитие строительной
-              отрасли страны неоспорим уже многие десятилетия.
-            </p>
-          </div>
         </div>
-      </div>
-
-      <div className={cls.mainWorks}>
-        <h2>Последние работы</h2>
-        <OurWorksList limitProp={3} />
-        <Link to={"/our-works"}>
-          <MyButton>Больше работ</MyButton>
-        </Link>
-      </div>
-      <div className={classNames(cls.mainAboveInfoAbout, "container")}>
-        <div className={cls.mainAboveInfoAboutItem}>
-          <img
-            src={experts}
-            alt="эксперты"
-            className={cls.mainAboveInfoAboutItemImage}
-          />
-          <div className={cls.mainAboveInfoAboutItemText}>
-            <h5>Профессионализм</h5>
-            <p className="default-text">
-              Мы команда специалистов, готовых реализовать любые строительные
-              задачи.
-            </p>
-          </div>
-        </div>
-        <div className={classNames(cls.mainAboveInfoAboutItem, cls.orange)}>
-          <img
-            src={analytics}
-            alt="качество"
-            className={cls.mainAboveInfoAboutItemImage}
-          />
-          <div className={cls.mainAboveInfoAboutItemText}>
-            <h5>Качество работы</h5>
-            <p className="default-text">
-              Мы стремимся к безупречности в каждой детали и всегда гарантируем
-              высокое качество наших работ
-            </p>
-          </div>
-        </div>
-        <div className={classNames(cls.mainAboveInfoAboutItem, cls.black)}>
-          <img
-            src={emergency}
-            alt="стройка"
-            className={cls.mainAboveInfoAboutItemImage}
-          />
-          <div className={cls.mainAboveInfoAboutItemText}>
-            <h5>Сотрудничество</h5>
-            <p className="default-text">
-              Благодаря тесном сотрудничестве с клиентами мы легко воплащаем
-              постовленные идеи в реальность.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className={cls.mainInfoAbout}>
-        <img src={mainInfoAboutBg} alt="maininfobg" />
-        <div className={classNames(cls.mainInfoAboutContent, "container")}>
-          <p className="big-default-text">Большой опыт для</p>
-          <h2>Строительства и Реконструкций</h2>
-          <Link to={"/history"}>
-            <MyButton>Наша история</MyButton>
+      </AnimatedBlock>
+      <AnimatedBlock>
+        <div className={cls.mainServices}>
+          <h2>Усгуги организации</h2>
+          <ServiceList limitProp={3} />
+          <Link to={"/services"}>
+            <MyButton>Больше услуг</MyButton>
           </Link>
         </div>
-      </div>
-      <WorksCountBlock />
+      </AnimatedBlock>
+      <AnimatedBlock>
+        <div className={cls.mainAboveServices}>
+          <div className={cls.mainAboveServicesItem}>
+            <img
+              src={aboveServiceImage_1}
+              alt="building-1"
+              className={cls.mainAboveServicesItemImage}
+            />
+            <div className={cls.mainAboveServicesItemText}>
+              <p className="default-big-text">
+                Спецстроймеханизация готова реализовать
+              </p>
+              <h2>Ваш проект</h2>
+              <p className="default-text">
+                Благодаря организаторским способностям руководителя реализованы
+                многие масштабные проекты, а правильно выстроенные
+                производственные доверительные отношения позволяют эффективно
+                выполнять новые задачи.
+              </p>
+            </div>
+          </div>
+          <div className={cls.mainAboveServicesItem}>
+            <img
+              src={aboveServiceImage_2}
+              alt="building-2"
+              className={cls.mainAboveServicesItemImage}
+            />
+            <div className={cls.mainAboveServicesItemText}>
+              <p className="default-big-text">Спецстроймеханизация лидер по</p>
+              <h2>Постройкам</h2>
+              <p className="default-text">
+                Сегодня ОАО «Спецстроймеханизация» - одно из ведущих
+                строительных предприятий города Молодечно, чей вклад в развитие
+                строительной отрасли страны неоспорим уже многие десятилетия.
+              </p>
+            </div>
+          </div>
+        </div>
+      </AnimatedBlock>
 
-      <div className={cls.mainNews}>
-        <h2>Новости организации</h2>
-        <NewsList limitProp={3} isFull={false} />
-        <Link to={"/news"}>
-          <MyButton>Больше новостей</MyButton>
-        </Link>
-      </div>
-      <PartnersBlock />
-      <AboutOurWork />
+      <AnimatedBlock>
+        <div className={cls.mainWorks}>
+          <h2>Последние работы</h2>
+          <OurWorksList limitProp={3} />
+          <Link to={"/our-works"}>
+            <MyButton>Больше работ</MyButton>
+          </Link>
+        </div>
+      </AnimatedBlock>
+      <AnimatedBlock isAbove>
+        <div className={classNames(cls.mainAboveInfoAbout, "container")}>
+          <div className={cls.mainAboveInfoAboutItem}>
+            <img
+              src={experts}
+              alt="эксперты"
+              className={cls.mainAboveInfoAboutItemImage}
+            />
+            <div className={cls.mainAboveInfoAboutItemText}>
+              <h5>Профессионализм</h5>
+              <p className="default-text">
+                Мы команда специалистов, готовых реализовать любые строительные
+                задачи.
+              </p>
+            </div>
+          </div>
+          <div className={classNames(cls.mainAboveInfoAboutItem, cls.orange)}>
+            <img
+              src={analytics}
+              alt="качество"
+              className={cls.mainAboveInfoAboutItemImage}
+            />
+            <div className={cls.mainAboveInfoAboutItemText}>
+              <h5>Качество работы</h5>
+              <p className="default-text">
+                Мы стремимся к безупречности в каждой детали и всегда
+                гарантируем высокое качество наших работ
+              </p>
+            </div>
+          </div>
+          <div className={classNames(cls.mainAboveInfoAboutItem, cls.black)}>
+            <img
+              src={emergency}
+              alt="стройка"
+              className={cls.mainAboveInfoAboutItemImage}
+            />
+            <div className={cls.mainAboveInfoAboutItemText}>
+              <h5>Сотрудничество</h5>
+              <p className="default-text">
+                Благодаря тесном сотрудничестве с клиентами мы легко воплащаем
+                постовленные идеи в реальность.
+              </p>
+            </div>
+          </div>
+        </div>
+      </AnimatedBlock>
+
+      <AnimatedBlock>
+        <div className={cls.mainInfoAbout}>
+          <img src={mainInfoAboutBg} alt="maininfobg" />
+          <div className={classNames(cls.mainInfoAboutContent, "container")}>
+            <p className="big-default-text">Большой опыт для</p>
+            <h2>Строительства и Реконструкций</h2>
+            <Link to={"/history"}>
+              <MyButton>Наша история</MyButton>
+            </Link>
+          </div>
+        </div>
+      </AnimatedBlock>
+
+      <AnimatedBlock>
+        <WorksCountBlock />
+      </AnimatedBlock>
+      <AnimatedBlock>
+        <div className={cls.mainNews}>
+          <h2>Новости организации</h2>
+          <NewsList limitProp={3} isFull={false} />
+          <Link to={"/news"}>
+            <MyButton>Больше новостей</MyButton>
+          </Link>
+        </div>
+      </AnimatedBlock>
+      <AnimatedBlock>
+        <PartnersBlock />
+      </AnimatedBlock>
+      <AnimatedBlock>
+        <AboutOurWork />
+      </AnimatedBlock>
     </div>
   );
 };
