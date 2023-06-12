@@ -35,6 +35,16 @@
         margin-bottom: 10px;
         border-left: 3px solid $ui-sun-color;
       }
+      &LowerContent {
+        display: flex;
+        justify-content: space-between;
+
+        align-items: center;
+        img {
+          height: 30px;
+          width: 140px;
+        }
+      }
       &Name {
         padding-left: 30px;
 
@@ -50,6 +60,16 @@
     padding-bottom: 20px;
     &Item {
       flex-direction: column;
+    }
+  }
+  @media #{$ui-mobile-max} {
+    &Item {
+      &Text {
+        &LowerContent {
+          flex-direction: column;
+          gap: 5px;
+        }
+      }
     }
   }
 }

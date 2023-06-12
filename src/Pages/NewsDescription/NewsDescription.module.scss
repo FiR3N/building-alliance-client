@@ -14,7 +14,6 @@
     margin-bottom: 30px;
 
     border-radius: 8px;
-    object-fit: contain;
   }
   &Date {
     margin-bottom: 10px;
@@ -46,5 +45,17 @@
   @media #{$ui-tablet-max} {
     padding-top: 20px;
     padding-bottom: 20px;
+  }
+  @media #{$ui-tablet-max} {
+    &Image {
+      margin-bottom: 10px;
+    }
+    &Text {
+      p {
+        &:not(:last-of-type) {
+          margin-bottom: 10px;
+        }
+      }
+    }
   }
 }

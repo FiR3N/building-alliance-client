@@ -17,10 +17,10 @@ interface VehicleModalProps {
 const VehicleModal: FC<VehicleModalProps> = ({ closeMethod, vehicle }) => {
   const [name, setName] = useState<string>(vehicle ? vehicle.name : "");
   const [priceWithoutVAT, setPriceWithoutVAT] = useState<string>(
-    vehicle ? String(vehicle.priceWithoutVAT) : "0"
+    vehicle ? String(vehicle.priceWithoutVAT) : ""
   );
   const [priceWithVAT, setPriceWithVAT] = useState<string>(
-    vehicle ? String(vehicle.priceWithVAT) : "0"
+    vehicle ? String(vehicle.priceWithVAT) : ""
   );
 
   const [putVehicle, { error: putError }] = vehicleAPI.usePutMixtureMutation();
@@ -129,7 +129,14 @@ const VehicleModal: FC<VehicleModalProps> = ({ closeMethod, vehicle }) => {
             value={priceWithVAT}
             onChange={handleInputPriceWithVATChange}
             type="text"
-            placeholder="Введите цену с НДС"
+            placeholder={
+              Number(priceWithoutVAT) > 0
+                ? (
+                    Number(priceWithoutVAT) +
+                    Number(priceWithoutVAT) * 0.2
+                  ).toString()
+                : "Введите цену с НДС"
+            }
             required
             register={register("priceWithVAT", {
               required: "Цена не может быть пустой!",

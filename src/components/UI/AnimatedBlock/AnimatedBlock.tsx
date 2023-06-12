@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { animated, useSpring } from "@react-spring/web";
+import { isMobile } from "react-device-detect";
 
 interface AnimatedBlockProps {
   children: React.ReactNode;
@@ -33,6 +34,10 @@ const AnimatedBlock: FC<AnimatedBlockProps> = ({ children, isAbove }) => {
       setIsVisible(true);
     }
   }, [inView]);
+
+  if (isMobile) {
+    return <>{children}</>;
+  }
 
   return (
     <animated.div

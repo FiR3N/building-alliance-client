@@ -29,6 +29,7 @@ const ServiceModal: FC<ServiceModalProps> = ({ closeMethod, service }) => {
     register,
     formState: { errors, isSubmitSuccessful, isSubmitting },
     handleSubmit,
+    reset,
   } = useForm<IServiceForm>({ mode: "onChange" });
 
   const addInfo = () => {
@@ -72,6 +73,7 @@ const ServiceModal: FC<ServiceModalProps> = ({ closeMethod, service }) => {
     } else {
       await createService({ formData: formData }).unwrap();
     }
+    reset({ name: "", info: [], image: "" });
   };
 
   useEffect(() => {
@@ -110,7 +112,7 @@ const ServiceModal: FC<ServiceModalProps> = ({ closeMethod, service }) => {
             onChange={(e) => setName(e.currentTarget.value)}
             placeholder="Введите название..."
             required
-            maxLength={255}
+            maxLength={100}
             register={register("name", {
               required: "Имя не может быть пустым!",
             })}

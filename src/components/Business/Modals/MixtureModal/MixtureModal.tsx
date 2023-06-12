@@ -19,11 +19,11 @@ interface MixtureModalProps {
 const MixtureModal: FC<MixtureModalProps> = ({ closeMethod, mixture }) => {
   const [name, setName] = useState<string>(mixture ? mixture.name : "");
   const [priceWithoutVAT, setPriceWithoutVAT] = useState<string>(
-    mixture ? String(mixture.priceWithoutVAT) : "0"
+    mixture ? String(mixture.priceWithoutVAT) : ""
   );
 
   const [priceWithVAT, setPriceWithVAT] = useState<string>(
-    mixture ? String(mixture.priceWithVAT) : "0"
+    mixture ? String(mixture.priceWithVAT) : ""
   );
   const [unitOfMeasurement, setUnitOfMeasurement] = useState<string>(
     mixture ? mixture.unitOfMeasurement : ""
@@ -180,7 +180,14 @@ const MixtureModal: FC<MixtureModalProps> = ({ closeMethod, mixture }) => {
             value={priceWithVAT}
             onChange={handleInputPriceWithVATChange}
             type="text"
-            placeholder="Введите цену с НДС"
+            placeholder={
+              Number(priceWithoutVAT) > 0
+                ? (
+                    Number(priceWithoutVAT) +
+                    Number(priceWithoutVAT) * 0.2
+                  ).toString()
+                : "Введите цену с НДС"
+            }
             required
             register={register("priceWithVAT", {
               required: "Цена не может быть пустой!",

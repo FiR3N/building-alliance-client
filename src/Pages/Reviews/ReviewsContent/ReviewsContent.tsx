@@ -1,12 +1,12 @@
 import { FC } from "react";
 import cls from "../Reviews.module.scss";
 import classNames from "classnames";
-// import review1 from "../../../assets/img/review1.jpg";
 import review1 from "../../../assets/img/review-1.gif";
 import review2 from "../../../assets/img/review-2.png";
 import review3 from "../../../assets/img/review-3.png";
 import review4 from "../../../assets/img/review-4.png";
 import reviewPligImage from "../../../assets/img/review-plug-img.jpg";
+import stars from "../../../assets/img/stars.png";
 
 interface ReviewsContentProps {}
 
@@ -39,9 +39,12 @@ const ReviewsContent: FC<ReviewsContentProps> = () => {
                 "Светлогорский домостроительный комбинат" рекомендует
                 организацию ОАО "Спецстроймеханизация", как надежного подрячика.
               </blockquote>
-              <p className={cls.reviewsItemTextName}>
-                - ОАО "Светлогорский домостроительный комбинат".
-              </p>
+              <div className={cls.reviewsItemTextLowerContent}>
+                <p className={cls.reviewsItemTextName}>
+                  - ОАО "Светлогорский домостроительный комбинат".
+                </p>
+                <img src={stars} alt="5 звезд" />
+              </div>
             </div>
           </div>
           <div className={cls.reviewsItem}>
@@ -57,9 +60,12 @@ const ReviewsContent: FC<ReviewsContentProps> = () => {
                 строительстве, требованиями проектно-сметной документации и на
                 высоком профессиональном уровне.
               </blockquote>
-              <p className={cls.reviewsItemTextName}>
-                - Ошмянское жилищно-коммунальное хозяйство.
-              </p>
+              <div className={cls.reviewsItemTextLowerContent}>
+                <p className={cls.reviewsItemTextName}>
+                  - Ошмянское жилищно-коммунальное хозяйство.
+                </p>
+                <img src={stars} alt="5 звезд" />
+              </div>
             </div>
           </div>
           <div className={cls.reviewsItem}>
@@ -82,9 +88,13 @@ const ReviewsContent: FC<ReviewsContentProps> = () => {
                 рекомендуем организацию ОАО "Спецстроймеханизация", как
                 надежного подрячика.
               </blockquote>
-              <p className={cls.reviewsItemTextName}>
-                - Управление капитального строительства Молодечненского района.
-              </p>
+              <div className={cls.reviewsItemTextLowerContent}>
+                <p className={cls.reviewsItemTextName}>
+                  - Управление капитального строительства Молодечненского
+                  района.
+                </p>
+                <img src={stars} alt="5 звезд" />
+              </div>
             </div>
           </div>
           <div className={cls.reviewsItem}>
@@ -105,7 +115,11 @@ const ReviewsContent: FC<ReviewsContentProps> = () => {
                 проектно-сметной документации. Мы рекомендуем организацию ОАО
                 "Спецстроймеханизация", как надежного подрячика.
               </blockquote>
-              <p className={cls.reviewsItemTextName}>- ОАО "Забудова".</p>
+              <div className={cls.reviewsItemTextLowerContent}>
+                <p className={cls.reviewsItemTextName}>- ОАО "Забудова".</p>
+
+                <img src={stars} alt="5 звезд" />
+              </div>
             </div>
           </div>
           <div className={cls.reviewsItem}>
@@ -121,7 +135,10 @@ const ReviewsContent: FC<ReviewsContentProps> = () => {
                 строительной технологии, прогрессивные материалы и изделия,
                 эффективные строительные машины и механизмы.
               </blockquote>
-              <p className={cls.reviewsItemTextName}>- Союз строителей.</p>
+              <div className={cls.reviewsItemTextLowerContent}>
+                <p className={cls.reviewsItemTextName}>- Союз строителей.</p>
+                <img src={stars} alt="5 звезд" />
+              </div>
             </div>
           </div>
         </div>

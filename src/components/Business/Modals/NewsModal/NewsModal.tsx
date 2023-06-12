@@ -104,15 +104,9 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
           </InfoBlock>
         )}
         {putError && (
-          <p className={classNames(cls.newsModalError, "error-text")}>
-            Ошибка редактирования!
-          </p>
+          <InfoBlock blockType={-1}>Ошибка редактирования!</InfoBlock>
         )}
-        {createError && (
-          <p className={classNames(cls.newsModalError, "error-text")}>
-            Ошибка создания!
-          </p>
-        )}
+        {createError && <InfoBlock blockType={-1}>Ошибка создания!</InfoBlock>}
         <form className={cls.newsModalForm} onSubmit={handleSubmit(onSubmit)}>
           <MyInput
             labelTitle="Название"
@@ -120,7 +114,7 @@ const NewsModal: FC<NewsModalProps> = ({ closeMethod, news }) => {
             onChange={(e) => setName(e.currentTarget.value)}
             placeholder="Введите название..."
             required
-            maxLength={255}
+            maxLength={150}
             register={register("name", {
               required: "Имя не может быть пустым!",
             })}
