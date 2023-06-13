@@ -74,7 +74,9 @@ const AdminLogin: FC = () => {
               />
             </div>
 
-            <MyButton disabled={isSubmitting || isSubmitSuccessful}>
+            <MyButton
+              disabled={error ? false : isSubmitting || isSubmitSuccessful}
+            >
               Войти
             </MyButton>
           </form>

@@ -107,6 +107,10 @@ const Contact: FC = () => {
             )}
             <form onSubmit={handleSubmit(onSubmit)}>
               <MyInput
+                placeholder="Введите имя:"
+                type="text"
+                disabled={isSubmitting}
+                required
                 register={register("name", {
                   required: "Имя не может быть пустым!",
                   pattern: {
@@ -115,11 +119,12 @@ const Contact: FC = () => {
                   },
                 })}
                 error={errors.name}
-                placeholder="Введите имя:"
-                type="text"
-                disabled={isSubmitting}
               />
               <MyInput
+                placeholder="Введите фамилию:"
+                type="text"
+                disabled={isSubmitting}
+                required
                 register={register("surname", {
                   required: "Фамилия не может быть пустой!",
                   pattern: {
@@ -128,11 +133,13 @@ const Contact: FC = () => {
                   },
                 })}
                 error={errors.surname}
-                placeholder="Введите фамилию:"
-                type="text"
-                disabled={isSubmitting}
               />
               <MyInput
+                placeholder="Введите email:"
+                type="text"
+                inputMode="email"
+                disabled={isSubmitting}
+                required
                 register={register("email", {
                   required: "Почта не может быть пустой!",
                   pattern: {
@@ -142,56 +149,55 @@ const Contact: FC = () => {
                   },
                 })}
                 error={errors.email}
-                placeholder="Введите email:"
-                type="text"
-                inputMode="email"
-                disabled={isSubmitting}
               />
               <MyInput
+                type="tel"
+                name="telephone"
+                placeholder="Введите телефон..."
+                maxLength={19}
+                required
                 register={register("telephone", {
                   required: "Телефон не может быть пустым!",
                   pattern: {
-                    value: /\+375\s\d{2}\s\d{3}\s\d{2}\s\d{2}$/,
-                    message: "Неверый формат телефона(+375 ** *** ** **)",
+                    value: /^[+\-\(\)\d\s]{6,}$/,
+                    message: "Неверный формат телефона!",
                   },
                 })}
                 error={errors.telephone}
-                placeholder="Введите номер телефона:"
-                type="text"
-                inputMode="tel"
-                maxLength={17}
-                disabled={isSubmitting}
               />
               <MyInput
-                register={register("companyName", {
-                  required: "Имя организации не может быть пустым!",
-                })}
-                error={errors.companyName}
+                required
                 placeholder="Введите имя организации:"
                 type="text"
                 maxLength={60}
                 disabled={isSubmitting}
+                register={register("companyName", {
+                  required: "Имя организации не может быть пустым!",
+                })}
+                error={errors.companyName}
               />
 
               <MyInput
-                register={register("subject", {
-                  required: "Тема не может быть пустой",
-                })}
-                error={errors.subject}
                 placeholder="Введите тему: "
                 type="text"
                 maxLength={100}
                 disabled={isSubmitting}
+                required
+                register={register("subject", {
+                  required: "Тема не может быть пустой",
+                })}
+                error={errors.subject}
               />
               <MyTextArea
-                register={register("text", {
-                  required: "Текст не может быть пустой",
-                })}
-                error={errors.text}
                 rows={6}
                 maxLength={700}
-                placeholder="Введите текст:"
+                placeholder="Введите сообщение:"
                 disabled={isSubmitting}
+                required
+                register={register("text", {
+                  required: "Сообщение не может быть пустым",
+                })}
+                error={errors.text}
               />
               <MyButton disabled={isSubmitting}>Отправить</MyButton>
             </form>

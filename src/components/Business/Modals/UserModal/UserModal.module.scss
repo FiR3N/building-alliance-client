@@ -50,9 +50,15 @@
     }
   }
   &CheckBox {
-    display: flex;
-    input {
-      width: auto;
+    label {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 5px;
+      input {
+        width: min-content;
+        flex-grow: 0;
+      }
     }
   }
   @media #{$ui-tablet-max} {

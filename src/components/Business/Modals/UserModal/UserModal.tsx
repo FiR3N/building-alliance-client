@@ -112,7 +112,12 @@ const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
             существует!)
           </InfoBlock>
         )}
-        {createError && <InfoBlock blockType={-1}>Ошибка создания!</InfoBlock>}
+        {createError && (
+          <InfoBlock blockType={-1}>
+            Ошибка создания! (Возможно пользователь с таким логином уже
+            существует!)
+          </InfoBlock>
+        )}
         <form className={cls.userModalForm} onSubmit={handleSubmit(onSubmit)}>
           <MyInput
             labelTitle="Имя"

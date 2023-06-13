@@ -142,7 +142,7 @@ const OurWorkModal: FC<OurWorkModalProps> = ({ closeMethod, work }) => {
             onChange={(e) => setName(e.currentTarget.value)}
             placeholder="Введите название..."
             required
-            maxLength={255}
+            maxLength={150}
             register={register("name", {
               required: "Имя не может быть пустым!",
             })}

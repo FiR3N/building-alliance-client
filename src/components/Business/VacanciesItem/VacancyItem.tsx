@@ -75,7 +75,7 @@ const VacancyItem: FC<VacancyItemProps> = ({ vacancy, isAdmin }) => {
             Занятость:{" "}
             <span className="default-text">{vacancy.occupation}</span>
           </p>
-          {vacancy.wage && (
+          {vacancy.wage > 0 && (
             <p className="bold-text">
               Зарплата:{" "}
               <span className="default-text">от {vacancy.wage} BYN</span>

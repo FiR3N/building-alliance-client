@@ -20,8 +20,8 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
   const [description, setDescription] = useState<string>(
     vacancy ? vacancy.description : ""
   );
-  const [wage, setWage] = useState<number | null>(
-    vacancy ? vacancy?.wage : null
+  const [wage, setWage] = useState<string>(
+    vacancy ? vacancy?.wage.toString() : ""
   );
   const [experience, setExperience] = useState<string>(
     vacancy ? vacancy.experience : ""
@@ -46,12 +46,20 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
     formData.append("description", description);
     formData.append("experience", experience);
     formData.append("occupation", occupation);
-    formData.append("wage", String(wage));
+    formData.append("wage", Number(wage) > 0 ? wage : "0");
 
     if (vacancy) {
       await putVacancy({ id: vacancy.id, formData: formData }).unwrap();
     } else {
       await createVacancy({ formData: formData }).unwrap();
+    }
+  };
+
+  const handleInputWage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    const regex = /^\d*([.]\d{0,2})?$/;
+    if (regex.test(inputValue)) {
+      setWage(inputValue);
     }
   };
 
@@ -98,6 +106,15 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
             error={errors.name}
           />
           <MyInput
+            labelTitle={`Зарплата от`}
+            value={wage}
+            onChange={handleInputWage}
+            type="text"
+            placeholder="Введите зарплату от..."
+            register={register("wage")}
+            error={errors.wage}
+          />
+          {/* <MyInput
             labelTitle="Зарплата от"
             min={0}
             value={Number(wage)}
@@ -106,7 +123,7 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
             placeholder="Введите зарплату от..."
             register={register("wage")}
             error={errors.wage}
-          />
+          /> */}
           <MyInput
             labelTitle="Опыт"
             value={experience}
