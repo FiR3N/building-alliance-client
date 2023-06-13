@@ -18,7 +18,7 @@ interface UserModalProps {
 }
 
 const UserModal: FC<UserModalProps> = ({ closeMethod, user }) => {
-  const { data: roles, error } = useFetch<IRole[]>(
+  const { data: roles } = useFetch<IRole[]>(
     import.meta.env.VITE_API_URL + `/roles`
   );
 

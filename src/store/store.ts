@@ -9,6 +9,7 @@ import { userAPI } from "../api/UserService";
 import { mixturesAPI } from "../api/MixturesAPI";
 import { mixturesTypesAPI } from "../api/MixturesTypesAPI";
 import { vehicleAPI } from "../api/VehicleAPI";
+import { reviewsAPI } from "../api/ReviewsAPI";
 
 const rootReducer = combineReducers({
   userReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   [mixturesAPI.reducerPath]: mixturesAPI.reducer,
   [mixturesTypesAPI.reducerPath]: mixturesTypesAPI.reducer,
   [vehicleAPI.reducerPath]: vehicleAPI.reducer,
+  [reviewsAPI.reducerPath]: reviewsAPI.reducer,
 });
 
 export const setupStore = () => {
@@ -36,7 +38,8 @@ export const setupStore = () => {
         .concat(userAPI.middleware)
         .concat(mixturesTypesAPI.middleware)
         .concat(vehicleAPI.middleware)
-        .concat(mixturesAPI.middleware),
+        .concat(mixturesAPI.middleware)
+        .concat(reviewsAPI.middleware),
   });
 };
 

@@ -61,15 +61,21 @@ const MySelect: FC<MySelectProps> = ({
           <img src={dropDownImage} alt="drop-down" />
         </p>
         <div className={classNames(cls.mySelectContent, isOpen && cls._active)}>
-          {array.map((item) => (
-            <p
-              className={classNames(cls.mySelectItem, "default-text")}
-              onClick={() => setSelectedItem(item)}
-              key={item.id}
-            >
-              {item.content}
+          {array.length === 0 ? (
+            <p className={classNames(cls.mySelectItem, "default-text")}>
+              Ошибка получения данных
             </p>
-          ))}
+          ) : (
+            array.map((item) => (
+              <p
+                className={classNames(cls.mySelectItem, "default-text")}
+                onClick={() => setSelectedItem(item)}
+                key={item.id}
+              >
+                {item.content}
+              </p>
+            ))
+          )}
         </div>
       </div>
     </label>

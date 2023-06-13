@@ -204,7 +204,7 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
               error={errors.email}
             />
             <MyInput
-              labelTitle="Название"
+              labelTitle="Дата"
               type="date"
               required
               register={register("date", {
