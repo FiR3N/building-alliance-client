@@ -98,8 +98,8 @@ const ReviewsList: FC<ReviewsListProps> = ({ isAdmin }) => {
               />
             </>
           ) : (
-            <h2 className={cls.vacanciesListError}>
-              Вакансий не найдено
+            <h2 className="error-block">
+              Отзывов не найдено
               <img className="smile-image" src={sadSmile} alt="sad-smile" />
             </h2>
           )

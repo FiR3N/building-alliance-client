@@ -40,7 +40,7 @@ const AdminLogin: FC = () => {
       <div className={cls.adminLogin}>
         <div className={classNames(cls.adminLoginContent, "container")}>
           <h2 className={cls.adminLoginTitle}>Авторизация</h2>
-          {error && (
+          {error && error !== "Пользователь не авторизован" && (
             <p className={classNames(cls.adminLoginError, "error-text")}>
               {error}
             </p>
