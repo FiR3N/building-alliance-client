@@ -96,6 +96,10 @@ export const ROUTES = {
     en: "mixtures",
     ru: "Управление растворами",
   },
+  ADMINREVIEWS: {
+    en: "reviews",
+    ru: "Управление отзывами",
+  },
   ADMINSETTINGS: {
     en: "/admin/settings",
     ru: "Настройки",

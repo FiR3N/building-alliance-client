@@ -4,4 +4,5 @@ export default interface IReviceForm {
   description: string;
   rating: string;
   image: Blob;
+  isPublished: boolean;
 }

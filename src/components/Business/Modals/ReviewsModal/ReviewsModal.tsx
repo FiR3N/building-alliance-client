@@ -1,4 +1,4 @@
-import { FC, Dispatch, SetStateAction, useState } from "react";
+import { FC, Dispatch, SetStateAction, useState, useEffect } from "react";
 import cls from "./ReviewsModal.module.scss";
 import Modal from "../../../UI/Modal/Modal";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -7,23 +7,42 @@ import MyTextArea from "../../../UI/MyTextArea/MyTextArea";
 import IReviceForm from "../../../../models/Forms/IReviewsModal";
 import MyButton from "../../../UI/MyButton/MyButton";
 import { reviewsAPI } from "../../../../api/ReviewsAPI";
+import { IReviews } from "../../../../models/Entity/IReviews";
+import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
 
 interface ReviewsModalProps {
   closeMethod: Dispatch<SetStateAction<boolean>>;
+  review?: IReviews;
+  isAdmin?: boolean;
 }
 
-const ReviewsModal: FC<ReviewsModalProps> = ({ closeMethod }) => {
+const ReviewsModal: FC<ReviewsModalProps> = ({
+  closeMethod,
+  review,
+  isAdmin,
+}) => {
   const [image, setImage] = useState<File | null>();
-  const [rating, setRating] = useState<string>("");
+  const [rating, setRating] = useState<string>(review ? review.rating : "");
+  const [description, setDescription] = useState<string>(
+    review ? review.description : ""
+  );
+  const [companyName, setCompanyName] = useState<string>(
+    review ? review.companyName : ""
+  );
+  const [isPublished, setIsPublished] = useState<boolean>(
+    review ? review.isPublished : false
+  );
+
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<IReviceForm>({ mode: "onChange" });
 
-  const [postReview, { error: postError }] =
+  const [postReview, { error: createError }] =
     reviewsAPI.usePostReviewsMutation();
+  const [putReview, { error: putError }] = reviewsAPI.usePutReviewsMutation();
 
   const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) {
@@ -46,19 +65,49 @@ const ReviewsModal: FC<ReviewsModalProps> = ({ closeMethod }) => {
     formData.append("image", image as File);
     formData.append("rating", rating);
 
-    await postReview({ formData }).unwrap();
+    if (review) {
+      formData.append("isPublished", String(data.isPublished));
+      await putReview({ id: review.id, formData: formData });
+    } else {
+      await postReview({ formData }).unwrap();
+    }
+
     reset({ companyName: "", description: "", image: "", rating: "" });
   };
+
+  useEffect(() => {
+    const modalRoot = document.querySelector("#modal-root");
+    const firstDiv = modalRoot?.querySelector("div");
+    firstDiv?.scrollTo({ top: 0 });
+  }, [isSubmitSuccessful]);
 
   return (
     <Modal closeMethod={closeMethod}>
       <div className={cls.reviewsModal}>
-        <h2 className={cls.reviewsModalTitle}>Создание отзыва</h2>
+        <div className={cls.reviewsModalTitle}>
+          <h2>Создание отзыва</h2>
+          {isSubmitSuccessful && (
+            <InfoBlock blockType={1}>
+              {review
+                ? `Отзыв ${review?.id} успешно отредактирован`
+                : isAdmin
+                ? `Отзыв успешно создан`
+                : `Отзыв успешно отправлен, после проверки администратора он будет добавлен :)`}
+            </InfoBlock>
+          )}
+        </div>
+
+        {putError && (
+          <InfoBlock blockType={-1}>Ошибка редактирования!</InfoBlock>
+        )}
+        {createError && <InfoBlock blockType={-1}>Ошибка создания!</InfoBlock>}
         <form
           className={cls.reviewsModalForm}
           onSubmit={handleSubmit(onSubmit)}
         >
           <MyInput
+            value={companyName}
+            onChange={(e) => setCompanyName(e.currentTarget.value)}
             labelTitle="Название компании"
             placeholder="Введите имя организации либо ФИО..."
             maxLength={100}
@@ -69,10 +118,13 @@ const ReviewsModal: FC<ReviewsModalProps> = ({ closeMethod }) => {
             error={errors.companyName}
           />
           <MyTextArea
+            value={description}
+            onChange={(e) => setDescription(e.currentTarget.value)}
             labelTitle="Содержание отзыва"
             placeholder="Введите ваш отзыв..."
             required
-            rows={7}
+            rows={8}
+            maxLength={800}
             register={register("description", {
               required: "Содержание отзыва не может быть пустым!",
             })}
@@ -83,7 +135,6 @@ const ReviewsModal: FC<ReviewsModalProps> = ({ closeMethod }) => {
             value={rating}
             onChange={handleInputRatingChange}
             type="text"
-            maxLength={800}
             placeholder={"Введите оценку (от 1 до 10)"}
             required
             register={register("rating", {
@@ -91,9 +142,46 @@ const ReviewsModal: FC<ReviewsModalProps> = ({ closeMethod }) => {
             })}
             error={errors.rating}
           />
-
+          {isAdmin && (
+            <div className={cls.reviewsModalFormCheckBox}>
+              <MyInput
+                type="checkbox"
+                labelTitle="Опубликовать"
+                checked={isPublished}
+                onChange={(e) => {
+                  setIsPublished((prev) => !prev);
+                }}
+                register={register("isPublished")}
+                error={errors.isPublished}
+              />
+            </div>
+          )}
+          {review && (
+            <div className={cls.reviewsModalFormImageBlock}>
+              <label>Текущее изображение</label>
+              <img
+                src={
+                  import.meta.env.VITE_API_URL +
+                  "/images/reviews/" +
+                  review?.image
+                }
+                alt="news_img"
+                className={cls.reviewsModalFormImage}
+              />
+            </div>
+          )}
+          {image && (
+            <div className={cls.reviewsModalFormImageBlock}>
+              <label>Новое изображение</label>
+              <img
+                src={URL.createObjectURL(image)}
+                alt="service_new_img"
+                className={cls.reviewsModalFormImage}
+              />
+            </div>
+          )}
           <MyInput
-            labelTitle="Изображение организации"
+            labelTitle="Изображение организации (не обязательно)"
             onChange={selectFile}
             type="file"
           />

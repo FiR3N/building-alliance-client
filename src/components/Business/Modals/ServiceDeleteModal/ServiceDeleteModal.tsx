@@ -31,7 +31,7 @@ const ServiceDeleteModal: FC<ServiceDeleteModalProps> = ({
   return (
     <Modal closeMethod={closeMethod}>
       <div className={cls.serviceDeleteModal}>
-        <h2 className={cls.serviceModalTitle}>
+        <h2 className={cls.serviceDeleteModalTitle}>
           Вы точно уверенны, что хотите удалить данную услугу?
         </h2>
         {isError && (

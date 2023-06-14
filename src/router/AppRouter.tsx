@@ -5,6 +5,9 @@ import { Suspense, lazy } from "react";
 import Loader from "../components/UI/Loader/Loader";
 import { useTypeSelector } from "../hooks/useTypeSelector";
 
+const AdminReviewPage = lazy(
+  () => import("../components/Business/AdminReviewPage/AdminReviewPage")
+);
 const AdminMixturePage = lazy(
   () => import("../components/Business/AdminMixturePage/AdminMixturePage")
 );
@@ -195,6 +198,14 @@ const AppRouter = () => {
               element={
                 <Suspense fallback={<Loader withMargins={true} />}>
                   <AdminCertificatePage />
+                </Suspense>
+              }
+            />
+            <Route
+              path={ROUTES.ADMINREVIEWS.en}
+              element={
+                <Suspense fallback={<Loader withMargins={true} />}>
+                  <AdminReviewPage />
                 </Suspense>
               }
             />

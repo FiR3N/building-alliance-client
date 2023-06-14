@@ -13,6 +13,7 @@ import users from "../../../assets/img/users.png";
 import vacancy from "../../../assets/img/vacancy.png";
 import vehicle from "../../../assets/img/crane.png";
 import mixtures from "../../../assets/img/reinforced-concrete.png";
+import reviews from "../../../assets/img/reviews.png";
 
 const AdminSwitcher: FC = () => {
   const { user } = useTypeSelector((state) => state.userReducer);
@@ -56,6 +57,12 @@ const AdminSwitcher: FC = () => {
             <CustomAdminLink to="certificates">
               <p className="bold-title-text">Сертификаты</p>
               <img src={certificate} alt="сертификаты" />
+            </CustomAdminLink>
+          )}
+          {(user.roleId === 2 || user.roleId === 1) && (
+            <CustomAdminLink to="reviews">
+              <p className="bold-title-text">Отзывы</p>
+              <img src={reviews} alt="отзывы" />
             </CustomAdminLink>
           )}
           {(user.roleId === 3 || user.roleId === 1) && (

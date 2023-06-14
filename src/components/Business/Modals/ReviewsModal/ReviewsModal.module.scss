@@ -7,6 +7,30 @@
     flex-direction: column;
     gap: 20px;
 
+    &ImageBlock {
+      display: flex;
+      flex-direction: column;
+    }
+    &CheckBox {
+      label {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 5px;
+        input {
+          width: min-content;
+          flex-grow: 0;
+        }
+      }
+    }
+    &Image {
+      height: 200px;
+      width: 200px;
+
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
     textarea {
       resize: none;
     }
