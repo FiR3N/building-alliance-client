@@ -133,6 +133,7 @@
       width: 100%;
 
       flex: 1 1 100%;
+
       h2 {
         font-size: 26px;
         line-height: 100%;
@@ -194,4 +195,8 @@
       }
     }
   }
+}
+.Recaptcha {
+  width: 100%;
+  display: flex;
 }

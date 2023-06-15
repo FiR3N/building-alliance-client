@@ -50,7 +50,7 @@ const VehicleModal: FC<VehicleModalProps> = ({ closeMethod, vehicle }) => {
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const inputValue = e.target.value;
-    const regex = /^-?\d*([.,]\d+)?$/;
+    const regex = /^\d*([.]\d{0,2})?$/;
     if (regex.test(inputValue)) {
       setPriceWithoutVAT(inputValue);
     }

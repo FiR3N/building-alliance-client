@@ -9,6 +9,7 @@ import MyButton from "../../../UI/MyButton/MyButton";
 import { reviewsAPI } from "../../../../api/ReviewsAPI";
 import { IReviews } from "../../../../models/Entity/IReviews";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface ReviewsModalProps {
   closeMethod: Dispatch<SetStateAction<boolean>>;
@@ -32,12 +33,15 @@ const ReviewsModal: FC<ReviewsModalProps> = ({
   const [isPublished, setIsPublished] = useState<boolean>(
     review ? review.isPublished : false
   );
-
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState<boolean | null>(
+    null
+  );
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<IReviceForm>({ mode: "onChange" });
 
   const [postReview, { error: createError }] =
@@ -58,29 +62,32 @@ const ReviewsModal: FC<ReviewsModalProps> = ({
       setRating(inputValue);
     }
   };
-
   const onSubmit: SubmitHandler<IReviceForm> = async (data) => {
-    const formData = new FormData();
-    formData.append("companyName", data.companyName);
-    formData.append("description", data.description);
-    formData.append("image", image as File);
-    formData.append("rating", rating);
-    isAdmin && formData.append("isPublished", String(data.isPublished));
+    if (isCaptchaVerified) {
+      const formData = new FormData();
+      formData.append("companyName", data.companyName);
+      formData.append("description", data.description);
+      formData.append("image", image as File);
+      formData.append("rating", rating);
+      isAdmin && formData.append("isPublished", String(data.isPublished));
 
-    if (review) {
-      await putReview({ id: review.id, formData: formData });
+      if (review) {
+        await putReview({ id: review.id, formData: formData });
+      } else {
+        await postReview({ formData }).unwrap();
+      }
+      setIsSubmitSuccessful(true);
+      reset({ companyName: "", description: "", image: "", rating: "" });
     } else {
-      await postReview({ formData }).unwrap();
+      setIsCaptchaVerified(false);
     }
-
-    reset({ companyName: "", description: "", image: "", rating: "" });
   };
 
   useEffect(() => {
     const modalRoot = document.querySelector("#modal-root");
     const firstDiv = modalRoot?.querySelector("div");
     firstDiv?.scrollTo({ top: 0 });
-  }, [isSubmitSuccessful]);
+  }, [isSubmitSuccessful, isCaptchaVerified]);
 
   return (
     <Modal closeMethod={closeMethod}>
@@ -96,12 +103,16 @@ const ReviewsModal: FC<ReviewsModalProps> = ({
                 : `Отзыв успешно отправлен, после проверки администратора он будет добавлен :)`}
             </InfoBlock>
           )}
+          {putError && (
+            <InfoBlock blockType={-1}>Ошибка редактирования!</InfoBlock>
+          )}
+          {createError && (
+            <InfoBlock blockType={-1}>Ошибка создания!</InfoBlock>
+          )}
+          {isCaptchaVerified === false && (
+            <InfoBlock blockType={-1}>Подвердите, что вы человек</InfoBlock>
+          )}
         </div>
-
-        {putError && (
-          <InfoBlock blockType={-1}>Ошибка редактирования!</InfoBlock>
-        )}
-        {createError && <InfoBlock blockType={-1}>Ошибка создания!</InfoBlock>}
         <form
           className={cls.reviewsModalForm}
           onSubmit={handleSubmit(onSubmit)}
@@ -186,6 +197,13 @@ const ReviewsModal: FC<ReviewsModalProps> = ({
             onChange={selectFile}
             type="file"
           />
+          <div className={cls.reviewsModalFormRecaptcha}>
+            <ReCAPTCHA
+              sitekey="6LdH3J0mAAAAAMpTtEyi3_OdpxAnTiP7nsd5ZbRd"
+              onChange={() => setIsCaptchaVerified(true)}
+            />
+          </div>
+
           <MyButton type="submit" disabled={isSubmitting}>
             Отправить отзыв
           </MyButton>

@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import cls from "./Contact.module.scss";
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
 import { useLocation } from "react-router-dom";
@@ -12,35 +12,45 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import EmailService from "../../api/EmailService";
 import InfoBlock from "../../components/Blocks/InfoBlock/InfoBlock";
 import IContact from "../../models/Forms/IContact";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact: FC = () => {
   const { pathname } = useLocation();
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful, isSubmitting },
+    formState: { errors, isSubmitting },
     reset,
   } = useForm<IContact>({ mode: "onChange" });
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState<boolean | null>(
+    null
+  );
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState<boolean>(false);
 
   const onSubmit: SubmitHandler<IContact> = async (data) => {
-    await EmailService.sendMessageFromUser(
-      data.name,
-      data.surname,
-      data.email,
-      data.text,
-      data.subject,
-      data.companyName,
-      data.telephone
-    );
-    reset({
-      name: "",
-      surname: "",
-      email: "",
-      text: "",
-      subject: "",
-      telephone: "",
-      companyName: "",
-    });
+    if (isCaptchaVerified) {
+      await EmailService.sendMessageFromUser(
+        data.name,
+        data.surname,
+        data.email,
+        data.text,
+        data.subject,
+        data.companyName,
+        data.telephone
+      );
+      setIsSubmitSuccessful(true);
+      reset({
+        name: "",
+        surname: "",
+        email: "",
+        text: "",
+        subject: "",
+        telephone: "",
+        companyName: "",
+      });
+    } else {
+      setIsCaptchaVerified(false);
+    }
   };
 
   useEffect(() => {
@@ -105,6 +115,9 @@ const Contact: FC = () => {
                 Ваше сообщение успешно отправлено
               </InfoBlock>
             )}
+            {isCaptchaVerified === false && (
+              <InfoBlock blockType={-1}>Подвердите, что вы человек</InfoBlock>
+            )}
             <form onSubmit={handleSubmit(onSubmit)}>
               <MyInput
                 placeholder="Введите имя:"
@@ -114,7 +127,7 @@ const Contact: FC = () => {
                 register={register("name", {
                   required: "Имя не может быть пустым!",
                   pattern: {
-                    value: /[A-Za-zА-Яа-яЁё]{3,32}/,
+                    value: /[A-Za-zА-Яа-яЁё]{2,32}/,
                     message: "Введите ваше настоящее имя!",
                   },
                 })}
@@ -128,7 +141,7 @@ const Contact: FC = () => {
                 register={register("surname", {
                   required: "Фамилия не может быть пустой!",
                   pattern: {
-                    value: /[A-Za-zА-Яа-яЁё]{3,32}/,
+                    value: /[A-Za-zА-Яа-яЁё]{2,32}/,
                     message: "Введите вашу настоящею фамилию!",
                   },
                 })}
@@ -199,6 +212,12 @@ const Contact: FC = () => {
                 })}
                 error={errors.text}
               />
+              <div className={cls.Recaptcha}>
+                <ReCAPTCHA
+                  sitekey="6LdH3J0mAAAAAMpTtEyi3_OdpxAnTiP7nsd5ZbRd"
+                  onChange={() => setIsCaptchaVerified(true)}
+                />
+              </div>
               <MyButton disabled={isSubmitting}>Отправить</MyButton>
             </form>
           </div>
