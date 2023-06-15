@@ -93,7 +93,7 @@ const HistoryContent: FC = () => {
             </div>
 
             <div className={cls.historyDateText}>
-              <p className={cls.historyDateTextTitle}>Переорганизация</p>
+              <p className={cls.historyDateTextTitle}>Реорганизация</p>
               <p className="default-text">
                 С 1974 года на базе участка механизации, как структурное
                 подразделение треста № 23 Мини-стерства промышленного

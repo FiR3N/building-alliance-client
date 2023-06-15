@@ -58,15 +58,16 @@ const ReviewsModal: FC<ReviewsModalProps> = ({
       setRating(inputValue);
     }
   };
+
   const onSubmit: SubmitHandler<IReviceForm> = async (data) => {
     const formData = new FormData();
     formData.append("companyName", data.companyName);
     formData.append("description", data.description);
     formData.append("image", image as File);
     formData.append("rating", rating);
+    isAdmin && formData.append("isPublished", String(data.isPublished));
 
     if (review) {
-      formData.append("isPublished", String(data.isPublished));
       await putReview({ id: review.id, formData: formData });
     } else {
       await postReview({ formData }).unwrap();

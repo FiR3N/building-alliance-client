@@ -97,8 +97,12 @@ const MixturesList: FC<MixturesListProps> = ({ type, isAdmin }) => {
             <h5 className={cls.mixturesListTableHeadersItem}>
               Единицы измерения
             </h5>
-            <h5 className={cls.mixturesListTableHeadersItem}>Цена без НДС</h5>
-            <h5 className={cls.mixturesListTableHeadersItem}>Цена с НДС</h5>
+            <h5 className={cls.mixturesListTableHeadersItem}>
+              Цена без НДС(BYN)
+            </h5>
+            <h5 className={cls.mixturesListTableHeadersItem}>
+              Цена с НДС(BYN)
+            </h5>
           </div>
           {mixtures?.map((mixture, index) => {
             return (

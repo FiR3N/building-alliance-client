@@ -11,6 +11,7 @@ import VehicleDeleteModal from "../Modals/VehicleDeleteModal/VehicleDeleteModal"
 import sadSmile from "../../../assets/img/sad-smile.png";
 import editImage from "../../../assets/img/edit.svg";
 import deleteImage from "../../../assets/img/delete.svg";
+import Pagination from "../../UI/Pagination/Pagination";
 
 interface VehicleListProps {
   isAdmin?: boolean;
@@ -87,10 +88,10 @@ const VehicleList: FC<VehicleListProps> = ({ isAdmin }) => {
           <div className={classNames(cls.vehicleListTableHeaders, cls.gray)}>
             <h5 className={cls.vehicleListTableHeadersItem}>Название</h5>
             <h5 className={cls.vehicleListTableHeadersItem}>
-              Полнцая цена за 1 м/час без НДС
+              Полнцая цена за 1 м/час без НДС(BYN)
             </h5>
             <h5 className={cls.vehicleListTableHeadersItem}>
-              Полнцая цена за 1 м/час с НДС
+              Полнцая цена за 1 м/час с НДС(BYN)
             </h5>
           </div>
           {vehicles?.map((vehicle, index) => {
