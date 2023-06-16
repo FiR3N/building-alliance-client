@@ -63,7 +63,7 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
       count +
         (mixtures?.find((item) => item.id === selectedMixtureItem?.id)
           ?.unitOfMeasurement as string),
-      price + (isPriceWithVAT ? "c НДС" : "без НДС"),
+      price + (isPriceWithVAT ? " c НДС" : " без НДС"),
       selectedTypeItem?.content as string,
       selectedMixtureItem?.content as string,
       data.text ? data.text : "пусто"

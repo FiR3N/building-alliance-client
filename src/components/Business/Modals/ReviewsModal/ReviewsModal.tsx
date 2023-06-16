@@ -63,7 +63,22 @@ const ReviewsModal: FC<ReviewsModalProps> = ({
     }
   };
   const onSubmit: SubmitHandler<IReviceForm> = async (data) => {
-    if (isCaptchaVerified) {
+    if (isAdmin) {
+      const formData = new FormData();
+      formData.append("companyName", data.companyName);
+      formData.append("description", data.description);
+      formData.append("image", image as File);
+      formData.append("rating", rating);
+      isAdmin && formData.append("isPublished", String(data.isPublished));
+
+      if (review) {
+        await putReview({ id: review.id, formData: formData });
+      } else {
+        await postReview({ formData }).unwrap();
+      }
+      setIsSubmitSuccessful(true);
+      reset({ companyName: "", description: "", image: "", rating: "" });
+    } else if (isCaptchaVerified) {
       const formData = new FormData();
       formData.append("companyName", data.companyName);
       formData.append("description", data.description);
@@ -197,12 +212,14 @@ const ReviewsModal: FC<ReviewsModalProps> = ({
             onChange={selectFile}
             type="file"
           />
-          <div className={cls.reviewsModalFormRecaptcha}>
-            <ReCAPTCHA
-              sitekey="6LdH3J0mAAAAAMpTtEyi3_OdpxAnTiP7nsd5ZbRd"
-              onChange={() => setIsCaptchaVerified(true)}
-            />
-          </div>
+          {!isAdmin && (
+            <div className={cls.reviewsModalFormRecaptcha}>
+              <ReCAPTCHA
+                sitekey="6LdH3J0mAAAAAMpTtEyi3_OdpxAnTiP7nsd5ZbRd"
+                onChange={() => setIsCaptchaVerified(true)}
+              />
+            </div>
+          )}
 
           <MyButton type="submit" disabled={isSubmitting}>
             Отправить отзыв

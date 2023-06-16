@@ -55,7 +55,7 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
       data.address,
       data.email,
       data.hoursCount,
-      price + (isPriceWithVAT ? "c НДС" : "без НДС"),
+      price + (isPriceWithVAT ? " c НДС" : " без НДС"),
       selectedVehicle?.content as string,
       data.date,
       data.text ? data.text : "пусто"
