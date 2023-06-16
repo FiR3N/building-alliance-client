@@ -19,9 +19,20 @@
         width: 100%;
       }
     }
+
+    &Recaptcha {
+      display: flex;
+      justify-content: center;
+    }
     textarea {
       resize: none;
     }
+    &CapacityItems {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
     &Price {
       display: flex;
       justify-content: space-between;
@@ -41,6 +52,21 @@
         input {
           width: min-content;
           flex-grow: 0;
+        }
+      }
+    }
+  }
+
+  @media #{$ui-mobile-max} {
+    &Form {
+      &Price {
+        flex-direction: column;
+        gap: 10px;
+
+        font-size: 16px;
+        line-height: 100%;
+        span {
+          font-size: 16px;
         }
       }
     }

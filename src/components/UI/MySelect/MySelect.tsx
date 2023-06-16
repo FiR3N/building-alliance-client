@@ -2,7 +2,7 @@ import { FC, Dispatch, SetStateAction, useState, useEffect } from "react";
 import cls from "./MySelect.module.scss";
 import dropDownImage from "../../../assets/img/drop-down.png";
 import classNames from "classnames";
-import { Control, FieldError, FormState } from "react-hook-form";
+import { Control, FieldError } from "react-hook-form";
 
 interface ArrayForSelect {
   id: number;

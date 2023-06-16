@@ -60,6 +60,10 @@
 
       pointer-events: all;
     }
+
+    &::-webkit-scrollbar {
+      border-radius: 100%;
+    }
   }
 
   &Item {

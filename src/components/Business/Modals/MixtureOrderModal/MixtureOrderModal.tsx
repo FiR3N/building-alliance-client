@@ -12,6 +12,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IMixtureOrderForm } from "../../../../models/Forms/IMixtureOrderForm";
 import EmailService from "../../../../api/EmailService";
 import InfoBlock from "../../../Blocks/InfoBlock/InfoBlock";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface MixtureOrderModalProps {
   closeMethod: Dispatch<SetStateAction<boolean>>;
@@ -22,10 +23,18 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
   closeMethod,
   typeId,
 }) => {
-  const [count, setCount] = useState<number>(1);
+  const [length, setLength] = useState<string>("");
+  const [width, setWidth] = useState<string>("");
+  const [height, setHeight] = useState<string>("");
+
+  const [count, setCount] = useState<string>("1");
   const [price, setPrice] = useState<number>(0);
   const [isPriceWithVAT, setIsPriceWithVAT] = useState<boolean>(true);
-
+  const [priceError, setPriceError] = useState<boolean>(false);
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState<boolean>(false);
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState<boolean | null>(
+    null
+  );
   const { data: types } = mixturesTypesAPI.useGetMixturesTypesQuery({});
   const newTypes =
     types?.map(({ id, name }) => ({ id: id, content: name })) || [];
@@ -51,44 +60,57 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
     reset,
     control,
     setValue,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<IMixtureOrderForm>({ mode: "onChange" });
 
   const onSubmit: SubmitHandler<IMixtureOrderForm> = async (data) => {
-    EmailService.sendMixtureOrder(
-      data.name,
-      data.phone,
-      data.address,
-      data.email,
-      count +
-        (mixtures?.find((item) => item.id === selectedMixtureItem?.id)
-          ?.unitOfMeasurement as string),
-      price + (isPriceWithVAT ? " c НДС" : " без НДС"),
-      selectedTypeItem?.content as string,
-      selectedMixtureItem?.content as string,
-      data.text ? data.text : "пусто"
-    );
+    if (isCaptchaVerified) {
+      if (price <= 0) {
+        setPriceError(true);
+        setIsSubmitSuccessful(false);
+      } else {
+        EmailService.sendMixtureOrder(
+          data.name,
+          data.phone,
+          data.address,
+          data.email,
+          count +
+            " " +
+            (mixtures?.find((item) => item.id === selectedMixtureItem?.id)
+              ?.unitOfMeasurement as string),
+          price + (isPriceWithVAT ? " c НДС" : " без НДС"),
+          selectedTypeItem?.content as string,
+          selectedMixtureItem?.content as string,
+          data.text ? data.text : "пусто"
+        );
+        setPriceError(false);
+        setIsSubmitSuccessful(true);
+        reset({
+          address: "",
+          count: 0,
+          email: "",
+          name: "",
+          phone: "",
+          price: 0,
+          text: "",
+        });
 
-    reset({
-      address: "",
-      count: 0,
-      email: "",
-      name: "",
-      phone: "",
-      price: 0,
-      text: "",
-    });
-
-    setSelectedMixtureItem(null);
+        setSelectedMixtureItem(null);
+      }
+    } else {
+      setIsCaptchaVerified(false);
+    }
   };
 
-  const countChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = Number(e.target.value);
-
-    if (inputValue <= 0) {
-      setCount(1);
-    } else if (inputValue <= 10000000) {
-      setCount(inputValue);
+  const handleInputNumberChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    methodChange: Dispatch<SetStateAction<string>>
+  ) => {
+    const inputValue = e.target.value;
+    const valueToNumber = Number(e.target.value);
+    const regex = /^\d*([.]\d{0,2})?$/;
+    if (regex.test(inputValue) && valueToNumber < 100000) {
+      methodChange(inputValue);
     }
   };
 
@@ -97,7 +119,7 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
       setPrice(
         Number(
           (
-            count *
+            Number(count) *
             Number(
               isPriceWithVAT
                 ? mixtures?.find((item) => item.id === selectedMixtureItem?.id)
@@ -115,7 +137,7 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
     const modalRoot = document.querySelector("#modal-root");
     const firstDiv = modalRoot?.querySelector("div");
     firstDiv?.scrollTo({ top: 0 });
-  }, [isSubmitSuccessful]);
+  }, [isSubmitSuccessful, priceError, isCaptchaVerified]);
 
   useEffect(() => {
     if (selectedTypeItem?.content) {
@@ -129,6 +151,31 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
       setValue("mixture", selectedMixtureItem?.content);
   }, [selectedMixtureItem]);
 
+  useEffect(() => {
+    if (length && width && height) {
+      if (
+        mixtures?.find((item) => item.id === selectedMixtureItem?.id)
+          ?.unitOfMeasurement === "т"
+      ) {
+        setCount(
+          (Number(length) * Number(width) * Number(height) * 2.3).toFixed(2)
+        );
+        setValue(
+          "count",
+          Number(
+            (Number(length) * Number(width) * Number(height) * 2.3).toFixed(2)
+          )
+        );
+      } else {
+        setCount((Number(length) * Number(width) * Number(height)).toFixed(2));
+        setValue(
+          "count",
+          Number((Number(length) * Number(width) * Number(height)).toFixed(2))
+        );
+      }
+    }
+  }, [length, width, height, selectedMixtureItem]);
+
   return (
     <Modal closeMethod={closeMethod}>
       <div className={cls.mixtureOrderModal}>
@@ -137,6 +184,14 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
           <InfoBlock blockType={1}>
             <p>Ваш заказ успешно отправлен!</p>
           </InfoBlock>
+        )}
+        {priceError && (
+          <InfoBlock blockType={-1}>
+            <p>Количетсво раствора не можеть быть равным нулю!</p>
+          </InfoBlock>
+        )}
+        {isCaptchaVerified === false && (
+          <InfoBlock blockType={-1}>Подвердите, что вы человек</InfoBlock>
         )}
         <div className={cls.mixtureOrderModalContent}>
           <form
@@ -171,20 +226,45 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
             )}
             {selectedMixtureItem && (
               <>
+                <div className={cls.mixtureOrderModalFormCapacityItems}>
+                  <MyInput
+                    labelTitle={`Длина участка(м)`}
+                    value={length}
+                    onChange={(e) => handleInputNumberChange(e, setLength)}
+                    type="number"
+                    placeholder="Длина..."
+                    step={0.5}
+                  />
+                  <MyInput
+                    labelTitle={`Ширина участка(м)`}
+                    value={width}
+                    onChange={(e) => handleInputNumberChange(e, setWidth)}
+                    type="number"
+                    placeholder="Ширина..."
+                    step={0.5}
+                  />
+                  <MyInput
+                    labelTitle={`Высота участка(м)`}
+                    value={height}
+                    onChange={(e) => handleInputNumberChange(e, setHeight)}
+                    type="number"
+                    placeholder="Высота..."
+                    step={0.5}
+                  />
+                </div>
+
                 <MyInput
-                  labelTitle={`Единицы измерения(${
+                  labelTitle={`Количество (${
                     mixtures?.find(
                       (item) => item.id === selectedMixtureItem?.id
                     )?.unitOfMeasurement
                   })`}
                   value={count}
-                  onChange={countChangeHandler}
+                  onChange={(e) => handleInputNumberChange(e, setCount)}
                   type="number"
-                  placeholder="Введите количество товара..."
+                  placeholder="Введите количество раствора..."
                   required
-                  min={0}
                   step={0.5}
-                  max="10000000"
                   register={register("count", {
                     required: "Количество не может быть пустым!",
                   })}
@@ -208,7 +288,7 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
               </>
             )}
             <MyInput
-              labelTitle="Название"
+              labelTitle="Название организации"
               placeholder="Введите имя организации либо ФИО..."
               maxLength={100}
               required
@@ -262,7 +342,12 @@ const MixtureOrderModal: FC<MixtureOrderModalProps> = ({
               placeholder="Введите дополнительную информацию..."
               register={register("text")}
             />
-
+            <div className={cls.mixtureOrderModalFormRecaptcha}>
+              <ReCAPTCHA
+                sitekey="6LdH3J0mAAAAAMpTtEyi3_OdpxAnTiP7nsd5ZbRd"
+                onChange={() => setIsCaptchaVerified(true)}
+              />
+            </div>
             <MyButton type="submit" disabled={isSubmitting}>
               Оформить заказ
             </MyButton>

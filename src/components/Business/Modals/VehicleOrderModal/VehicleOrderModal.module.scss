@@ -22,6 +22,10 @@
     textarea {
       resize: none;
     }
+    &Recaptcha {
+      display: flex;
+      justify-content: center;
+    }
     &Price {
       display: flex;
       justify-content: space-between;

@@ -11,6 +11,7 @@ import { vehicleAPI } from "../../../../api/VehicleAPI";
 import MySelect from "../../../UI/MySelect/MySelect";
 import classNames from "classnames";
 import EmailService from "../../../../api/EmailService";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface VehicleOrderModalProps {
   closeMethod: Dispatch<SetStateAction<boolean>>;
@@ -28,6 +29,10 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
   const [count, setCount] = useState<number>(1);
   const [price, setPrice] = useState<number>(0);
   const [isPriceWithVAT, setIsPriceWithVAT] = useState<boolean>(true);
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState<boolean | null>(
+    null
+  );
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState<boolean>(false);
 
   const {
     register,
@@ -35,7 +40,7 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
     reset,
     control,
     setValue,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<IVehicleOrderForm>({ mode: "onChange" });
 
   const countChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,30 +54,35 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
   };
 
   const onSubmit: SubmitHandler<IVehicleOrderForm> = async (data) => {
-    EmailService.sendVehicleOrder(
-      data.name,
-      data.phone,
-      data.address,
-      data.email,
-      data.hoursCount,
-      price + (isPriceWithVAT ? " c НДС" : " без НДС"),
-      selectedVehicle?.content as string,
-      data.date,
-      data.text ? data.text : "пусто"
-    );
+    if (isCaptchaVerified) {
+      EmailService.sendVehicleOrder(
+        data.name,
+        data.phone,
+        data.address,
+        data.email,
+        data.hoursCount,
+        price + (isPriceWithVAT ? " c НДС" : " без НДС"),
+        selectedVehicle?.content as string,
+        data.date,
+        data.text ? data.text : "пусто"
+      );
+      setIsSubmitSuccessful(true);
+      reset({
+        address: "",
+        email: "",
+        name: "",
+        phone: "",
+        price: 0,
+        text: "",
+        date: "",
+        hoursCount: 0,
+      });
 
-    reset({
-      address: "",
-      email: "",
-      name: "",
-      phone: "",
-      price: 0,
-      text: "",
-      date: "",
-      hoursCount: 0,
-    });
-
-    setSelectedVehicle(null);
+      setSelectedVehicle(null);
+    } else {
+      setIsSubmitSuccessful(false);
+      setIsCaptchaVerified(false);
+    }
   };
 
   useEffect(() => {
@@ -98,7 +108,7 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
     const modalRoot = document.querySelector("#modal-root");
     const firstDiv = modalRoot?.querySelector("div");
     firstDiv?.scrollTo({ top: 0 });
-  }, [isSubmitSuccessful]);
+  }, [isSubmitSuccessful, isCaptchaVerified]);
 
   useEffect(() => {
     if (selectedVehicle?.content) setValue("vehicle", selectedVehicle?.content);
@@ -112,6 +122,9 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
           <InfoBlock blockType={1}>
             <p>Ваш заказ успешно отправлен!</p>
           </InfoBlock>
+        )}
+        {isCaptchaVerified === false && (
+          <InfoBlock blockType={-1}>Подвердите, что вы человек</InfoBlock>
         )}
         <div className={cls.vehicleOrderModalContent}>
           <form
@@ -138,9 +151,7 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
                   type="number"
                   placeholder="Введите время аренды..."
                   required
-                  min={0}
                   step={1}
-                  max={999}
                   register={register("hoursCount", {
                     required: "Время не может быть пустым!",
                   })}
@@ -227,7 +238,12 @@ const VehicleOrderModal: FC<VehicleOrderModalProps> = ({ closeMethod }) => {
               placeholder="Введите дополнительную информацию..."
               register={register("text")}
             />
-
+            <div className={cls.vehicleOrderModalFormRecaptcha}>
+              <ReCAPTCHA
+                sitekey="6LdH3J0mAAAAAMpTtEyi3_OdpxAnTiP7nsd5ZbRd"
+                onChange={() => setIsCaptchaVerified(true)}
+              />
+            </div>
             <MyButton type="submit" disabled={isSubmitting}>
               Оформить заказ
             </MyButton>
