@@ -78,12 +78,14 @@
 
     transition: all 0.3s ease;
   }
-  @media screen and (max-width: 48em) {
+  @media #{$ui-tablet-max} {
     &Content {
       padding: 20px;
+      margin-right: 10px;
     }
     &CloseBut {
-      right: -25px;
+      right: 0;
+      top: -30px;
     }
     .bar {
       width: 25px;
@@ -92,9 +94,6 @@
   @media screen and (max-width: 26.5625em) {
     &Content {
       padding: 10px;
-    }
-    &CloseBut {
-      right: -20px;
     }
     .bar {
       width: 20px;

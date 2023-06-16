@@ -6,9 +6,14 @@ import { isMobile } from "react-device-detect";
 interface AnimatedBlockProps {
   children: React.ReactNode;
   isAbove?: boolean;
+  startTranslateFrom?: number;
 }
 
-const AnimatedBlock: FC<AnimatedBlockProps> = ({ children, isAbove }) => {
+const AnimatedBlock: FC<AnimatedBlockProps> = ({
+  children,
+  isAbove,
+  startTranslateFrom,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const { ref, inView } = useInView({
@@ -18,12 +23,20 @@ const AnimatedBlock: FC<AnimatedBlockProps> = ({ children, isAbove }) => {
 
   const animationProps = useSpring({
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0)" : "translateY(60px)",
+    transform: isVisible
+      ? "translateY(0)"
+      : `translateY(${
+          startTranslateFrom ? startTranslateFrom + "px" : "60px"
+        })`,
   });
 
   const animationAboveProps = useSpring({
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0)" : "translateY(60px)",
+    transform: isVisible
+      ? "translateY(0)"
+      : `translateY(${
+          startTranslateFrom ? startTranslateFrom + "px" : "60px"
+        })`,
 
     position: "relative",
     zIndex: "2",

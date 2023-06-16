@@ -34,7 +34,7 @@ const Main: FC = () => {
     <div className={classNames(cls.main)}>
       <Swiper
         modules={[Pagination, Autoplay, EffectFade]}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 5000 }}
         slidesPerView={1}
         allowTouchMove={false}
         pagination={{ el: cls.swiperPagination, clickable: true }}
@@ -53,6 +53,7 @@ const Main: FC = () => {
             </p>
           </div>
         </SwiperSlide>
+
         <SwiperSlide className={cls.swiperItem}>
           <img src={slider2} />
           <div className={classNames(cls.mainTitle)}>
@@ -122,14 +123,14 @@ const Main: FC = () => {
           </Link>
         </div>
       </AnimatedBlock>
-      <AnimatedBlock>
-        <div className={cls.mainAboveServices}>
-          <div className={cls.mainAboveServicesItem}>
-            <img
-              src={aboveServiceImage_1}
-              alt="building-1"
-              className={cls.mainAboveServicesItemImage}
-            />
+      <div className={cls.mainAboveServices}>
+        <div className={cls.mainAboveServicesItem}>
+          <img
+            src={aboveServiceImage_1}
+            alt="building-1"
+            className={cls.mainAboveServicesItemImage}
+          />
+          <AnimatedBlock startTranslateFrom={20}>
             <div className={cls.mainAboveServicesItemText}>
               <p className="default-big-text">
                 Спецстроймеханизация готова реализовать
@@ -142,13 +143,15 @@ const Main: FC = () => {
                 задачи.
               </p>
             </div>
-          </div>
-          <div className={cls.mainAboveServicesItem}>
-            <img
-              src={aboveServiceImage_2}
-              alt="building-2"
-              className={cls.mainAboveServicesItemImage}
-            />
+          </AnimatedBlock>
+        </div>
+        <div className={cls.mainAboveServicesItem}>
+          <img
+            src={aboveServiceImage_2}
+            alt="building-2"
+            className={cls.mainAboveServicesItemImage}
+          />
+          <AnimatedBlock startTranslateFrom={20}>
             <div className={cls.mainAboveServicesItemText}>
               <p className="default-big-text">Спецстроймеханизация лидер по</p>
               <h2>Постройкам</h2>
@@ -158,9 +161,9 @@ const Main: FC = () => {
                 строительной отрасли страны неоспорим уже многие десятилетия.
               </p>
             </div>
-          </div>
+          </AnimatedBlock>
         </div>
-      </AnimatedBlock>
+      </div>
 
       <AnimatedBlock>
         <div className={cls.mainWorks}>
@@ -218,18 +221,18 @@ const Main: FC = () => {
         </div>
       </AnimatedBlock>
 
-      <AnimatedBlock>
-        <div className={cls.mainInfoAbout}>
-          <img src={mainInfoAboutBg} alt="maininfobg" />
-          <div className={classNames(cls.mainInfoAboutContent, "container")}>
+      <div className={cls.mainInfoAbout}>
+        <img src={mainInfoAboutBg} alt="maininfobg" />
+        <div className={classNames(cls.mainInfoAboutContent, "container")}>
+          <AnimatedBlock>
             <p className="big-default-text">Большой опыт для</p>
             <h2>Строительства и Реконструкций</h2>
             <Link to={"/history"}>
               <MyButton>Наша история</MyButton>
             </Link>
-          </div>
+          </AnimatedBlock>
         </div>
-      </AnimatedBlock>
+      </div>
 
       <AnimatedBlock>
         <WorksCountBlock />
@@ -246,9 +249,7 @@ const Main: FC = () => {
       <AnimatedBlock>
         <PartnersBlock />
       </AnimatedBlock>
-      <AnimatedBlock>
-        <AboutOurWork />
-      </AnimatedBlock>
+      <AboutOurWork />
     </div>
   );
 };

@@ -9,7 +9,7 @@ const WorksCountBlock: FC = () => {
         <div className={cls.worksCountBlockItem}>
           <p className="date">
             <span />
-            50
+            40
           </p>
           <h5>Летний опыт</h5>
         </div>
@@ -23,7 +23,7 @@ const WorksCountBlock: FC = () => {
         <div className={cls.worksCountBlockItem}>
           <p className="date">
             <span />
-            500+
+            100+
           </p>
           <h5>
             Успешых <br /> проектов
