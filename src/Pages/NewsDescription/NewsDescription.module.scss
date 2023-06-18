@@ -13,6 +13,9 @@
     max-height: 500px;
     margin-bottom: 30px;
 
+    object-fit: contain;
+    object-position: 50% 50%;
+
     border-radius: 8px;
   }
   &Date {
