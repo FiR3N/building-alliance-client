@@ -37,8 +37,6 @@ const AdminVehiclePage = lazy(
 const Contact = lazy(() => import("../Pages/Contact/Contact"));
 const History = lazy(() => import("../Pages/History/History"));
 const Reviews = lazy(() => import("../Pages/Reviews/Reviews"));
-const WorkProcess = lazy(() => import("../Pages/WorkProcess/WorkProcess"));
-const AboutCompany = lazy(() => import("../Pages/AboutCompany/AboutCompany"));
 const News = lazy(() => import("../Pages/News/News"));
 const NewsDescription = lazy(
   () => import("../Pages/NewsDescription/NewsDescription")
@@ -250,14 +248,6 @@ const AppRouter = () => {
         element={
           <Suspense fallback={<Loader withMargins={true} />}>
             <Reviews />
-          </Suspense>
-        }
-      />
-      <Route
-        path={ROUTES.WORPPROCESS.en}
-        element={
-          <Suspense fallback={<Loader withMargins={true} />}>
-            <WorkProcess />
           </Suspense>
         }
       />

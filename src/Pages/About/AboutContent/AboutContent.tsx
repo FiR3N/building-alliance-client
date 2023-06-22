@@ -1,8 +1,6 @@
 import { FC } from "react";
 import cls from "../About.module.scss";
 import classNames from "classnames";
-import Office from "../../../assets/img/about-img1.jpg";
-import Proff from "../../../assets/img/about-img2.jpg";
 import MyButton from "../../../components/UI/MyButton/MyButton";
 import { Link } from "react-router-dom";
 
@@ -10,7 +8,6 @@ const AboutContent: FC = () => {
   return (
     <div className={cls.about}>
       <div className={classNames(cls.aboutContent, "container")}>
-        {/* <div className={cls.aboutBlock}> */}
         <p className="default-text">
           Строительная организация
           <span className="bold-text"> ОАО "Спецстроймеханизация" </span>
