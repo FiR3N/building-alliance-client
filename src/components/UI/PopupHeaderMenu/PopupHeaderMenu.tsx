@@ -31,7 +31,8 @@ const PopupHeaderMenu: FC<PopupHeaderMenuProps> = ({ title, items }) => {
           className={classNames(
             (pathname.includes(ROUTES.ABOUT.en) ||
               pathname.includes(ROUTES.HISTORY.en) ||
-              pathname.includes(ROUTES.CERTIFICATE.en)) &&
+              pathname.includes(ROUTES.CERTIFICATE.en) ||
+              pathname.includes(ROUTES.REVIEWS.en)) &&
               cls._isOnRoute
           )}
         >
@@ -41,7 +42,8 @@ const PopupHeaderMenu: FC<PopupHeaderMenuProps> = ({ title, items }) => {
           className={classNames(
             (pathname.includes(ROUTES.ABOUT.en) ||
               pathname.includes(ROUTES.HISTORY.en) ||
-              pathname.includes(ROUTES.CERTIFICATE.en)) &&
+              pathname.includes(ROUTES.CERTIFICATE.en) ||
+              pathname.includes(ROUTES.REVIEWS.en)) &&
               cls._isOnRoute
           )}
         />
