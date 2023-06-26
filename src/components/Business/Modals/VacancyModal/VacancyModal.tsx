@@ -114,16 +114,6 @@ const VacancyModal: FC<VacancyModalProps> = ({ closeMethod, vacancy }) => {
             register={register("wage")}
             error={errors.wage}
           />
-          {/* <MyInput
-            labelTitle="Зарплата от"
-            min={0}
-            value={Number(wage)}
-            onChange={(e) => setWage(Number(e.currentTarget.value))}
-            type="number"
-            placeholder="Введите зарплату от..."
-            register={register("wage")}
-            error={errors.wage}
-          /> */}
           <MyInput
             labelTitle="Опыт"
             value={experience}
